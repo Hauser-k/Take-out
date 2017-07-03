@@ -1,0 +1,45 @@
+﻿/**
+ * 下拉列表框样式文件。  
+ * 
+ * @author xukai@meituan.com
+ * @date 2014-06-27 星期五
+ */
+.slide-down {
+  position: absolute; 
+  border: 1px solid #DCDCDC;
+  background-color: #FFFFFF;
+  display: none;
+  z-index: 901;
+  
+  box-shadow: 0px 2px 5px #CCCCCC;
+  -moz-box-shadow: 0px 2px 5px #CCCCCC;
+  -webkit-box-shadow: 0px 2px 5px #CCCCCC;
+  -ms-box-shadow: 0px 2px 5px #CCCCCC;
+  -o-box-shadow: 0px 2px 5px #CCCCCC;
+}
+
+.slide-down li a {
+  display: block;
+  height: 33px;
+  padding: 0 12px;
+  line-height: 33px;
+  color: #434343;
+}
+
+.slide-down li.hover {
+  background-color: #EEEEEE;
+}
+
+.slide-down span.del {
+  display: none;;
+  height: 10px;
+  width: 10px;
+  background-position: -22px -256px;
+  margin-top: 12px;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.slide-down li.hover span.del {
+  display: block;
+}

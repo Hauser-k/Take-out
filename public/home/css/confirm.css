@@ -1,0 +1,103 @@
+﻿/**
+ * 订单确认成功以后的弹框。  
+ * 
+ * @author xukai@meituan.com
+ * @date 2014-03-08 星期六
+ */
+
+.dialog-confirm .actions a {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.dialog-confirm .flag {
+  margin: 30px 0 0 45px;
+  _margin-left: 13px;
+}
+
+.dialog-confirm .info {
+  margin-left: 95px;
+  padding: 37px 0 6px 0;
+}
+
+.dialog-confirm .info p {
+  color: #898989;
+  line-height: 17px;
+  padding-top: 15px;
+}
+
+.dialog-confirm .info .number {
+  color: #fe4d3d;
+}
+
+.dialog-confirm .wait {
+  margin-top: 5px;
+}
+
+.dialog-confirm strong {
+  font-size: 17px;
+  color: #434343;
+}
+
+.dialog-confirm .suggest {
+  margin-top: 35px;
+}
+
+.dialog-confirm .actions {
+  margin-top: 16px;
+}
+
+.dialog-confirm .success-actions {
+  height: 28px;
+}
+
+.dialog-confirm .no-login {
+  margin-top: 11px;
+  padding-bottom: 16px;
+}
+
+.dialog-confirm .no-login a {
+  text-decoration: underline;
+  color: #ED9400;
+}
+
+.dialog-confirm .nevermind {
+  padding-bottom: 24px;
+  margin-top: 11px;
+}
+
+.dialog-confirm .nevermind a {
+  color: #fe4d3d;
+}
+
+.dialog-confirm .nevermind a:hover {
+  text-decoration: underline;
+}
+
+.dialog-confirm .txt {
+  margin-top: 5px;
+}
+
+.dialog-confirm .today {
+  margin-top: 22px;
+}
+
+.dialog-confirm .btns {
+  margin-top: 8px;
+}
+
+.dialog-confirm .btns .ok-btn {
+  float: left;
+}
+
+.dialog-confirm .actual-price strong {
+  color: #fe4d3d;
+  margin-left: 2px;
+}
+
+.dialog-confirm .btns .actual-price {
+  float: left;
+  margin-left: 10px;
+  padding-top: 4px;
+}
+

@@ -1,0 +1,197 @@
+﻿/**
+ * 表示城市列表的弹框页面  
+ * 
+ * @author xukai@meituan.com
+ * @date 2014-07-30 星期三
+ * 
+ */
+
+.dialog-citylist .map-dialog .content {
+  width: 683px;
+  background-color: #FFFFFF;
+  outline: none;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+  -webkit-box-shadow: 0px 4px 12px 0px rgba(0,0,0,0.10);
+  -moz-box-shadow: 0px 4px 12px 0px rgba(0,0,0,0.10);
+  box-shadow: 0px 4px 12px 0px rgba(0,0,0,0.10);
+}
+
+.dialog-citylist .text {
+  color: #A0A0A0;
+  font-size: 14px;
+}
+
+.dialog-citylist .guess {
+  margin: 10px 25px 0 0;
+  padding-bottom: 14px;
+  display: block;
+  float: left;
+}
+
+.dialog-citylist .no-guess {
+  margin: 0px;
+}
+
+.dialog-citylist .guess span {
+  line-height: 28px;
+  font-size: 14px;
+}
+
+.dialog-citylist .guess a {
+  height: 28px;
+  padding: 0 14px;
+  margin-left: 16px;
+  background-color: #333;
+  text-align: center;
+  line-height: 28px;
+  color: #fff;
+  font-size: 14px;
+}
+
+.sprt-line {
+  float: left;
+  margin-top: 10px;
+  height: 28px;
+  width: 0;
+  border-right: 1px solid #e5e5e5;
+  margin-right: 25px;
+}
+
+.dialog-citylist .field {
+  padding: 12px 0;
+  border-top: 1px dashed #E2E2E2;
+}
+
+.dialog-citylist .field .letters {
+  display: block;
+  color: #898989;
+  font-size: 14px;
+  height: 20px;
+  line-height: 20px;
+  width: 40px;
+  text-align: center;
+  letter-spacing: 1px;
+}
+
+.dialog-citylist .first-field {
+  border-top: 1px solid #dddddd;
+  padding-top: 20px;
+}
+
+.dialog-citylist .field ul {
+  margin-left: 70px;
+}
+
+.dialog-citylist .field li {
+  float: left;
+  width: 74px;
+  padding-right: 10px;
+  margin-bottom: 10px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.dialog-citylist .field ul a {
+  color: #434343;
+  font-size: 14px;
+}
+
+.dialog-citylist .field ul a:hover {
+  color: #ffa735;
+  /*text-decoration: underline;*/
+}
+
+.dialog-citylist .word-tip {
+  width: 146px;
+  height: 25px;
+  background-color: #fe4d3d;
+  color: #FFFFFF;
+  text-align: center;
+  line-height: 25px;
+  font-size: 14px;
+  margin-bottom: 15px;
+  position: relative;
+}
+
+.dialog-citylist .i-wordtip {
+  position: absolute;
+  bottom: -7px;
+  left: 20px;
+}
+
+.dialog-citylist .order-flow span {
+  font-size: 14px;
+  color: #A0A0A0;
+}
+
+.dialog-citylist .order-flow span.cc-lightred-new {
+  color: #ffa735;
+}
+
+.dialog-citylist .order-flow i {
+  margin: 0 5px;
+}
+
+.dialog-citylist .search-city {
+  margin-top: 10px;
+  display: inline-block;
+  padding-bottom: 14px;
+  position: relative;
+  z-index: 99;
+}
+
+.dialog-citylist .search-city span {
+  height: 30px;
+  line-height: 30px;
+  padding-right: 10px;
+  font-size: 14px;
+}
+
+.dialog-citylist .search-city input {
+  width: 210px;
+  height: 18px;
+  padding: 5px 0 5px 5px;
+  display: block;
+  line-height: 18px;
+  border: 1px solid #dcdcdc;
+  color: #a9a9a9;
+}
+
+.dialog-citylist .search-city i {
+  position: absolute;
+  top: 8px;
+  left: 77px;
+}
+
+.dialog-citylist #city-content {
+  width: 178px;
+  display: none;
+  position: absolute;
+  background: #ffffff;
+  top: 30px;
+  left: 66px;
+  border: 1px solid #dcdcdc;
+  border-top: 0px none;
+}
+
+.dialog-citylist #city-content a,
+.dialog-citylist #city-content .notfound {
+  height: 28px;
+  display: block;
+  line-height: 28px;
+  padding-left: 34px;
+}
+
+.dialog-citylist #city-content .notfound {
+  padding: 0px;
+  text-align: center;
+  background-color: #eeeeee;
+}
+
+.dialog-citylist #city-content .active {
+  background-color: #f5f5f5;
+}
+

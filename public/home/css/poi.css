@@ -1,0 +1,62 @@
+﻿/**
+ * 地标列表框  
+ * 
+ * @2014-07-30 星期三
+ * 
+ */
+
+.dialog-poilist .map-dialog .content {
+  width: 683px;
+  background-color: #FFFFFF;
+  outline: none;
+}
+
+.dialog-poilist .field {
+  padding: 12px 0;
+  border-top: 1px dashed #E2E2E2;
+}
+
+.dialog-poilist .first-field {
+  border-top: 0;
+}
+
+.dialog-poilist .list {
+  margin-left: 100px;
+}
+
+.dialog-poilist .poi-name {
+  width: 74px;
+  background-color: #FFEBCC;
+  color: #434343;
+  text-align: center;
+  line-height: 20px;
+}
+
+.dialog-poilist .list li {
+  float: left;
+  width: 175px;
+  margin-right: 10px;
+  margin-bottom: 5px;
+  height: 23px;
+  overflow: hidden;
+}
+
+.dialog-poilist .list a {
+  color: #434343;
+  font-size: 14px;
+  display: block;
+  padding: 2px 4px;
+  
+  -webkit-transition: background-color .15s linear;
+  -moz-transition: background-color .15s linear;
+  transition: background-color .15s linear;
+}
+
+.dialog-poilist .list a span {
+  padding: 0 2px;
+  display: inline-block;
+}
+
+.dialog-poilist .list a:hover span {
+  color: #ffa735;
+}

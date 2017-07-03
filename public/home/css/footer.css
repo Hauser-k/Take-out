@@ -1,0 +1,129 @@
+﻿/**
+ * 页面底部样式文件。
+ *
+ * @author XU Kai(xukai@meituan.com)
+ * @date 2014.01.07
+ */
+
+.page-footer {
+    position: relative;
+    background-color: #fff;
+    color: #666;
+    z-index: 9;
+}
+
+.footer-wrap {
+    width: 980px;
+    margin: 0 auto;
+    padding: 32px 0;
+}
+
+.page-footer .info,
+.page-footer .corp {
+    margin-right: 100px;
+}
+
+.page-footer .ques {
+    margin-right: 60px;
+}
+
+.page-footer .service {
+    width: 190px;
+    height: 112px;
+    padding-left: 60px;
+    border: 1px dashed #e5e5e5;
+    border-width: 0 1px;
+}
+
+.page-footer li {
+    line-height: 30px;
+    list-style: none;
+}
+
+.page-footer li a {
+    color: #666;
+}
+
+.page-footer li a:hover {
+    color: #333;
+}
+
+.page-footer .w1 {
+    color: #555;
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+.page-footer .w2 {
+    margin-bottom: 14px;
+    color: #333;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.page-footer .w3 {
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+.QRcode {
+    margin-left: 60px;
+}
+
+.footer-qrcode {
+    width: 100px;
+    height: 100px;
+    background: url(../images/qrcode.png) no-repeat;
+    background-size: 100px 100px;
+    margin-right: 25px;
+}
+
+.qr-text1 {
+    margin-top: 20px;
+    font-size: 15px;
+    font-family: Microsoft YaHei;
+    color: #2A2A2A;
+    font-weight: bold;
+}
+
+.qr-text2 {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #666;
+}
+
+.copyright-wrap {
+    width: 980px;
+    margin: 0 auto;
+    padding: 16px 0 10px;
+    text-align: center;
+}
+
+.copyright-wrap .sp-ft {
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 20px;
+}
+
+.copyright-wrap .sp-ft .record {
+    display: inline-block;
+    width: 80px;
+    height: 29px;
+    background-image: url(../images/sp.jpg);
+    background-size: contain;
+}
+
+.copyright-wrap .copyright {
+    display: inline-block;
+    vertical-align: middle;
+    line-height: 29px;
+    color: #999;
+}
+
+.copyright-wrap .copyright a {
+    color: #999;
+}
+
+.copyright-wrap .copyright a:hover {
+    text-decoration: underline;
+}
