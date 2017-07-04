@@ -49,23 +49,28 @@ Route::controller('/admin/collection','Admin\CollectionController');
 /**
  * 商家后台
  */
-//登录
-Route::controller('/seller/login','Seller\LoginController');
-//注册
-Route::controller('/seller/register','Seller\RegisterController');
-//商家用户个人中心
-Route::controller('/seller/index','Seller\IndexController');
-//菜品分类管理
-Route::controller('/seller/goodsclass','Seller\GoodsClassController');
-//菜品管理
-Route::controller('/seller/goods','Seller\GoodsController');
-//订单管理
-Route::controller('/seller/order','Seller\OrderController');
-//评价
-Route::controller('/seller/eval','Seller\EvalController');
-//验证码
-Route::get('seller/code','Seller\LoginController@code');
 
-//Route::group([], function(){
 //
-//});
+//
+//
+	//登录
+	Route::controller('/seller/login','Seller\LoginController');
+	//验证码
+	Route::get('seller/code','Seller\LoginController@code');
+	
+Route::group([], function(){	
+	//注册
+	Route::controller('/seller/register','Seller\RegisterController');
+	//商家用户个人中心
+	Route::controller('/seller/index','Seller\IndexController');
+	//菜品分类管理
+	Route::controller('/seller/goodsclass','Seller\GoodsClassController');
+	//菜品管理
+	Route::controller('/seller/goods','Seller\GoodsController');
+	//订单管理
+	Route::controller('/seller/order','Seller\OrderController');
+	//评价
+	Route::controller('/seller/eval','Seller\EvalController');
+	
+
+});
