@@ -63,6 +63,8 @@ Route::controller('/seller/goods','Seller\GoodsController');
 Route::controller('/seller/order','Seller\OrderController');
 //评价
 Route::controller('/seller/eval','Seller\EvalController');
+//验证码
+Route::get('seller/code','Seller\LoginController@code');
 
 //Route::group([], function(){
 //
