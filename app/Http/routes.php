@@ -15,7 +15,8 @@ Route::get('/', function () {
 //    return view('welcome');
     return view('home/index');
 });
-
+// 验证码的路由
+Route::get('/code','CodeController@code');
 /**
  * 前台
  */
@@ -29,6 +30,8 @@ Route::controller('/home/register','Home\RegisterController');
  */
 //登录
 Route::controller('/admin/login','Admin\LoginController');
+//普通用户管理
+Route::controller('/admin/user','Admin\UserController');
 //商家分类
 Route::controller('/admin/sellerclass','Admin\SellerClassController');
 //商家信息
@@ -37,8 +40,9 @@ Route::controller('/admin/seller','Admin\SellerController');
 Route::controller('/admin/order','Admin\OrderController');
 //评价
 Route::controller('/admin/eval','Admin\EvalController');
-//普通用户管理
-Route::controller('/admin/user','Admin\UserController');
+//收藏
+Route::controller('/admin/collection','Admin\CollectionController');
+
 
 
 
