@@ -39,7 +39,7 @@ return [
     |
     */
 
-    'timezone' => 'UTC',
+    'timezone' => 'PRC',
 
     /*
     |--------------------------------------------------------------------------
@@ -78,8 +78,8 @@ return [
     |
     */
 
-    'key' => env('APP_KEY', 'SomeRandomString'),
-
+    'key' => env('APP_KEY', ''),
+// u1io1LHv7yX7KYHqAw0smMj4AYLfIiw0
     'cipher' => 'AES-256-CBC',
 
     /*
