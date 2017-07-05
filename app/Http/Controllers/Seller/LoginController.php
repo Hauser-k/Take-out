@@ -40,27 +40,45 @@ class LoginController extends Controller
 
     public function postDologin(Request $request)
     {
+
        $input = Input::except('_token');
        
        $roles = [
-            'sname' => 'required|unique:posts|between:6,12',
-            'spwd' => 'required|between:6,12',
+            'sname' => 'required|between:6,12',
+            'spwd' => 'required|between:1,12',
             'code' => 'required'
        ];
-        $validator = Validator::make($input,$roles);
+       $msg = [
+            'sname.required' => '用户名必填',
+            'sname.between' => '用户名长度为6-12位',
+            'spwd.required' => '密码名必填',
+            'spwd.between' => '用户名长度为6-12位',
+            'code.required' => '验证码必填'
+       ];
+        $validator = Validator::make($input,$roles,$msg);
 
         if ($validator->fails()) {
-            return back()->with('error');
+            return back()->withErrors($validator);
         }else{
             //验证验证码
-            if(strtoupper($input['code']) != $session('code')){
-                return back() -> with('error','验证码错误');
+            if(strtoupper($input['code']) != session('code')){
+                return back()->with('errors','验证码错误')->withInput();
             }
             //验证是否有用户
             $user = User::where('sname',$input['sname']) -> first();
-            if(!$user){
-                echo 1;
+
+            if(!$user || ($input['spwd']  != Crypt::decrypt($user->spwd)) ){
+              return back()->with('errors','用户名或密码错误')->withInput();
             }
+            // if($input['spwd']  != Crypt::decrypt($user->spwd)){
+            //   return back()->with('errors','密码错误')->withInput();
+            // }
+            //将用户信息添加到session中
+            session(['user'=>$user]);
+            //登录
+            //
+            // echo 1111;
+            return view('seller.index');
         }
         
     }

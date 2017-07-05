@@ -41,9 +41,21 @@
         <div class="tpl-login">
             <div class="tpl-login-content">
                 <div class="">
-
                     <img src="{{asset('assets/img/logoa.png')}}" alt="">
                 </div>
+                @if (count($errors) > 0)
+                    <div class="mark" style="color:red">
+                        <ul>
+                            @if(is_object($errors))
+                                @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                                @endforeach
+                            @else
+                                <li><center>{{ $errors }}</enter></li>
+                            @endif
+                        </ul>
+                    </div>
+                @endif
                 <form class="am-form tpl-form-line-form" method="post" action="{{url('/seller/login/dologin')}}">
                 {{csrf_field()}}
                     <div class="am-form-group">
@@ -70,6 +82,7 @@
                         <label for="remember-me">
                         记住密码
                          </label>
+                        <a href="#" style="margin-left:280px">忘记密码</a>
                     </div>
                     <div class="am-form-group">
 
@@ -79,6 +92,7 @@
 
                     </div>
                 </form>
+
             </div>
         </div>
     </div>

@@ -57,6 +57,7 @@ Route::group(['prefix'=>'admin','namespace'=>'Admin','middleware'=>'admin.login'
 /**
  * 商家后台
  */
+
 //登录
 Route::resource('/seller/login','Seller\LoginController');
 
@@ -74,13 +75,6 @@ Route::group(['prefix'=>'seller','namespace'=>'Seller','middleware'=>'seller.log
     //评价
     Route::resource('eval','EvalController');
 });
-
-
-
-
-
-
-
 
 
 
