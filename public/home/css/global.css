@@ -1,0 +1,46 @@
+﻿/**
+ * 所有的CSS配置文件，包含了文件的引入顺序，目标CSS文件等等。
+ * 
+ * @author xukai@meituan.com
+ * @date 2014-01-28 星期二
+ */
+
+/* 历史原因遗留的样式文件库 */
+/* @import url("main-1.2.1.css");
+@import url("magnific-popup.css");
+@import url("paginate_style.css"); */
+
+/* 前端基本样式组件库  */
+@import url("reset.css");
+@import url("color.css");
+@import url("css3.css");
+@import url("icon.css");
+@import url("common.css");
+
+/* 各个不同模块的样式文件 */
+@import url("table.css");
+@import url("pager.css");
+@import url("scrollbar.css");
+@import url("filter-scrollbar.css");
+@import url("simple.css");
+@import url("tips.css");
+@import url("hover.css");
+@import url("droplist.css");
+
+@import url("header.css");
+@import url("footer.css");
+
+@import url("triffle.css");
+@import url("qrcode.css");
+@import url("banner.css");
+@import url("breadcrumb.css");
+@import url("nav.css");
+@import url("cart.css");
+@import url("tags.css");
+@import url("showimg.css");
+
+@import url("alldialog.css");
+
+/*头顶黄条*/
+@import url("toptips.css");
+@import url("zoomdetect.css");

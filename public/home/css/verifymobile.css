@@ -1,0 +1,150 @@
+﻿/**
+ * 提交订单的时候验证手机号弹框
+ *
+ * @author xukai@meituan.com
+ * @date 2014-04-28 星期一
+ */
+
+.dialog-verifymobile {
+  color: #434343;
+}
+
+.dialog-verifymobile .tips {
+  padding: 30px 30px 0;
+}
+
+.dialog-verifymobile .tips .icon {
+ margin: 5px 0 0 5px;
+}
+
+.dialog-verifymobile .call-tip {
+  padding-top: 50px;
+  padding-left: 116px;
+}
+
+.dialog-verifymobile .tips .desc, .dialog-verifymobile .call-tip .text {
+  margin-left: 54px;
+  font-size: 16px;
+  font-weight: bold;
+  padding-top: 4px
+}
+
+.dialog-verifymobile .call-tip .text {
+  padding-top: 10px;
+}
+
+.dialog-verifymobile input {
+  width: 132px;
+  height: 19px;
+  line-height: 19px;
+  float: left;
+  padding-top: 7px;
+  padding-bottom: 7px;
+}
+
+.dialog-verifymobile .field {
+  margin-top: 15px;
+  padding-left: 32px;
+}
+
+.dialog-verifymobile .verify-field {
+  margin-top: 10px;
+}
+
+.dialog-verifymobile .field label {
+  float: left;
+  font-size: 14px;
+  width: 52px;
+  padding-top: 8px;
+}
+
+.dialog-verifymobile .field .mobile {
+  padding-top: 7px;
+  font-size: 14px;
+}
+
+.dialog-verifymobile .commit-order {
+  margin-left: 52px;
+}
+
+.dialog-verifymobile .get-verify {
+  margin-left: 15px;
+}
+
+.dialog-verifymobile .simple-dialog .content {
+  padding-bottom: 20px;
+}
+
+.dialog-verifymobile .error-tips, .dialog-verifymobile .normal-tips {
+  margin-left: 12px;
+  padding-top: 8px;
+}
+
+.dialog-verifymobile .normal-tips {
+  color: #434343;
+}
+
+.dialog-verifymobile .verify-text {
+  margin-top: 10px;
+}
+
+.dialog-verifymobile .verify-text {
+  color: #A0A0A0;
+}
+
+.dialog-verifymobile .verify-text span {
+  margin-left: 52px;
+}
+
+.dialog-verifymobile .voice-status {
+  color: #434343;
+  margin-left: 15px;
+}
+
+.dialog-verifymobile .no-sms {
+  display: inline-block;
+  padding-top: 8px;
+}
+
+.dialog-verifymobile .no-sms a {
+  color: #fe4d3d;
+  text-decoration: underline;
+}
+
+.dialog-verifymobile .calling-content {
+  padding: 10px;
+  padding-bottom: 20px;
+}
+
+.dialog-verifymobile .from {
+  text-align: center;
+  font-size: 14px;
+  margin-top: 34px;
+}
+
+.dialog-verifymobile .from .deep {
+  color: #fe4d3d;
+  font-weight: bold;
+  font-size: 20px;
+  padding: 0 7px;
+}
+
+.dialog-verifymobile .word {
+  text-align: center;
+  font-size: 14px;
+  margin-top: 7px;
+  padding-bottom: 33px;
+}
+
+.dialog-verifymobile .status .ct-gray {
+  margin-top: 3px;
+}
+
+.dialog-verifymobile .submit-field {
+  height: 47px;
+} 
+
+.dialog-verifymobile .field .agreement {
+  color: #fe4d3d;
+}
+

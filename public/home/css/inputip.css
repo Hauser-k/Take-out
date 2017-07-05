@@ -1,0 +1,23 @@
+﻿/**
+ * 针对于input标签的输入框的提示
+ * 
+ * @author xukai@meituan.com   
+ * @date 2014-09-10 星期三
+ */
+
+.inputip-abso {
+  position: absolute;
+}
+
+.inputip {
+  height: 26px;
+  line-height: 26px;
+  /*border: 1px solid #e5e5e5;
+  background-color: #fff9da;*/
+  border: 1px solid #ffd161;
+  background-color: #fffdf0;
+  padding: 0 12px;
+  padding-right: 0;
+  color: #fe4d3d;
+}
+

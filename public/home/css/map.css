@@ -1,0 +1,24 @@
+﻿/**
+ * 地图页面的下拉列表框的样式
+ *
+ * @author xukai@meituan.com
+ * @date 2014-07-29 星期二
+ */
+
+.map-dialog {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 100;
+}
+
+.map-dialog .i-mapdialog-arr {
+  position: absolute;
+  top: -12px;
+}
+
+
+.map-dialog .content {
+  padding: 15px 25px;
+  background-color: #FFFFFF
+}

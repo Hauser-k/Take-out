@@ -1,0 +1,154 @@
+﻿/**
+ * 语音验证的弹框样式
+ *
+ * @date 2014-08-12 星期二
+ *
+ */
+
+.dialog-verifyvoice {
+  color: #434343;
+}
+
+.dialog-verifyvoice .tips {
+  padding: 30px 30px 0;
+}
+
+.dialog-verifyvoice .call-tip {
+  padding-top: 50px;
+  padding-left: 116px;
+}
+
+.dialog-verifyvoice .tips .icon {
+  margin: 5px 0 0 5px;
+}
+
+.dialog-verifyvoice .tips .desc, .dialog-verifyvoice .call-tip .text {
+  margin-left: 54px;
+  font-size: 16px;
+  font-weight: bold;
+  padding-top: 4px
+}
+
+.dialog-verifyvoice .call-tip .text {
+  padding-top: 14px;
+}
+
+.dialog-verifyvoice input {
+  width: 132px;
+  height: 18px;
+  line-height: 18px;
+  float: left;
+  padding-bottom: 7px;
+  padding-top: 7px;
+}
+
+.dialog-verifyvoice .field {
+  margin-top: 15px;
+  padding-left: 32px;
+}
+
+.dialog-verifyvoice .verify-field {
+  margin-top: 10px;
+}
+
+.dialog-verifyvoice .field label {
+  float: left;
+  font-size: 14px;
+  width: 52px;
+  padding-top: 8px;
+}
+
+.dialog-verifyvoice .field .mobile {
+  padding-top: 7px;
+  font-size: 14px;
+}
+
+.dialog-verifyvoice .commit-order {
+  margin-left: 52px;
+}
+
+.dialog-verifyvoice .get-verify {
+  margin-left: 15px;
+}
+
+.dialog-verifyvoice .simple-dialog .content {
+  padding-bottom: 20px;
+}
+
+.dialog-verifyvoice .error-tips, .dialog-verifyvoice .normal-tips {
+  margin-left: 12px;
+  padding-top: 8px;
+}
+
+.dialog-verifyvoice .normal-tips {
+  color: #434343;
+}
+
+.dialog-verifyvoice .verify-text {
+  margin-top: 10px;
+}
+
+.dialog-verifyvoice .verify-text {
+  color: #A0A0A0;
+}
+
+.dialog-verifyvoice .verify-text span {
+  margin-left: 52px;
+}
+
+.dialog-verifyvoice .submit-field {
+  height: 47px;
+}
+
+.dialog-verifyvoice .calling-content {
+  padding: 10px;
+  padding-bottom: 20px;
+}
+
+.dialog-verifyvoice .from {
+  text-align: center;
+  font-size: 14px;
+  margin-top: 34px;
+}
+
+.dialog-verifyvoice .from .deep {
+  color: #fe4d3d;
+  font-weight: bold;
+  font-size: 24px;
+  padding: 0 7px;
+}
+
+.dialog-verifyvoice .word {
+  text-align: center;
+  font-size: 14px;
+  margin-top: 7px;
+  padding-bottom: 33px;
+}
+
+.dialog-verifyvoice .status .ct-gray {
+  margin-top: 3px;
+}
+
+.dialog-verifyvoice .submit-field {
+  height: 47px;
+}
+
+.dialog-verifyvoice .field .agreement {
+  color: #fe4d3d;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

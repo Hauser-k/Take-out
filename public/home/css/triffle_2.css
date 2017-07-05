@@ -1,0 +1,247 @@
+﻿/**
+ * 屏幕右侧滚动条的样式。
+ *
+ * @author xukai@meituan.com
+ * @date 2014-04-10 星期四
+ */
+
+.triffle {
+  position: fixed;
+  right: 0;
+  font-size: 12px;
+  z-index: 995;
+  bottom: 60px;
+  
+  _position: absolute; /*ie6 and above*/
+  _top:expression(eval(document.documentElement.scrollTop+document.documentElement.clientHeight-this.offsetHeight-10));
+}
+
+.triffle .top, 
+.triffle .fb,
+.icon-list a{
+  width: 20px;
+  height: 18px;
+  padding: 10px;
+  background-color: rgba(0,0,0,.8);
+  text-align: center;
+  line-height: 52px;
+  /*border: 1px solid #DDDDDD;*/
+  position: relative;
+  display: block;
+}
+
+.icon-list a:after {
+  position: absolute;
+  content: '';
+  width: 25px;
+  height: 1px;
+  background-color: #444;
+  bottom: 0;
+  left: 8px;
+  z-index: 997;
+  display: inline-block;
+}
+
+.icon-list a:last-child:after {
+  height: 0;
+}
+
+
+
+.triffle .top {
+  /*visibility: hidden;*/
+  /*display: none;*/
+}
+
+.triffle .top:hover .icon {
+  background-position:0 -177px;
+}
+
+.triffle .fb {
+  margin-top: 10px;
+  letter-spacing: 2px;
+  padding: 4px;
+  width: 32px;
+  line-height: 16px;
+  height: 32px;
+  color: #686868;
+  display: block;
+}
+
+.triffle .top .icon {
+
+}
+
+.triffle-question {
+  height: 100px;
+  width: 30px;
+  position: relative;
+  margin-bottom: 10px;
+}
+
+.triffle-question-title {
+  height: 78px;
+  /*border: 1px solid #ffdbd8;
+  background-color: #fff5f4;*/
+  border: 1px solid #ffd705;
+  background-color: #fffdf0;
+  color: #333;
+  font-style: normal;
+  font-weight: normal;
+  text-align: center;
+  padding: 10px 4px;
+  font-size: 16px;
+  line-height: 1.2em;
+  cursor: pointer;
+}
+
+.triffle-question-content {
+  width: 326px;
+  border: 1px solid #ffd705;
+  background-color: #fffdf0;
+  padding: 15px;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
+.triffle-question-subtitle {
+  color: #fe4d3d;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  margin-left: 15px;
+}
+
+.triffle-question-itemtitle {
+  font-size: 14px;
+  font-style: normal;
+  font-weight: normal;
+  color: #898989;
+  margin-top: 8px;
+}
+
+.triffle-question-item {
+  font-size: 14px;
+  color: #898989;
+  margin-left: 15px;
+  line-height: 1.5em;
+}
+
+.triffle-question-plate {
+  color: #fe4d3d;
+  margin-right: 10px;
+}
+
+.icon-list {
+  margin-bottom: 10px;
+}
+
+.triffle .icon-list a:hover {
+  background-color: #ffd161;
+}
+
+.icon-list a:hover:after {
+  background-color: #ffd161;
+}
+
+.icon-list a em,.top i{
+  width: 20px;
+  height: 18px;
+  margin: auto;
+  position: absolute;
+  top:0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url(../images/triffle-sprite3_2.png) no-repeat;
+  background-position: 1px -21px;
+}
+
+.icon-list a {
+  background-image: url(../images/triffle-sprite3_2.png);
+  background-repeat: no-repeat;
+  background-position: 10px 10px;
+}
+
+.icon-list .merchant:hover {
+  background-position: 10px -18px;
+}
+
+.icon-list .small-qrcode {
+  background-position: 11px -46px;
+}
+
+.icon-list .small-qrcode:hover {
+  background-position: 10px -73px;
+}
+
+.icon-list .phone {
+  background-position: 11px -97px;
+}
+
+.icon-list .phone:hover {
+  background-position: 11px -123px;
+}
+
+.top i {
+  background-position: 0 -156px;
+}
+
+.triffle .top:hover {
+  background-color: #ffd161;
+}
+
+.icon-list .text {
+  display: none;
+  background-color: #ffd161;
+  color: #333;
+  width: 58px;
+  height: 38px;
+  position: absolute;
+  line-height: 40px;
+  border-radius: 4px;
+  top: 0;
+  left: -56px;
+  text-align: right;
+}
+
+.showtext .text {
+  display: inline-block;
+}
+
+.showQR .big-qrcode{
+  display: block;
+}
+
+.big-qrcode {
+  display: none;
+  width: 100px;
+  height: 122px;
+  background-color: #ffd161;
+  position: absolute;
+  left: -100px;
+  top:-60%;
+  color: #333;
+
+}
+
+.big-qrcode b {
+  display: block;
+  width: 90px;
+  height: 90px;
+  background: url(../images/qrcode_20151111_2.png) no-repeat;
+  background-position: 5px -580px;
+  background-size: 100%;
+  margin: 11px auto -19px;
+}
+
+.simple-dialog img {
+  width: 100px;
+  height: 100px;
+
+}
+
+.wrapper .simple-dialog .content {
+  padding: 6px;
+}

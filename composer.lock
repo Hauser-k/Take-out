@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "5bd58fd976f1ee3e9611bc37c006ec46",
+    "content-hash": "98f366a3fd558c564deef9d9e3bd3d73",
     "packages": [
         {
             "name": "classpreloader/classpreloader",
@@ -215,6 +215,54 @@
                 "string"
             ],
             "time": "2015-11-06T14:35:42+00:00"
+        },
+        {
+            "name": "gregwar/captcha",
+            "version": "v1.1.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Gregwar/Captcha.git",
+                "reference": "2f704c8bc3f1bb5f58994af2729e77ac4e3172e6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://files.phpcomposer.com/files/Gregwar/Captcha/2f704c8bc3f1bb5f58994af2729e77ac4e3172e6.zip",
+                "reference": "2f704c8bc3f1bb5f58994af2729e77ac4e3172e6",
+                "shasum": ""
+            },
+            "require": {
+                "ext-gd": "*",
+                "php": ">=5.3.0"
+            },
+            "type": "captcha",
+            "autoload": {
+                "psr-4": {
+                    "Gregwar\\Captcha\\": "/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Grégoire Passault",
+                    "email": "g.passault@gmail.com",
+                    "homepage": "http://www.gregwar.com/"
+                },
+                {
+                    "name": "Jeremy Livingston",
+                    "email": "jeremy.j.livingston@gmail.com"
+                }
+            ],
+            "description": "Captcha generator",
+            "homepage": "https://github.com/Gregwar/Captcha",
+            "keywords": [
+                "bot",
+                "captcha",
+                "spam"
+            ],
+            "time": "2017-04-19T08:10:55+00:00"
         },
         {
             "name": "jakub-onderka/php-console-color",
@@ -1022,16 +1070,16 @@
         },
         {
             "name": "symfony/console",
-            "version": "v2.7.29",
+            "version": "v2.7.30",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/console.git",
-                "reference": "bba0fc4b140be58b80b9ea0bf125741c6ae9ce0e"
+                "reference": "9227d7607b1b42b55bc46610afe3d516b5e89fa2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://files.phpcomposer.com/files/symfony/console/bba0fc4b140be58b80b9ea0bf125741c6ae9ce0e.zip",
-                "reference": "bba0fc4b140be58b80b9ea0bf125741c6ae9ce0e",
+                "url": "https://files.phpcomposer.com/files/symfony/console/9227d7607b1b42b55bc46610afe3d516b5e89fa2.zip",
+                "reference": "9227d7607b1b42b55bc46610afe3d516b5e89fa2",
                 "shasum": ""
             },
             "require": {
@@ -1078,7 +1126,7 @@
             ],
             "description": "Symfony Console Component",
             "homepage": "https://symfony.com",
-            "time": "2017-06-02T14:34:38+00:00"
+            "time": "2017-07-01T09:26:27+00:00"
         },
         {
             "name": "symfony/css-selector",
@@ -1135,7 +1183,7 @@
         },
         {
             "name": "symfony/debug",
-            "version": "v2.7.29",
+            "version": "v2.7.30",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/debug.git",
@@ -1192,7 +1240,7 @@
         },
         {
             "name": "symfony/dom-crawler",
-            "version": "v2.7.29",
+            "version": "v2.7.30",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/dom-crawler.git",
@@ -1307,7 +1355,7 @@
         },
         {
             "name": "symfony/finder",
-            "version": "v2.7.29",
+            "version": "v2.7.30",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/finder.git",
@@ -1356,16 +1404,16 @@
         },
         {
             "name": "symfony/http-foundation",
-            "version": "v2.7.29",
+            "version": "v2.7.30",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/http-foundation.git",
-                "reference": "dff67542358c302a0dbc3fc3e5e9b7b0445b5224"
+                "reference": "37317dd4d377a36ecc84bd7c9638d7c09c9d5837"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://files.phpcomposer.com/files/symfony/http-foundation/dff67542358c302a0dbc3fc3e5e9b7b0445b5224.zip",
-                "reference": "dff67542358c302a0dbc3fc3e5e9b7b0445b5224",
+                "url": "https://files.phpcomposer.com/files/symfony/http-foundation/37317dd4d377a36ecc84bd7c9638d7c09c9d5837.zip",
+                "reference": "37317dd4d377a36ecc84bd7c9638d7c09c9d5837",
                 "shasum": ""
             },
             "require": {
@@ -1408,20 +1456,20 @@
             ],
             "description": "Symfony HttpFoundation Component",
             "homepage": "https://symfony.com",
-            "time": "2017-06-01T20:44:56+00:00"
+            "time": "2017-06-14T19:35:44+00:00"
         },
         {
             "name": "symfony/http-kernel",
-            "version": "v2.7.29",
+            "version": "v2.7.30",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/http-kernel.git",
-                "reference": "1ee0d61a698e79401e3e4b60e97d251dca451eba"
+                "reference": "3a6e7cdd11d3210f4b0c5c88a15597a2b9a3c9d9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://files.phpcomposer.com/files/symfony/http-kernel/1ee0d61a698e79401e3e4b60e97d251dca451eba.zip",
-                "reference": "1ee0d61a698e79401e3e4b60e97d251dca451eba",
+                "url": "https://files.phpcomposer.com/files/symfony/http-kernel/3a6e7cdd11d3210f4b0c5c88a15597a2b9a3c9d9.zip",
+                "reference": "3a6e7cdd11d3210f4b0c5c88a15597a2b9a3c9d9",
                 "shasum": ""
             },
             "require": {
@@ -1491,7 +1539,7 @@
             ],
             "description": "Symfony HttpKernel Component",
             "homepage": "https://symfony.com",
-            "time": "2017-06-07T18:50:32+00:00"
+            "time": "2017-07-03T14:22:50+00:00"
         },
         {
             "name": "symfony/polyfill-mbstring",
@@ -1662,16 +1710,16 @@
         },
         {
             "name": "symfony/process",
-            "version": "v2.7.29",
+            "version": "v2.7.30",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/process.git",
-                "reference": "ace466e63d3c7ccc30057fefc95f67c049357806"
+                "reference": "95c5ed0b9ec2a03fc6247d0455c008e96e97fbb4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://files.phpcomposer.com/files/symfony/process/ace466e63d3c7ccc30057fefc95f67c049357806.zip",
-                "reference": "ace466e63d3c7ccc30057fefc95f67c049357806",
+                "url": "https://files.phpcomposer.com/files/symfony/process/95c5ed0b9ec2a03fc6247d0455c008e96e97fbb4.zip",
+                "reference": "95c5ed0b9ec2a03fc6247d0455c008e96e97fbb4",
                 "shasum": ""
             },
             "require": {
@@ -1707,20 +1755,20 @@
             ],
             "description": "Symfony Process Component",
             "homepage": "https://symfony.com",
-            "time": "2017-04-12T07:39:27+00:00"
+            "time": "2017-06-27T16:14:10+00:00"
         },
         {
             "name": "symfony/routing",
-            "version": "v2.7.29",
+            "version": "v2.7.30",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/routing.git",
-                "reference": "6de57ec3161f62ed497b10eaf3954bc7a1443447"
+                "reference": "ebb0b3eb0be5a9f418e12e9234d1644f65d4c791"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://files.phpcomposer.com/files/symfony/routing/6de57ec3161f62ed497b10eaf3954bc7a1443447.zip",
-                "reference": "6de57ec3161f62ed497b10eaf3954bc7a1443447",
+                "url": "https://files.phpcomposer.com/files/symfony/routing/ebb0b3eb0be5a9f418e12e9234d1644f65d4c791.zip",
+                "reference": "ebb0b3eb0be5a9f418e12e9234d1644f65d4c791",
                 "shasum": ""
             },
             "require": {
@@ -1781,20 +1829,20 @@
                 "uri",
                 "url"
             ],
-            "time": "2017-06-01T20:44:56+00:00"
+            "time": "2017-06-19T14:02:36+00:00"
         },
         {
             "name": "symfony/translation",
-            "version": "v2.7.29",
+            "version": "v2.7.30",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/translation.git",
-                "reference": "3232308ee2c8522642df02c343cfa217162485bd"
+                "reference": "d52cb2413f339a9eb19e625c6a0ee9476fc7e2af"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://files.phpcomposer.com/files/symfony/translation/3232308ee2c8522642df02c343cfa217162485bd.zip",
-                "reference": "3232308ee2c8522642df02c343cfa217162485bd",
+                "url": "https://files.phpcomposer.com/files/symfony/translation/d52cb2413f339a9eb19e625c6a0ee9476fc7e2af.zip",
+                "reference": "d52cb2413f339a9eb19e625c6a0ee9476fc7e2af",
                 "shasum": ""
             },
             "require": {
@@ -1844,20 +1892,20 @@
             ],
             "description": "Symfony Translation Component",
             "homepage": "https://symfony.com",
-            "time": "2017-06-01T20:44:56+00:00"
+            "time": "2017-06-23T10:52:30+00:00"
         },
         {
             "name": "symfony/var-dumper",
-            "version": "v2.7.29",
+            "version": "v2.7.30",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/var-dumper.git",
-                "reference": "189ed74ead54ce4e75903b79665207869d7f1e41"
+                "reference": "4ff94e7b24aef29d20e41d741f1ed7d507998455"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://files.phpcomposer.com/files/symfony/var-dumper/189ed74ead54ce4e75903b79665207869d7f1e41.zip",
-                "reference": "189ed74ead54ce4e75903b79665207869d7f1e41",
+                "url": "https://files.phpcomposer.com/files/symfony/var-dumper/4ff94e7b24aef29d20e41d741f1ed7d507998455.zip",
+                "reference": "4ff94e7b24aef29d20e41d741f1ed7d507998455",
                 "shasum": ""
             },
             "require": {
@@ -1906,7 +1954,7 @@
                 "debug",
                 "dump"
             ],
-            "time": "2017-06-01T20:44:56+00:00"
+            "time": "2017-06-14T16:20:11+00:00"
         },
         {
             "name": "vlucas/phpdotenv",
