@@ -1,12 +1,11 @@
 <?php
 
-namespace App\Http\Model\Seller;
+namespace App\Http\Model;
 
 use Illuminate\Database\Eloquent\Model;
 
-class User extends Model
+class Seller extends Model
 {
-    //
     protected $table = 'seller';
 
     public $timestamps = false;

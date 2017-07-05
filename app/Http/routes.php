@@ -58,7 +58,7 @@ Route::controller('/admin/collection','Admin\CollectionController');
 	//验证码
 	Route::get('seller/code','Seller\LoginController@code');
 	
-Route::group([], function(){	
+// Route::group([], function(){	
 	//注册
 	Route::controller('/seller/register','Seller\RegisterController');
 	//商家用户个人中心
@@ -73,4 +73,4 @@ Route::group([], function(){
 	Route::controller('/seller/eval','Seller\EvalController');
 	
 
-});
+// });

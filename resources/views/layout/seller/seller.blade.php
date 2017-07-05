@@ -28,7 +28,7 @@
         <header>
             <!-- logo -->
             <div class="am-fl tpl-header-logo">
-                <a href="javascript:;"><img src="{{asset('assets/img/logo.png')}}" alt=""></a>
+                <a href="javascript:;" ><img src="{{asset('assets/img/logo.png')}}" style="width:240px;height:70px" alt=""></a>
             </div>
             <!-- 右侧内容 -->
             <div class="tpl-header-fluid">

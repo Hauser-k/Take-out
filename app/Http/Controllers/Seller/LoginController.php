@@ -11,7 +11,7 @@ use App\Org\code\Code;
 
 use Input;
 use Validator;
-use App\Http\Model\Seller\User;
+use App\Http\Model\Seller;
 use Illuminate\Support\Facades\Crypt;
 
 
@@ -65,7 +65,7 @@ class LoginController extends Controller
                 return back()->with('errors','验证码错误')->withInput();
             }
             //验证是否有用户
-            $user = User::where('sname',$input['sname']) -> first();
+            $user = Seller::where('sname',$input['sname']) -> first();
 
             if(!$user || ($input['spwd']  != Crypt::decrypt($user->spwd)) ){
               return back()->with('errors','用户名或密码错误')->withInput();
