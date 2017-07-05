@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Amaze UI Admin index Examples</title>
+    <title> @section('title')    @show</title>
     <meta name="description" content="这是一个 index 页面">
     <meta name="keywords" content="index">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -85,15 +85,12 @@
                                         <div class="menu-messages-ico">
                                             <img src="{{asset('assets/img/user02.png')}}" alt="">
                                         </div>
-                                        <div class="menu-messages-time">
-                                            5天前
-                                        </div>
                                         <div class="menu-messages-content">
                                             <div class="menu-messages-content-title">
                                                 <i class="am-icon-circle-o am-text-warning"></i>
                                                 <span>禁言小张</span>
                                             </div>
-                                            <div class="am-text-truncate"> 为了能最准确的传达所描述的问题， 建议你在反馈时附上演示，方便我们理解。 </div>
+                                
                                             <div class="menu-messages-content-time">2016-09-16 上午 09:23</div>
                                         </div>
                                     </a>
@@ -200,7 +197,7 @@
             </div>
 
             <!-- 菜单 -->
-            <ul class="sidebar-nav">
+<!--             <ul class="sidebar-nav">
                 <li class="sidebar-nav-heading">Components <span class="sidebar-nav-heading-info"> 附加组件</span></li>
                 <li class="sidebar-nav-link">
                     <a href="index.html" class="active">
@@ -229,41 +226,61 @@
 
                     </a>
                 </li>
-
-                <li class="sidebar-nav-heading">Page<span class="sidebar-nav-heading-info"> 常用页面</span></li>
+ -->
+                <!-- <li class="sidebar-nav-heading">Page<span class="sidebar-nav-heading-info"> 常用页面</span></li> -->
+                
+                <li class="sidebar-nav-link">
+                    <a href="sign-up.html">
+                        <i class="am-icon-clone sidebar-nav-link-logo"></i>我的店铺
+                    </a>
+                </li>
                 <li class="sidebar-nav-link">
                     <a href="javascript:;" class="sidebar-nav-sub-title">
-                        <i class="am-icon-table sidebar-nav-link-logo"></i> 数据列表
+                        <i class="am-icon-table sidebar-nav-link-logo"></i> 我的分类
                         <span class="am-icon-chevron-down am-fr am-margin-right-sm sidebar-nav-sub-ico"></span>
                     </a>
                     <ul class="sidebar-nav sidebar-nav-sub">
                         <li class="sidebar-nav-link">
                             <a href="table-list.html">
-                                <span class="am-icon-angle-right sidebar-nav-link-logo"></span> 文字列表
+                                <span class="am-icon-angle-right sidebar-nav-link-logo"></span> 菜类列表
                             </a>
                         </li>
 
                         <li class="sidebar-nav-link">
                             <a href="table-list-img.html">
-                                <span class="am-icon-angle-right sidebar-nav-link-logo"></span> 图文列表
+                                <span class="am-icon-angle-right sidebar-nav-link-logo"></span> 增加菜类
                             </a>
                         </li>
                     </ul>
-                </li>
+                </li> 
                 <li class="sidebar-nav-link">
-                    <a href="sign-up.html">
-                        <i class="am-icon-clone sidebar-nav-link-logo"></i> 注册
-                        <span class="am-badge am-badge-secondary sidebar-nav-link-logo-ico am-round am-fr am-margin-right-sm">6</span>
+                    <a href="javascript:;" class="sidebar-nav-sub-title">
+                        <i class="am-icon-table sidebar-nav-link-logo"></i> 我的菜单
+                        <span class="am-icon-chevron-down am-fr am-margin-right-sm sidebar-nav-sub-ico"></span>
                     </a>
-                </li>
+                    <ul class="sidebar-nav sidebar-nav-sub">
+                        <li class="sidebar-nav-link">
+                            <a href="table-list.html">
+                                <span class="am-icon-angle-right sidebar-nav-link-logo"></span> 菜单列表
+                            </a>
+                        </li>
+
+                        <li class="sidebar-nav-link">
+                            <a href="table-list-img.html">
+                                <span class="am-icon-angle-right sidebar-nav-link-logo"></span> 增加美味
+                            </a>
+                        </li>
+                    </ul>
+                </li> 
+                
                 <li class="sidebar-nav-link">
                     <a href="login.html">
-                        <i class="am-icon-key sidebar-nav-link-logo"></i> 登录
+                        <i class="am-icon-key sidebar-nav-link-logo"></i>我的订单
                     </a>
                 </li>
                 <li class="sidebar-nav-link">
-                    <a href="404.html">
-                        <i class="am-icon-tv sidebar-nav-link-logo"></i> 404错误
+                    <a href="#">
+                        <i class="am-icon-tv sidebar-nav-link-logo"></i>我的评价
                     </a>
                 </li>
 

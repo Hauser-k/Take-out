@@ -17,55 +17,64 @@ Route::get('/', function () {
 });
 // 验证码的路由
 Route::get('/code','CodeController@code');
+//验证码
+/* Route::get('seller/code','Seller\LoginController@code'); */
 /**
  * 前台
  */
 //登录
-Route::controller('/home/login','Home\LoginController');
-//注册
-Route::controller('/home/register','Home\RegisterController');
+Route::resource('/home/login','Home\LoginController');
+
+
+Route::group(['prefix'=>'home','namespace'=>'Home','middleware'=>'home.login'], function(){
+    //注册
+    Route::resource('/home/register','Home\RegisterController');
+});
 
 /**
  * 管理员后台
  */
 //登录
-Route::controller('/admin/login','Admin\LoginController');
-//普通用户管理
-Route::controller('/admin/user','Admin\UserController');
-//商家分类
-Route::controller('/admin/sellerclass','Admin\SellerClassController');
-//商家信息
-Route::controller('/admin/seller','Admin\SellerController');
-//订单
-Route::controller('/admin/order','Admin\OrderController');
-//评价
-Route::controller('/admin/eval','Admin\EvalController');
-//收藏
-Route::controller('/admin/collection','Admin\CollectionController');
+Route::resource('/admin/login','Admin\LoginController');
 
+Route::group(['prefix'=>'admin','namespace'=>'Admin','middleware'=>'admin.login'], function(){
+    //普通用户管理
+    Route::resource('user','UserController');
+    //商家分类
+    Route::resource('sellerclass','SellerClassController');
+    //商家信息
+    Route::resource('seller','SellerController');
+    //订单
+    Route::resource('order','OrderController');
+    //评价
+    Route::resource('eval','EvalController');
+    //收藏
+    Route::resource('collection','CollectionController');
 
+});
 
 
 /**
  * 商家后台
  */
-//登录
-Route::controller('/seller/login','Seller\LoginController');
-//注册
-Route::controller('/seller/register','Seller\RegisterController');
-//商家用户个人中心
-Route::controller('/seller/index','Seller\IndexController');
-//菜品分类管理
-Route::controller('/seller/goodsclass','Seller\GoodsClassController');
-//菜品管理
-Route::controller('/seller/goods','Seller\GoodsController');
-//订单管理
-Route::controller('/seller/order','Seller\OrderController');
-//评价
-Route::controller('/seller/eval','Seller\EvalController');
-//验证码
-Route::get('seller/code','Seller\LoginController@code');
 
-//Route::group([], function(){
-//
-//});
+//登录
+Route::resource('/seller/login','Seller\LoginController');
+
+Route::group(['prefix'=>'seller','namespace'=>'Seller','middleware'=>'seller.login'], function(){
+    //注册
+    Route::resource('register','RegisterController');
+    //商家用户个人中心
+    Route::resource('index','IndexController');
+    //菜品分类管理
+    Route::resource('goodsclass','GoodsClassController');
+    //菜品管理
+    Route::resource('goods','GoodsController');
+    //订单管理
+    Route::resource('order','OrderController');
+    //评价
+    Route::resource('eval','EvalController');
+});
+
+
+

@@ -1,7 +1,7 @@
 @extends('layout.seller.seller')
 
 @section('title')
-	商家中心
+	我的评价
 @endsection
 
 @section('content')
