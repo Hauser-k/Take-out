@@ -12,4 +12,8 @@ class User extends Model
     protected $primaryKey = 'uid';
     //指定是否模型应该被戳记时间。
     public $timestamps = false;
+    public function evals()
+	{
+	    return $this->belongsTo('App\Http\Model\evals','sid','uid');
+	}
 }

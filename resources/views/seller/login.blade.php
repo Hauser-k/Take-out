@@ -48,7 +48,7 @@
                         <ul>
                             @if(is_object($errors))
                                 @foreach ($errors->all() as $error)
-                                <li>{{ $error }}</li>
+                                <li><center>{{ $error }}</center></li>
                                 @endforeach
                             @else
                                 <li><center>{{ $errors }}</enter></li>
@@ -56,7 +56,7 @@
                         </ul>
                     </div>
                 @endif
-                <form class="am-form tpl-form-line-form" method="post" action="{{url('/seller/login/dologin')}}">
+                <form class="am-form tpl-form-line-form" method="post" action="{{url('/seller/login')}}">
                 {{csrf_field()}}
                     <div class="am-form-group">
                         <input type="text" class="tpl-form-input" id="user-name" name="sname" placeholder="请输入6-12位账号"><span class="zhanghao"></span>
@@ -72,7 +72,7 @@
                     <input type="text" class="code" name="code" placeholder="请输入验证码" width="20px" /><br>
 
                         <span><i class="fa fa-check-square-o"></i></span><span class="yanzhengma"></span>
-                        <img src="{{asset('seller/code')}}" alt="" onclick="this.src='{{asset('seller/code')}}?'+Math.random()">
+                        <img src="{{asset('/code')}}" alt="" onclick="this.src='{{asset('/code')}}?'+Math.random()">
                         {{--<a onclick="javascript:re_captcha();">--}}
                             {{--<img src="{{ asset('/code/captcha/1') }}" id="127ddf0de5a04167a9e427d883690ff6">--}}
                         {{--</a>--}}

@@ -17,7 +17,7 @@ Route::get('/', function () {
 });
 // 验证码的路由
 Route::get('/code','CodeController@code');
-//验证码
+//验证码 
 /* Route::get('seller/code','Seller\LoginController@code'); */
 /**
  * 前台
@@ -61,17 +61,19 @@ Route::group(['prefix'=>'admin','namespace'=>'Admin','middleware'=>'admin.login'
 //登录
 Route::resource('/seller/login','Seller\LoginController');
 
-Route::group(['prefix'=>'seller','namespace'=>'Seller','middleware'=>'seller.login'], function(){
+Route::group(['prefix'=>'seller','namespace'=>'Seller'], function(){
     //注册
     Route::resource('register','RegisterController');
     //商家用户个人中心
     Route::resource('index','IndexController');
+    
     //菜品分类管理
     Route::resource('goodsclass','GoodsClassController');
     //菜品管理
     Route::resource('goods','GoodsController');
     //订单管理
     Route::resource('order','OrderController');
+    
     //评价
     Route::resource('eval','EvalController');
 });

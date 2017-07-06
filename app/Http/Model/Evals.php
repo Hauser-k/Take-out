@@ -12,4 +12,9 @@ class Evals extends Model
     protected $primaryKey = 'eid';
     //指定是否模型应该被戳记时间。
     public $timestamps = false;
+
+    public function admin()
+    {
+    	return $this->hasMany('App\Http\Model\Admin','sid','eid');
+    }
 }
