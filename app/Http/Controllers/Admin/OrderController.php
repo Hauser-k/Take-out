@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Http\Model\Order;
+use App\Http\Model\User;
 
 class OrderController extends Controller
 {
@@ -14,9 +16,15 @@ class OrderController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         //
+
+        $count = $request -> input('count',2);
+        $search = $request -> input('search','');
+        $data = Order::orderBy('oid','asc')->where('oid','like','%'.$search.'%')->paginate($count);
+
+        return view('admin.order.index',['data'=>$data,'count'=>$count]);
     }
 
     /**
