@@ -17,7 +17,10 @@
     <link rel="stylesheet" href="{{asset('assets/css/amazeui.min.css')}}" />
     <link rel="stylesheet" href="{{asset('assets/css/amazeui.datatables.min.css')}}" />
     <link rel="stylesheet" href="{{asset('assets/css/app.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/hauser.css')}}">
     <script src="{{asset('assets/js/jquery.min.js')}}"></script>
+    <script type="text/javascript" src="{{asset('layer/layer.js')}}"></script>
+
 
 </head>
 
@@ -241,13 +244,13 @@
                     </a>
                     <ul class="sidebar-nav sidebar-nav-sub">
                         <li class="sidebar-nav-link">
-                            <a href="table-list.html">
+                            <a href="{{ url('seller/goodsclass') }}">
                                 <span class="am-icon-angle-right sidebar-nav-link-logo"></span> 菜类列表
                             </a>
                         </li>
 
                         <li class="sidebar-nav-link">
-                            <a href="table-list-img.html">
+                            <a href="{{ url('seller/goodsclass/create') }}">
                                 <span class="am-icon-angle-right sidebar-nav-link-logo"></span> 增加菜类
                             </a>
                         </li>
