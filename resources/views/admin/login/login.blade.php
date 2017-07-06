@@ -27,10 +27,14 @@
 
     <div id="mws-login-wrapper">
         <div id="mws-login">
+            @if(session('error'))
+            <h1>{{ session('error')}}</h1>
+            @else
             <h1>登录</h1>
+            @endif
             <div class="mws-login-lock"><i class="icon-lock"></i></div>
             <div id="mws-login-form">
-                <form class="mws-form" action="/admin/login/dologin" method="post">
+                <form class="mws-form" action="{{url('admin/login')}}" method="post">
                 	{{ csrf_field()}}
                     <div class="mws-form-row">
                         <div class="mws-form-item">
@@ -42,14 +46,20 @@
                             <input type="password" name="password" class="mws-login-password required" placeholder="密码">
                         </div>
                     </div>
-                    <div id="mws-login-remember" class="mws-form-row mws-inset">
+
+                     <div class="mws-form-row">
+                        <div class="mws-form-item">
+                             <img src="/code" title="点击切换" onclick="this.src=this.src+'?a='+Math.random()"><input type="text" name="code" class="required" placeholder="验证码" style="width:150px;margin-left:10px;">
+                        </div>
+                    </div>
+                    <!-- <div id="mws-login-remember" class="mws-form-row mws-inset">
                         <ul class="mws-form-list inline">
                             <li>
                                 <input id="remember" type="checkbox"> 
                                 <label for="remember">记住我</label>
                             </li>
                         </ul>
-                    </div>
+                    </div> -->
                     <div class="mws-form-row">
                         <input type="submit" value="提交" class="btn btn-success mws-login-button">
                     </div>

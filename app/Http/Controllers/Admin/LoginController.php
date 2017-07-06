@@ -3,44 +3,65 @@
 namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
-
+use App\Http\Model\admin;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use DB;
 use Illuminate\Contracts\Encryption\DecryptException;
+//引用对应的命名空间
+use Gregwar\Captcha\CaptchaBuilder;
+use Session;
+
 
 use Crypt;
 
 class LoginController extends Controller
 {   
     // login加载登录页面
-    public function getLogin()
+    public function index()
     {
 
         return view('admin.login.login');
     }
 
     //验证登录
-    public function postDologin(Request $request)
-    {
-    	//1.处理登录
-    	$data = ($request->except('_token'));
+    public function store(Request $request)
+    {   
 
+        //验证码
+        $code = session('code');
+
+        $code2 = $request -> input('code');
+        
+        if($code != $code2){
+            return back() -> with('error','验证码错误');
+            exit;
+        }
+    	//1.处理登录
+    	$data = ($request->except('_token','code'));
     	//2.查询
-    	$res = DB::table('admin')->where('aname',$data['username'])->first();
+    	$res = Admin::where('aname',$data['username'])->first();
+
+        // var_dump($res);
 
     	// dd(Crypt::encrypt('666'));
 
     	if(!$res){
-    		echo '用户不存在';
+    		return back() -> with('error','用户不存在');
     	}else{
     		// $res['apwd']; 用户的密码
     		// $data['password']; 输入密码
     		 $password = Crypt::decrypt($res['apwd']);
-    		 if($password = $data['password']){
-    		 	echo '登录';
+
+    		 if($password == $data['password']){
+                //添加session
+                session(['admin_user'=>$res]);
+
+    		      return redirect('admin/user');
+                
+                
     		 }else{
-    		 	echo '密码错误';
+    		 	return back() -> with('error','用户名或密码错误');
     		 }
     	}
     	//2.跳转到后台
