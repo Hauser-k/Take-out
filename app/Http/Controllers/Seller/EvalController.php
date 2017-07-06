@@ -6,6 +6,11 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Http\Model\Evals;
+use Session;
+use Input;
+use Admin;
+use App\Http\Model\OrderGoods;
 
 class EvalController extends Controller
 {
@@ -14,9 +19,16 @@ class EvalController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        //
+    public function index(Request $request)
+    {   
+        // dd($request->all());
+        
+        //获取session中的值 json格式的
+        $value = Input::session()->get('user');
+        //通过$value->sid筛选到本用户登录评价信息
+        $data = Evals::where('sid',$value->sid)->orderBy('etime','desc')->paginate(2);
+
+        return view('seller.eval.eval',['data'=>$data]);
     }
 
     /**
@@ -44,11 +56,13 @@ class EvalController extends Controller
      * Display the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return 详细订单
      */
-    public function show($id)
+    public function show($oid)
     {
-        //
+      
+       //查询
+        dd(1);
     }
 
     /**
@@ -59,7 +73,10 @@ class EvalController extends Controller
      */
     public function edit($id)
     {
-        //
+        //当前评价信息
+        $data = Evals::find($id);
+        // dd($data->uid);
+        return view('seller.eval.edit',['data'=>$data]);
     }
 
     /**
@@ -71,7 +88,18 @@ class EvalController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        //找到这条数据
+      
+       $input =  $request->except(['_token',"_method"]);
+
+       $re = Evals::where('eid',$id)->update($input);
+       // $data = Evals::find($id);
+        if($re){
+        //如果回复成功
+            return redirect('seller/eval');
+        }else{
+            return back()->with('error','回复失败')->withInput();
+        }
     }
 
     /**

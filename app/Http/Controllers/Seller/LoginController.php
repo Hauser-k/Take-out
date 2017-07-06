@@ -6,14 +6,15 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-require_once app_path().'/Org/code/Code.class.php';
-use App\Org\code\Code;
+
 
 use Input;
 use Validator;
-use App\Http\Model\Seller\User;
+use App\Http\Model\Seller;
 use Illuminate\Support\Facades\Crypt;
-
+//引用对应的命名空间
+use Gregwar\Captcha\CaptchaBuilder;
+use Session;
 
 class LoginController extends Controller
 {
@@ -22,25 +23,20 @@ class LoginController extends Controller
      *
      * 返回登录页面
      */
-    public function getIndex()
+    public function index()
     {
         //
         return view('seller.login'); 
     }
-
+    
     /**
-     * 处理验证码
+     * 处理登录信息
+     * @param  Request $request [description]
+     * @return [type]           [description]
      */
-      //验证码
-    public function code()
+    public function store(Request $request)
     {
-        $code = new Code();
-        $code->make();
-    }
-
-    public function postDologin(Request $request)
-    {
-
+      // dd(1);
        $input = Input::except('_token');
        
        $roles = [
@@ -61,13 +57,14 @@ class LoginController extends Controller
             return back()->withErrors($validator);
         }else{
             //验证验证码
-            if(strtoupper($input['code']) != session('code')){
+            if(strtoupper($input['code']) != strtoupper(session('code'))){
                 return back()->with('errors','验证码错误')->withInput();
             }
             //验证是否有用户
-            $user = User::where('sname',$input['sname']) -> first();
+            $user = Seller::where('sname',$input['sname']) -> first();
 
-            if(!$user || ($input['spwd']  != Crypt::decrypt($user->spwd)) ){
+            // if(!$user || ($input['spwd']  != Crypt::decrypt($user->spwd)) ){
+            if(!$user || ($input['spwd']  != ($user->spwd)) ){
               return back()->with('errors','用户名或密码错误')->withInput();
             }
             // if($input['spwd']  != Crypt::decrypt($user->spwd)){

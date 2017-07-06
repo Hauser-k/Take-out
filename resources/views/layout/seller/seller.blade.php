@@ -14,10 +14,12 @@
     <link rel="apple-touch-icon-precomposed" href="{{asset('assets/i/app-icon72x72@2x.png')}}">
     <meta name="apple-mobile-web-app-title" content="Amaze UI" />
     <script src="{{asset('assets/js/echarts.min.js')}}"></script>
+    <script src="{{asset('bootstrap-3.3.7-dist/js/bootstrap.min.js')}}"></script>
     <link rel="stylesheet" href="{{asset('assets/css/amazeui.min.css')}}" />
     <link rel="stylesheet" href="{{asset('assets/css/amazeui.datatables.min.css')}}" />
     <link rel="stylesheet" href="{{asset('assets/css/app.css')}}">
     <link rel="stylesheet" href="{{asset('assets/css/hauser.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/bootstrap.css')}}">
     <script src="{{asset('assets/js/jquery.min.js')}}"></script>
     <script type="text/javascript" src="{{asset('layer/layer.js')}}"></script>
 
@@ -31,7 +33,7 @@
         <header>
             <!-- logo -->
             <div class="am-fl tpl-header-logo">
-                <a href="javascript:;"><img src="{{asset('assets/img/logo.png')}}" alt=""></a>
+                <a href="javascript:;" ><img src="{{asset('assets/img/logo.png')}}" style="width:240px;height:70px" alt=""></a>
             </div>
             <!-- 右侧内容 -->
             <div class="tpl-header-fluid">
@@ -282,7 +284,7 @@
                     </a>
                 </li>
                 <li class="sidebar-nav-link">
-                    <a href="#">
+                    <a href="{{url('/seller/eval')}}">
                         <i class="am-icon-tv sidebar-nav-link-logo"></i>我的评价
                     </a>
                 </li>
