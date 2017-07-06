@@ -37,7 +37,7 @@ Route::group(['prefix'=>'home','namespace'=>'Home','middleware'=>'home.login'], 
 //登录
 Route::resource('/admin/login','Admin\LoginController');
 
-Route::group(['prefix'=>'admin','namespace'=>'Admin','middleware'=>'admin.login'], function(){
+Route::group(['prefix'=>'admin','namespace'=>'Admin'], function(){
     //普通用户管理
     Route::resource('user','UserController');
     //商家分类
@@ -61,8 +61,8 @@ Route::group(['prefix'=>'admin','namespace'=>'Admin','middleware'=>'admin.login'
 //登录
 Route::resource('/seller/login','Seller\LoginController');
 
+
 Route::group(['prefix'=>'seller','namespace'=>'Seller','middleware'=>'seller.login'], function(){
-    Route::get('goodsclass/ss','GoodsClassController@ss');
     //注册
     Route::resource('register','RegisterController');
     //商家用户个人中心

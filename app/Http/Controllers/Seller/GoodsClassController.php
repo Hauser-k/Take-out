@@ -160,8 +160,5 @@ class GoodsClassController extends Controller
         }
         return $data;
     }
-    public function ss()
-    {
-        echo 123;
-    }
+
 }
