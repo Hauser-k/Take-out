@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Http\Model\Evals;
 
 class EvalController extends Controller
 {
@@ -14,9 +15,24 @@ class EvalController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         //
+       //  $wh = [];
+       // if($request->has('keywords1')){
+       //      $wh['keywords1'] = $request['keywords1'];
+       // }
+       // if($request->has('keywords2')){
+       //      $wh['keywords2'] = $request['keywords2'];
+       // }
+       //  $request -> all();
+       //  $arr = $request -> all();
+        $count = $request -> input('count',2);
+        $search = $request -> input('search');
+
+        $data = Evals::orderBy('eid','asc')->where('eid','like','%'.$search.'%')->paginate($count);
+        $input['art_time'] = time();
+        return view('admin.eval.eval',['data'=>$data,'count'=>$count]);
     }
 
     /**

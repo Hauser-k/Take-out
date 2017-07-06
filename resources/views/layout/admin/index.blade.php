@@ -9,31 +9,31 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
 
     <!-- Plugin Stylesheets first to ease overrides -->
-    <link rel="stylesheet" type="text/css" href="/admin/plugins/colorpicker/colorpicker.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="/admin/custom-plugins/wizard/wizard.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="{{asset('/admin/plugins/colorpicker/colorpicker.css')}}" media="screen">
+    <link rel="stylesheet" type="text/css" href="{{asset('/admin/custom-plugins/wizard/wizard.css')}}" media="screen">
 
     <!-- Required Stylesheets -->
-    <link rel="stylesheet" type="text/css" href="/admin/bootstrap/css/bootstrap.min.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="/admin/css/fonts/ptsans/stylesheet.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="/admin/css/fonts/icomoon/style.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="{{asset('/admin/bootstrap/css/bootstrap.min.css')}}" media="screen">
+    <link rel="stylesheet" type="text/css" href="{{asset('/admin/css/fonts/ptsans/stylesheet.css')}}" media="screen">
+    <link rel="stylesheet" type="text/css" href="{{asset('/admin/css/fonts/icomoon/style.css')}}" media="screen">
 
-    <link rel="stylesheet" type="text/css" href="/admin/css/mws-style.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="/admin/css/icons/icol16.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="/admin/css/icons/icol32.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="{{asset('/admin/css/mws-style.css')}}" media="screen">
+    <link rel="stylesheet" type="text/css" href="{{asset('/admin/css/icons/icol16.css')}}" media="screen">
+    <link rel="stylesheet" type="text/css" href="{{asset('/admin/css/icons/icol32.css')}}" media="screen">
 
     <!-- Demo Stylesheet -->
-    <link rel="stylesheet" type="text/css" href="/admin/css/demo.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="{{asset('/admin/css/demo.css')}}" media="screen">
 
     <!-- jQuery-UI Stylesheet -->
-    <link rel="stylesheet" type="text/css" href="/admin/jui/css/jquery.ui.all.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="/admin/jui/jquery-ui.custom.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="{{asset('/admin/jui/css/jquery.ui.all.css')}}" media="screen">
+    <link rel="stylesheet" type="text/css" href="{{asset('/admin/jui/jquery-ui.custom.css')}}" media="screen">
 
     <!-- Theme Stylesheet -->
-    <link rel="stylesheet" type="text/css" href="/admin/css/mws-theme.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="/admin/css/themer.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="{{asset('/admin/css/mws-theme.css')}}" media="screen">
+    <link rel="stylesheet" type="text/css" href="{{asset('/admin/css/themer.css')}}" media="screen">
     @section('css')
     @show
-    <title>{{ Config::get('app.title') }}</title>
+    <title>@section('title')   @show</title>
 
 </head>
 
@@ -46,7 +46,7 @@
 
         <!-- Logo Wrapper, images put within this wrapper will always be vertically centered -->
         <div id="mws-logo-wrap">
-            <img src="/d/images/mws-logo.png" alt="mws admin">
+            <img src="" alt="mws admin">
         </div>
     </div>
 
@@ -226,6 +226,83 @@
                     <ul>
                         <li><a href="/admin/user/add">用户添加</a></li>
                         <li><a href="/admin/user/index">用户列表</a></li>
+                    </ul>
+                </li>
+        </div>
+       
+                
+        <div id="mws-navigation">
+            <ul>
+
+                <li>
+                    <a href="#"><i class="icon-align-center"></i> 商家分类</a>
+                    <ul>
+                        <li><a href="#">分类添加</a></li>
+                        <li><a href="#">修改分类</a></li>
+                        <li><a href="#">查看商家</a></li>
+                    </ul>
+                </li>
+        </div>
+        <div id="mws-navigation">
+            <ul>
+
+                <li>
+                    <a href="#"><i class="icon-add-contact"></i> 商家列表</a>
+                    <ul>
+                        <li><a href="#">商家添加</a></li>
+                        <li><a href="#">商家修改</a></li>
+                        <li><a href="#">查看商家</a></li>
+                    </ul>
+                </li>
+        </div>
+        <div id="mws-navigation">
+            <ul>
+
+                <li>
+                    <a href="#"><i class="icon-file"></i> 订单信息</a>
+                    <ul>
+                        <li><a href="{{url('/admin/order')}}">订单查看</a></li> 
+                    </ul>
+                </li>
+        </div>
+         <div id="mws-navigation">
+            <ul>
+
+                <li>
+                    <a href="#"><i class="icon-list-2"></i> 评价列表</a>
+                    <ul>
+                        <li><a href="{{url('/admin/eval')}}">评价查看</a></li> 
+                    </ul>
+                </li>
+        </div>
+         <div id="mws-navigation">
+            <ul>
+
+                <li>
+                    <a href="#"><i class="icon-snowflake"></i> 收藏列表</a>
+                    <ul>
+                        <li><a href="{{url('/admin/collection')}}">收藏查看</a></li> 
+                    </ul>
+                </li>
+        </div>
+         <div id="mws-navigation">
+            <ul>
+
+                <li>
+                    <a href="#"><i class="icon-users"></i> 商家审核</a>
+                    <ul>
+                        <li><a href="#">商家查看</a></li>
+                        <li><a href="#">审核修改</a></li>
+                    </ul>
+                </li>
+        </div>
+        <div id="mws-navigation">
+            <ul>
+
+                <li>
+                    <a href="#"><i class="icon-file-zip"></i> 反馈信息</a>
+                    <ul>
+                        <li><a href="#">信息查看</a></li>
                     </ul>
                 </li>
         </div>

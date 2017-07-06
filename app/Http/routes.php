@@ -11,6 +11,8 @@
 |
 */
 
+
+
 Route::get('/', function () {
 //    return view('welcome');
     return view('home/index');
@@ -37,7 +39,7 @@ Route::group(['prefix'=>'home','namespace'=>'Home','middleware'=>'home.login'], 
 //登录
 Route::resource('/admin/login','Admin\LoginController');
 
-Route::group(['prefix'=>'admin','namespace'=>'Admin','middleware'=>'admin.login'], function(){
+Route::group(['prefix'=>'admin','namespace'=>'Admin'], function(){
     //普通用户管理
     Route::resource('user','UserController');
     //商家分类
