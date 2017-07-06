@@ -28,7 +28,7 @@ class EvalController extends Controller
        //  $request -> all();
        //  $arr = $request -> all();
         $count = $request -> input('count',2);
-        $search = $request -> input('search');
+        $search = $request -> input('search');wyt
 
         $data = Evals::orderBy('eid','asc')->where('eid','like','%'.$search.'%')->paginate($count);
         $input['art_time'] = time();
