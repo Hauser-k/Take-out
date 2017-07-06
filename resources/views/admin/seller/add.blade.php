@@ -21,36 +21,18 @@
             <form class="mws-form" action="{{url('admin/user')}}" method="post">
                 <div class="mws-form-inline">
                     <div class="mws-form-row">
-                        <label class="mws-form-label">用户名</label>
+                        <label class="mws-form-label">商户名</label>
                         <div class="mws-form-item">
                             <input type="text" class="small" name="uname" value="{{ old('uname') }}">
                         </div>
                     </div>
-                    <div class="mws-form-row">
-                        <label class="mws-form-label">密码</label>
-                        <div class="mws-form-item">
-                            <input type="password" class="small" name="upwd" value="{{ old('password') }}">
-                        </div>
-                    </div>
+
                     <div class="mws-form-row">
                         <label class="mws-form-label">确认密码</label>
                         <div class="mws-form-item">
                             <input type="password" class="small" name="repassword" value="{{ old('repassword') }}">
                         </div>
                     </div>
-                    <div class="mws-form-row">
-                        <label class="mws-form-label">手机号</label>
-                        <div class="mws-form-item">
-                            <input type="text" class="small" name="utel" value="{{ old('utel') }}">
-                        </div>
-                    </div>
-                    <div class="mws-form-row">
-                        <label class="mws-form-label">邮箱</label>
-                        <div class="mws-form-item">
-                            <input type="text" class="small" name="uemail" value="{{ old('uemail') }}">
-                        </div>
-                    </div>
-                </div>
                 {{ csrf_field() }}
                 <div class="mws-button-row">
                     <input type="submit" value="提交" class="btn btn-danger">

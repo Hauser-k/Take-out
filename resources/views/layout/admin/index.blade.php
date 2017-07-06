@@ -31,6 +31,8 @@
     <!-- Theme Stylesheet -->
     <link rel="stylesheet" type="text/css" href="/admin/css/mws-theme.css" media="screen">
     <link rel="stylesheet" type="text/css" href="/admin/css/themer.css" media="screen">
+    <script src="/admin/js/jquery-1.8.3.min.js"></script>
+    <script type="text/javascript" src="{{asset('layer/layer.js')}}"></script>
     @section('css')
     @show
     <title>{{ Config::get('app.title') }}</title>
@@ -224,12 +226,85 @@
                 <li>
                     <a href="#"><i class="icon-user"></i> 用户管理</a>
                     <ul>
-                        <li><a href="/admin/user/add">用户添加</a></li>
-                        <li><a href="/admin/user/index">用户列表</a></li>
+                        <li><a href="{{url('admin/user/create')}}">用户添加</a></li>
+                        <li><a href="{{url('admin/user')}}">用户列表</a></li>
+                    </ul>
+                </li>
+        </div>
+        <div id="mws-navigation">
+            <ul>
+
+                <li>
+                    <a href="#"><i class="icon-user"></i> 商家审核</a>
+                    <ul>
+                        <li><a href="#">商家查看</a></li>
+                        <li><a href="#">审核修改</a></li>
+                    </ul>
+                </li>
+        </div>
+        <div id="mws-navigation">
+            <ul>
+
+                <li>
+                    <a href="#"><i class="icon-user"></i> 反馈信息</a>
+                    <ul>
+                        <li><a href="#">信息查看</a></li>
+                    </ul>
+                </li>
+        </div>
+        <div id="mws-navigation">
+            <ul>
+
+                <li>
+                    <a href="#"><i class="icon-user"></i> 商家分类</a>
+                    <ul>
+                        <li><a href="#">商家分类添加</a></li>
+                        <li><a href="#">查看分类</a></li>
+                    </ul>
+                </li>
+        </div>
+        <div id="mws-navigation">
+            <ul>
+
+                <li>
+                    <a href="#"><i class="icon-user"></i> 商家列表</a>
+                    <ul>
+                        <li><a href="{{url('admin/seller')}}">查看商家</a></li>
+                    </ul>
+                </li>
+        </div>
+        <div id="mws-navigation">
+            <ul>
+
+                <li>
+                    <a href="#"><i class="icon-user"></i> 订单信息</a>
+                    <ul>
+                        <li><a href="{{url('/admin/order')}}">订单查看</a></li>
+                    </ul>
+                </li>
+        </div>
+        <div id="mws-navigation">
+            <ul>
+
+                <li>
+                    <a href="#"><i class="icon-user"></i> 评价列表</a>
+                    <ul>
+                        <li><a href="{{url('/admin/eval')}}">评价查看</a></li>
+                    </ul>
+                </li>
+        </div>
+        <div id="mws-navigation">
+            <ul>
+
+                <li>
+                    <a href="#"><i class="icon-user"></i> 收藏列表</a>
+                    <ul>
+                        <li><a href="{{url('/admin/collection')}}">收藏查看</a></li>
                     </ul>
                 </li>
         </div>
     </div>
+
 
     <!-- Main Container Start -->
     <div id="mws-container" class="clearfix">
@@ -266,7 +341,7 @@
 </div>
 
 <!-- JavaScript Plugins -->
-<script src="/admin/js/jquery-1.8.3.min.js"></script>
+
 <script src="/admin/js/jquery.mousewheel.min.js"></script>
 <script src="/admin/js/jquery.placeholder.min.js"></script>
 <script src="/admin/js/fileinput.js"></script>

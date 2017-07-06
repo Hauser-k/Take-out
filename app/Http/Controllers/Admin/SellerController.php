@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Model\Seller;
+use App\Http\Model\SellerDetail;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -14,9 +16,19 @@ class SellerController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         //
+        $count = $request -> input('count',10);
+        $search = $request -> input('search','');
+        $all = $request -> all();
+
+
+        // 把所有的数据获取到 并且分页分配到主页面
+        $data = Seller::where('sname','like','%'.$search.'%')-> paginate($count);
+
+        return view('admin.seller.index',['data'=>$data,'request'=>$all]);
+
     }
 
     /**
@@ -27,6 +39,7 @@ class SellerController extends Controller
     public function create()
     {
         //
+
     }
 
     /**
@@ -49,6 +62,10 @@ class SellerController extends Controller
     public function show($id)
     {
         //
+        $data=SellerDetail::where('sid',$id)->first();
+
+        return view('/admin/seller/show',compact('data'));
+
     }
 
     /**
@@ -83,5 +100,10 @@ class SellerController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+
+    public function xxoo(){
+        echo 1;
     }
 }
