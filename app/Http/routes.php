@@ -26,7 +26,7 @@ Route::get('/code','CodeController@code');
 Route::resource('/home/login','Home\LoginController');
 
 
-Route::group(['prefix'=>'home','namespace'=>'Home','middleware'=>'home.login'], function(){
+Route::group(['prefix'=>'home','namespace'=>'Home'], function(){
     //注册
     Route::resource('/home/register','Home\RegisterController');
 });

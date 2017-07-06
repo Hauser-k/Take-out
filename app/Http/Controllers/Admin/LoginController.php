@@ -3,85 +3,68 @@
 namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
-
+use App\Http\Model\admin;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use DB;
+use Illuminate\Contracts\Encryption\DecryptException;
+//引用对应的命名空间
+use Gregwar\Captcha\CaptchaBuilder;
+use Session;
+
+
+use Crypt;
 
 class LoginController extends Controller
-{
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+{   
+    // login加载登录页面
     public function index()
     {
-        //
+
+        return view('admin.login.login');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+    //验证登录
     public function store(Request $request)
-    {
-        //
-    }
+    {   
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
+        //验证码
+        $code = session('code');
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
+        $code2 = $request -> input('code');
+        
+        if($code != $code2){
+            return back() -> with('error','验证码错误');
+            exit;
+        }
+    	//1.处理登录
+    	$data = ($request->except('_token','code'));
+    	//2.查询
+    	$res = Admin::where('aname',$data['username'])->first();
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
+        // var_dump($res);
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+    	// dd(Crypt::encrypt('666'));
+
+    	if(!$res){
+    		return back() -> with('error','用户不存在');
+    	}else{
+    		// $res['apwd']; 用户的密码
+    		// $data['password']; 输入密码
+    		 $password = Crypt::decrypt($res['apwd']);
+
+    		 if($password == $data['password']){
+                //添加session
+                session(['admin_user'=>$res]);
+
+    		      return redirect('admin/user');
+                
+                
+    		 }else{
+    		 	return back() -> with('error','用户名或密码错误');
+    		 }
+    	}
+    	//2.跳转到后台
+
     }
 }

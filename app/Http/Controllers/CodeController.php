@@ -8,6 +8,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 //引用对应的命名空间
 use Gregwar\Captcha\CaptchaBuilder;
+use Session;
 
 class CodeController extends Controller
 {
