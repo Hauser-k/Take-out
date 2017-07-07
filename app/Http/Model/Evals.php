@@ -17,4 +17,7 @@ class Evals extends Model
     {
     	return $this->hasMany('App\Http\Model\Admin','sid','eid');
     }
+
+  
+
 }

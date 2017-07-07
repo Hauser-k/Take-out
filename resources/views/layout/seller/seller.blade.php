@@ -279,12 +279,12 @@
                 </li> 
                 
                 <li class="sidebar-nav-link">
-                    <a href="login.html">
+                    <a href="{{ url('seller/order') }}">
                         <i class="am-icon-key sidebar-nav-link-logo"></i>我的订单
                     </a>
                 </li>
                 <li class="sidebar-nav-link">
-                    <a href="{{url('/seller/eval')}}">
+                    <a href="#">
                         <i class="am-icon-tv sidebar-nav-link-logo"></i>我的评价
                     </a>
                 </li>

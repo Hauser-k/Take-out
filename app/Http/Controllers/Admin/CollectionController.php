@@ -18,69 +18,17 @@ class CollectionController extends Controller
     public function index(Request $request)
     {
         //
+        $re = Collection::join('seller','collection.sid','=','seller.sid')->join('user','collection.uid','=','user.uid')->get();
+        // dd($re);
        $arr = $request -> all();
         $count = $request -> input('count',2);
         $search = $request -> input('search');
-        $data = Collection::orderBy('coid','asc')->where('coid','like','%'.$search.'%')->paginate($count);
+        $data = Collection::join('seller','collection.sid','=','seller.sid')->join('user','collection.uid','=','user.uid')->where('coid','like','%'.$search.'%')->paginate($count);
         //dd($data);
         return view('admin.collection.collection',['data'=>$data,'count'=>$count]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
+    
     /**
      * Remove the specified resource from storage.
      *

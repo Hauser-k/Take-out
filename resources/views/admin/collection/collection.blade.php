@@ -33,9 +33,9 @@
              <tr role="row">
                  <th class="sorting_asc" role="columnheader" tabindex="0" aria-controls="   DataTables_Table_1" rowspan="1" colspan="1" aria-sort="ascending" aria  -label="Rendering engine: activate to sort column descending" style="   width: 170px;">收藏ID
                  </th>
-                <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending" style="width: 224px;">商家ID
+                <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending" style="width: 224px;">商家名称
                 </th>
-                <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending" style="width: 209px;">用户ID
+                <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending" style="width: 209px;">用户名称
                 </th>
                   <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending" style="width: 209px;">操作
                 </th>
@@ -44,8 +44,8 @@
              @foreach($data as $k => $v)
                    <tr>
                        <td>{{ $v -> coid }}</td>
-                       <td>{{ $v -> sid }}</td>
-                       <td>{{ $v -> uid }}</td>
+                       <td>{{ $v -> sname }}</td>
+                       <td>{{ $v -> uname }}</td>
                         <td><a href="javascript:;" class="icon-trash" onclick="DelCollection({{$v->coid}})">&nbsp;&nbsp;&nbsp;&nbsp;删除</a></td>
                    </tr>       
                @endforeach

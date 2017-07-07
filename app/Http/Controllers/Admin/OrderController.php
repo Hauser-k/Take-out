@@ -8,6 +8,8 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Http\Model\Order;
 use App\Http\Model\User;
+use App\Http\Model\OrderGoods;
+use App\Http\Model\OrderDist;
 
 class OrderController extends Controller
 {
@@ -18,11 +20,19 @@ class OrderController extends Controller
      */
     public function index(Request $request)
     {
-        //
+       
+
+        $wh = [];
+        if($request->has('search1')){
+            $wh['uname'] = $request['search1'];
+       }
+       if($request->has('search2')){
+            $wh['gname'] = $request['search2'];
+       }
 
         $count = $request -> input('count',2);
-        $search = $request -> input('search','');
-        $data = Order::orderBy('oid','asc')->where('oid','like','%'.$search.'%')->paginate($count);
+         $data = Order::join('seller','order.sid','=','seller.sid')->join('user','order.uid','=','user.uid')->where($wh)->paginate($count);
+        
 
         return view('admin.order.index',['data'=>$data,'count'=>$count]);
     }
@@ -32,21 +42,28 @@ class OrderController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
         //
+        $re = OrderDist::join('order','order_dist.oid','=','order.oid')->join('addr','order_dist.did','=','addr.did')->get();
+       
+         $wh = [];
+        if($request->has('search1')){
+            $wh['uid'] = $request['search1'];
+       }
+       if($request->has('search2')){
+            $wh['gid'] = $request['search2'];
+       }
+
+        $count = $request -> input('count',2);
+       
+        $data = OrderDist::join('order','order_dist.oid','=','order.oid')->join('addr','order_dist.did','=','addr.did')->where($wh)->paginate($count);
+
+        return view('admin.order.create',['data'=>$data,'count'=>$count]);
+
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
+   
 
     /**
      * Display the specified resource.
@@ -54,42 +71,29 @@ class OrderController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Request $request,$id)
     {
-        //
+        
+
+        $re = OrderGoods::join('order','order.oid','=','order_goods.oid')->join('goods','order_goods.gid','=','goods.gid')->get();
+        // dd($re);
+         $wh = [];
+        
+        if($request->has('search1')){
+            $wh['uid'] = $request['search1'];
+       }
+       if($request->has('search2')){
+            $wh['gid'] = $request['search2'];
+       }
+
+        $count = $request -> input('count',2);
+
+        $data = OrderGoods::join('order','order.oid','=','order_goods.oid')->join('goods','order_goods.gid','=','goods.gid')->where($wh)->paginate($count);
+
+        return view('admin.order.show',['data'=>$data,'count'=>$count]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
+    
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
+   
 }
