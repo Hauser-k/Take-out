@@ -200,40 +200,6 @@
                     <a href="javascript:;" class="tpl-user-panel-action-link"> <span class="am-icon-pencil"></span> 账号设置</a>
                 </div>
             </div>
-
-            <!-- 菜单 -->
-<!--             <ul class="sidebar-nav">
-                <li class="sidebar-nav-heading">Components <span class="sidebar-nav-heading-info"> 附加组件</span></li>
-                <li class="sidebar-nav-link">
-                    <a href="index.html" class="active">
-                        <i class="am-icon-home sidebar-nav-link-logo"></i> 首页
-                    </a>
-                </li>
-                <li class="sidebar-nav-link">
-                    <a href="tables.html">
-                        <i class="am-icon-table sidebar-nav-link-logo"></i> 表格
-                    </a>
-                </li>
-                <li class="sidebar-nav-link">
-                    <a href="calendar.html">
-                        <i class="am-icon-calendar sidebar-nav-link-logo"></i> 日历
-                    </a>
-                </li>
-                <li class="sidebar-nav-link">
-                    <a href="form.html">
-                        <i class="am-icon-wpforms sidebar-nav-link-logo"></i> 表单
-
-                    </a>
-                </li>
-                <li class="sidebar-nav-link">
-                    <a href="chart.html">
-                        <i class="am-icon-bar-chart sidebar-nav-link-logo"></i> 图表
-
-                    </a>
-                </li>
- -->
-                <!-- <li class="sidebar-nav-heading">Page<span class="sidebar-nav-heading-info"> 常用页面</span></li> -->
-                
                 <li class="sidebar-nav-link">
                     <a href="sign-up.html">
                         <i class="am-icon-clone sidebar-nav-link-logo"></i>我的店铺
@@ -265,14 +231,14 @@
                     </a>
                     <ul class="sidebar-nav sidebar-nav-sub">
                         <li class="sidebar-nav-link">
-                            <a href="table-list.html">
+                            <a href="{{url('/seller/goods')}}">
                                 <span class="am-icon-angle-right sidebar-nav-link-logo"></span> 菜单列表
                             </a>
                         </li>
 
                         <li class="sidebar-nav-link">
-                            <a href="table-list-img.html">
-                                <span class="am-icon-angle-right sidebar-nav-link-logo"></span> 增加美味
+                            <a href="{{url('/seller/goods/create')}}">
+                                <span class="am-icon-angle-right sidebar-nav-link-logo"></span> 增加美食
                             </a>
                         </li>
                     </ul>

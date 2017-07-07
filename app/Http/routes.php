@@ -72,6 +72,10 @@ Route::group(['prefix'=>'seller','namespace'=>'Seller','middleware'=>'seller.log
     Route::resource('goodsclass','GoodsClassController');
     //菜品管理
     Route::resource('goods','GoodsController');
+    //验证上传图片
+    Route::any('upload','GoodsController@upload');
+    //验证表单
+    Route::any('gnameajax','GoodsController@gnameajax');
     //订单管理
     Route::resource('order','OrderController');
     //评价
