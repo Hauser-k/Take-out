@@ -15,24 +15,28 @@
 
     <div class="mws-panel grid_8">
         <div class="mws-panel-header">
-            <span>用户添加</span>
+            <span>商家修改</span>
         </div>
         <div class="mws-panel-body no-padding">
-            <form class="mws-form" action="{{url('admin/user')}}" method="post">
+            <form class="mws-form" action="{{url('admin/seller').'/'.$data->sid}}" method="post">
+                <input type="hidden" name="_method" value="put">
                 <div class="mws-form-inline">
                     <div class="mws-form-row">
-                        <label class="mws-form-label">商户名</label>
+                        <label class="mws-form-label">商家名</label>
                         <div class="mws-form-item">
-                            <input type="text" class="small" name="uname" value="{{ old('uname') }}">
+                            <input type="text" class="small" name="sname" value="{{$data->sname}}">
                         </div>
                     </div>
-
                     <div class="mws-form-row">
-                        <label class="mws-form-label">确认密码</label>
-                        <div class="mws-form-item">
-                            <input type="password" class="small" name="repassword" value="{{ old('repassword') }}">
+                        <label class="mws-form-label">状态</label>
+                        <div class="mws-form-list">
+                            <input type="radio" name="status" @if($data->status==1) checked @endif value="1">待审核
+                            <input type="radio" name="status" @if($data->status==2) checked @endif value="2">审核通过
+                            <input type="radio" name="status" @if($data->status==3) checked @endif value="3">审核未通过
                         </div>
+
                     </div>
+                </div>
                 {{ csrf_field() }}
                 <div class="mws-button-row">
                     <input type="submit" value="提交" class="btn btn-danger">

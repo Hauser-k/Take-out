@@ -13,7 +13,7 @@
         <div class="mws-panel-body no-padding">
             <div id="DataTables_Table_1_wrapper" class="dataTables_wrapper" role="grid">
                 <div id="DataTables_Table_1_length" class="dataTables_length">
-                    <form action="{{url('admin/seller')}}" method="get">
+                    <form action="{{url('admin/examine')}}" method="get">
                         <label>显示 <select size="1" name="count" >
                                 <option value="10" @if(!empty($request['count']) && $request['count'] == 10)  selected @endif>10</option>
                                 <option value="20" @if(!empty($request['count']) && $request['count'] == 20)  selected @endif>20</option>
@@ -39,11 +39,11 @@
                         <tr>
                             <td>{{ $v->sid}}</td>
                             <td>{{ $v->sname }}</td>
-                            <td>{{ config('seller.status')[$v->status] }}</td>
+                            <td>{{ config('waimai.status')[$v->status] }}</td>
                             <td>
-                                <a href=" @if($v->status!=5) {{url('admin/seller/'.$v->sid)}} @else {{url("#")}} @endif "  title="商家详情" style="color:#000;font-size:20px;margin-right:40px;"   ><input type="hidden" name="_method" value="put">商家详情</a>
+                                <a href="{{url('admin/examine/'.$v->sid.'/edit')}}" style="color:#000;font-size:20px;margin-right:40px;"   ><input type="hidden" name="_method" value="put">审查商家</a>
                                 <a href="javascript:;" title="删除" onclick="DelUser({{$v->sid}})" style="color:#000;font-size:20px;margin-right:10px;"><i class="icon-trash"></i></a>
-                                <a href="{{url('admin/seller/'.$v->sid.'/edit')}}" title="修改" style="color:#000;font-size:20px;margin-right:10px;"><i class="icon-pencil-2"></i></a>
+
                             </td>
                         </tr>
                     @endforeach

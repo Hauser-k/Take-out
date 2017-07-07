@@ -52,6 +52,10 @@ Route::group(['prefix'=>'admin','namespace'=>'Admin','middleware'=>'admin.login'
     Route::resource('eval','EvalController');
     //收藏
     Route::resource('collection','CollectionController');
+    //审核
+    Route::resource('examine','ExamineController');
+    //后台管理员用户
+    Route::resource('adminuser','AdminUserController');
 
 });
 
