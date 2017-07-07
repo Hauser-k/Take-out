@@ -12,4 +12,6 @@ class SellerClass extends Model
     protected $primaryKey = 'csid';
     //指定是否模型应该被戳记时间。
     public $timestamps = false;
+
+    public $guarded = []; 
 }
