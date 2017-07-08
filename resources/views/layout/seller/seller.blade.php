@@ -235,7 +235,7 @@
                 <!-- <li class="sidebar-nav-heading">Page<span class="sidebar-nav-heading-info"> 常用页面</span></li> -->
                 
                 <li class="sidebar-nav-link">
-                    <a href="sign-up.html">
+                    <a href="{{ url('seller/index/1/edit') }}">
                         <i class="am-icon-clone sidebar-nav-link-logo"></i>我的店铺
                     </a>
                 </li>

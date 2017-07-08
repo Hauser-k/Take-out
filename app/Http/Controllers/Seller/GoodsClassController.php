@@ -18,6 +18,7 @@ class GoodsClassController extends Controller
      */
     public function index(Request $request)
     {
+//        dd(time());
 //        如果请求携带keywords参数说明是通过查询进入index方法的，否则是通过用户列表导航进入的
         if($request->has('keywords')){
             $key = trim($request->input('keywords')) ;
@@ -73,6 +74,7 @@ class GoodsClassController extends Controller
 
         if($validator->passes()){
             $re = GoodsClass::create($input);
+//            dd($re);
             if($re){
                 return redirect('seller/goodsclass');
             }else{

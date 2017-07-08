@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers\Seller;
 
+use App\Http\Model\SellerDetail;
 use Illuminate\Http\Request;
+use Validator;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Input;
 
 class IndexController extends Controller
 {
@@ -16,7 +19,7 @@ class IndexController extends Controller
      */
     public function index()
     {
-        return view('seller.index');
+
     }
 
     /**
@@ -27,6 +30,7 @@ class IndexController extends Controller
     public function create()
     {
         //
+
     }
 
     /**
@@ -49,6 +53,8 @@ class IndexController extends Controller
     public function show($id)
     {
         //
+
+
     }
 
     /**
@@ -59,7 +65,9 @@ class IndexController extends Controller
      */
     public function edit($id)
     {
-        //
+        $seller = SellerDetail::where('sid',$id)->first();
+//        dd($seller);
+        return view('seller/information/index',['seller'=>$seller]);
     }
 
     /**
@@ -71,7 +79,46 @@ class IndexController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $input =  $request->except(['_token','_method']);
+//        $input['sid'] = 1;
+//        dd($input);
+        //验证规则
+        if($input['etime']<=$input['stime']){
+            return back()->with('error','结束时间不可以小于或等于开始时间');
+        }
+        $role =[
+            'stime'=>'required|integer|min:0|max:23',
+            'etime'=>'required|integer|min:1|max:24',
+            'extel'=>'required|numeric|regex:[^1\d{10}$]'
+        ];
+//       提示信息
+        $mess=[
+            'stime.required'=>'开始时间不可为空',
+            'stime.integer'=>'开始时间必须是整数',
+            'stime.min'=>'开始时间不可以小于0',
+            'stime.max'=>'开始时间不可大于23',
+            'etime.required'=>'结束时间不可为空',
+            'etime.integer'=>'结束时间必须是整数',
+            'etime.min'=>'结束时间不可以小于1',
+            'etime.max'=>'结束时间不可大于24',
+            'extel.required'=>'手机号码不可为空',
+            'extel.numeric'=>'手机号码必须是数值',
+            'extel.regex'=>'输入的不是手机号码',
+        ];
+//       表单验证
+        $validator =  Validator::make($input,$role,$mess);
+        if($validator->passes()){
+
+            $re = SellerDetail::where('sid',$id)->update($input);
+            if($re){
+                return redirect('seller/index/'.$id.'/edit')->with('success','修改成功');
+            }else{
+                return back()->with('error','修改失败');
+            }
+        }else{
+//          如果没有通过表单验证
+            return back()->withErrors($validator);
+        }
     }
 
     /**
