@@ -236,9 +236,8 @@
                 <li>
                     <a href="#"><i class="icon-align-center"></i> 商家分类</a>
                     <ul>
-                        <li><a href="#">分类添加</a></li>
-                        <li><a href="#">修改分类</a></li>
-                        <li><a href="#">查看商家</a></li>
+                        <li><a href="{{url('admin/sellerclass/create')}}">分类添加</a></li>
+                        <li><a href="{{url('admin/sellerclass/')}}">分类列表</a></li>
                     </ul>
                 </li>
         </div>
