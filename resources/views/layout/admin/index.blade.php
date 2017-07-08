@@ -221,168 +221,18 @@
         </div>
 
         <!-- Main Navigation -->
-        <div id="mws-navigation">
+     <div id="mws-navigation">
             <ul>
-
                 <li>
-                    <a href="#"><i class="icon-user"></i> 用户管理</a>
+                    <a href="#"><i class="icon-user"></i>用户列表</a>
                     <ul>
-                        <li><a href="{{url('admin/user/create')}}">用户添加</a></li>
-                        <li><a href="{{url('admin/user')}}">用户列表</a></li>
+                        <li><a href="{{url('admin/user')}}">查看用户</a></li>
+                        <li><a href="{{url('admin/user/create')}}">添加用户</a></li>
                     </ul>
                 </li>
         </div>
         <div id="mws-navigation">
             <ul>
-
-                <li>
-                    <a href="#"><i class="icon-user"></i> 商家审核</a>
-                    <ul>
-                        <li><a href="#">商家查看</a></li>
-                        <li><a href="#">审核修改</a></li>
-                    </ul>
-                </li>
-        </div>
-        <div id="mws-navigation">
-            <ul>
-
-                <li>
-                    <a href="#"><i class="icon-user"></i> 反馈信息</a>
-                    <ul>
-                        <li><a href="#">信息查看</a></li>
-                    </ul>
-                </li>
-        </div>
-        <div id="mws-navigation">
-            <ul>
-
-                <li>
-                    <a href="#"><i class="icon-user"></i> 商家分类</a>
-                    <ul>
-                        <li><a href="#">商家分类添加</a></li>
-                        <li><a href="#">查看分类</a></li>
-                    </ul>
-                </li>
-        </div>
-        <div id="mws-navigation">
-            <ul>
-
-                <li>
-                    <a href="#"><i class="icon-user"></i> 商家列表</a>
-                    <ul>
-                        <li><a href="{{url('admin/seller')}}">查看商家</a></li>
-                    </ul>
-                </li>
-        </div>
-        <div id="mws-navigation">
-            <ul>
-
-                <li>
-                    <a href="#"><i class="icon-user"></i> 订单信息</a>
-                    <ul>
-                        <li><a href="{{url('/admin/order')}}">订单查看</a></li>
-                    </ul>
-                </li>
-        </div>
-        <div id="mws-navigation">
-            <ul>
-
-                <li>
-                    <a href="#"><i class="icon-user"></i> 评价列表</a>
-                    <ul>
-                        <li><a href="{{url('/admin/eval')}}">评价查看</a></li>
-                    </ul>
-                </li>
-        </div>
-        <div id="mws-navigation">
-            <ul>
-
-                <li>
-                    <a href="#"><i class="icon-user"></i> 收藏列表</a>
-                    <ul>
-                        <li><a href="{{url('/admin/collection')}}">收藏查看</a></li>
-                    </ul>
-                </li>
-        </div>
-        <div id="mws-navigation">
-            <ul>
-
-                <li>
-                    <a href="#"><i class="icon-user"></i> 商家审核</a>
-                    <ul>
-                        <li><a href="#">商家查看</a></li>
-                        <li><a href="#">审核修改</a></li>
-                    </ul>
-                </li>
-        </div>
-                <div id="mws-navigation">
-            <ul>
-
-                <li>
-                    <a href="#"><i class="icon-user"></i> 反馈信息</a>
-                    <ul>
-                        <li><a href="#">信息查看</a></li>
-                    </ul>
-                </li>
-        </div>
-        <div id="mws-navigation">
-            <ul>
-
-                <li>
-                    <a href="#"><i class="icon-user"></i> 商家分类</a>
-                    <ul>
-                        <li><a href="{{url('admin/sellerclass/create')}}">商家添加</a></li>
-                    
-                        <li><a href="#">查看商家</a></li>
-                    </ul>
-                </li>
-        </div>
-        <div id="mws-navigation">
-            <ul>
-
-                <li>
-                    <a href="#"><i class="icon-user"></i> 商家列表</a>
-                    <ul>
-                        <li><a href="#">分类添加</a></li>
-                        <li><a href="#">查看分类</a></li>
-                    </ul>
-                </li>
-        </div>
-        <div id="mws-navigation">
-            <ul>
-
-                <li>
-                    <a href="#"><i class="icon-user"></i> 订单信息</a>
-                    <ul>
-                        <li><a href="{{url('/admin/order')}}">订单查看</a></li> 
-                    </ul>
-                </li>
-        </div>
-         <div id="mws-navigation">
-            <ul>
-
-                <li>
-                    <a href="#"><i class="icon-user"></i> 评价列表</a>
-                    <ul>
-                        <li><a href="{{url('/admin/eval')}}">评价查看</a></li> 
-                    </ul>
-                </li>
-        </div>
-         <div id="mws-navigation">
-            <ul>
-
-                <li>
-                    <a href="#"><i class="icon-user"></i> 收藏列表</a>
-                    <ul>
-                        <li><a href="{{url('/admin/collection')}}">收藏查看</a></li> 
-                    </ul>
-                </li>
-        </div>
-       
-                
-        <div id="mws-navigation">
-            <ul>
-
                 <li>
                     <a href="#"><i class="icon-align-center"></i> 商家分类</a>
                     <ul>
@@ -398,9 +248,7 @@
                 <li>
                     <a href="#"><i class="icon-add-contact"></i> 商家列表</a>
                     <ul>
-                        <li><a href="#">商家添加</a></li>
-                        <li><a href="#">商家修改</a></li>
-                        <li><a href="#">查看商家</a></li>
+                        <li><a href="{{url('admin/seller')}}">查看商家</a></li>
                     </ul>
                 </li>
         </div>
@@ -440,8 +288,7 @@
                 <li>
                     <a href="#"><i class="icon-users"></i> 商家审核</a>
                     <ul>
-                        <li><a href="#">商家查看</a></li>
-                        <li><a href="#">审核修改</a></li>
+                        <li><a href="{{url('/admin/examine')}}">商家审核</a></li>
                     </ul>
                 </li>
         </div>

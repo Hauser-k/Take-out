@@ -5,12 +5,11 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Model\Seller;
 use App\Http\Model\SellerDetail;
 use Illuminate\Http\Request;
-use DB;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-class SellerController extends Controller
+class ExamineController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,19 +18,16 @@ class SellerController extends Controller
      */
     public function index(Request $request)
     {
-        //
+        //获取每页多少条
         $count = $request -> input('count',10);
         $search = $request -> input('search','');
         $all = $request -> all();
 
-
-
-
         // 把所有的数据获取到 并且分页分配到主页面
-        $data = Seller::where('sname','like','%'.$search.'%')->whereIn('status',[2,4])-> paginate($count);
+        $data = Seller::where('sname','like','%'.$search.'%')->whereIn('status',[1,3,5])-> paginate($count);
 
 
-        return view('admin.seller.index',['data'=>$data,'request'=>$all]);
+        return view('admin.examine.index',['data'=>$data,'request'=>$all]);
 
     }
 
@@ -43,7 +39,6 @@ class SellerController extends Controller
     public function create()
     {
         //
-
     }
 
     /**
@@ -66,9 +61,6 @@ class SellerController extends Controller
     public function show($id)
     {
         //
-        $data=SellerDetail::where('sid',$id)->first();
-
-        return view('/admin/seller/show',compact('data'));
 
     }
 
@@ -81,10 +73,10 @@ class SellerController extends Controller
     public function edit($id)
     {
         //
+        $data=SellerDetail::where('sid',$id)->first();
+        $all = Seller::where('sid',$id)->first();
 
-        $data=Seller::where('sid',$id)->first();
-
-        return view('/admin/seller/edit',compact('data'));
+        return view('/admin/examine/show',compact('data','all'));
     }
 
     /**
@@ -97,18 +89,16 @@ class SellerController extends Controller
     public function update(Request $request, $id)
     {
         //
-
-
         $all = $request->except(['_token','_method']);
 
 
 
         $res = Seller::where('sid',$id)->update($all);
         if($res){
-            //  如果添加成功跳转到分类列表页
-            return redirect('admin/seller');
+            //  如果添加成功跳转到列表页
+            return redirect('admin/examine');
         }else{
-            return back()->with('error','修改失败');
+            return back()->with('error','添加失败');
         }
     }
 
@@ -120,7 +110,7 @@ class SellerController extends Controller
      */
     public function destroy($id)
     {
-
+        //
         // 制作事务
         DB::beginTransaction();
         $re1 = Seller::where('sid',$id)->delete();
@@ -139,9 +129,7 @@ class SellerController extends Controller
             ];
         }
 
-       return $data;
+        return $data;
     }
-
-
 
 }

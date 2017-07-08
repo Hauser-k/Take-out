@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use DB;
+use Crypt;
 use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
@@ -51,7 +52,7 @@ class UserController extends Controller
         //
         $this->validate($request, [
             'uname' => 'required',
-            'upwd' => 'required|min:5',
+            'upwd' => 'required|min:6',
             'repassword' => 'required|same:upwd',
             'utel' => 'required',
             'uemail' => 'required|email',
@@ -71,7 +72,7 @@ class UserController extends Controller
         $data['utoken']= str_random(50);
 
 
-        $data['upwd'] = Hash::make($data['upwd']);
+        $data['upwd'] = Crypt::encrypt($data['upwd']);
 
         $res =User::insert($data);
 
