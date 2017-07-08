@@ -21,24 +21,27 @@
                     </select> 条</label>
      </div>
      <div class="dataTables_filter" id="DataTables_Table_1_filter">
-      <label>商家: <input type="text" name="search" value="{{ $request['search'] or ''}}" /></label>
+      <label>分数: <input type="text" name="search1" value="{{ $request['search'] or ''}}" /></label>
+      <label>订单号: <input type="text" name="search2" value="{{ $request['search'] or ''}}" /></label>
       <button>搜索</button>
      </div>
      </form>
     <table class="mws-datatable-fn mws-table dataTable" id="DataTables_Table_1" aria-describedby="DataTables_Table_1_info">
          <thead>
              <tr role="row">
-                 <th class="sorting_asc" role="columnheader" tabindex="0" aria-controls="   DataTables_Table_1" rowspan="1" colspan="1" aria-sort="ascending" aria  -label="Rendering engine: activate to sort column descending" style="   width: 170px;">评价ID
+                 <th class="sorting_asc" role="columnheader" tabindex="0" aria-controls="   DataTables_Table_1" rowspan="1" colspan="1" aria-sort="ascending" aria  -label="Rendering engine: activate to sort column descending" style="   width: 170px;" onclick="xianshi()">评价ID
                  </th>
-                <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending" style="width: 224px;">商品ID
+                <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending" style="width: 224px;">商品名称
                 </th>
-                <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending" style="width: 209px;">用户ID
+                <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending" style="width: 209px;">用户名称
                 </th>
                 <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending" style="width: 148px;">订单号
                 </th>
                 <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending" style="width: 111px;">分数
                 </th>
-                <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending" style="width: 111px;">评论内容
+                <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending" style="width: 111px;">评论状态
+                </th>
+                <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending" style="width: 111px;">评价内容
                 </th>
                 <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending" style="width: 111px;">评价时间
                 </th>
@@ -49,10 +52,11 @@
             @foreach($data as $k => $v)
                    <tr>
                        <td>{{ $v -> eid }}</td>
-                       <td>{{ $v -> sid }}</td>
-                       <td>{{ $v -> uid }}</td>
+                       <td>{{ $v -> sname }}</td>
+                       <td>{{ $v -> uname }}</td>
                        <td>{{ $v -> order }}</td>
                        <td>{{ $v -> escore }}</td>
+                       <td>@if ($v -> status == 2) 未评价 @else 已评价 @endif</td>
                        <td>{{ $v -> econtent }}</td>
                        <td>{{date('Y-m-d H:i:s',$v->etime)}}</td>
                        <td>{{ $v -> ereply }}</td>
@@ -64,4 +68,5 @@
         {!! $data->appends(['count'=>$count])->render() !!}
      </div>
 </div>
+
 @endsection

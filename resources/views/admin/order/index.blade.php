@@ -23,7 +23,8 @@
              条目</label>
             </div>
         <div class="dataTables_filter" id="DataTables_Table_1_filter">
-      <label>关键字: <input type="text" name="search" value="{{ $request['search'] or ''}}" /></label>
+      <label>用户名: <input type="text" name="search1" value="{{ $request['search'] or ''}}" /></label>
+      <label>商家名: <input type="text" name="search2" value="{{ $request['search'] or ''}}" /></label>
       <button>搜索</button>
 
     </div>
@@ -37,7 +38,7 @@
                 </th>
                 <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending" style="width: 209px;">用户名称
                 </th>
-                <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending" style="width: 148px;">商品名称
+                <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending" style="width: 148px;">商家名称
                 </th>
                 <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending" style="width: 111px;">下单时间
                 </th>
@@ -51,8 +52,10 @@
                    <tr>
                        <td>{{ $v -> oid }}</td>
                        <td>{{ $v -> order }}</td>
-                       <td>{{ $v -> uid }}</td>
-                       <td>{{ $v -> gid }}</td>
+                       <td>{{ $v -> uname }}</td>
+                  
+                       <td>{{ $v -> sname }}</td>
+                  
                        <td>{{date('Y-m-d H:i:s',$v->otime)}}</td>
                        <td>{{date('Y-m-d H:i:s',$v->gime)}}</td>
                        <td>{{date('Y-m-d H:i:s',$v->ftime)}}</td>

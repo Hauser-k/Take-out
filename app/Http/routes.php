@@ -20,6 +20,8 @@ Route::get('/', function () {
 // 验证码的路由
 Route::get('/code','CodeController@code');
 //验证码 
+
+
 /* Route::get('seller/code','Seller\LoginController@code'); */
 /**
  * 前台

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Http\Model\Order;
 
 class OrderController extends Controller
 {
@@ -14,9 +15,17 @@ class OrderController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         //
+        
+        // $re = $request -> input('keywords');
+        // dd($re);
+        $count = $request -> input('count',2);
+         $data = Order::join('seller','order.sid','=','seller.sid')->join('user','order.uid','=','user.uid')->paginate($count);
+        
+
+        return view('seller.order.order',['data'=>$data,'count'=>$count]);
     }
 
     /**

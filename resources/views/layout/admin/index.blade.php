@@ -259,6 +259,8 @@
                     <a href="#"><i class="icon-file"></i> 订单信息</a>
                     <ul>
                         <li><a href="{{url('/admin/order')}}">订单查看</a></li> 
+                        <li><a href="{{url('/admin/order/{id}')}}">订单商品</a></li> 
+                        <li><a href="{{url('/admin/order/create')}}">订单配送</a></li> 
                     </ul>
                 </li>
         </div>
@@ -269,6 +271,7 @@
                     <a href="#"><i class="icon-list-2"></i> 评价列表</a>
                     <ul>
                         <li><a href="{{url('/admin/eval')}}">评价查看</a></li> 
+
                     </ul>
                 </li>
         </div>
