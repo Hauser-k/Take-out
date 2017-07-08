@@ -34,7 +34,7 @@
                                 <form action="{{url('seller/goodsclass')}}" method="get">
                                 <div class="am-u-sm-12 am-u-md-12 am-u-lg-3">
                                     <div class="am-input-group am-input-group-sm tpl-form-border-form cl-p">
-                                        <input type="text" name="keywords" class="am-form-field ">
+                                        <input type="text" name="keywords" class="am-form-field " value="{{ $request['keywords'] or ''}}">
                                         <span class="am-input-group-btn">
             <input class="am-btn  am-btn-default am-btn-success tpl-table-list-field am-icon-search" type="submit"  value="搜索">
           </span>

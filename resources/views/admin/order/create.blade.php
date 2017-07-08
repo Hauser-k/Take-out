@@ -14,7 +14,7 @@
     <div id="DataTables_Table_1_wrapper" class="dataTables_wrapper" role="grid">
         <div id="DataTables_Table_1_length" class="dataTables_length">
 
-    <form action="{{url('/admin/order')}}" method="get">
+    <form action="{{url('/admin/order/create')}}" method="get">
             <label>展示 
                 <select size="1" name="count" aria-controls="DataTables_Table_1">
                     <option value="2" @if(!empty($request['count']) && $request['count'] == 2)  selected @endif>2</option>
