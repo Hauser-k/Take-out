@@ -10,7 +10,7 @@
     <div class="am-form-group">
         <label for="user-name" class="am-u-sm-3 am-form-label">美食名称</label>
         <div class="am-u-sm-9">
-            <input type="text" minlength="1" maxlength="12" class="tpl-form-input" id="gname" placeholder="请输入美食名称12字以内" name="gname">
+            <input type="text" minlength="1" maxlength="12" class="tpl-form-input" id="gname" value='{{$data->gname}}' name="gname">
             <small>请填写美食名称12字以内</small>
         </div>
     </div>
@@ -21,9 +21,9 @@
         <div class="am-u-sm-9">
 			<select name="gcid" id="aa">
 				<option value="" selected disabled="">请选择</option>
-                @foreach($data as $k=>$v)
-				    <option value="{{$v->gcid}}" >{{$v->cname}}</option>
-                @endforeach
+                <!-- @foreach($data as $k=>$v) -->
+				    <option value="" ></option>
+                <!-- @endforeach -->
 			</select>
             <!-- <small>发布时间为必填</small> -->
         </div>

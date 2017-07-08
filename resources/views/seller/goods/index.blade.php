@@ -48,8 +48,8 @@
                 <tr class="gradeX">
                     <td>1</td>
                     <td>{{$v->gname}}</td>
-                    <td>{{$v->gpic}}</td>
-                    <td>{{$v->gcid}}</td>
+                    <td><img src="/{{$v->gpic}}" style="width:60px;height: 60px" alt=""></td>
+                    <td>{{$v->cname}}</td>
                     <td>{{$v->gprice}}</td>
                     <td>{{$v->gstandard}}</td>
                     <td>{{$v->gtaste}}</td>

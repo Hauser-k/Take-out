@@ -25,7 +25,7 @@ class EvalController extends Controller
         //获取session中的值 json格式的
       
         $all = $request -> all();
-        //连表查询   获取 当前商户ID Input::session()->get('user')->sid
+        //连表查询   获取 当前商户ID=Input::session()->get('user')->sid
         $data = Evals::join('user',function ($join) {
             $join->on('user.uid', '=', 'eval.uid')
                  ->where('eval.sid','=',Input::session()->get('user')->sid);

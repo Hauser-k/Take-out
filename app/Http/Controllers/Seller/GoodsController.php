@@ -37,12 +37,16 @@ class GoodsController extends Controller
      */
     public function index(Request $request)
     {   
-        //获取session中的值 json格式的
-        $value = Input::session()->get('user');
+        //获取session中的值
+        // $value = Input::session()->get('user');
         $all = $request -> all();
-
+        //连表查询 
+        $data = Goods::join('goods_class',function ($join) {
+        $join->on('goods.gcid', '=', 'goods_class.gcid')
+                 ->where('goods.sid','=',Input::session()->get('user')->sid);
+             });
         //通过$value->sid筛选到本用户登录评价信息
-        $data = Goods::where('sid',$value->sid)->paginate(2);
+        $data = $data->paginate(2);  
         return view('seller.goods.index',['data'=>$data,'request'=>$all]);
     }
 
@@ -68,7 +72,19 @@ class GoodsController extends Controller
     public function store(Request $request)
     {   
 
-        dd($request->all());
+        $input = Input::except('_token','file_upload');
+        $input['sid'] = Input::session('')->get('user')->sid;
+        $input['gstatus'] = '1';
+       
+        $re = Goods::create($input);
+        // $re1 = Goods::create($input1);
+       
+         // dd($re1);
+        if($re ){
+            return redirect('seller/goods');
+        }else{
+            return back()->with('error','添加失败');
+        }
     }
 
     /**
@@ -90,7 +106,8 @@ class GoodsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data = Goods::where('gid',$id);
+        return view('seller.goods.edit',['data'=>$data]);
     }
 
     /**
@@ -142,7 +159,7 @@ class GoodsController extends Controller
         if($re!=''){
             $data = [
                 'status'=>0,
-                'msg'=>'存在！'
+                'msg'=>'该菜名已存在！'
             ];
         }else{
             $data = [
