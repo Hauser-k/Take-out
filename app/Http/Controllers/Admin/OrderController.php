@@ -27,7 +27,7 @@ class OrderController extends Controller
             $wh['uname'] = $request['search1'];
        }
        if($request->has('search2')){
-            $wh['gname'] = $request['search2'];
+            $wh['sname'] = $request['search2'];
        }
 
         $count = $request -> input('count',2);
@@ -38,7 +38,7 @@ class OrderController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
+     * 订单配送
      *
      * @return \Illuminate\Http\Response
      */
@@ -49,10 +49,10 @@ class OrderController extends Controller
        
          $wh = [];
         if($request->has('search1')){
-            $wh['uid'] = $request['search1'];
+            $wh['order'] = $request['search1'];
        }
        if($request->has('search2')){
-            $wh['gid'] = $request['search2'];
+            $wh['ostatus'] = $request['search2'];
        }
 
         $count = $request -> input('count',2);
@@ -66,7 +66,7 @@ class OrderController extends Controller
    
 
     /**
-     * Display the specified resource.
+     * 订单商品
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
@@ -76,15 +76,17 @@ class OrderController extends Controller
         
 
         $re = OrderGoods::join('order','order.oid','=','order_goods.oid')->join('goods','order_goods.gid','=','goods.gid')->get();
+        // $ra = $request -> has('search1');
         // dd($re);
          $wh = [];
         
         if($request->has('search1')){
-            $wh['uid'] = $request['search1'];
+            $wh['order'] = $request['search1'];
        }
        if($request->has('search2')){
-            $wh['gid'] = $request['search2'];
+            $wh['gname'] = $request['search2'];
        }
+       // dd($wh);
 
         $count = $request -> input('count',2);
 

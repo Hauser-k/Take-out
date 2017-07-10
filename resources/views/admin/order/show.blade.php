@@ -13,7 +13,7 @@
 
     <div id="DataTables_Table_1_wrapper" class="dataTables_wrapper" role="grid">
         <div id="DataTables_Table_1_length" class="dataTables_length">
-    <form action="{{url('/admin/order')}}" method="get">
+    <form action="{{url('/admin/order/{$id}')}}" method="get">
             <label>展示 
                 <select size="1" name="count" aria-controls="DataTables_Table_1">
                     <option value="2" @if(!empty($request['count']) && $request['count'] == 2)  selected @endif>2</option>
@@ -24,7 +24,7 @@
             </div>
         <div class="dataTables_filter" id="DataTables_Table_1_filter">
       <label>订单号: <input type="text" name="search1" value="{{ $request['search'] or ''}}" /></label>
-      <label>价格: <input type="text" name="search2" value="{{ $request['search'] or ''}}" /></label>
+      <label>商品名称: <input type="text" name="search2" value="{{ $request['search'] or ''}}" /></label>
       <button>搜索</button>
 
     </div>

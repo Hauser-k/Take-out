@@ -18,11 +18,12 @@ class OrderController extends Controller
     public function index(Request $request)
     {
         //
-        
-        // $re = $request -> input('keywords');
-        // dd($re);
+        $wh = [];
+        if($request->has('keywords')){
+            $wh['order'] = $request['keywords'];
+       }
         $count = $request -> input('count',2);
-         $data = Order::join('seller','order.sid','=','seller.sid')->join('user','order.uid','=','user.uid')->paginate($count);
+         $data = Order::join('seller','order.sid','=','seller.sid')->join('user','order.uid','=','user.uid')->where($wh)->paginate($count);
         
 
         return view('seller.order.order',['data'=>$data,'count'=>$count]);
