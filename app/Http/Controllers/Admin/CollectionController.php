@@ -18,7 +18,7 @@ class CollectionController extends Controller
     public function index(Request $request)
     {
         //
-        $re = Collection::join('seller','collection.sid','=','seller.sid')->join('user','collection.uid','=','user.uid')->get();
+        // $re = Collection::join('seller','collection.sid','=','seller.sid')->join('user','collection.uid','=','user.uid')->get();
         // dd($re);
        $arr = $request -> all();
         $count = $request -> input('count',2);

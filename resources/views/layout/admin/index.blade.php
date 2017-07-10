@@ -304,6 +304,17 @@
                     </ul>
                 </li>
         </div>
+        <div id="mws-navigation">
+            <ul>
+
+                <li>
+                    <a href="#"><i class="icon-file-zip"></i>BOSS请入</a>
+                    <ul>
+                        <li><a href="{{url('admin/adminuser/create')}}">添加管理</a></li>
+                        <li><a href="{{url('admin/adminuser')}}">管理查看</a></li>
+                    </ul>
+                </li>
+        </div>
     </div>
 
 

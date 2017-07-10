@@ -55,7 +55,7 @@
                     <ul>
                         <!-- 欢迎语 -->
                         <li class="am-text-sm tpl-header-navbar-welcome">
-                            <a href="javascript:;">欢迎你, <span>Amaze UI</span> </a>
+                            <a href="javascript:;">欢迎你, <span></span> </a>
                         </li>
 
                         <!-- 新邮件 -->
@@ -250,7 +250,7 @@
                     </a>
                 </li>
                 <li class="sidebar-nav-link">
-                    <a href="#">
+                    <a href="{{url('seller/eval')}}">
                         <i class="am-icon-tv sidebar-nav-link-logo"></i>我的评价
                     </a>
                 </li>

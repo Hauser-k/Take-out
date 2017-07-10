@@ -5,12 +5,19 @@
 @endsection
 
 @section('content')
+<div class="widget am-cf">
+    <div class="widget-head am-cf">
+        <div class="widget-title am-fl">添加美食</div>
+        <div class="widget-function am-fr">
+        </div>
+    </div>
+    <div class="widget-body  widget-body-lg am-fr">
 <form class="am-form tpl-form-line-form" method="post" id="art_form" action="{{url('/seller/goods')}}">
   {{csrf_field()}}
     <div class="am-form-group">
         <label for="user-name" class="am-u-sm-3 am-form-label">美食名称</label>
         <div class="am-u-sm-9">
-            <input type="text" minlength="1" maxlength="12" class="tpl-form-input" id="gname" placeholder="请输入美食名称12字以内" name="gname">
+            <input type="text" minlength="1" maxlength="12"  class="tpl-form-input" id="gname" placeholder="请输入美食名称12字以内" name="gname">
             <small>请填写美食名称12字以内</small>
         </div>
     </div>
@@ -42,7 +49,7 @@
                 
                     <img name="" id="pic" style="width:80px;height: 80px;display:none;">
                     <input type="file" name="file_upload" id="file_upload" value="">
-                    <input type="hidden" name="gpic" id="gpic" >
+                    <input type="hidden" name="gpic" id="gpic" value="">
                     <script type="text/javascript">
                                 $(function () {
                                     $("#file_upload").change(function () {
@@ -96,7 +103,7 @@
         </div>
 	
     </div>
-    <div> <img src="" alt="" name="gpic" id="gpic" style="width:100px;display:none;" ></div>
+    <!-- <div> <img src="" alt="" name="gpic" id="gpic" style="width:100px;display:none;" ></div> -->
     <div class="am-form-group">
         <label for="user-weibo" class="am-u-sm-3 am-form-label">添加规格 </label>
         <div class="am-u-sm-9">
@@ -122,6 +129,8 @@
         </div>
     </div>
 </form>
+</div>
+</div>
 <script>
     var caidan = false;
     var danjia = false;
