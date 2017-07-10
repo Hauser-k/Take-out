@@ -60,7 +60,7 @@
                        <td>{{ $v -> addr }}</td>
                        <td>{{ $v -> umsg }}</td>
                        <td>{{ $v -> uway }}</td>
-                       <td>{{ $v -> ostatus }}</td>
+                       <td>@if ($v -> ostatus == 2) 已收货 @else 未收货 @endif</td>
                        <td>{{ $v -> ofree }}</td>
                        <td>{{ $v -> ocoupon }}</td>
                        <td>{{ $v -> endprice }}</td>
