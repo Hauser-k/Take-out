@@ -5,7 +5,15 @@
 @endsection
 
 @section('content')
-<form class="am-form tpl-form-line-form" method="post" id="art_form" action="{{url('/seller/goods')}}">
+<div class="widget am-cf">
+    <div class="widget-head am-cf">
+        <div class="widget-title am-fl">修改美食</div>
+        <div class="widget-function am-fr">
+        </div>
+    </div>
+    <div class="widget-body  widget-body-lg am-fr">
+<form class="am-form tpl-form-line-form" method="post" id="art_form" action="{{url('/seller/goods/'.$data->gid)}}">
+<input type="hidden" name="_method" value="put">
   {{csrf_field()}}
     <div class="am-form-group">
         <label for="user-name" class="am-u-sm-3 am-form-label">美食名称</label>
@@ -20,10 +28,14 @@
         <label for="user-email" class="am-u-sm-3 am-form-label">菜品所属类</label>
         <div class="am-u-sm-9">
 			<select name="gcid" id="aa">
-				<option value="" selected disabled="">请选择</option>
-                <!-- @foreach($data as $k=>$v) -->
-				    <option value="" ></option>
-                <!-- @endforeach -->
+				
+                @foreach($goodsclass as $k=>$v)
+                    @if($data->gcid == $v->gcid)
+				        <option selected value="{{$v->gcid}}">{{$v->cname}}</option>
+                    @else
+                        <option value="{{$v->gcid}}">{{$v->cname}}</option>
+                    @endif 
+                @endforeach
 			</select>
             <!-- <small>发布时间为必填</small> -->
         </div>
@@ -31,7 +43,7 @@
     <div class="am-form-group">
         <label class="am-u-sm-3 am-form-label">单价 </label>
         <div class="am-u-sm-9">
-            <input type="number" min="0.01" step="0.01" placeholder="输入单价" name="gprice" id="gprice">
+            <input type="number" min="0.01" step="0.01" value="{{$data->gprice}}" name="gprice" id="gprice">
             <small>请输入单价,最多两位小数最大为9999</small>
         </div>
     </div>
@@ -40,17 +52,16 @@
         <div class="am-u-sm-9">
             <div class="am-form-group">
                 
-                    <img name="" id="pic" style="width:80px;height: 80px;display:none;">
+                    <img name="" src="/{{$data->gpic}}" id="pic" style="width:80px;height: 80px;">
                     <input type="file" name="file_upload" id="file_upload" value="">
-                    <input type="hidden" name="gpic" id="gpic" >
+                    <input  type="hidden" name="gpic" id="gpic" value="">
+                    
                     <script type="text/javascript">
                                 $(function () {
                                     $("#file_upload").change(function () {
-
                                         uploadImage();
                                     });
                                 });
-
                                 function uploadImage() {
 //                            判断是否有选择上传文件
                                     var imgPath = $("#file_upload").val();
@@ -80,7 +91,6 @@
 //                                    console.log(data);
                                    // alert("上传成功");
                                             $('#pic').attr('src','/'+data);
-                                            $('#pic').show();
                                             $('#gpic').val(data);
 
                                         },
@@ -96,11 +106,11 @@
         </div>
 	
     </div>
-    <div> <img src="" alt="" name="gpic" id="gpic" style="width:100px;display:none;" ></div>
+    
     <div class="am-form-group">
         <label for="user-weibo" class="am-u-sm-3 am-form-label">添加规格 </label>
         <div class="am-u-sm-9">
-            <input type="text" id="gstandard" placeholder="格式为: 大份,小份," name="gstandard">
+            <input type="text" id="gstandard" value="{{$data->gstandard}}" name="gstandard">
             <small>格式为: 大份,小份,</small>
             <div>
             </div>
@@ -109,7 +119,7 @@
 	<div class="am-form-group">
         <label for="user-weibo" class="am-u-sm-3 am-form-label">添加口味 </label>
         <div class="am-u-sm-9">
-            <input type="text" id="gtaste" placeholder="格式为: 孜然,胡椒," name="gtaste">
+            <input type="text" id="gtaste" value="{{$data->gtaste}}" name="gtaste">
             <small>格式为 :孜然,胡椒,</small>
             <div>
             </div>
@@ -122,6 +132,8 @@
         </div>
     </div>
 </form>
+<div>
+<div>
 <script>
     var caidan = false;
     var danjia = false;

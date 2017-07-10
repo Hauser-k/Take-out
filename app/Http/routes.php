@@ -82,6 +82,9 @@ Route::group(['prefix'=>'seller','namespace'=>'Seller','middleware'=>'seller.log
     Route::any('upload','GoodsController@upload');
     //验证表单
     Route::any('gnameajax','GoodsController@gnameajax');
+    //ajax 改变商品的状态 在售->售罄
+    Route::any('zaishou','GoodsController@zaishou');
+
     //订单管理
     Route::resource('order','OrderController');
     //评价

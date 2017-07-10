@@ -37,6 +37,7 @@ class GoodsController extends Controller
      */
     public function index(Request $request)
     {   
+       
         //获取session中的值
         // $value = Input::session()->get('user');
         $all = $request -> all();
@@ -45,9 +46,30 @@ class GoodsController extends Controller
         $join->on('goods.gcid', '=', 'goods_class.gcid')
                  ->where('goods.sid','=',Input::session()->get('user')->sid);
              });
-        //通过$value->sid筛选到本用户登录评价信息
-        $data = $data->paginate(2);  
-        return view('seller.goods.index',['data'=>$data,'request'=>$all]);
+        //如果有查询 则进入这区间 拼$data
+        if($request->has('fenleiming') || $request->has('gstatus')){
+            
+            $fenleiming = $request->input('fenleiming');
+            
+            if($fenleiming != null){
+                $data = $data->where('cname','like',$fenleiming);
+            }
+        
+            //如果传过来的是在售或售罄 
+            if($request->input('gstatus') == 1){
+                $data =  $data->where('gstatus','1');
+            }
+            if($request->input('gstatus') == 2){
+                $data =  $data->where('gstatus','2'); 
+            }
+        }     
+           
+
+            $data = $data->paginate(5);
+
+            return view('seller.goods.index',['data'=>$data,'request'=>$all]);
+
+        
     }
 
     /**
@@ -106,8 +128,11 @@ class GoodsController extends Controller
      */
     public function edit($id)
     {
-        $data = Goods::where('gid',$id);
-        return view('seller.goods.edit',['data'=>$data]);
+        $data = Goods::where('gid',$id)->first();
+        // dd($data);
+        $goodsclass = GoodsClass::where('sid',Input::session()->get('user')->sid)->get();
+        // dd($goodsclass);
+        return view('seller.goods.edit',compact('data','goodsclass'));
     }
 
     /**
@@ -118,8 +143,30 @@ class GoodsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
-    {
-        //
+    {   
+      
+        $goods = Goods::find($id);
+        $path = $goods->gpic;
+
+        if(empty($request->gpic)){
+           $input['gpic'] = $goods->gpic;
+        }else{
+            if($goods->gpic != ''){
+                unlink($path);
+            }
+            $input['gpic'] = $request->gpic;
+        }
+        //从请求中获取传过来的数据
+        $input = Input::except('_token','_method','file_upload');
+        // dd($input);
+        $re = $goods->update($input);
+
+        if($re){
+        //如果添加成功跳转到分类列表页
+            return redirect('seller/goods');
+        }else{
+            return back()->with('error','修改失败')->withInput();
+        }
     }
 
     /**
@@ -146,15 +193,19 @@ class GoodsController extends Controller
         }
         return $data;
     }
+   /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return 菜名是否存在
+     */
     public function gnameajax(Request $request)
     {   
         $gname = $request['gname'];
         $value = Input::session()->get('user');
         // return $data = $value->sid;
         $re =  Goods::where('gname',$gname)->where('sid',$value->sid)->first();
-//         // $re =  Goods::where('sid',$value->sid)->where('gid',$gname)->get();
-        
-// // //       0表示成功 其他表示失败
+    //0表示成功 其他表示失败
         
         if($re!=''){
             $data = [
@@ -165,6 +216,32 @@ class GoodsController extends Controller
             $data = [
                 'status'=>1,
                 'msg'=>'不存在！'
+            ];
+        }
+        return $data;
+    }
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return 点击按钮 点击在售 则 售罄 ;反之亦然;
+     */
+    //将状态修改为售罄
+    public function zaishou(Request $request)
+    {   
+
+        $gid = $request['gid'];
+        $status['gstatus']  = $request['status'];
+        $res = Goods::where('gid',$gid)->update($status);
+        if($res){
+            $data = [
+                'status'=>0,
+                'msg'=>'修改成功！'
+            ];
+        }else{
+            $data = [
+                'status'=>1,
+                'msg'=>'修改失败！'
             ];
         }
         return $data;
