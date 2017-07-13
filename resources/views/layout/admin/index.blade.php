@@ -304,6 +304,28 @@
                     </ul>
                 </li>
         </div>
+
+         <div id="mws-navigation">
+            <ul>
+                <li>
+                    <a href="#"><i class="icon-tree"></i>友情链接</a>
+                    <ul>
+                        <li><a href="{{url('admin/link/create')}}">添加链接</a></li>
+                        <li><a href="{{url('admin/link/')}}">链接列表</a></li>
+                    </ul>
+                </li>
+        </div>
+
+        <div id="mws-navigation">
+            <ul>
+                <li>
+                    <a href="#"><i class="icon-apple"></i>网站配置</a>
+                    <ul>
+                        <li><a href="{{url('admin/config/create')}}">添加配置项</a></li>
+                        <li><a href="{{url('admin/config/')}}">网站配置</a></li>
+                    </ul>
+                </li>
+        </div>
     </div>
 
 
