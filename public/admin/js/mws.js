@@ -51,7 +51,7 @@
 		/* Responsive Layout Script */
 		$("#mws-nav-collapse").on('click', function(e) {
 			$( '#mws-navigation > ul' ).slideToggle( 'normal', function() {
-				$(this).css('display', '').parent().toggleClass('toggled');
+				$(this).css('display','block').parent().toggleClass('toggled');
 			});
 			e.preventDefault();
 		});

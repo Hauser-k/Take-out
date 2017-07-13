@@ -138,7 +138,7 @@
     var kouwei = false;
     var fenlei = false;
     $('#gname').blur(function(){
-       
+
         
         var gname = $('#gname').val();
         if(gname==''){

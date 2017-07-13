@@ -32,7 +32,7 @@ Route::resource('/home/login','Home\LoginController');
 
 Route::group(['prefix'=>'home','namespace'=>'Home','middleware'=>'home.login'], function(){
     //注册
-    Route::resource('/home/register','Home\RegisterController');
+    Route::resource('register','RegisterController');
 });
 
 /**
@@ -72,6 +72,14 @@ Route::resource('/seller/login','Seller\LoginController');
 Route::group(['prefix'=>'seller','namespace'=>'Seller','middleware'=>'seller.login'], function(){
     //注册
     Route::resource('register','RegisterController');
+    //商家账号设置
+    Route::resource('setup','SetupController');
+    //商户设置验证表单-商户名
+    Route::any('exnameajax','SetupController@exnameajax');
+    //商户设置验证表单-门店地址图片
+    Route::any('eximageajax','SetupController@eximageajax');
+    //商户设置验证表单-商户logo
+    Route::any('setupajax','SetupController@setupajax');
     //商家用户个人中心
     Route::resource('index','IndexController');
     //菜品分类管理
@@ -80,7 +88,7 @@ Route::group(['prefix'=>'seller','namespace'=>'Seller','middleware'=>'seller.log
     Route::resource('goods','GoodsController');
     //验证上传图片
     Route::any('upload','GoodsController@upload');
-    //验证表单
+    //商品验证表单
     Route::any('gnameajax','GoodsController@gnameajax');
     //ajax 改变商品的状态 在售->售罄
     Route::any('zaishou','GoodsController@zaishou');
