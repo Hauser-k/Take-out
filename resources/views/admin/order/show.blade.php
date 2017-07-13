@@ -16,9 +16,7 @@
     <form action="{{url('/admin/order/{$id}')}}" method="get">
             <label>展示 
                 <select size="1" name="count" aria-controls="DataTables_Table_1">
-                    <option value="2" @if(!empty($request['count']) && $request['count'] == 2)  selected @endif>2</option>
-                        <option value="20" @if(!empty($request['count']) && $request['count'] == 20)  selected @endif>20</option>
-                        <option value="30" @if(!empty($request['count']) && $request['count'] == 30)  selected @endif>30</option>
+                    <option value="5" @if(!empty($request['count']) && $request['count'] == 5)  selected @endif>5</option>
                 </select>
              条目</label>
             </div>

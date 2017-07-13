@@ -21,7 +21,7 @@ class CollectionController extends Controller
         // $re = Collection::join('seller','collection.sid','=','seller.sid')->join('user','collection.uid','=','user.uid')->get();
         // dd($re);
        $arr = $request -> all();
-        $count = $request -> input('count',2);
+        $count = $request -> input('count',5);
         $search = $request -> input('search');
         $data = Collection::join('seller','collection.sid','=','seller.sid')->join('user','collection.uid','=','user.uid')->where('coid','like','%'.$search.'%')->paginate($count);
         //dd($data);

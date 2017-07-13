@@ -17,15 +17,13 @@
     <form action="{{url('/admin/order/create')}}" method="get">
             <label>展示 
                 <select size="1" name="count" aria-controls="DataTables_Table_1">
-                    <option value="2" @if(!empty($request['count']) && $request['count'] == 2)  selected @endif>2</option>
-                        <option value="20" @if(!empty($request['count']) && $request['count'] == 20)  selected @endif>20</option>
-                        <option value="30" @if(!empty($request['count']) && $request['count'] == 30)  selected @endif>30</option>
+                    <option value="5" @if(!empty($request['count']) && $request['count'] == 5)  selected @endif>5</option>   
                 </select>
              条目</label>
             </div>
         <div class="dataTables_filter" id="DataTables_Table_1_filter">
       <label>订单号: <input type="text" name="search1" value="{{ $request['search'] or ''}}" /></label>
-      <label>状态: <input type="text" name="search2" value="{{ $request['search'] or ''}}" /></label>
+      <label>最终价格: <input type="text" name="search2" value="{{ $request['search'] or ''}}" /></label>
       <button>搜索</button>
 
     </div>
@@ -51,6 +49,8 @@
                 </th>
                 <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending" style="width: 111px;">最终价格
                 </th>
+                <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending" style="width: 111px;">留言详情
+                </th>
             </tr>
          </thead>
             @foreach($data as $k => $v)
@@ -64,6 +64,7 @@
                        <td>{{ $v -> ofree }}</td>
                        <td>{{ $v -> ocoupon }}</td>
                        <td>{{ $v -> endprice }}</td>
+                       <td><button id="but" class="btn btn-primary" width="50px"><a href="{{url('/admin/order/'.$v->odid.'/edit')}}">查看</a></button></td>
                    </tr>       
                @endforeach
         </table>
@@ -72,5 +73,6 @@
         {!! $data->appends(['count'=>$count])->render() !!}
      </div>
 </div>
+
 
 @endsection

@@ -3,11 +3,14 @@
 namespace App\Http\Controllers\Home;
 
 use Illuminate\Http\Request;
-
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Http\Model\GoodsClass;
+use App\Http\Model\SellerDetail;
+use App\Http\Model\Order;
+use App\Http\Model\Goods;
 
-class LoginController extends Controller
+class shangjiaController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,7 +20,30 @@ class LoginController extends Controller
     public function index()
     {
         //
-        echo 1111111;
+        $id = 1;
+        $re = SellerDetail::find($id);
+        $or = Order::all();
+        // dd($or);
+        $ftime = [];
+        // dd($ftime);
+        $gtime = [];
+        foreach($or as $k => $v){
+            $ftime[] = $v['ftime'];
+            $gtime[] = $v['gtime'];
+        }
+        // 求出数组中一共有多少条
+        $a = count($ftime);
+        // dd($ftime);
+        $f = array_sum($ftime);
+        $g = array_sum($gtime);
+        // 求所有平均数
+        $b = $f - $g; 
+        $ptime = $b / $a;
+        $data = GoodsClass::find($id);
+        $goods = Goods::where('gid',$id)->get();
+
+        // dd($goods);
+        return view('home.shangjia',['data'=>$data,'re'=>$re,'ptime'=>$ptime,'goods'=>$goods]);
     }
 
     /**
@@ -50,6 +76,8 @@ class LoginController extends Controller
     public function show($id)
     {
         //
+        // echo 11111;
+        return view('home.pingjia');
     }
 
     /**

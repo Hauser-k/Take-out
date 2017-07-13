@@ -37,6 +37,11 @@
     @section('css')
     @show
     <title>@section('title')   @show</title>
+	<style>
+		.opend{
+			display:none;
+		}
+	</style>
 
 </head>
 
@@ -225,28 +230,30 @@
             <ul>
                 <li>
                     <a href="#"><i class="icon-user"></i>用户列表</a>
-                    <ul>
+                    <ul class="opend">
                         <li><a href="{{url('admin/user')}}">查看用户</a></li>
                         <li><a href="{{url('admin/user/create')}}">添加用户</a></li>
                     </ul>
                 </li>
+			</ul>
         </div>
         <div id="mws-navigation">
             <ul>
                 <li>
                     <a href="#"><i class="icon-align-center"></i> 商家分类</a>
-                    <ul>
+                    <ul class="opend">
                         <li><a href="{{url('admin/sellerclass/create')}}">分类添加</a></li>
                         <li><a href="{{url('admin/sellerclass/')}}">分类列表</a></li>
                     </ul>
                 </li>
+			</ul>
         </div>
         <div id="mws-navigation">
             <ul>
 
                 <li>
                     <a href="#"><i class="icon-add-contact"></i> 商家列表</a>
-                    <ul>
+                    <ul class="opend">
                         <li><a href="{{url('admin/seller')}}">查看商家</a></li>
                     </ul>
                 </li>
@@ -256,7 +263,7 @@
 
                 <li>
                     <a href="#"><i class="icon-file"></i> 订单信息</a>
-                    <ul>
+                    <ul class="opend">
                         <li><a href="{{url('/admin/order')}}">订单查看</a></li> 
                         <li><a href="{{url('/admin/order/{id}')}}">订单商品</a></li> 
                         <li><a href="{{url('/admin/order/create')}}">订单配送</a></li> 
@@ -268,7 +275,7 @@
 
                 <li>
                     <a href="#"><i class="icon-list-2"></i> 评价列表</a>
-                    <ul>
+                    <ul class="opend">
                         <li><a href="{{url('/admin/eval')}}">评价查看</a></li> 
 
                     </ul>
@@ -279,7 +286,7 @@
 
                 <li>
                     <a href="#"><i class="icon-snowflake"></i> 收藏列表</a>
-                    <ul>
+                    <ul class="opend">
                         <li><a href="{{url('/admin/collection')}}">收藏查看</a></li> 
                     </ul>
                 </li>
@@ -289,7 +296,7 @@
 
                 <li>
                     <a href="#"><i class="icon-users"></i> 商家审核</a>
-                    <ul>
+                    <ul class="opend">
                         <li><a href="{{url('/admin/examine')}}">商家审核</a></li>
                     </ul>
                 </li>
@@ -299,7 +306,7 @@
 
                 <li>
                     <a href="#"><i class="icon-file-zip"></i> 反馈信息</a>
-                    <ul>
+                    <ul class="opend">
                         <li><a href="#">信息查看</a></li>
                     </ul>
                 </li>
@@ -309,7 +316,7 @@
 
                 <li>
                     <a href="#"><i class="icon-file-zip"></i>BOSS请入</a>
-                    <ul>
+                    <ul class="opend">
                         <li><a href="{{url('admin/adminuser/create')}}">添加管理</a></li>
                         <li><a href="{{url('admin/adminuser')}}">管理查看</a></li>
 

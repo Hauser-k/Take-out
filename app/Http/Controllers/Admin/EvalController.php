@@ -31,12 +31,27 @@ class EvalController extends Controller
 
         $request -> all();
         $arr = $request -> all();
-        $count = $request -> input('count',2);
+        $count = $request -> input('count',5);
 
         $data = Evals::join('seller','eval.sid','=','seller.sid')->join('user','eval.uid','=','user.uid')->where($wh)->paginate($count);
         $input['art_time'] = time();
         return view('admin.eval.eval',['data'=>$data,'count'=>$count]);
     }
 
+
+ /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        
+        // 当前评价信息
+        $data = Evals::find($id);
+       
+        return view('admin.eval.edit',['data'=>$data]);
+    }
    
 }
