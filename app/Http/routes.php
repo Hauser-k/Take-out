@@ -37,7 +37,9 @@ Route::resource('/home/login','Home\LoginController');
 Route::group(['prefix'=>'home','namespace'=>'Home'], function(){
     //注册
     Route::resource('register','RegisterController');
+	//首页
     Route::resource('index','IndexController');
+
 });
 
 /**
@@ -49,7 +51,7 @@ Route::resource('/admin/login','Admin\LoginController');
 Route::resource('/admin/link','Admin\LinkController');
 //网站配置
 Route::resource('/admin/config','Admin\ConfigController');
-
+//修改网站配置排序
 Route::any('admin/config/changeorder','Admin\ConfigController@changeOrder');
 //    网站配置内容修改路由
  Route::any('admin/config/changecontent','Admin\ConfigController@changeContent');
@@ -97,6 +99,14 @@ Route::group(['prefix'=>'seller','namespace'=>'Seller','middleware'=>'seller.log
     Route::resource('register','RegisterController');
     //退出登录
     Route::any('quit','LoginController@quit');
+    //商家账号设置
+    Route::resource('setup','SetupController');
+    //商户设置验证表单-商户名
+    Route::any('exnameajax','SetupController@exnameajax');
+    //商户设置验证表单-门店地址图片
+    Route::any('eximageajax','SetupController@eximageajax');
+    //商户设置验证表单-商户logo
+    Route::any('setupajax','SetupController@setupajax');
     //商家用户个人中心
     Route::resource('index','IndexController');
     //菜品分类管理

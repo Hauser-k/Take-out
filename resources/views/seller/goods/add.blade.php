@@ -139,6 +139,7 @@
     var fenlei = false;
     var tupian = false;
     $('#gname').blur(function(){
+
         var gname = $('#gname').val();
         if(gname==''){
             layer.msg('内容不能为空',{icon:6});

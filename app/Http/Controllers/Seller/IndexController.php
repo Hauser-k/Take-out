@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Seller;
 
+use App\Http\Model\Seller;
 use App\Http\Model\SellerDetail;
 use Illuminate\Http\Request;
 use Validator;
@@ -65,9 +66,10 @@ class IndexController extends Controller
      */
     public function edit($id)
     {
-        $seller = SellerDetail::where('sid',$id)->first();
+        $seller = Seller::where('sid',$id)->first();
+        $sellerdetail = SellerDetail::where('sid',$id)->first();
 //        dd($seller);
-        return view('seller/information/index',['seller'=>$seller]);
+        return view('seller/information/index',['seller'=>$seller,'sellerdetail'=>$sellerdetail]);
     }
 
     /**
@@ -79,9 +81,11 @@ class IndexController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $input =  $request->except(['_token','_method']);
+        $input =  $request->except(['_token','_method','status']);
+        $input1 = $request->only(['status']);
+
 //        $input['sid'] = 1;
-//        dd($input);
+//       dd($input);
         //验证规则
         if($input['etime']<=$input['stime']){
             return back()->with('error','结束时间不可以小于或等于开始时间');
@@ -109,6 +113,14 @@ class IndexController extends Controller
         $validator =  Validator::make($input,$role,$mess);
         if($validator->passes()){
 
+            if(session('user')->status != $input1['status']){
+                $res = Seller::where('sid',$id)->update($input1);
+                if($res){
+                    return redirect('seller/index/'.$id.'/edit')->with('success','修改成功');
+                }else{
+                    return back()->with('error','修改失败');
+                }
+            }
             $re = SellerDetail::where('sid',$id)->update($input);
             if($re){
                 return redirect('seller/index/'.$id.'/edit')->with('success','修改成功');
@@ -119,6 +131,7 @@ class IndexController extends Controller
 //          如果没有通过表单验证
             return back()->withErrors($validator);
         }
+
     }
 
     /**

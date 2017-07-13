@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="{{asset('assets/css/amazeui.datatables.min.css')}}" />
     <link rel="stylesheet" href="{{asset('assets/css/app.css')}}">
     <link rel="stylesheet" href="{{asset('assets/css/hauser.css')}}">
-    <link rel="stylesheet" href="{{asset('assets/css/bootstrap.css')}}">
+    <link rel="stylesheet" href="{{asset('bootstrap-3.3.7-dist/css/bootstrap.css')}}">
     <script src="{{asset('assets/js/jquery.min.js')}}"></script>
     <script type="text/javascript" src="{{asset('layer/layer.js')}}"></script>
 
@@ -88,7 +88,7 @@
                                 <li class="tpl-dropdown-menu-messages">
                                     <a href="javascript:;" class="tpl-dropdown-menu-messages-item am-cf">
                                         <div class="menu-messages-ico">
-                                            <img src="{{asset('assets/img/user02.png')}}" alt="">
+                                            <img src="{{asset('/assets/img/user02.png')}}" alt="">
                                         </div>
                                         <div class="menu-messages-content">
                                             <div class="menu-messages-content-title">
@@ -191,17 +191,17 @@
             <div class="tpl-sidebar-user-panel">
                 <div class="tpl-user-panel-slide-toggleable">
                     <div class="tpl-user-panel-profile-picture">
-                        <img src="{{asset('assets/img/user04.png')}}" alt="">
+                        <img src="{{asset('/seller/upload/')}}/{{ session('logo') }}" alt="">
                     </div>
                     <span class="user-panel-logged-in-text">
               <i class="am-icon-circle-o am-text-success tpl-user-panel-status-icon"></i>
-              禁言小张
+              kfc
           </span>
-                    <a href="javascript:;" class="tpl-user-panel-action-link"> <span class="am-icon-pencil"></span> 账号设置</a>
+                    <a href="{{ asset('seller/setup/') }}/{{ session('user')->sid }}/edit" class="tpl-user-panel-action-link"> <span class="am-icon-pencil"></span> 账号设置</a>
                 </div>
             </div>
                 <li class="sidebar-nav-link">
-                    <a href="{{ url('seller/index/1/edit') }}">
+                    <a href="{{ asset('seller/index/') }}/{{ session('user')->sid }}/edit">
                         <i class="am-icon-clone sidebar-nav-link-logo"></i>我的店铺
                     </a>
                 </li>

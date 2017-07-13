@@ -38,30 +38,39 @@
                             </div>
                             <div class="widget-body am-fr">
 
-                                <form class="am-form tpl-form-border-form" action="{{url('seller/index/1')}}" method="post">
+                                <form class="am-form tpl-form-border-form" action="{{url('seller/index/')}}/{{ session('user')->sid }}" method="post">
                                     {{csrf_field()}}
                                     <input type="hidden" name="_method" value="put">
                                     <div class="am-form-group">
                                         <label for="user-phone" class="am-u-sm-12 am-form-label am-text-left">营业时间 <span class="tpl-form-line-small-title">Business Hours</span></label>
                                         <label class="am-form-label am-text-left" for="age" style="margin-top:20px;">
                                             <span style="float:left;margin-left:20px;">开始时间</span>
-                                            <input type="number" name="stime" id="time1" min="0" max="24" step="1" value="{{ $seller->stime }}" style="color:#000;width:60px;float:left;">
+                                            <input type="number" name="stime" id="time1" min="0" max="24" step="1" value="{{ $sellerdetail->stime }}" style="color:#000;width:60px;float:left;">
                                             <span style="float:left;">结束时间</span>
-                                            <input type="number" name="etime" id="time2" min="0" max="24" step="1" value="{{ $seller->etime }}" style="color:#000;width:60px;float:left;">
+                                            <input type="number" name="etime" id="time2" min="0" max="24" step="1" value="{{ $sellerdetail->etime }}" style="color:#000;width:60px;float:left;">
+                                        </label>
+                                    </div>
+
+                                    <div class="am-form-group">
+                                        <label for="user-phone" class="am-u-sm-12 am-form-label am-text-left">营业状态 <span class="tpl-form-line-small-title">Operating Status</span></label>
+                                        <label class="am-form-label am-text-left" for="age" style="margin-top:20px;">
+
+                                            <input type="radio" name="status" id="open" value="2" @if($seller->status == 2) checked @endif style="color:#000;width:60px;float:left;"><span style="float:left;">正常营业</span>
+                                            <input type="radio" name="status" id="close" value="4" @if($seller->status == 4) checked @endif style="color:#000;width:60px;float:left;"><span style="float:left;">歇业</span>
                                         </label>
                                     </div>
 
                                     <div class="am-form-group">
                                         <label for="user-weibo" class="am-u-sm-12 am-form-label  am-text-left">商铺地址 <span class="tpl-form-line-small-title">Addr</span></label>
                                         <div class="am-u-sm-12">
-                                            <input disabled type="text" id="user-weibo" name="exaddr" class="am-margin-top-xs" value="{{ $seller->exarea.$seller->exaddr }}">
+                                            <input disabled type="text" id="user-weibo" name="exaddr" class="am-margin-top-xs" value="{{ $sellerdetail->exarea.$sellerdetail->exaddr }}">
                                         </div>
                                     </div>
 
                                     <div class="am-form-group">
                                         <label for="user-weibo" class="am-u-sm-12 am-form-label  am-text-left">联系电话 <span class="tpl-form-line-small-title">Tel</span></label>
                                         <div class="am-u-sm-12">
-                                            <input type="text" id="user-weibo" name="extel" class="am-margin-top-xs" value="{{ $seller->extel }}">
+                                            <input type="text" id="user-weibo" name="extel" class="am-margin-top-xs" value="{{ $sellerdetail->extel }}">
                                         </div>
                                     </div>
 
