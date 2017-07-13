@@ -6,8 +6,9 @@ use Illuminate\Http\Request;
 use Input;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use App\Http\Model\SellerClass;
-class SellerClassController extends Controller
+use App\Http\Model\Links;
+
+class LinkController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,16 +16,17 @@ class SellerClassController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index(Request $request)
-    {    
-         // $arr = $request -> all();
-        // dd($arr);
-        
-         $count = $request -> input('count',10);
+    {   
+        $count = $request -> input('count',10);
+
          $search = $request -> input('search','');
-         $data = SellerClass::where('csname','like','%'.$search.'%')->paginate($count);
+         // dd($search);
+         $data = Links::where('lname','like','%'.$search.'%')->paginate($count);
         // dd($data);
-          return view('admin.sellerclass.index',['data'=>$data,'count'=>$count,'search'=>$search]);
+          return view('admin/link/index',['data'=>$data,'count'=>$count,'search'=>$search]);
+
     }
+    
 
     /**
      * Show the form for creating a new resource.
@@ -33,8 +35,7 @@ class SellerClassController extends Controller
      */
     public function create()
     {
-        return view('admin/sellerclass/add');
-        // echo '111';
+       return view('admin/link/add');
     }
 
     /**
@@ -45,27 +46,22 @@ class SellerClassController extends Controller
      */
     public function store(Request $request)
     {
-            $input = Input::except('_token');
 
-        // dd($input);
-        // $res = SellerClass::where('csname',$input['csname'])->first();
-       
-       // dd($res);
-        // dd($name);
-       if(empty($input['csname'])){
+        // echo 11;
+          $input = Input::except('_token');
+          // dd($input);
+        if(empty($input['lname'])){
             return back() -> with('error','名称不能为空');
         }   
-              $res = SellerClass::where('csname',$input['csname'])->first();
-            if(!$res==$input['csname']){
-                  $re = SellerClass::create($input);
-                  return redirect('/admin/sellerclass/create') -> with('success','添加成功');
+              $res = Links::where('lname',$input['lname'])->first();
+            if(!$res==$input['lname']){
+                  $re = Links::create($input);
+                  return redirect('/admin/link/') -> with('success','添加成功');
         }else{
-            return back()->with('error','用户已存在');
+            return back()->with('error','链接已存在');
 
         }
-    
-}
-
+    }
     /**
      * Display the specified resource.
      *
@@ -84,10 +80,10 @@ class SellerClassController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
-    {   
-        //找到要修改的用户信息 传给修改列表
-        $data = SellerClass::where('csid',$id)->first();
-        return view('admin/sellerclass/edit',compact('data'));
+    {
+          //找到要修改的用户信息 传给修改列表
+        $data = Links::where('lid',$id)->first();
+        return view('admin/link/edit',compact('data'));
     }
 
     /**
@@ -99,11 +95,11 @@ class SellerClassController extends Controller
      */
     public function update(Request $request, $id)
     {
-        // dd($request->all());
+          // dd($request->all());
         $input = $request->except(['_token',"_method"]);
-        $re = SellerClass::where('csid',$id)->update($input);
+        $re = Links::where('lid',$id)->update($input);
         if($re){
-            return redirect('admin/sellerclass');
+            return redirect('admin/link');
         }else{
             return back()->with('error','修改失败');
         }
@@ -117,7 +113,7 @@ class SellerClassController extends Controller
      */
     public function destroy($id)
     {
-        $re = SellerClass::where('csid',$id)->delete();
+        $re = Links::where('lid',$id)->delete();
 
         if($re){
             $data = [

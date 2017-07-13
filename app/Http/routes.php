@@ -41,6 +41,14 @@ Route::group(['prefix'=>'home','namespace'=>'Home'], function(){
  */
 //登录
 Route::resource('/admin/login','Admin\LoginController');
+//友情链接
+Route::resource('/admin/link','Admin\LinkController');
+//网站配置
+Route::resource('/admin/config','Admin\ConfigController');
+
+Route::any('admin/config/changeorder','Admin\ConfigController@changeOrder');
+//    网站配置内容修改路由
+ Route::any('admin/config/changecontent','Admin\ConfigController@changeContent');
 
 Route::group(['prefix'=>'admin','namespace'=>'Admin','middleware'=>'admin.login'], function(){
     //普通用户管理
