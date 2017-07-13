@@ -14,12 +14,13 @@
     <link rel="apple-touch-icon-precomposed" href="{{asset('assets/i/app-icon72x72@2x.png')}}">
     <meta name="apple-mobile-web-app-title" content="Amaze UI" />
     <script src="{{asset('assets/js/echarts.min.js')}}"></script>
-    <script src="{{asset('bootstrap-3.3.7-dist/js/bootstrap.min.js')}}"></script>
+    <!-- <script src="{{asset('bootstrap-3.3.7-dist/js/bootstrap.min.js')}}"></script> -->
     <link rel="stylesheet" href="{{asset('assets/css/amazeui.min.css')}}" />
     <link rel="stylesheet" href="{{asset('assets/css/amazeui.datatables.min.css')}}" />
     <link rel="stylesheet" href="{{asset('assets/css/app.css')}}">
     <link rel="stylesheet" href="{{asset('assets/css/hauser.css')}}">
     <link rel="stylesheet" href="{{asset('bootstrap-3.3.7-dist/css/bootstrap.css')}}">
+  
     <script src="{{asset('assets/js/jquery.min.js')}}"></script>
     <script type="text/javascript" src="{{asset('layer/layer.js')}}"></script>
 
@@ -55,17 +56,17 @@
                     <ul>
                         <!-- 欢迎语 -->
                         <li class="am-text-sm tpl-header-navbar-welcome">
-                            <a href="javascript:;">欢迎你, <span></span> </a>
+                            <a href="javascript:;">欢迎你,{{session('seller_user')->sname}}<span></span> </a>
                         </li>
 
                         <!-- 新邮件 -->
-                        <!-- <li class="am-dropdown tpl-dropdown" data-am-dropdown> -->
+                        <li class="am-dropdown tpl-dropdown" data-am-dropdown>
                            <!--  <a href="javascript:;" class="am-dropdown-toggle tpl-dropdown-toggle" data-am-dropdown-toggle>
                                 <i class="am-icon-envelope"></i>
                                 <span class="am-badge am-badge-success am-round item-feed-badge">4</span>
                             </a> -->
                             <!-- 弹出列表 -->
-                        <!--     <ul class="am-dropdown-content tpl-dropdown-content">
+                            <ul class="am-dropdown-content tpl-dropdown-content">
                                 <li class="tpl-dropdown-menu-messages">
                                     <a href="javascript:;" class="tpl-dropdown-menu-messages-item am-cf">
                                         <div class="menu-messages-ico">
@@ -106,17 +107,17 @@
                                     </a>
                                 </li>
                             </ul>
-                        </li> -->
+                        </li>
 
                         <!-- 新提示 -->
-                       <!--  <li class="am-dropdown" data-am-dropdown>
+                        <li class="am-dropdown" data-am-dropdown>
                             <a href="javascript:;" class="am-dropdown-toggle" data-am-dropdown-toggle>
                                 <i class="am-icon-bell"></i>
                                 <span class="am-badge am-badge-warning am-round item-feed-badge">5</span>
-                            </a> -->
+                            </a>
 
                             <!-- 弹出列表 -->
-                            <!-- <ul class="am-dropdown-content tpl-dropdown-content">
+                            <ul class="am-dropdown-content tpl-dropdown-content">
                                 <li class="tpl-dropdown-menu-notifications">
                                     <a href="javascript:;" class="tpl-dropdown-menu-notifications-item am-cf">
                                         <div class="tpl-dropdown-menu-notifications-title">
@@ -127,8 +128,8 @@
                                             12分钟前
                                         </div>
                                     </a>
-                                </li> -->
-                                <!-- <li class="tpl-dropdown-menu-notifications">
+                                </li>
+                                <li class="tpl-dropdown-menu-notifications">
                                     <a href="javascript:;" class="tpl-dropdown-menu-notifications-item am-cf">
                                         <div class="tpl-dropdown-menu-notifications-title">
                                             <i class="am-icon-star"></i>
@@ -138,8 +139,8 @@
                                             30分钟前
                                         </div>
                                     </a>
-                                </li> -->
-                               <!--  <li class="tpl-dropdown-menu-notifications">
+                                </li>
+                                <li class="tpl-dropdown-menu-notifications">
                                     <a href="javascript:;" class="tpl-dropdown-menu-notifications-item am-cf">
                                         <div class="tpl-dropdown    -menu-notifications-title">
                                             <i class="am-icon-folder-o"></i>
@@ -149,16 +150,16 @@
                                             1天前
                                         </div>
                                     </a>
-                                </li> -->
+                                </li>
 
-<!-- 
+
                                 <li class="tpl-dropdown-menu-notifications">
                                     <a href="javascript:;" class="tpl-dropdown-menu-notifications-item am-cf">
                                         <i class="am-icon-bell"></i> 进入列表…
                                     </a>
                                 </li>
                             </ul>
-                        </li> -->
+                        </li>
 
                         <!-- 退出 -->
                         <li class="am-text-sm">
@@ -191,17 +192,17 @@
             <div class="tpl-sidebar-user-panel">
                 <div class="tpl-user-panel-slide-toggleable">
                     <div class="tpl-user-panel-profile-picture">
-                        <img src="{{asset('/seller/upload/')}}/{{ session('logo') }}" alt="">
+                        <img src="{{asset('/uploads/')}}/{{ session('seller_detail')->slogo }}" alt="">
                     </div>
                     <span class="user-panel-logged-in-text">
               <i class="am-icon-circle-o am-text-success tpl-user-panel-status-icon"></i>
               kfc
           </span>
-                    <a href="{{ asset('seller/setup/') }}/{{ session('user')->sid }}/edit" class="tpl-user-panel-action-link"> <span class="am-icon-pencil"></span> 账号设置</a>
+                    <a href="{{ asset('seller/setup/') }}/{{ session('seller_user')->sid }}/edit" class="tpl-user-panel-action-link"> <span class="am-icon-pencil"></span> 账号设置</a>
                 </div>
             </div>
                 <li class="sidebar-nav-link">
-                    <a href="{{ asset('seller/index/') }}/{{ session('user')->sid }}/edit">
+                    <a href="{{ asset('seller/index/') }}/{{ session('seller_user')->sid }}/edit">
                         <i class="am-icon-clone sidebar-nav-link-logo"></i>我的店铺
                     </a>
                 </li>
