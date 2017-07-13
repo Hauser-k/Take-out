@@ -25,13 +25,11 @@ class IndexController extends Controller
         //查出所有数据添加到页面中
 
         $data = SellerClass::get();
-
-
         $gooder= DB::table('seller')
             ->join('seller_detail', 'seller.sid', '=', 'seller_detail.sid')
             ->select('seller_detail.sfee','seller_detail.exname','seller_detail.slogo','seller_detail.sdelfee')
             ->get();
-
+        dd($gooder);
          return view('home/index',compact('data','gooder'));
     }
 
@@ -66,6 +64,8 @@ class IndexController extends Controller
     public function show($id)
     {
         //
+
+        return view('home/index',compact('res'));
     }
 
     /**
