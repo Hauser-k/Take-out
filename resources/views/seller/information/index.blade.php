@@ -38,7 +38,7 @@
                             </div>
                             <div class="widget-body am-fr">
 
-                                <form class="am-form tpl-form-border-form" action="{{url('seller/index/')}}/{{ session('user')->sid }}" method="post">
+                                <form class="am-form tpl-form-border-form" action="{{url('seller/index/')}}/{{ session('seller_user')->sid }}" method="post">
                                     {{csrf_field()}}
                                     <input type="hidden" name="_method" value="put">
                                     <div class="am-form-group">

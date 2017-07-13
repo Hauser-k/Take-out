@@ -26,7 +26,7 @@ class LoginController extends Controller
      */
     public function index()
     {
-        //
+        
         return view('seller.login'); 
     }
     
@@ -79,6 +79,7 @@ class LoginController extends Controller
             if($request->input('name')){
                 Cookie::make('xinxi', $user, 60000);
             }
+            
             return view('seller.index');
         }
         

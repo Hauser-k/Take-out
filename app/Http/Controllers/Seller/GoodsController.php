@@ -21,13 +21,13 @@ class GoodsController extends Controller
         $file = Input::file('file_upload');
         if($file->isValid()) {
             $entension = $file->getClientOriginalExtension();//上传文件的后缀名
-            $newName = date('YmdHis') . mt_rand(1000, 9999) . '.' . $entension;
+            $newName = date('YmdHis').mt_rand(1000,9999).'.'.$entension;
 
         //将图片上传到本地服务器
-            $path = $file->move(public_path() . '/uploads', $newName);
+            $path = $file->move(public_path().'/uploads/',$newName);
         //返回文件的上传路径
             $filepath = $newName;
-            return $filepath;
+            return $newName;
         }
     }
     /**
@@ -66,7 +66,7 @@ class GoodsController extends Controller
            
 
             $data = $data->paginate(5);
-
+         
             return view('seller.goods.index',['data'=>$data,'request'=>$all]);
 
         
