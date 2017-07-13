@@ -26,14 +26,16 @@
 
     <link rel="stylesheet" href="{{asset('home/css/feedback.css')}}" />
     <link rel="stylesheet" href="{{asset('home/css/global.css')}}" />
-	<link rel="stylesheet" href="{{asset('home/css/home.css')}}" />
-	<link rel="stylesheet" href="{{asset('home/css/preview.css')}}" />
+    <link rel="stylesheet" href="{{asset('home/css/home.css')}}" />
+    <link rel="stylesheet" href="{{asset('home/css/preview.css')}}" />
     <link rel="stylesheet" href="{{asset('home/css/list.css')}}" />
-      <link rel="stylesheet" href="{{asset('home/css/contactus_526869ef.css')}}" />
-      <link rel="stylesheet" href="{{asset('home/css/result_f27fc3fe.css')}}" />
-      <link rel="stylesheet" href="{{asset('home/css/result.css')}}" />
-   @section('css')
-   
+
+    <link rel="stylesheet" href="{{asset('home/css/contactus_526869ef.css')}}" />
+    <link rel="stylesheet" href="{{asset('home/css/result_f27fc3fe.css')}}" />
+    <link rel="stylesheet" href="{{asset('home/css/result.css')}}" />
+    <script src="{{asset('assets/js/jquery.min.js')}}"></script>
+
+
 
     <!-- <script>
       (function(i, s, o, g, r, a, m) {
@@ -153,8 +155,11 @@
               <a href="./ruzhujiameng.php" class="ca-lightgrey"><span>入驻加盟</span></a>
             </div>
             <div class="search-box fr">
-              <input type="text" class="header-search fl" placeholder="搜索商家，美食" />
-              <a href="javascript:;" class="doSearch fr" ></a>
+            <form action="" id="myform">
+              <input type="text" class="header-search fl" id="inp" value="" placeholder="搜索商家，美食" />
+              <a href="javascript:;" class="doSearch fr" type="submit" id="btn"></a>
+              <input type="submit"  class="doSearch fr" >
+              </form>
               <div class="result-box">
                 <div class="result-left fl">
                   <div class="rest-words ct-black">餐厅</div>
@@ -237,6 +242,17 @@
     var forbiddenWords = ['习大大', '习达达', '习哒哒', '习近平', '彭麻麻', '彭妈妈', '彭丽媛'];
     </script> -->
   <!--   <script type="text/javascript" data-main="http://xs01.meituan.net/waimai_web/js/page/contact/contactus_e5484b6c" src=""></script> -->
+  <script>
+      $('#myform').submit(function(){
+        alert(1);
+        var inp = $('#inp').val();
+        $.get('/home/search',{name:inp},function(data){
+          if(data == 1){
+            alert('未找到');
+          }
+        })
+      })
+  </script>
 </body>
 
 </html>

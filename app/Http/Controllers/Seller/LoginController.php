@@ -11,6 +11,7 @@ use App\Http\Controllers\Controller;
 use Input;
 use Validator;
 use App\Http\Model\Seller;
+use App\Http\Model\SellerDetail;
 use Illuminate\Support\Facades\Crypt;
 //引用对应的命名空间
 use Gregwar\Captcha\CaptchaBuilder;
@@ -36,7 +37,7 @@ class LoginController extends Controller
      */
     public function store(Request $request)
     {
-      // dd(1);
+      
        $input = Input::except('_token');
        
        $roles = [
@@ -62,22 +63,34 @@ class LoginController extends Controller
             }
             //验证是否有用户
             $user = Seller::where('sname',$input['sname']) -> first();
-
+            
             // if(!$user || ($input['spwd']  != Crypt::decrypt($user->spwd)) ){
             if(!$user || ($input['spwd']  != ($user->spwd)) ){
               return back()->with('errors','用户名或密码错误')->withInput();
             }
-            // if($input['spwd']  != Crypt::decrypt($user->spwd)){
-            //   return back()->with('errors','密码错误')->withInput();
-            // }
+            
             //将用户信息添加到session中
-            session(['user'=>$user]);
-            //登录
-            //
-            // echo 1111;
+            session(['seller_user'=>$user]);
+            //商家详细信息
+            $seller_detail = SellerDetail::where('sid',$user->sid)->first();
+            // 将商家详情表存到session中
+            session(['seller_detail'=>$seller_detail]);
+            //如果选中 记住密码 将信息保存到cookie中
+            if($request->input('name')){
+                Cookie::make('xinxi', $user, 60000);
+            }
             return view('seller.index');
         }
         
     }
+    // 退出
+   //退出登录
+    public function quit()
+    {
+    // 清空session
+        session(['user'=>null]);
+        return redirect('/seller/login');
+    }
+   
   
 }

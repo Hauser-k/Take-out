@@ -14,7 +14,7 @@ use Input;
 
 class GoodsController extends Controller
 {   
-     public function upload()
+    public function upload()
     {
 
         //将上传文件移动到制定目录，并以新文件名命名
@@ -26,7 +26,7 @@ class GoodsController extends Controller
         //将图片上传到本地服务器
             $path = $file->move(public_path() . '/uploads', $newName);
         //返回文件的上传路径
-            $filepath = 'uploads/' . $newName;
+            $filepath = $newName;
             return $filepath;
         }
     }
@@ -44,7 +44,7 @@ class GoodsController extends Controller
         //连表查询 
         $data = Goods::join('goods_class',function ($join) {
         $join->on('goods.gcid', '=', 'goods_class.gcid')
-                 ->where('goods.sid','=',Input::session()->get('user')->sid);
+                 ->where('goods.sid','=',Input::session()->get('seller_user')->sid);
              });
         //如果有查询 则进入这区间 拼$data
         if($request->has('fenleiming') || $request->has('gstatus')){
@@ -52,7 +52,7 @@ class GoodsController extends Controller
             $fenleiming = $request->input('fenleiming');
             
             if($fenleiming != null){
-                $data = $data->where('cname','like',$fenleiming);
+                $data = $data->where('gname','like',$fenleiming);
             }
         
             //如果传过来的是在售或售罄 
@@ -79,9 +79,9 @@ class GoodsController extends Controller
      */
     public function create()
     {   
-        $value = Input::session()->get('user');
+        $value = Input::session()->get('seller_user');
         $data =  GoodsClass::where('sid',$value->sid)->get();
-       
+     
         return view('seller.goods.add',['data'=>$data]);
     }
 
@@ -95,7 +95,7 @@ class GoodsController extends Controller
     {   
 
         $input = Input::except('_token','file_upload');
-        $input['sid'] = Input::session('')->get('user')->sid;
+        $input['sid'] = Input::session('')->get('seller_user')->sid;
         $input['gstatus'] = '1';
        
         $re = Goods::create($input);
@@ -129,8 +129,8 @@ class GoodsController extends Controller
     public function edit($id)
     {
         $data = Goods::where('gid',$id)->first();
-        // dd($data);
-        $goodsclass = GoodsClass::where('sid',Input::session()->get('user')->sid)->get();
+        // dd($data->gid);
+        $goodsclass = GoodsClass::where('sid',Input::session()->get('seller_user')->sid)->get();
         // dd($goodsclass);
         return view('seller.goods.edit',compact('data','goodsclass'));
     }
@@ -142,22 +142,24 @@ class GoodsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request,$id)
     {   
       
         $goods = Goods::find($id);
-        $path = $goods->gpic;
-
+        $path = 'uploads/'.$goods->gpic;
+        //从请求中获取传过来的数据
+        $input = Input::except('_token','_method','file_upload');
+        //判断是否有图片上传 如果有 原上传图片删除,用新图片 没有 用原图片
         if(empty($request->gpic)){
            $input['gpic'] = $goods->gpic;
+
         }else{
             if($goods->gpic != ''){
                 unlink($path);
             }
             $input['gpic'] = $request->gpic;
         }
-        //从请求中获取传过来的数据
-        $input = Input::except('_token','_method','file_upload');
+        
         // dd($input);
         $re = $goods->update($input);
 
@@ -193,21 +195,53 @@ class GoodsController extends Controller
         }
         return $data;
     }
+
    /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id
      * @return 菜名是否存在
      */
+    //添加菜品时 验证菜名是否存在
     public function gnameajax(Request $request)
     {   
         $gname = $request['gname'];
-        $value = Input::session()->get('user');
+        $value = Input::session()->get('seller_user');
         // return $data = $value->sid;
         $re =  Goods::where('gname',$gname)->where('sid',$value->sid)->first();
     //0表示成功 其他表示失败
         
         if($re!=''){
+            $data = [
+                'status'=>0,
+                'msg'=>'该菜名已存在！'
+            ];
+        }else{
+            $data = [
+                'status'=>1,
+                'msg'=>'不存在！'
+            ];
+        }
+        return $data;
+    }
+   /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return 修改菜单时 验证菜名 除去此菜名进行查找
+     */
+    public function updateajax(Request $request)
+    {   
+        $gname = $request['gname'];
+        $gid = $request['gid'];
+
+        $value = Input::session()->get('seller_user');
+        
+        $re = Goods::where('gname', $gname)->where('gid','not like',$gid)->count();
+        // $re =  Goods::where('gname',$gname)->where('sid',$value->sid)->first();
+    //0表示成功 其他表示失败
+        // return $data = $re;
+        if($re == 1){
             $data = [
                 'status'=>0,
                 'msg'=>'该菜名已存在！'

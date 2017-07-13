@@ -54,7 +54,7 @@ return [
     |
     */
 
-    'from' => ['address' => null, 'name' => null],
+    'from' => ['address' => '769670942@qq.com', 'name' => 'emxotuuhxfkgbdaa'],
 
     /*
     |--------------------------------------------------------------------------

@@ -81,20 +81,34 @@ Route::group(['prefix'=>'admin','namespace'=>'Admin','middleware'=>'admin.login'
 
 //登录
 Route::resource('/seller/login','Seller\LoginController');
+//忘记密码
+Route::any('/seller/forget','Seller\ForgetController@index');
+//发送邮件
+Route::any('/seller/email','Seller\ForgetController@email');
+
+//重置密码界面
+Route::any('/seller/reset','Seller\ForgetController@sreset');
+//密码重置逻辑路由
+Route::any('/seller/dosreset','Seller\ForgetController@dosreset');
+
 
 Route::group(['prefix'=>'seller','namespace'=>'Seller','middleware'=>'seller.login'], function(){
     //注册
     Route::resource('register','RegisterController');
+    //退出登录
+    Route::any('quit','LoginController@quit');
     //商家用户个人中心
     Route::resource('index','IndexController');
     //菜品分类管理
     Route::resource('goodsclass','GoodsClassController');
+    //验证表单
+    Route::any('gnameajax','GoodsController@gnameajax');
     //菜品管理
     Route::resource('goods','GoodsController');
     //验证上传图片
     Route::any('upload','GoodsController@upload');
-    //验证表单
-    Route::any('gnameajax','GoodsController@gnameajax');
+    //验证商品修改
+    Route::any('updateajax','GoodsController@updateajax');
     //ajax 改变商品的状态 在售->售罄
     Route::any('zaishou','GoodsController@zaishou');
 

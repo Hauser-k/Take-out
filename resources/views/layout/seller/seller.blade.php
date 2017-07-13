@@ -38,18 +38,18 @@
             <!-- 右侧内容 -->
             <div class="tpl-header-fluid">
                 <!-- 侧边切换 -->
-                <div class="am-fl tpl-header-switch-button am-icon-list">
+                <!-- <div class="am-fl tpl-header-switch-button am-icon-list">
                     <span>
 
                 </span>
-                </div>
+                </div> -->
                 <!-- 搜索 -->
-                <div class="am-fl tpl-header-search">
+               <!--  <div class="am-fl tpl-header-search">
                     <form class="tpl-header-search-form" action="javascript:;">
                         <button class="tpl-header-search-btn am-icon-search"></button>
                         <input class="tpl-header-search-box" type="text" placeholder="搜索内容...">
                     </form>
-                </div>
+                </div> -->
                 <!-- 其它功能-->
                 <div class="am-fr tpl-header-navbar">
                     <ul>
@@ -59,13 +59,13 @@
                         </li>
 
                         <!-- 新邮件 -->
-                        <li class="am-dropdown tpl-dropdown" data-am-dropdown>
-                            <a href="javascript:;" class="am-dropdown-toggle tpl-dropdown-toggle" data-am-dropdown-toggle>
+                        <!-- <li class="am-dropdown tpl-dropdown" data-am-dropdown> -->
+                           <!--  <a href="javascript:;" class="am-dropdown-toggle tpl-dropdown-toggle" data-am-dropdown-toggle>
                                 <i class="am-icon-envelope"></i>
                                 <span class="am-badge am-badge-success am-round item-feed-badge">4</span>
-                            </a>
+                            </a> -->
                             <!-- 弹出列表 -->
-                            <ul class="am-dropdown-content tpl-dropdown-content">
+                        <!--     <ul class="am-dropdown-content tpl-dropdown-content">
                                 <li class="tpl-dropdown-menu-messages">
                                     <a href="javascript:;" class="tpl-dropdown-menu-messages-item am-cf">
                                         <div class="menu-messages-ico">
@@ -106,17 +106,17 @@
                                     </a>
                                 </li>
                             </ul>
-                        </li>
+                        </li> -->
 
                         <!-- 新提示 -->
-                        <li class="am-dropdown" data-am-dropdown>
+                       <!--  <li class="am-dropdown" data-am-dropdown>
                             <a href="javascript:;" class="am-dropdown-toggle" data-am-dropdown-toggle>
                                 <i class="am-icon-bell"></i>
                                 <span class="am-badge am-badge-warning am-round item-feed-badge">5</span>
-                            </a>
+                            </a> -->
 
                             <!-- 弹出列表 -->
-                            <ul class="am-dropdown-content tpl-dropdown-content">
+                            <!-- <ul class="am-dropdown-content tpl-dropdown-content">
                                 <li class="tpl-dropdown-menu-notifications">
                                     <a href="javascript:;" class="tpl-dropdown-menu-notifications-item am-cf">
                                         <div class="tpl-dropdown-menu-notifications-title">
@@ -127,8 +127,8 @@
                                             12分钟前
                                         </div>
                                     </a>
-                                </li>
-                                <li class="tpl-dropdown-menu-notifications">
+                                </li> -->
+                                <!-- <li class="tpl-dropdown-menu-notifications">
                                     <a href="javascript:;" class="tpl-dropdown-menu-notifications-item am-cf">
                                         <div class="tpl-dropdown-menu-notifications-title">
                                             <i class="am-icon-star"></i>
@@ -138,10 +138,10 @@
                                             30分钟前
                                         </div>
                                     </a>
-                                </li>
-                                <li class="tpl-dropdown-menu-notifications">
+                                </li> -->
+                               <!--  <li class="tpl-dropdown-menu-notifications">
                                     <a href="javascript:;" class="tpl-dropdown-menu-notifications-item am-cf">
-                                        <div class="tpl-dropdown-menu-notifications-title">
+                                        <div class="tpl-dropdown    -menu-notifications-title">
                                             <i class="am-icon-folder-o"></i>
                                             <span> 上午开会记录存档</span>
                                         </div>
@@ -149,20 +149,20 @@
                                             1天前
                                         </div>
                                     </a>
-                                </li>
+                                </li> -->
 
-
+<!-- 
                                 <li class="tpl-dropdown-menu-notifications">
                                     <a href="javascript:;" class="tpl-dropdown-menu-notifications-item am-cf">
                                         <i class="am-icon-bell"></i> 进入列表…
                                     </a>
                                 </li>
                             </ul>
-                        </li>
+                        </li> -->
 
                         <!-- 退出 -->
                         <li class="am-text-sm">
-                            <a href="javascript:;">
+                            <a href="{{url('/seller/quit')}}">
                                 <span class="am-icon-sign-out"></span> 退出
                             </a>
                         </li>
@@ -245,7 +245,7 @@
                 </li> 
                 
                 <li class="sidebar-nav-link">
-                    <a href="{{ url('seller/order') }}">
+                    <a href="{{url('/seller/order')}}">
                         <i class="am-icon-key sidebar-nav-link-logo"></i>我的订单
                     </a>
                 </li>
