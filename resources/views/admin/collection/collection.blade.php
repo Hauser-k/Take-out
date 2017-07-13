@@ -16,14 +16,12 @@
             <form action="{{url('admin/collection')}}" method="get">
             <label>展示 
                 <select size="1" name="count" aria-controls="DataTables_Table_1">
-                    <option value="2" @if(!empty($request['count']) && $request['count'] == 2)  selected @endif>2</option>
-                        <option value="20" @if(!empty($request['count']) && $request['count'] == 20)  selected @endif>20</option>
-                        <option value="30" @if(!empty($request['count']) && $request['count'] == 30)  selected @endif>30</option>
+                    <option value="5" @if(!empty($request['count']) && $request['count'] == 5)  selected @endif>5</option>    
                 </select>
              条目</label>
             </div>
         <div class="dataTables_filter" id="DataTables_Table_1_filter">
-      <label>关键字: <input type="text" name="search" value="{{ $request['search'] or ''}}" /></label>
+      <label>关键字: <input placeholder="请输入序列号" type="text" name="search" value="{{ $request['search'] or ''}}" /></label>
       <button>搜索</button>
 
     </div>

@@ -30,7 +30,7 @@ class OrderController extends Controller
             $wh['sname'] = $request['search2'];
        }
 
-        $count = $request -> input('count',2);
+        $count = $request -> input('count',5);
          $data = Order::join('seller','order.sid','=','seller.sid')->join('user','order.uid','=','user.uid')->where($wh)->paginate($count);
         
 
@@ -45,17 +45,17 @@ class OrderController extends Controller
     public function create(Request $request)
     {
         //
-        $re = OrderDist::join('order','order_dist.oid','=','order.oid')->join('addr','order_dist.did','=','addr.did')->get();
+        // $re = OrderDist::join('order','order_dist.oid','=','order.oid')->join('addr','order_dist.did','=','addr.did')->get();
        
          $wh = [];
         if($request->has('search1')){
             $wh['order'] = $request['search1'];
        }
        if($request->has('search2')){
-            $wh['ostatus'] = $request['search2'];
+            $wh['endprice'] = $request['search2'];
        }
 
-        $count = $request -> input('count',2);
+        $count = $request -> input('count',5);
        
         $data = OrderDist::join('order','order_dist.oid','=','order.oid')->join('addr','order_dist.did','=','addr.did')->where($wh)->paginate($count);
 
@@ -75,7 +75,7 @@ class OrderController extends Controller
     {
         
 
-        $re = OrderGoods::join('order','order.oid','=','order_goods.oid')->join('goods','order_goods.gid','=','goods.gid')->get();
+        // $re = OrderGoods::join('order','order.oid','=','order_goods.oid')->join('goods','order_goods.gid','=','goods.gid')->get();
         // $ra = $request -> has('search1');
         // dd($re);
          $wh = [];
@@ -88,14 +88,31 @@ class OrderController extends Controller
        }
        // dd($wh);
 
-        $count = $request -> input('count',2);
-
+        $count = $request -> input('count',5);
+        // dd($count);
         $data = OrderGoods::join('order','order.oid','=','order_goods.oid')->join('goods','order_goods.gid','=','goods.gid')->where($wh)->paginate($count);
 
         return view('admin.order.show',['data'=>$data,'count'=>$count]);
     }
 
     
+ /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
 
+        // 当前评价信息
+        $data = OrderDist::find($id);
+        // dd($data);
+        $oid = $data['oid'];
+        // dd($oid);
+        $re = Order::find($oid);
+        // dd($re);
+        return view('admin.order.edit',['data'=>$data,'re'=>$re]);
+    }
    
 }

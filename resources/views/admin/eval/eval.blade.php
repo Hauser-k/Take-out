@@ -15,9 +15,7 @@
         <div id="DataTables_Table_1_length" class="dataTables_length">
            <form action="{{url('admin/eval')}}" method="get">       
       <label>显示 <select size="1" name="count" >
-                        <option value="2" @if(!empty($request['count']) && $request['count'] == 2)  selected @endif>2</option>
-                        <option value="20" @if(!empty($request['count']) && $request['count'] == 20)  selected @endif>20</option>
-                        <option value="30" @if(!empty($request['count']) && $request['count'] == 30)  selected @endif>30</option>
+                        <option value="5" @if(!empty($request['count']) && $request['count'] == 5)  selected @endif>5</option> 
                     </select> 条</label>
      </div>
      <div class="dataTables_filter" id="DataTables_Table_1_filter">
@@ -47,6 +45,8 @@
                 </th>
                 <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending" style="width: 111px;">商家回复
                 </th>
+                <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending" style="width: 111px;">回复内容
+                </th>
             </tr>
          </thead>
             @foreach($data as $k => $v)
@@ -54,12 +54,13 @@
                        <td>{{ $v -> eid }}</td>
                        <td>{{ $v -> sname }}</td>
                        <td>{{ $v -> uname }}</td>
-                       <td>{{ $v -> order }}</td>
+   商家详情                    <td>{{ $v -> order }}</td>
                        <td>{{ $v -> escore }}</td>
                        <td>@if ($v -> status == 2) 未评价 @else 已评价 @endif</td>
-                       <td>{{ $v -> econtent }}</td>
+                       <td>{{substr($v -> econtent,0,12) }}...</td>
                        <td>{{date('Y-m-d H:i:s',$v->etime)}}</td>
-                       <td>{{ $v -> ereply }}</td>
+                       <td>{{substr($v -> ereply,0,12) }}...</td>
+                       <td><button id="but" class="btn btn-primary" ><a href="{{url('admin/eval/'.$v->eid.'/edit')}}">查看</a></button></td>
                    </tr>       
                @endforeach
         </table>

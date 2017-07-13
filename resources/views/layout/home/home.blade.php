@@ -32,7 +32,8 @@
       <link rel="stylesheet" href="{{asset('home/css/contactus_526869ef.css')}}" />
       <link rel="stylesheet" href="{{asset('home/css/result_f27fc3fe.css')}}" />
       <link rel="stylesheet" href="{{asset('home/css/result.css')}}" />
-
+   @section('css')
+   
 
     <!-- <script>
       (function(i, s, o, g, r, a, m) {

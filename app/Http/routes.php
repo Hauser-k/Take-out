@@ -11,7 +11,11 @@
 |
 */
 
-
+ DB::listen(function($sql, $bindings, $time) {
+                // dump($sql);
+            });
+// 前台商家路由
+Route::resource('/home/shangjia','Home\shangjiaController');
 
 Route::get('/', function () {
 //    return view('welcome');
