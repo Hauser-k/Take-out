@@ -28,7 +28,7 @@ class EvalController extends Controller
         //连表查询   获取 当前商户ID Input::session()->get('user')->sid
         $data = Evals::join('user',function ($join) {
             $join->on('user.uid', '=', 'eval.uid')
-                 ->where('eval.sid','=',Input::session()->get('user')->sid);
+                 ->where('eval.sid','=',Input::session()->get('seller_user')->sid);
              })->orderBy('etime','desc');
         // $data = Evals::join('user','user.uid','=','eval.uid')->get();
         // dd($data);
@@ -91,7 +91,7 @@ class EvalController extends Controller
     {
       
        //查询
-        dd(1);
+        // dd(1);
     }
 
     /**

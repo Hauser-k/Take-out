@@ -5,13 +5,21 @@
 @endsection
 
 @section('content')
-<form class="am-form tpl-form-line-form" method="post" id="art_form" action="/seller/goods">
+<div class="widget am-cf">
+    <div class="widget-head am-cf">
+        <div class="widget-title am-fl">修改美食</div>
+        <div class="widget-function am-fr">
+        </div>
+    </div>
+    <div class="widget-body  widget-body-lg am-fr">
+<form class="am-form tpl-form-line-form" method="post" id="art_form" action="{{url('/seller/goods/'.$data->gid)}}">
+<input type="hidden" name="_method" value="put">
   {{csrf_field()}}
     <div class="am-form-group">
         <label for="user-name" class="am-u-sm-3 am-form-label">美食名称</label>
         <div class="am-u-sm-9">
-            <input type="text" minlength="1" maxlength="12" class="tpl-form-input" id="gname" placeholder="请输入美食名称" name="gname">
-            <small>请填写美食名称12位以内</small>
+            <input type="text" minlength="1" maxlength="12" class="tpl-form-input" id="gname" value='{{$data->gname}}' name="gname">
+            <small>请填写美食名称12字以内</small>
         </div>
     </div>
 
@@ -19,19 +27,22 @@
     <div class="am-form-group">
         <label for="user-email" class="am-u-sm-3 am-form-label">菜品所属类</label>
         <div class="am-u-sm-9">
-            <select name="gcid" id="sel">
-                <option value="" selected disabled="">请选择</option>
-                @foreach($data as $k=>$v)
-                    <option value="{{$v->gcid}}" >{{$v->cname}}</option>
+			<select name="gcid" id="sel">
+                @foreach($goodsclass as $k=>$v)
+                    @if($data->gcid == $v->gcid)
+				        <option selected value="{{$v->gcid}}">{{$v->cname}}</option>
+                    @else
+                        <option value="{{$v->gcid}}">{{$v->cname}}</option>
+                    @endif 
                 @endforeach
-            </select>
+			</select>
             <!-- <small>发布时间为必填</small> -->
         </div>
     </div>
     <div class="am-form-group">
         <label class="am-u-sm-3 am-form-label">单价 </label>
         <div class="am-u-sm-9">
-            <input type="number" min="0.01" step="0.01" placeholder="输入单价" name="gprice" id="gprice">
+            <input type="number" min="0.01" step="0.01" value="{{$data->gprice}}" name="gprice" id="gprice">
             <small>请输入单价,若有规格请填写价格最低的值,最大值为9999.99</small>
         </div>
     </div>
@@ -40,17 +51,16 @@
         <div class="am-u-sm-9">
             <div class="am-form-group">
                 
-                    <img name="" id="pic" style="width:80px;height: 80px;display:none;">
+                    <img name="" src="/uploads/{{$data->gpic}}" id="pic" style="width:80px;height: 80px;">
                     <input type="file" name="file_upload" id="file_upload" value="">
-                    <input type="hidden" name="gpic" id="gpic" >
+                    <input  type="hidden" name="gpic" id="gpic" value="">
+                    
                     <script type="text/javascript">
                                 $(function () {
                                     $("#file_upload").change(function () {
-
                                         uploadImage();
                                     });
                                 });
-
                                 function uploadImage() {
 //                            判断是否有选择上传文件
                                     var imgPath = $("#file_upload").val();
@@ -80,7 +90,6 @@
 //                                    console.log(data);
                                    // alert("上传成功");
                                             $('#pic').attr('src','/uploads/'+data);
-                                            $('#pic').show();
                                             $('#gpic').val(data);
 
                                         },
@@ -94,86 +103,88 @@
                 
             </div>
         </div>
-    
+	
     </div>
-    <div> <img src="" alt="" name="gpic" id="gpic" style="width:100px;display:none;" ></div>
+    
     <div class="am-form-group">
         <label for="user-weibo" class="am-u-sm-3 am-form-label">添加规格 </label>
         <div class="am-u-sm-9">
-            <input type="text" id="gstandard" placeholder="格式为: 大份,小份," name="gstandard">
-            <small>格式为 规格/单价 例:大份/10,小份/5,</small>
+            <input type="text" id="gstandard" value="{{$data->gstandard}}" name="gstandard">
+            <small>格式为: 大份,小份,</small>
             <div>
             </div>
         </div>
     </div>
-    <div class="am-form-group">
+	<div class="am-form-group">
         <label for="user-weibo" class="am-u-sm-3 am-form-label">添加口味 </label>
         <div class="am-u-sm-9">
-            <input type="text" id="gtaste" placeholder="格式为: 孜然,胡椒," name="gtaste">
+            <input type="text" id="gtaste" value="{{$data->gtaste}}" name="gtaste">
             <small>格式为 :孜然,胡椒,</small>
             <div>
             </div>
         </div>
     </div>
-    
+    <input type="hidden" id="hid" value="{{$data->gid}}">
     <div class="am-form-group">
         <div class="am-u-sm-9 am-u-sm-push-3">
             <button id="sub" class="am-btn am-btn-primary tpl-btn-bg-color-success">提交</button>
         </div>
     </div>
 </form>
+<div>
+<div>
 <script>
+$('#sub').click(function(){
     var caidan = false;
-    var danjian = false;
-    // var guige = false;
-    // var kouwei = false;
-    var fenlei = false;
-    var tupian = false;
-    $('#gname').blur(function(){
-        var gname = $('#gname').val();
-        if(gname==''){
-            layer.msg('内容不能为空',{icon:6});
-            return false;
-        }else{
-            $.get('/seller/gnameajax',{gname:gname},function(data){
-        //     // alert(data);
-                if(data.status==0){
-                    layer.msg(data.msg,{icon:2});
-                    return caidan = false;
-                }
-                if(data.status==1){
-                    // layer.msg(data.msg,{icon:1});
-                    return caidan = true;
-                }
-            })
-        };
-       
-    });
-    $('#gprice').blur(function(){
-        var gprice = $('#gprice').val();
-        if(gprice==''){
-            layer.msg('内容不能为空或格式不正确',{icon:2});
-            return danjian = false;
-        }else{
-            return danjia = true;
-        }
-    });
-     //验证下拉框
-    $("#sel").change(function(){  
-        return fenlei = true;             
-    });
+    var danjia = false;  
+    var hid = $('#hid').val();
+ 
+    var gname = $('#gname').val();
+    if(gname==''){
+        layer.msg('内容不能为空',{icon:5});
+        caidan = false;
+        return caidan;
+    }else{
+        $.ajax({
+                url:'/seller/updateajax',
+                type:'get', //默认get方式
+                data:{gname:gname,gid:hid},
+                success:function(data){
+                    if(data.status==0){
+                        
+                        layer.msg(data.msg,{icon:2});
+                        caidan = false;
+                        return caidan;
+                        // return;
+                    }
+                    if(data.status==1){
+                        
+                        // layer.msg(data.msg,{icon:1});
+                        caidan = true;
+                        return caidan;
+                    }
+                },
+                dataType:'json',
+                async:false, //默认true
+            });
+           
+    };
+    var gprice = $('#gprice').val();
+    if(gprice!=''){
+         danjia = true;
+    }else{
+        layer.msg('单价不能为空或格式不正确',{icon:2});
+        danjia = false;
+    }
    
-    $('#sub').click(function(){
-        if(caidan == true && danjia == true && fenlei == true ){
-            return true;
-        } else{
-            if(fenlei == false){
-                layer.msg('未选择分类',{icon:5});
-                return false;
-            }
-            layer.msg('信息未填完整',{icon:5});
-            return false;
-        }
-    });
+    if(caidan == true && danjia == true){
+        
+        return true;
+    } else{
+        
+        layer.msg('信息未填完整',{icon:5});
+        return false;
+    }
+});
 </script>
 @endsection

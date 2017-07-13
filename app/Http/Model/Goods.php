@@ -12,4 +12,5 @@ class Goods extends Model
     protected $primaryKey = 'gid';
     //指定是否模型应该被戳记时间。
     public $timestamps = false;
+    protected $guarded = [];
 }
