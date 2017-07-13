@@ -15,6 +15,7 @@ class ExamineController extends Controller
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
+     * @author 海涛
      */
     public function index(Request $request)
     {
@@ -69,6 +70,7 @@ class ExamineController extends Controller
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
+     * @author 海涛
      */
     public function edit($id)
     {

@@ -31,6 +31,7 @@ class LoginController extends Controller
         //验证码
         $code = session('code');
 
+
         $code2 = $request -> input('code');
         
         if($code != $code2){
@@ -57,14 +58,36 @@ class LoginController extends Controller
                 //添加session
                 session(['admin_user'=>$res]);
 
-    		      return redirect('admin/user');
-                
-                
-    		 }else{
+    		     return redirect('admin/user');
+
+
+             }else{
     		 	return back() -> with('error','用户名或密码错误');
     		 }
     	}
     	//2.跳转到后台
+
+    }
+
+    public function show(Request $request)
+    {
+        //
+
+        if($request){
+
+            $request->session()->forget('admin_user');
+            echo "退出成功";
+            return redirect('admin/login');
+
+        }else {
+            echo "退出失败";
+            return back() -> with('error','退出失败');
+        }
+
+    }
+    public function destroy(Request $request)
+    {
+
 
     }
 }

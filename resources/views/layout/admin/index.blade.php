@@ -69,7 +69,7 @@
                         <li class="read">
                             <a href="#">
                                     <span class="message">
-                                        发生的发生的双方的
+
                                     </span>
                                 <span class="time">
                                         January 21, 2012
@@ -184,10 +184,10 @@
 
             <!-- Username and Functions -->
             <div id="mws-user-functions">
-                <div id="mws-username">用户名
+                <div id="mws-username">{{ session('admin_user')['aname']}}
                 </div>
                 <ul>
-                    <li><a href="#">退出</li>
+                    <li><a href="{{url('admin/login/')}}/{{ session('admin_user')['aid']}}"><input type="hidden" name="_method" value="put">退出</a></li>
                     <li><a href="#">修改密码</li>
                 </ul>
             </div>

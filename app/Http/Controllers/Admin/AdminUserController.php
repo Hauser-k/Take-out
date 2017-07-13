@@ -14,6 +14,7 @@ class AdminUserController extends Controller
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
+     * @author 海涛
      */
     public function index(Request $request)
     {

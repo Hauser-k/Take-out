@@ -101,7 +101,7 @@
 
 
             <i class="fl icon i-top-loc"></i>
-              <span class="current-city fl" id="current-city">昌平区</span>
+              <span class="current-city fl" id="current-city"></span>
 
 
 
