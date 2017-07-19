@@ -37,6 +37,10 @@ Route::resource('/home/login','Home\LoginController');
 Route::group(['prefix'=>'home','namespace'=>'Home'], function(){
     //注册
     Route::resource('register','RegisterController');
+    //注册获取手机号
+    Route::any('phone','RegisterController@phone');
+
+    Route::any('phoneto','RegisterController@phoneto');
 	//首页
     Route::resource('index','IndexController');
 

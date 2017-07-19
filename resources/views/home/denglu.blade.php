@@ -93,33 +93,29 @@
                 <p class="signup-guide">还没有账号？<a href="#" target="_top">免费注册</a></p>
     </form>
 
-    <form id="J-mobile-form" action="" method="POST" class="form form--stack J-wwwtracker-form" >
+    <form id="J-mobile-form" action="{{url('home/login')}}" method="post" class="form form--stack J-wwwtracker-form" >
+    {{ csrf_field()}}
         <div class="validate-info" style="visibility:hidden"></div>
 
         <span class="login-type login-type--normal" data-mtevent="login.normal.switch">
-            <a id="J-normal-link" href="#">
-                普通方式登录
-                <i></i>
-            </a>
-            账号登录
+            @if(session('error'))
+            <h1>{{ session('error')}}</h1>
+            @else
+            <h1>账号登录</h1>
+            @endif
+         
         </span>
 
         <div class="J-info form-field form-field--icon">
             <i class="icon icon-phone"></i>
-            <input type="text" id="login-mobile" class="f-text" name="mobile" value="" placeholder="请输入手机号，未注册将自动注册" />
+            <input type="text" id="login-mobile" class="f-text" name="uname" value="" placeholder="账号" />
         </div>
-        <div class="form-field J-form-field-captcha-mobile form-field--captcha-mobile" style="display:none;">
-            <i class="icon icon-captcha"></i>
-            <input type="text" id="login-captcha" class="f-text" name="login-captcha" placeholder="验证码" autocomplete="off" />
-            <img height="34" width="61" class="login-captcha-img" id="login-captcha-img" src="https://passport.meituan.com/account/captcha" />
-            <a tabindex="-1" class="captcha-refresh inline-link" href="javascript:void(0)">看不清楚？换一张</a>
-        </div>
-
+       
         <div class="form-field form-field--icon">
             <i class="icon icon-password"></i>
-            <input type="text" name="code" id="login-verify-code" class="f-text" autocomplete="off" value="" placeholder="动态码" />
+            <input type="password" name="upwd" id="login-verify-code" class="f-text" autocomplete="off" value="" placeholder="密码" />
             <div class="form-field form-field--verify-mobile" style="top:19px;">
-                <input type="button" class="btn-normal btn-mini" id="J-verify-btn" value="获取手机动态码" />
+                <input type="button" class="btn-normal btn-mini" id="J-verify-btn" value="请输入密码" />
             </div>
         </div>
 
@@ -133,10 +129,8 @@
                 <label class="normal" for="mobile-autologin">7天内自动登录</label>
         </div>
         <div class="form-field form-field--ops">
-            <input type="hidden" name="origin" value="account-login" />
-            <input type="hidden" name="fingerprint" class="J-fingerprint" value="" />
-            <input type="hidden" name="csrf" value="ffzf7EiQ-uQNS5O91kTL-d2WYnk0NSmSlajk" />
-            <input  type="submit" class="btn" name="commit" value="登录" />
+           
+            <input  type="submit" class="btn"  value="登录" />
         </div>
         
             <p class="J-treaty-block treaty-block" >

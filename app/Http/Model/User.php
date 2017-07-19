@@ -10,6 +10,8 @@ class User extends Model
     protected $table = 'user';
     //设置主键
     protected $primaryKey = 'uid';
+
+    protected $guarded = [];
     //指定是否模型应该被戳记时间。
     public $timestamps = false;
     public function evals()

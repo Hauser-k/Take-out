@@ -53,7 +53,7 @@ class LinkController extends Controller
         if(empty($input['lname'])){
             return back() -> with('error','名称不能为空');
         }   
-              $res = Links::where('lname',$input['lname'])->first();
+            $res = Links::where('lname',$input['lname'])->first();
             if(!$res==$input['lname']){
                   $re = Links::create($input);
                   return redirect('/admin/link/') -> with('success','添加成功');

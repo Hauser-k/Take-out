@@ -3,9 +3,12 @@
 namespace App\Http\Controllers\Home;
 
 use Illuminate\Http\Request;
-
+use App\Http\Model\User ;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Illuminate\Contracts\Encryption\DecryptException;
+use Crypt;
+use Session;
 
 class LoginController extends Controller
 {
@@ -16,8 +19,8 @@ class LoginController extends Controller
      */
     public function index()
     {
-        //
-        echo 1111111;
+
+       return view('home/denglu');
     }
 
     /**
@@ -38,7 +41,30 @@ class LoginController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = ($request->except('_token'));
+        // dd($data);
+        $res = User::where('uname',$data['uname'])->first();
+        // dd($res);
+        // dd(Crypt::encrypt('666'));
+        if(!$res){
+            return back() -> with('error','用户不存在');
+        }else{
+            // $res['apwd']; 用户的密码
+            // $data['password']; 输入密码
+             $password = Crypt::decrypt($res['upwd']);
+
+             if($password == $data['upwd']){
+                //添加session
+                session(['home_user'=>$res]);
+
+                 // return redirect('admin/user');
+                echo '跳转到首页....';
+
+
+             }else{
+                return back() -> with('error','用户名或密码错误');
+             }
+        }
     }
 
     /**
