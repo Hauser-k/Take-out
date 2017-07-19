@@ -13,6 +13,7 @@ use App\Http\Model\SellerClass;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Input;
 
 class IndexController extends Controller
 {
@@ -24,6 +25,7 @@ class IndexController extends Controller
     public function index(Request $request)
     {
         $res=$request -> all();
+		
         $data = SellerClass::get();
         $gooder= DB::table('seller')
             ->join('seller_detail', 'seller.sid', '=', 'seller_detail.sid');

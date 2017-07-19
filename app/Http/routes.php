@@ -37,7 +37,8 @@ Route::get('/code','CodeController@code');
  */
 //登录
 Route::resource('/home/login','Home\LoginController');
-
+//地址选择页
+Route::resource('/home/addr','Home\AddrController');
 
 Route::group(['prefix'=>'home','namespace'=>'Home'], function(){
     //注册
