@@ -170,6 +170,7 @@ $('#sub').click(function(){
            
     };
     var gprice = $('#gprice').val();
+    // alert(gprice);
     if(gprice!=''){
          danjia = true;
     }else{

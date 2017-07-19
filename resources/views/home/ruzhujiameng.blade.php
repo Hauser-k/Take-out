@@ -1,6 +1,5 @@
-﻿<?php
-require('header.php');
-?>
+﻿@extends('layout.home.home')
+@section('content')
         <div class="page-wrap">
             <div class="inner-wrap" style="width:980px;">
                 <svg style="position: absolute; width: 0; height: 0; overflow: hidden;" version="1.1">
@@ -169,6 +168,4 @@ require('header.php');
                 </div>
             </div>
         </div>
-<?php
-require('footer.php');
-?>
+@endsection

@@ -11,6 +11,7 @@
 |
 */
 
+
  DB::listen(function($sql, $bindings, $time) {
                 // dump($sql);
             });
@@ -32,6 +33,12 @@ Route::get('/code','CodeController@code');
  */
 //登录
 Route::resource('/home/login','Home\LoginController');
+//页面搜索
+Route::any('/home/search/dian','Home\SearchController@dian');
+Route::any('/home/search/caidan','Home\SearchController@caidan');
+
+//商家入驻
+Route::resource('/home/seller/ruzhu','Home\RuzhuController');
 
 
 Route::group(['prefix'=>'home','namespace'=>'Home'], function(){
@@ -101,6 +108,22 @@ Route::group(['prefix'=>'seller','namespace'=>'Seller','middleware'=>'seller.log
     Route::any('quit','LoginController@quit');
     //商家账号设置
     Route::resource('setup','SetupController');
+     //商家个人中心
+    Route::resource('personal','PersonalController');
+    //商家个人中心修改
+    Route::any('updateper','PersonalController@updateper');
+    //商家个人中心修改 修改个人头像
+    Route::any('face','PersonalController@updateface');
+     //商家个人中心修改 修改密码
+    Route::any('pwd','PersonalController@pwd');
+    
+    //商家我要开店
+    Route::resource('kaidian','KaidianController');
+    //商家我要开店失败后
+    Route::any('xiugaikaidian','KaidianController@xiugai');
+    //验证表单 修改商铺名称时 判断 除去自己是否有重名
+    Route::any('updatexnameajax','KaidianController@updatexnameajax');
+
     //商户设置验证表单-商户名
     Route::any('exnameajax','SetupController@exnameajax');
     //商户设置验证表单-门店地址图片
@@ -111,7 +134,7 @@ Route::group(['prefix'=>'seller','namespace'=>'Seller','middleware'=>'seller.log
     Route::resource('index','IndexController');
     //菜品分类管理
     Route::resource('goodsclass','GoodsClassController');
-    //验证表单
+    //验证表单 修改菜名是判断 除去自己是否有重名
     Route::any('gnameajax','GoodsController@gnameajax');
     //菜品管理
     Route::resource('goods','GoodsController');
