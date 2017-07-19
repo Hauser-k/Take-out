@@ -2,19 +2,12 @@
 
 namespace App\Http\Controllers\Home;
 
-use App\Http\Controllers\Seller\GoodsClassController;
-use App\Http\Model\Goods;
-use App\Http\Model\OrderGoods;
-use App\Http\Model\Seller;
 use Illuminate\Http\Request;
-use App\Http\Model\SellerClass;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Input;
 
-class IndexController extends Controller
+class AddrController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -23,20 +16,9 @@ class IndexController extends Controller
      */
     public function index()
     {
-        $res = Input::get();
-        dd($res);
 
-        //查出所有数据添加到页面中
-
-        $data = SellerClass::get();
-
-
-        $gooder= DB::table('seller')
-            ->join('seller_detail', 'seller.sid', '=', 'seller_detail.sid')
-            ->select('seller_detail.sfee','seller_detail.exname','seller_detail.slogo','seller_detail.sdelfee')
-            ->get();
-
-         return view('home/index',compact('data','gooder'));
+        //
+        return view('home/addr');
     }
 
     /**
@@ -47,7 +29,6 @@ class IndexController extends Controller
     public function create()
     {
         //
-
     }
 
     /**
