@@ -23,7 +23,8 @@
 
     <link rel="shortcut icon" type="{{asset('home/image/vnd.microsoft.icon')}}" href="{{asset('home/static/img/favicon_1.ico')}}">
     <link rel="icon" href="{{asset('home/static/img/favicon_1.ico')}}" size="16x16 32x32">
-
+      <script src="/admin/js/jquery-1.8.3.min.js"></script>
+      <script type="text/javascript" src="{{asset('layer/layer.js')}}"></script>
     <link rel="stylesheet" href="{{asset('home/css/feedback.css')}}" />
     <link rel="stylesheet" href="{{asset('home/css/global.css')}}" />
     <link rel="stylesheet" href="{{asset('home/css/home.css')}}" />
@@ -91,7 +92,7 @@
         <i class="icon i-top-yarrow"></i>
       </div>
       <ul class="login-menu">
-        <li><a class="wrap" href="./order-list.php">我的订单</a></li>
+        <li><a class="wrap" href="{{url('home/myorder')}}">我的订单</a></li>
         <li><a class="wrap" href="">我的收藏</a></li>
         <li><a class="wrap" href="" id="logout">退出</a></li>
       </ul>
@@ -151,7 +152,7 @@
             </h1>
             <div class="desire fl">
               <a href="./index1.php" class="ca-lightgrey"><span>首页</span></a>
-              <a href="./order-list.php" class="ca-lightgrey" rel="nofollow"><span>我的订单</span></a>
+              <a href="{{url('home/myorder')}}" class="ca-lightgrey" rel="nofollow"><span>我的订单</span></a>
               <a href="./ruzhujiameng.php" class="ca-lightgrey"><span>入驻加盟</span></a>
             </div>
             <div class="search-box fr">

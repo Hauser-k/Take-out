@@ -39,11 +39,14 @@ Route::group(['prefix'=>'home','namespace'=>'Home'], function(){
     Route::resource('register','RegisterController');
     //注册获取手机号
     Route::any('phone','RegisterController@phone');
-
+	//给手机发短信
     Route::any('phoneto','RegisterController@phoneto');
+	//我的订单
+    Route::resource('myorder','MyOrderController');
+	//我的账号
+    Route::resource('mynumber','MyNumberController');
 	//首页
     Route::resource('index','IndexController');
-
 });
 
 /**
@@ -51,14 +54,7 @@ Route::group(['prefix'=>'home','namespace'=>'Home'], function(){
  */
 //登录
 Route::resource('/admin/login','Admin\LoginController');
-//友情链接
-Route::resource('/admin/link','Admin\LinkController');
-//网站配置
-Route::resource('/admin/config','Admin\ConfigController');
-//修改网站配置排序
-Route::any('admin/config/changeorder','Admin\ConfigController@changeOrder');
-//    网站配置内容修改路由
- Route::any('admin/config/changecontent','Admin\ConfigController@changeContent');
+
 
 Route::group(['prefix'=>'admin','namespace'=>'Admin','middleware'=>'admin.login'], function(){
     //普通用户管理
@@ -77,6 +73,14 @@ Route::group(['prefix'=>'admin','namespace'=>'Admin','middleware'=>'admin.login'
     Route::resource('examine','ExamineController');
     //后台管理员用户
     Route::resource('adminuser','AdminUserController');
+	//友情链接
+	Route::resource('/admin/link','Admin\LinkController');
+	//网站配置
+	Route::resource('/admin/config','Admin\ConfigController');
+	//修改网站配置排序
+	Route::any('admin/config/changeorder','Admin\ConfigController@changeOrder');
+	//网站配置内容修改路由
+	Route::any('admin/config/changecontent','Admin\ConfigController@changeContent');
 
 });
 

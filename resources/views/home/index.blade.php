@@ -5,20 +5,23 @@
 <div class="inner-bg">
     <div class="rest-banner">
       <div class="imgsort-wrapper">
+
         <span class="imgsort-filter-title">商家分类</span>
         <ul class="clearfix imgsort-content">
+
           <li class="fl selected">
-            <a href="javascript:void(0);" data-cate="cate_all" class="imgsort-list" title="全部">
+            <a href="{{url('home/index')}}" data-cate="cate_all" class="imgsort-list" title="全部">
               <span class="imgsort-info">全部</span>
             </a>
           </li>
             @foreach($data as $v)
-            <li class="fl ">
-              <a class="imgsort-list" title="{{$v['csname']}}" href="" data-cate="940">
+            <li class="fl " >
+              <a class="imgsort-list" title="{{$v['csname']}}" href="{{url('home/index'.'/?csid='.+$v['csid'])}}" data-cate="940">
                 <span class="imgsort-info">{{$v['csname']}}</span>
               </a>
             </li>
             @endforeach
+
         </ul>
       </div>
         <div class="rest-filter clearfix" style="border: none;">
@@ -79,14 +82,42 @@
 
 
         </a>
-          <a href="javascript:;" class="un-favorite j-save-up" data-poiid="144838878410737716" title="收藏商家">
-            <i class="icon i-poi-fav1"></i>
+          <a href="javascript:;"  onclick="DelUser(1)" style="display:block" class="un-favorite j-save-up"  title="收藏商家">
+            <i class="icon i-poi-fav1" ></i>
           </a>
       </div>
     </div>
 </li>
         @endforeach
+          <script>
 
+              function DelUser(id){
+                  //询问框
+
+                  layer.confirm('确认收藏下次快速找到？', {
+                      btn: ['确定','取消'] //按钮
+                  }, function(){
+
+                      $.get("{{url('home/index')}}/"+id,function(data){
+                          alert(data);
+                          if(data.status == 0){
+                            //  location.href = location.href;
+                              layer.msg(data.msg, {icon: 6});
+                          }else{
+                              //location.href = location.href;
+                              layer.msg(data.msg, {icon: 5});
+                          }
+                      });
+
+
+                  }, function(){
+
+                  });
+
+              }
+
+
+          </script>
 
       <li class="rest-separate j-rest-separate loading" id="loading">
           <div class="isloading">点击加载更多商家</div>
