@@ -17,6 +17,11 @@
 // 前台商家路由
 Route::resource('/home/shangjia','Home\shangjiaController');
 
+// 购物车路由
+Route::get('/home/shop','Home\shop_cartController@addcart');
+Route::get('/home/shop_cart','Home\shop_cartController@index');
+Route::get('/home/create','Home\shop_cartController@create');
+
 Route::get('/', function () {
 //    return view('welcome');
     return view('home/index');

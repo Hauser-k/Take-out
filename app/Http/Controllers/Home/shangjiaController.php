@@ -40,11 +40,19 @@ class shangjiaController extends Controller
         // 求所有平均数
         $b = $f - $g; 
         $ptime = $b / $a;
-        $data = GoodsClass::find($id);
-        $goods = Goods::where('gid',$id)->get();
-
-        // dd($goods);
-        return view('home.shangjia',['data'=>$data,'re'=>$re,'ptime'=>$ptime,'goods'=>$goods]);
+        $data = GoodsClass::where('sid',$id)->get();
+        // 获取所有的gcid
+        foreach($data as $k => $v){
+            $shuzu[] = $v->gcid;
+        }
+        // dd($shuzu);
+        // 去除重复
+        $shuzu = array_unique($shuzu);
+        // dd($shuzu);
+        // 获取在gcid内的商品值
+        $good = Goods::whereIn('gcid',$shuzu)->get();
+        // dd($good);
+        return view('home.shangjia',['data'=>$data,'re'=>$re,'ptime'=>$ptime,'good'=>$good]);
     }
 
     /**
@@ -52,9 +60,10 @@ class shangjiaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($id)
     {
         //
+       return view('home.shipin');
     }
 
     /**
@@ -137,5 +146,6 @@ class shangjiaController extends Controller
     public function destroy($id)
     {
         //
+       
     }
 }
