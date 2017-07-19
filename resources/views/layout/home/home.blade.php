@@ -34,7 +34,9 @@
     <link rel="stylesheet" href="{{asset('home/css/contactus_526869ef.css')}}" />
     <link rel="stylesheet" href="{{asset('home/css/result_f27fc3fe.css')}}" />
     <link rel="stylesheet" href="{{asset('home/css/result.css')}}" />
-    <script src="{{asset('assets/js/jquery.min.js')}}"></script>
+     <link rel="stylesheet" href="{{asset('home/css/restaurant_f2ca72fb.css')}}" />
+      <link rel="stylesheet" href="{{asset('home/css/body.css')}}" />
+    <script src="{{asset('/home/js/jquery.js')}}"></script>
 
 
 
@@ -151,9 +153,11 @@
               <a href="javascript:;"  title="美团外卖"><img src="{{asset('home/images/logo.png')}}" alt="美团外卖"></a>
             </h1>
             <div class="desire fl">
-              <a href="./index1.php" class="ca-lightgrey"><span>首页</span></a>
+              <a href="{{url('home/index')}}" class="ca-lightgrey"><span>首页</span></a>
               <a href="{{url('home/myorder')}}" class="ca-lightgrey" rel="nofollow"><span>我的订单</span></a>
+              <a href="{{url('home/shop_cart')}}" class="ca-lightgrey" rel="nofollow"><span>我的购物车</span></a>
               <a href="./ruzhujiameng.php" class="ca-lightgrey"><span>入驻加盟</span></a>
+
             </div>
             <div class="search-box fr">
             <form action="" id="myform">
@@ -185,10 +189,12 @@
 	  @section('content')
 
 	  @show
-	  
+	   
 	 <div class="page-footer">
+
             <div class="footer-wrap">
                 <div class="column fl corp">
+
                     <ul>
                         <li><a href="./ruzhujiameng.php" class="kaidian_address" target="_blank">我要开店</a></li>
                         <li><a href="javascript:;" target="_blank">配送加盟</a></li>

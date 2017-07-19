@@ -17,6 +17,11 @@
 // 前台商家路由
 Route::resource('/home/shangjia','Home\shangjiaController');
 
+// 购物车路由
+Route::get('/home/shop','Home\shop_cartController@addcart');
+Route::get('/home/shop_cart','Home\shop_cartController@index');
+Route::get('/home/create','Home\shop_cartController@create');
+
 Route::get('/', function () {
 //    return view('welcome');
     return view('home/index');
@@ -129,7 +134,6 @@ Route::group(['prefix'=>'seller','namespace'=>'Seller','middleware'=>'seller.log
     Route::any('updateajax','GoodsController@updateajax');
     //ajax 改变商品的状态 在售->售罄
     Route::any('zaishou','GoodsController@zaishou');
-
     //订单管理
     Route::resource('order','OrderController');
     //评价
