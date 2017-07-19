@@ -37,6 +37,8 @@ Route::resource('/home/login','Home\LoginController');
 Route::group(['prefix'=>'home','namespace'=>'Home'], function(){
     //注册
     Route::resource('register','RegisterController');
+    Route::resource('myorder','MyOrderController');
+    Route::resource('mynumber','MyNumberController');
 	//首页
     Route::resource('index','IndexController');
 

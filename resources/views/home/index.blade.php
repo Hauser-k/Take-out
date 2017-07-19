@@ -5,20 +5,23 @@
 <div class="inner-bg">
     <div class="rest-banner">
       <div class="imgsort-wrapper">
+
         <span class="imgsort-filter-title">商家分类</span>
         <ul class="clearfix imgsort-content">
+
           <li class="fl selected">
-            <a href="javascript:void(0);" data-cate="cate_all" class="imgsort-list" title="全部">
+            <a href="{{url('home/index')}}" data-cate="cate_all" class="imgsort-list" title="全部">
               <span class="imgsort-info">全部</span>
             </a>
           </li>
             @foreach($data as $v)
-            <li class="fl ">
-              <a class="imgsort-list" title="{{$v['csname']}}" href="{{url('home/index'.'/'.+$v['csid'])}}" data-cate="940">
+            <li class="fl " >
+              <a class="imgsort-list" title="{{$v['csname']}}" href="{{url('home/index'.'/?csid='.+$v['csid'])}}" data-cate="940">
                 <span class="imgsort-info">{{$v['csname']}}</span>
               </a>
             </li>
             @endforeach
+
         </ul>
       </div>
         <div class="rest-filter clearfix" style="border: none;">
@@ -31,7 +34,6 @@
     </div>
   <div class="rest-list">
     <ul class="list clearfix">
-      @if($gooder)
         @foreach($gooder as $kk=>$vv)
         <li class="fl rest-li" >
             <div class="j-rest-outer rest-outer transition ">
@@ -80,69 +82,42 @@
 
 
         </a>
-          <a href="javascript:;" class="un-favorite j-save-up" data-poiid="144838878410737716" title="收藏商家">
-            <i class="icon i-poi-fav1"></i>
+          <a href="javascript:;"  onclick="DelUser(1)" style="display:block" class="un-favorite j-save-up"  title="收藏商家">
+            <i class="icon i-poi-fav1" ></i>
           </a>
       </div>
     </div>
 </li>
         @endforeach
-      @endif
-        @foreach($res as $kk=>$vv)
-        <li class="fl rest-li" >
-          <div class="j-rest-outer rest-outer transition ">
-            <div data-title="北京麦当劳育知东路餐厅" data-bulletin="" data-poiid="144838878410737716" class="restaurant" data-all="1"
-                 data-invoice="1"
-                 data-minpricelevel="1">
-              <a class="rest-atag" href="javascript:;" target="_blank">
-                <div class="top-content">
-                  <div class="preview">
-                    <img data-rid="144838878410737716" data-index="0" class="scroll-loading" src="{{url('/uploads/')}}/{{ $vv['slogo']}}" data-max-width="208" data-max-height="156"  />
-                    <div class="rest-tags">
-                    </div>
-                  </div>
-                  <div class="content">
-                    <div class="name">
-                <span title="北京麦当劳育知东路餐厅">
-                        {{$vv['exname']}}
+          <script>
 
-                </span>
-                    </div>
-                    <div class="rank clearfix">
-                  <span class="star-ranking fl">
-                    <!-- 5颗星60px长度，算此时星级的长度 -->
-                    <!-- 算出空白填充的部分长度 -->
-                    <span class="star-score" style="width: 68px"></span>
-                  </span>
-                      <span class="score-num fl">4.6分</span>
-                      <!--
-                      <span class="total cc-lightred-new fr               ">
-    月售829单
-                      </span>
-                      -->
-                    </div>
-                    <div class="price">
-                      <span class="start-price">起送:￥{{$vv['sfee']}}元</span>
-                      <span class="send-price">
-                  配送费:￥{{$vv['sdelfee']}}元
-                </span>
+              function DelUser(id){
+                  //询问框
 
-                    </div>
-                  </div>
+                  layer.confirm('确认收藏下次快速找到？', {
+                      btn: ['确定','取消'] //按钮
+                  }, function(){
 
-                  <div class="clear"></div>
-
-                </div>
+                      $.get("{{url('home/index')}}/"+id,function(data){
+                          alert(data);
+                          if(data.status == 0){
+                            //  location.href = location.href;
+                              layer.msg(data.msg, {icon: 6});
+                          }else{
+                              //location.href = location.href;
+                              layer.msg(data.msg, {icon: 5});
+                          }
+                      });
 
 
-              </a>
-              <a href="javascript:;" class="un-favorite j-save-up" data-poiid="144838878410737716" title="收藏商家">
-                <i class="icon i-poi-fav1"></i>
-              </a>
-            </div>
-          </div>
-        </li>
-        @endforeach
+                  }, function(){
+
+                  });
+
+              }
+
+
+          </script>
 
       <li class="rest-separate j-rest-separate loading" id="loading">
           <div class="isloading">点击加载更多商家</div>

@@ -77,7 +77,7 @@
 
                                     $.ajax({
                                         type: "POST",
-                                        url: "/seller/upload",
+                                        url: '/seller/upload',
                                         data: formData,
                                         async: true,
                                         cache: false,
@@ -85,7 +85,7 @@
                                         processData: false,
                                         success: function(data) {
 //                                    console.log(data);
-                                   // alert("上传成功");
+                                   // alert(data);
                                             $('#pic').attr('src','/uploads/'+data);
                                             $('#pic').show();
                                             $('#gpic').val(data);

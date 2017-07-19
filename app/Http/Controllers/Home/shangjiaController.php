@@ -9,6 +9,7 @@ use App\Http\Model\GoodsClass;
 use App\Http\Model\SellerDetail;
 use App\Http\Model\Order;
 use App\Http\Model\Goods;
+use App\Http\Model\Evals;
 
 class shangjiaController extends Controller
 {
@@ -77,7 +78,31 @@ class shangjiaController extends Controller
     {
         //
         // echo 11111;
-        return view('home.pingjia');
+        $data = Evals::where('sid',$id)->get();
+        // $a = count('eid');
+        // dd($data);
+        
+         $re = SellerDetail::find($id);
+        $or = Order::all();
+        // dd($or);
+        $ftime = [];
+        // dd($ftime);
+        $gtime = [];
+        foreach($or as $k => $v){
+            $ftime[] = $v['ftime'];
+            $gtime[] = $v['gtime'];
+        }
+        // 求出数组中一共有多少条
+        $a = count($ftime);
+        // dd($ftime);
+        $f = array_sum($ftime);
+        $g = array_sum($gtime);
+        // 求所有平均数
+        $b = $f - $g; 
+        $ptime = $b / $a;
+        $data = GoodsClass::find($id);
+        $goods = Goods::where('gid',$id)->get();
+        return view('home.pingjia',['data'=>$data,'re'=>$re,'ptime'=>$ptime,'goods'=>$goods]);
     }
 
     /**

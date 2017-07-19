@@ -62,7 +62,9 @@
                                     <td class="am-text-middle">{{$k+1}}</td>
                                     <td class="am-text-middle">{{$v->gname}}</td>
 
-                                    <td class="am-text-middle"><img src="/uploads/{{$v->gpic}}" style="width:60px;height: 60px" alt=""></td>
+                                    <td class="am-text-middle">
+                                    <img src="/uploads/{{ $v->gpic }}" style="width:60px;height: 60px" alt="">
+                                    </td>
                                     <td class="am-text-middle">{{$v->cname}}</td>
                                     <td class="am-text-middle">{{$v->gprice}}</td>
                                     <td class="am-text-middle">{{$v->gstandard}}</td>
