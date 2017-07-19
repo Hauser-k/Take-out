@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Crypt;
 //引用对应的命名空间
 use Gregwar\Captcha\CaptchaBuilder;
 use Session;
+use Cookie;
 
 class LoginController extends Controller
 {
@@ -64,8 +65,8 @@ class LoginController extends Controller
             //验证是否有用户
             $user = Seller::where('sname',$input['sname']) -> first();
             
-            // if(!$user || ($input['spwd']  != Crypt::decrypt($user->spwd)) ){
-            if(!$user || ($input['spwd']  != ($user->spwd)) ){
+            if(!$user || ($input['spwd']  != Crypt::decrypt($user->spwd)) ){
+            // if(!$user || ($input['spwd']  != ($user->spwd)) ){
               return back()->with('errors','用户名或密码错误')->withInput();
             }
             
@@ -77,10 +78,19 @@ class LoginController extends Controller
             session(['seller_detail'=>$seller_detail]);
             //如果选中 记住密码 将信息保存到cookie中
             if($request->input('name')){
-                Cookie::make('xinxi', $user, 60000);
+                Cookie::queue('xinxi', $user, 600);
             }
-            
-            return view('seller.index');
+            // dd(Cookie::get('xinxi'));
+            //得到 商家的slogo
+            $pic = SellerDetail::find($user->sid)->slogo;
+            //判断商家状态 是否通过
+            if($user->status == 1){
+                return view('seller.kaidian.success');
+            }else if($user->status == 3){
+                $sid = $user->sid;
+                return view('seller.kaidian.false',compact('sid'));
+            }
+            return view('seller.index',compact('pic'));
         }
         
     }

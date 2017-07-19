@@ -82,7 +82,7 @@
                         <label for="remember-me">
                         记住密码
                          </label>
-                        <a href="{{url('/seller/forget')}}" style="margin-left:280px">忘记密码</a>
+                        <a href="{{url('/seller/forget')}}" style="margin-left:150px">忘记密码</a>
                     </div>
                     <div class="am-form-group">
 

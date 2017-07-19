@@ -148,10 +148,10 @@ class SetupController extends Controller
         $exname = $request['exname'];
         $value = Input::session()->get('seller_user');
         // return $data = $value->sid;
-        $re =  SellerDetail::where('exname',$exname)->where('sid',$value->sid)->first();
+        $re =  SellerDetail::where('exname',$exname)->count();
         //0表示成功 其他表示失败
-
-        if($re!=''){
+        
+        if($re == 1){
             $data = [
                 'status'=>0,
                 'msg'=>'该商家已存在！'

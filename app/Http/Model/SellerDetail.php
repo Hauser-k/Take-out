@@ -10,6 +10,7 @@ class SellerDetail extends Model
     protected $table = 'seller_detail';
     //设置主键
     protected $primaryKey = 'sdid';
+    protected $guarded = [];
     //指定是否模型应该被戳记时间。
     public $timestamps = false;
 }
