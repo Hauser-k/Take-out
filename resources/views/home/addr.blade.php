@@ -310,7 +310,7 @@
                 $('#citylist').attr({'data-cityid':cityid,"data-pinyin":pinyin});
                 $('#citylist span').eq(0).text(value);
                 $(".dialog-citylist").slideToggle();
-                alert(value);
+//                alert(value);
                 setCity(value);
             });
         });
