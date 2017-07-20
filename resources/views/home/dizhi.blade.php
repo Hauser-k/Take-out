@@ -35,17 +35,18 @@
 
       <table class="standard-table dishes-table">
         <thead>
-        @foreach($array as $k=>$v)
+
           <tr class="bot-border">
             <th class="left" width="240"><div class="th-inner align-left">菜品</div></th>
             <th class="right" colspan="2"><div class="th-inner align-right">价格/份数</div></th>
           </tr>
         </thead>
         <tbody>
+        @foreach($array as $arr)
               <tr class="">
                 <td class="left">
-                  <div class="td-inner align-left" title=" {{$v->gname}}">
-                    <div>    {{$v->gname}}
+                  <div class="td-inner align-left" title="  {{''}}">
+                    <div>    {{dump($arr)}}
     
 </div>
                     <div class="dish-sku">
@@ -56,7 +57,7 @@
                 </td>
                 <td class="right" colspan="2">
                     <div class="td-inner align-right">
-                      ¥{{$v->gprice}}*2
+                      ¥{{''}}*2
                     </div>
                 </td>
             <tr class="delivery-cost bot-border">
@@ -68,25 +69,25 @@
                 <div class="td-inner clearfix">
                   <span class="t-total fl">合计</span>
                 
-                  <span class="t-number fr">¥28</span>
+                  <span class="t-number fr">¥8</span>
                 </div>
               </td>
             </tr>
-            @endforeach
+@endforeach
         </tbody>
       </table>
 
         <div class="privilege">
           <div class="operation clearfix">
             <div class="fr si-input">
-              <input type="text" class="pri-input sprite" id="privilegeInput" value="选择优惠券" data-cid="0" readonly="">
-              <a href="javascript:;" class="drop" id="dropTicket"><i class="icon i-triangle-dn"></i></a>
+             
+          
               <div class="select" style="display: none;">
                 <ul>
                 </ul>
               </div>
             </div>
-            <span class="tip fr">优惠券：</span>
+
           </div>
         </div>
       <div class="ticket-age"></div>
@@ -106,18 +107,17 @@
           <div id="address-list" class="address-list">
               <div id="address-list-wrap" class="address-list-wrap high-height">
                 <div id="address-list-inner" class="address-list-inner">
-
+                @foreach($data as $k=>$n)
                     <div class="j-address-box address-box address-checked" data-aid="583084547" data-flag="1">
                       <p class="address-line blo">
                         <span class="span">
-                            请问
-                            先生
+                           {{$n->dname}}
                             ：
-                          18240697756
+                          {{$n->dtel}}
                         </span>
 
                       </p>
-                      <p class="address-line blo" ><span class="span">昌平区农委&nbsp;&nbsp;</span></p>
+                      <p class="address-line blo" ><span class="span">{{$n->addr}}&nbsp;&nbsp;</span></p>
                       <div>
                         
                       </div>
@@ -127,7 +127,7 @@
                       
                     </div>
 
-                    
+                    @endforeach
 
 
 
@@ -136,15 +136,7 @@
 
                     </div>
 
-                      <input type="hidden" name="addressID" value="583084547">
-                      <input type="hidden" name="customer" value="请问">
-                      <input type="hidden" name="address" value="昌平区农委">
-                      <input type="hidden" name="mobile" value="18240697756">
-                      <input type="hidden" name="gender" value="先生">
-                      <input type="hidden" name="house_number" value="">
-                      <input type="hidden" name="latitude" value="40220804">
-                      <input type="hidden" name="longitude" value="116231254">
-                      <input type="hidden" name="gd_addr_type" value="政府机构及社会团体;政府机关;区县级政府及事业单位">
+                     
 
                 </div>
               </div>
@@ -231,6 +223,9 @@
        $('.addr').click(function(){
           $('.dis').css('display','block');
           $('.blo').css('display','none');
+       })
+       $('.s-btn').click(function(){
+         
        })
      })
     </script>

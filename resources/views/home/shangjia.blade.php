@@ -32,6 +32,7 @@
 }
 </script>
 <div class="rest-info">
+
     <div class="right-bar fr clearfix ct-lightgrey">
 
       <div class="fl average-speed">
@@ -44,7 +45,7 @@
         <div class="fl ack-ti">
             <div class="desc">起送</div>
             <div class="nu">
-                  <strong>20</strong>元
+                  <strong>{{$re['sdelfee']}}</strong>元
             </div>
         </div>
 
@@ -52,10 +53,11 @@
       <div class="fl in-ti">
           <div class="desc">配送费</div>
           <div class="nu">
-              <strong>6</strong>元
+              <strong>{{$re['sfee']}}</strong>元
           </div>
 
       </div>
+
     </div>
   <div class="details">
     <div class="up-wrap clearfix">
@@ -188,7 +190,7 @@
   @endif
  @endforeach
 
-  
+
 
 
 
@@ -213,8 +215,8 @@ $(function(){
       var a = $('.i-addcart').index(this);
       var b = $('.inp').eq(a).val();
       $.get('/home/shop',{gid:b},function(data){
-          if(data){
-            alert('添加成功');
+          if(data == 1){
+            confirm('添加到购物车');
           }else{
             alert('添加失败');
           }

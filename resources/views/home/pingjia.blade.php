@@ -105,7 +105,7 @@
     <div class="loading" style="display: none;"></div>
     <div class="comment-list-wrapper"><ul>  <li class="reply-field">    <div class="reply-user-avatar"><img class="user-avatar-img" src="https://img.meituan.net/avatar/8af1d5983c9b26d6f8a64bdcd170d40729472.jpg"> </div>    <div class="info clearfix">    <span class="fr time">2017-07-10</span>      <span class="name">H***3</span>             <span class="star-ranking">         <span class="star-score" style="width: 75px"></span>       </span>      <span class="feel">好评</span>    </div>    <div class="user-reply">#上品肥牛饭套餐#套餐里面的汤不怎么样，肥牛饭特好吃，可以单点！饼一般吧#香酥饼#</div>  </li>   
     </ul></div>
-  <div class="page-navbar clearfix" id="pager"><div class="page-nav-wrapper">  <span class="first-page">首页</span>  <span class="previous"><i class="tri">&lt;</i>上一页 </span>  <span class="current" data-page="1">1</span>    <a href="javascript:;" data-page="2">2</a>    <a href="javascript:;" data-page="3">3</a>    <a href="javascript:;" class="next" data-page="2">下一页<i class="tri">&gt;</i></a>  <a href="javascript:;" class="last-page" data-page="243">尾页</a></div></div></div>
+ 
 </div>
 
 <div class="rank fr">
