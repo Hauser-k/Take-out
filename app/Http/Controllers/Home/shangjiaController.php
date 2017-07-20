@@ -51,7 +51,8 @@ class shangjiaController extends Controller
         // dd($shuzu);
         // 获取在gcid内的商品值
         $good = Goods::whereIn('gcid',$shuzu)->get();
-        // dd($good);
+        // dd($re);
+        // $seller = SellerDetail::where('sid',$id)->get();
         return view('home.shangjia',['data'=>$data,'re'=>$re,'ptime'=>$ptime,'good'=>$good]);
     }
 

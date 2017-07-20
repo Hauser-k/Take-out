@@ -29,6 +29,7 @@ class IndexController extends Controller
         $data = SellerClass::get();
         $gooder= DB::table('seller')
             ->join('seller_detail', 'seller.sid', '=', 'seller_detail.sid');
+            // dd($gooder);
         //如果传过来的ID 不为空执行下面的where语句
         if(!empty($res['csid'])){
             $gooder = $gooder->where('seller.csid',$res['csid']);
