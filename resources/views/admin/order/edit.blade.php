@@ -20,14 +20,14 @@
                           <div class="mws-form-row">
                             <label class="mws-form-label">订单号</label>
                             <div class="mws-form-item">
-                              <input type="text" class="small" value="{{$re -> order }}">
+                              <input type="text" class="small" value="{{$re -> order }}" readonly>
                             </div>
                           </div>
                           
                           <div class="mws-form-row">
                             <label class="mws-form-label">留言内容</label>
                             <div class="mws-form-item">
-                              <textarea rows="" cols="" class="large">{{$data -> umsg}}</textarea>
+                              <textarea readonly rows="" cols="" class="large">{{$data -> umsg}}</textarea>
                             </div>
                          
                             </div>

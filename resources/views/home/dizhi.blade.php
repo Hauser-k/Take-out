@@ -42,11 +42,11 @@
           </tr>
         </thead>
         <tbody>
-        @foreach($array as $arr)
+
               <tr class="">
                 <td class="left">
-                  <div class="td-inner align-left" title="  {{''}}">
-                    <div>    {{dump($arr)}}
+                  <div class="td-inner align-left" title="  231">
+                    <div>   123123
     
 </div>
                     <div class="dish-sku">
@@ -57,7 +57,7 @@
                 </td>
                 <td class="right" colspan="2">
                     <div class="td-inner align-right">
-                      ¥{{''}}*2
+                      ¥123123
                     </div>
                 </td>
             <tr class="delivery-cost bot-border">
@@ -73,7 +73,7 @@
                 </div>
               </td>
             </tr>
-@endforeach
+
         </tbody>
       </table>
 
@@ -101,40 +101,42 @@
               送餐详情
           </h3>
         </div>
+
         <div style="float:right;margin-top:-20px;margin-right:30px;"
         class="address-title addr"<h3>添加地址</h3></div>
         <form id="orderForm" class="order-form">
           <div id="address-list" class="address-list">
               <div id="address-list-wrap" class="address-list-wrap high-height">
                 <div id="address-list-inner" class="address-list-inner">
-                @foreach($data as $k=>$n)
-                    <div class="j-address-box address-box address-checked" data-aid="583084547" data-flag="1">
+                       @foreach($addr as $k => $v)
+                    <div class="j-address-box address-box " data-aid="{{$v->did}}" data-flag="1">
+                      
                       <p class="address-line blo">
                         <span class="span">
-                           {{$n->dname}}
+                           {{$v->dname}}
                             ：
-                          {{$n->dtel}}
+                         {{$v->dtel}}
                         </span>
 
                       </p>
-                      <p class="address-line blo" ><span class="span">{{$n->addr}}&nbsp;&nbsp;</span></p>
-                      <div>
-                        
+          
+                      <p class="address-line blo" ><span class="span">{{$v->daddr}}&nbsp;&nbsp;</span></p>
+                    
                       </div>
+                      
+                    
+                      @endforeach
+                            <div>
                          <p class="address-line dis" style="display:none;"><input type="text" name="phone" value="" placeholder="请输入姓名：手机号" style="border:0px;"/></p> 
                          <p class="address-line dis" style="display:none;"><input type="text" name="addr" value="" placeholder="请输入地址" style="border:0px;"/></p>                 
 
                       
                     </div>
 
-                    @endforeach
 
 
 
-
-                    <div>
-
-                    </div>
+                   
 
                      
 
@@ -163,18 +165,14 @@
               <label class="fl" for="pay-method">付款方式：</label>
               <div class="fl pay-option clearfix">
                     <a href="javascript:;" data-method="1" class="fl sprite option  option-unavail j-show-tips" data-tips="该餐厅不支持餐到付款">餐到付款</a>
-                    <a href="javascript:;" data-method="2" class="fl sprite option option-margin selected ">在线支付</a>
+                    <a href="javascript:;" data-method="2" class="fl sprite option option-margin selected ">余额支付</a>
               </div>
             </div>
         </form>
 
        
       </div>
-        <div class="pre-order field">
-          <span>期望送达时间：</span>
-          <a href="javascript:;" id="preorder-time" class="select-input"><span>立即送出</span><i class="icon"></i></a>
-          <span class="pre-order-tip"><span class="error-tips"></span></span>
-        </div>
+ 
 
       <div class="pay-area">
         <div id="order-address-warning" class="order-address-warning" style="display: none"></div>
@@ -194,17 +192,11 @@
             </a>
           </div>
  
-          <a class="s-btn yellow-btn fr" id="confirmOrder" href="{{url('home/create')}}"><span class="s-btn">去付款</span></a>
+          <a class="s-btn yellow-btn fr" id="confirmOrder" href="{{url('/home/fukuan')}}"><span class="s-btn">去付款</span></a>
         <div class="tips ct-black">
             您需支付&nbsp;<span class="price cc-lightred-new">¥<span id="totalPrice">28</span>
-              <span class="nodiscount-tip borderradius-2">
-                您今日优惠已用完，本单不再享受优惠
-                <i class="icon i-discountip"></i>
-              </span>
-              <span class="nodiscount-tip borderradius-2">
-                您今日优惠已用完，使用<a href="/mobile/download/bonus_limited" target="_blank">手机客户端</a>可享更多优惠
-                <i class="icon i-discountip"></i>
-              </span>
+
+
             </span>
           <span id="endfix" class="ct-black hidden">，饭到当面付款</span><br>
 
@@ -222,10 +214,23 @@
      $(function(){
        $('.addr').click(function(){
           $('.dis').css('display','block');
-          $('.blo').css('display','none');
+          $('.address-box').css('display','none');
+          $('.blo').css('border','');
        })
-       $('.s-btn').click(function(){
-         
+       $('.address-box').click(function(){
+          $('.address-box').css('border','');
+          
+          $(this).css('border','1px solid yellow');
+          l =  $('.address-box').index(this);
+          // alert(l);
+       })
+       $('.yellow-btn').click(function(){
+         var mes = $('.show-tags').val();
+         var addr = $('.address-box').eq(l).text();
+        //  alert(addr);
+        $.get('/home/suan',{mes,addr},function(data){
+
+        })
        })
      })
     </script>
