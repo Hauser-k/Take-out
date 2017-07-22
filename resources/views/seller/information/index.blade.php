@@ -59,7 +59,15 @@
                                             <input type="radio" name="status" id="close" value="4" @if($seller->status == 4) checked @endif style="color:#000;width:60px;float:left;"><span style="float:left;">歇业</span>
                                         </label>
                                     </div>
-
+                                    <div class="am-form-group">
+                                        <label for="user-phone" class="am-u-sm-12 am-form-label am-text-left">起送费 <span class="tpl-form-line-small-title">Business Hours</span></label>
+                                        <label class="am-form-label am-text-left" for="age" style="margin-top:20px;">
+                                            <span style="float:left;margin-left:20px;">起送费</span>
+                                            <input type="number" name="odelfee" id="time1" min="0" value="{{ $sellerdetail->odelfee }}" style="color:#000;width:60px;float:left;">
+                                            <span style="float:left;">配送费</span>
+                                            <input type="number" name="ofee" id="time2" min="0" value="{{ $sellerdetail->ofee }}" style="color:#000;width:60px;float:left;">
+                                        </label>
+                                    </div>
                                     <div class="am-form-group">
                                         <label for="user-weibo" class="am-u-sm-12 am-form-label  am-text-left">商铺地址 <span class="tpl-form-line-small-title">Addr</span></label>
                                         <div class="am-u-sm-12">

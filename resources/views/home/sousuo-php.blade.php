@@ -17,23 +17,27 @@
                             <div class="content">
                                 <p class="name"> {{$v->exname}} </p>
                                 <p class="price ct-lightgrey">
-                                    <span class="start-price">{{$v->sdelfee}}元起送</span>
-                                    <span class="send-price">{{$v->sfee}}元配送费
+                                    <span class="start-price">{{$v->odelfee}}元起送</span>
+                                    <span class="send-price">{{$v->ofee}}元配送费
                                     </span>
                                 </p>
                                 @if($v->status == 1)
                                     <p class="status-rest">休息中</p>
                                 @else
                                 <p class="rank clearfix">
-                                    <span class="star-ranking fl">
-                                        <span class="star-score" style="width: 66px"></span>
-                                    </span>
-                                    <span class="total fl cc-lightred-new">月售605单</span>
+                                   
+                                    <span class="total fl cc-lightred-new">月售
+                                        @foreach($count as $m => $n)
+                                            @if($v->sid == $m)
+                                                {!! $n !!}
+                                            @endif
+                                        @endforeach
+                                    单</span>
                                 </p>
-                                <p class="send-time ct-lightgrey">
+                               <!--  <p class="send-time ct-lightgrey">
                                     平均送餐时间：34分钟
-                                </p>
-                                <p class="status-rest">营业中</p>
+                                </p> -->
+                                <p class="status-pre-order cc-lightred-new">营业中</p>
                             </div>
                                  @endif
                         </li>

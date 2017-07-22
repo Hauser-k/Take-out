@@ -64,19 +64,40 @@
                         <li class="am-dropdown" data-am-dropdown>
                             <a id="ina"  href="javascript:;" class="am-dropdown-toggle" data-am-dropdown-toggle>
                                 <i class="am-icon-bell"></i>
-                                <span class="am-badge am-badge-warning am-round item-feed-badge">5</span>
+                                <span id="msgNum" class="am-badge am-badge-warning am-round item-feed-badge"></span>
                             </a>
-
+<script type="text/javascript">
+   // setInterval(function(){
+   //      getMsgNum();
+   //  },10000);
+   $('#ina').click(function(){
+        $.ajax({
+            url:'/seller/warn',
+            type:'get',
+            dataType:'json',
+            success:function(data){
+                if(data){
+                     $("#msgNum").text(data[0]);
+                    var fen = Date.parse(new Date())-data[1];
+                    ;
+                } 
+            }
+        });
+   });
+   
+</script>
                             <!-- 弹出列表 -->
                             <ul class="am-dropdown-content tpl-dropdown-content">
                                 <li class="tpl-dropdown-menu-notifications">
                                     <a href="javascript:;" class="tpl-dropdown-menu-notifications-item am-cf">
                                         <div class="tpl-dropdown-menu-notifications-title">
-                                            <i class="am-icon-line-chart"></i>
-                                            <span> 有6笔新的销售订单</span>
+                                            <i id="dd" class="am-icon-line-chart"></i>
+                                            <span> 有
+                                            
+                                            笔新的销售订单</span>
                                         </div>
-                                        <div class="tpl-dropdown-menu-notifications-time">
-                                            12分钟前
+                                        <div id="fenzhong" class="tpl-dropdown-menu-notifications-time">
+                                            分钟前
                                         </div>
                                     </a>
                                 </li>
@@ -120,18 +141,14 @@
             <div class="tpl-sidebar-user-panel">
                 <div class="tpl-user-panel-slide-toggleable">
                     <div class="tpl-user-panel-profile-picture">
-                        <img src="{{asset('seller/uploads/')}}/{{ session('seller_detail')->slogo }}" alt="">
+                        <img src="{{asset('/uploads/')}}/{{ session('seller_detail')->slogo }}" alt="">
                     </div>
                     <span class="user-panel-logged-in-text">
           </span>
                     <a href="{{ asset('seller/setup/') }}/{{ session('seller_user')->sid }}/edit" class="tpl-user-panel-action-link"> <span class="am-icon-pencil"></span> 账号设置</a>
                 </div>
             </div>
-                <li class="sidebar-nav-link">
-                    <a href="{{ asset('/seller/kaidian') }}">
-                        <i class="am-icon-clone sidebar-nav-link-logo"></i>我要开店
-                    </a>
-                </li>
+                
                 <li class="sidebar-nav-link">
                     <a href="{{ asset('seller/index/') }}/{{ session('seller_user')->sid }}/edit">
                         <i class="am-icon-clone sidebar-nav-link-logo"></i>我的店铺

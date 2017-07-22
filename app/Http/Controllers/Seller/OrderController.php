@@ -7,6 +7,12 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Http\Model\Order;
+use App\Http\Model\OrderGoods;
+use App\Http\Model\OrderDist;
+use App\Http\Model\Goods;
+use App\Http\Model\Addr;
+use Input;
+
 
 class OrderController extends Controller
 {
@@ -21,10 +27,78 @@ class OrderController extends Controller
         $sid = session('seller_user')->sid;
         
         $count = $request -> input('count',2);
-         $search = $request -> input('keywords');
-         $data = Order::join('order_dist','order.oid','=','order_dist.oid')->where('order','like','%'.$search.'%')->paginate($count);
+        $wh = [];
+        if($request->has('ostatus')){
+            $wh['ostatus'] = $request['ostatus'];
+        }
+        if($request->has('keywords')){
+            $wh['order'] = $request['keywords'];
+        }
+        $data = Order::join('order_dist','order.oid','=','order_dist.oid')->where('sid',$sid)->where($wh)->orderBy('otime','desc')->paginate($count);
          // dd($data);
-        return view('seller.order.order',['data'=>$data,'count'=>$count]);
+        $arr = ['1'=>'下单未付款','2'=>'付款未接单','3'=>'商家已接单','4'=>'已配送','5'=>'已收货未评价','6'=>'收货已评价','7'=>'取消订单'];
+        return view('seller.order.order',compact('data','count','arr'));
+    }
+     /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        $data = Goods::join('order_goods','order_goods.gid','=','goods.gid')->where('oid',$id)->paginate(2);
+        // dd($data);
+        return view('seller.order.order-goods',compact('data'));
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {   
+        // dd($id);
+        $data = OrderDist::join('addr','order_dist.did','=','addr.did')->where('oid',$id)->first();
+        // dd($data);
+        return view('seller.order.order-user',compact('data'));
+       
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request,$id)
+    {   
+        
+        //修改order_dist 的字段
+        $order_dist = $request->only('umsg','ostatus');
+        //修改addr 的字段
+        $did = Input::get('did');
+        $addr = $request->only('dname','dtel','daddr');
+        //修改数据库
+        // dd($addr);
+        $re = OrderDist::where('oid',$id)->update($order_dist);
+        $re1 = Addr::where('did',$did)->update($addr);
+        //判断接单时间是否为0 是默认值0 则修改数据库 否则不修改
+        $gtime = Order::where('oid',$id)->get();
+        //修改接单时间
+        if((Input::get('ostatus') == 3) && ($gtime[0]->gtime ==0)){
+
+            Order::where('oid',$id)->update(['gtime'=> time()]);
+        }
+        // if($re && $re1){
+        //     return view('seller.order.order');
+        // }else{  
+        //     return back()->with('error','提交失败');
+        // }
+        // $request   
     }
 
     

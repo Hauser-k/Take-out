@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Model\SellerDetail;
 use App\Http\Model\Seller;
 use App\Http\Model\goods;
+use App\Http\Model\Order;
 
 class SearchController extends Controller
 {
@@ -16,18 +17,24 @@ class SearchController extends Controller
     {   
         $inp = $request['inp'];
         //每家商店每月的总销量 获取前三十天的时间戳
-        // $time = strtotime(date('Y-m-d H:i:s',strtotime('-30 days')));
+        $time = strtotime(date('Y-m-d H:i:s',strtotime('-30 days')));
+       
         
      
         $data = SellerDetail::join('seller','seller_detail.sid','=','seller.sid')
            ->where('seller_detail.exname','like','%'.$inp.'%')
            ->paginate(5);
+       
         // dd($data);
         // 判断有没有搜到结果
         if(count($data)<1){
             return view('home.sousuokong',compact('inp'));
         }
-        return view('home.sousuo-php',compact('inp','data'));
+         //销量即订单总数量
+        foreach($data as $k=> $v){
+            $count[$v->sid] = Order::where('gtime','>',$time)->where('sid',$v->sid)->count();
+        }
+        return view('home.sousuo-php',compact('inp','data','count'));
     }
     public function caidan(Request $request)
     {   

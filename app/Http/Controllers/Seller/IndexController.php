@@ -113,7 +113,7 @@ class IndexController extends Controller
         $validator =  Validator::make($input,$role,$mess);
         if($validator->passes()){
 
-            if(session('user')->status != $input1['status']){
+            if(session('seller_user')->status != $input1['status']){
                 $res = Seller::where('sid',$id)->update($input1);
                 if($res){
                     return redirect('seller/index/'.$id.'/edit')->with('success','修改成功');
