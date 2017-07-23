@@ -69,8 +69,9 @@ class shangjiaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function getPingjia($id)
-    {
+    public function Pingjia()
+    {   
+        $id = 1;
         $data = Evals::where('sid',$id)->get();
 
          $re = SellerDetail::find($id);

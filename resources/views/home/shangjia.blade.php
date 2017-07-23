@@ -95,13 +95,7 @@
 
     </div>
   </div>
-  <div class="save-up-wrapper">
-    <a href="javascript:;" class="save-up j-save-up " data-poiid="144748254611096852">
-      <p class="ct-black">收藏本店</p>
-      <i class="icon i-heart-22"></i>
-    </a>
-    <p class="cc-lightred-new j-save-up-people"></p>
-  </div>
+
 </div>
 
 
@@ -110,9 +104,9 @@
   <div class="cate-tab-area">
   <div class="tab-link">
     <div class="tab-link-inner clearfix">
-      <a href="{{url('home/shangjia')}}" class="tab-item  active">菜单</a>
-      <a href="{{url('home/shangjia/1')}}" class="tab-item ">评价</a>
-        <a href="{{url('home/shangjia/create/1')}}" class="tab-item ">食品安全档案</a>
+      <a href="{{url('home/shangjia/1')}}" class="tab-item  active">菜单</a>
+      <a href="{{url('home/pingjia')}}" class="tab-item ">评价</a>
+
     </div>
   </div>
 
@@ -202,7 +196,7 @@
 
     {{--购物车--}}
     <div class="shopping-cart clearfix" data-status="1" data-poiname="{{ $re['exname'] }}" data-poiid="144807817220792597">
-        <form method="post" action="/order/shoppingcart" id="shoppingCartForm">
+        <form method="post" action="/home/jie" id="shoppingCartForm">
             {{ csrf_field() }}
             <div id="cart_top1" class="first-to-app clearfix j-first-to-app" style="top: -{{ $other['top1'] }}px;">
                 <span class="fl">电脑下单不享优惠了哦，优惠活动手机专享~</span>

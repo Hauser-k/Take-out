@@ -42,7 +42,6 @@ Route::any('/home/search/dian','Home\SearchController@dian');
 Route::any('/home/search/caidan','Home\SearchController@caidan');
 //商家入驻
 Route::resource('/home/seller/ruzhu','Home\RuzhuController');
-
 //忘记密码
 Route::any('/home/forget','Home\ForgetController@index');
 // 获取手机号
@@ -53,6 +52,7 @@ Route::any('/home/telto','Home\ForgetController@phoneto');
 Route::any('/home/reset','Home\ForgetController@ureset');
 //密码重置逻辑路由
 Route::any('/home/doreset','Home\ForgetController@doureset');
+
 
 Route::group(['prefix'=>'home','namespace'=>'Home'], function(){
 
@@ -79,6 +79,12 @@ Route::group(['prefix'=>'home','namespace'=>'Home'], function(){
 	Route::any('jie','jiezhController@index');
 	Route::any('fukuan','jiezhController@Show');
 	Route::any('suan','jiezhController@jiesu');
+	
+	//结账
+    Route::any('wan','jiezhController@Wan');
+	//评价
+    Route::get('pingjia','shangjiaController@Pingjia');
+
 });
 
 /**

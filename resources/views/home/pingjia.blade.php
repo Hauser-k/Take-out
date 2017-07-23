@@ -89,9 +89,9 @@
 <div class="comments fl" id="comments" data-pid="144924000377172669">
   <div class="tab-link">
     <div class="tab-link-inner clearfix">
-      <a href="" class="tab-item ">菜单</a>
+      <a href="{{url('home/shangjia/index')}}" class="tab-item ">菜单</a>
       <a href="#" class="tab-item  active">评价</a>
-        <a href="" class="tab-item ">食品安全档案</a>
+
     </div>
   </div>
   <div class="title clearfix">
@@ -108,7 +108,7 @@
                 <div class="reply-user-avatar">
                     <img class="user-avatar-img" src=""> </div>
                 <div class="info clearfix">
-                    <span class="fr time">2017-07-10</span>
+                   
                     <span class="name">H***3</span>
                     <span class="star-ranking">
                         <span class="star-score" style="width: 75px"></span>
@@ -120,52 +120,7 @@
  
 </div>
 
-<div class="rank fr">
-  <div class="title">总体评分</div>
-  <div class="head clearfix">
-    <strong class="fl">4.9</strong>
-    <span class="star-ranking fl">
-      <span class="star-score" style="width: 138px"></span>
-    </span>
-  </div>
-  <div class="detail">
-      <div class="field clearfix">
-        <span class="fl score-num">
-            5分
-        </span>
-        <span class="fl bar"><i style="width: 85%;"></i></span>
-        <span class="fr percent">85%</span>
-      </div>
-      <div class="field clearfix">
-        <span class="fl score-num">
-            4分
-        </span>
-        <span class="fl bar"><i style="width: 10%;"></i></span>
-        <span class="fr percent">10%</span>
-      </div>
-      <div class="field clearfix">
-        <span class="fl score-num">
-            3分
-        </span>
-        <span class="fl bar"><i style="width: 3%;"></i></span>
-        <span class="fr percent">3%</span>
-      </div>
-      <div class="field clearfix">
-        <span class="fl score-num">
-            2分
-        </span>
-        <span class="fl bar"><i style="width: 1%;"></i></span>
-        <span class="fr percent">1%</span>
-      </div>
-      <div class="field clearfix">
-        <span class="fl score-num">
-            1分
-        </span>
-        <span class="fl bar"><i style="width: 1%;"></i></span>
-        <span class="fr percent">1%</span>
-      </div>
-  </div>
-</div>
+
 
 <div class="clear"></div>
 
