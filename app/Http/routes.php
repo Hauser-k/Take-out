@@ -54,7 +54,7 @@ Route::any('/home/reset','Home\ForgetController@ureset');
 Route::any('/home/doreset','Home\ForgetController@doureset');
 
 
-Route::group(['prefix'=>'home','namespace'=>'Home'], function(){
+Route::group(['prefix'=>'home','namespace'=>'Home','middleware'=>'home.login'], function(){
 
 	//我的订单
     Route::resource('myorder','MyOrderController');

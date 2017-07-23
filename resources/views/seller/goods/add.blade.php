@@ -162,27 +162,31 @@
                        caidan = false;
                        return ;
                     }else{
-                       caidan = true;
-                       return ;
+                        caidan = true;
+                        return ;
                     }
                 },
                 dataType:'json',
                 
             });
-            return caidan;
+             caidan;
         };
 
         if($('select[name="gcid"]').val() == 'sel') {
                 layer.msg('分类必填',{icon:5});
-                return fenlei = false;
+                 fenlei = false;
+                 return fenlei;
+        }else{
+            fenlei = true;
         }
 
         var gprice = $('#gprice').val();
         if(gprice==''){
             layer.msg('单价不能为空或格式不正确',{icon:2});
-            return danjia = false;
+             danjia = false;
+             return danjia;
         }else{
-            return danjia = true;
+             danjia = true;
         }
         if(caidan == true && danjia == true && fenlei==true){
             return true;

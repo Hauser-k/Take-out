@@ -92,7 +92,7 @@
 
                     </div>
                 </form>
-
+                <button type="submit" class="am-btn am-btn-primary  am-btn-block tpl-btn-bg-color-success  tpl-login-btn"><a href="{{url('/seller/register')}}">点我注册</a></button>
             </div>
         </div>
     </div>

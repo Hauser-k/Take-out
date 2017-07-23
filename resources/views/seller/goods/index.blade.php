@@ -25,7 +25,7 @@
                     </div>
                     <form action="{{url('seller/goods')}}"　method="get">
                    
-                            菜类：<input type="text" value="" name="fenleiming" placeholder="请输入分类名">
+                            菜类：<input type="text" value="" name="fenleiming" placeholder="请输入商品名">
                             状态：<select name="gstatus"  id="">
                                 <option @if(empty($request['gstatus']))  selected @endif value ="">全部</option>
                                <option value="1" @if(!empty($request['gstatus']) && $request['gstatus'] == 1)  selected @endif>在售</option>

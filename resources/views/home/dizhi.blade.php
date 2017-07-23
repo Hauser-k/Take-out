@@ -223,9 +223,10 @@
        })
        $('.yellow-btn').click(function(){
          var mes = $('.show-tags').val();
+
          var addr = $('.address-box').eq(l).text();
-        $.get('/home/suan',{mes,addr},function(data){
-          
+        $.get('/home/suan',{'mes':mes,'addr':addr},function(data){
+
         })
        })
      })

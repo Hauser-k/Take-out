@@ -76,10 +76,8 @@ class LoginController extends Controller
             
             //将用户信息添加到session中
             session(['seller_user'=>$user]);
-            //商家详细信息
-            $seller_detail = SellerDetail::where('sid',$user->sid)->first();
-            // 将商家详情表存到session中
-            session(['seller_detail'=>$seller_detail]);
+            
+            
             //如果选中 记住密码 将信息保存到cookie中
             if($request->input('name')){
                 Cookie::queue('xinxi', $user, 600);
