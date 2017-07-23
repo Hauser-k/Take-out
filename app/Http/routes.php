@@ -15,13 +15,7 @@
  DB::listen(function($sql, $bindings, $time) {
                 // dump($sql);
             });
-// 前台商家路由
-Route::resource('/home/shangjia','Home\shangjiaController');
 
-// 购物车路由
-Route::get('/home/shop','Home\shop_cartController@addcart');
-Route::get('/home/shop_cart','Home\shop_cartController@index');
-Route::get('/home/create','Home\shop_cartController@create');
 
 Route::get('/', function () {
 //    return view('welcome');
@@ -48,6 +42,11 @@ Route::any('/home/search/caidan','Home\SearchController@caidan');
 Route::resource('/home/seller/ruzhu','Home\RuzhuController');
 
 
+// 购物车路由
+Route::get('/home/shop','Home\shop_cartController@addcart');
+Route::get('/home/shop_cart','Home\shop_cartController@index');
+Route::get('/home/create','Home\shop_cartController@create');
+
 Route::group(['prefix'=>'home','namespace'=>'Home'], function(){
     //注册
     Route::resource('register','RegisterController');
@@ -61,6 +60,8 @@ Route::group(['prefix'=>'home','namespace'=>'Home'], function(){
     Route::resource('mynumber','MyNumberController');
 	//首页
     Route::resource('index','IndexController');
+    // 前台商家路由
+    Route::controller('shangjia','ShangjiaController');
 });
 
 /**

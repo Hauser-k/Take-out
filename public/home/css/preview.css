@@ -102,9 +102,9 @@
 }
 
 .dishes {
-  margin-left: 390px;
-  background-color: #FFFFFF;
-  border: 1px solid #ebebeb;
+  /*margin-left: 390px;*/
+  /*background-color: #FFFFFF;*/
+  /*border: 1px solid #ebebeb;*/
   color: #434343;
   overflow: auto; /*创建BFC*/
 }
