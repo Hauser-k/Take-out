@@ -114,13 +114,13 @@ Route::group(['prefix'=>'admin','namespace'=>'Admin','middleware'=>'admin.login'
     //后台管理员用户
     Route::resource('adminuser','AdminUserController');
 	//友情链接
-	Route::resource('/admin/link','Admin\LinkController');
+	Route::resource('link','LinkController');
 	//网站配置
-	Route::resource('/admin/config','Admin\ConfigController');
+	Route::resource('config','ConfigController');
 	//修改网站配置排序
-	Route::any('admin/config/changeorder','Admin\ConfigController@changeOrder');
+	Route::any('config/changeorder','ConfigController@changeOrder');
 	//网站配置内容修改路由
-	Route::any('admin/config/changecontent','Admin\ConfigController@changeContent');
+	Route::any('config/changecontent','ConfigController@changeContent');
 
 });
 

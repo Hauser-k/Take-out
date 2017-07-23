@@ -15,11 +15,18 @@ class ConfigController extends Controller
     {
         // dd($request['conid']);
 
-         foreach($request['conid'] as $k=>$v){
-           Conf::where('conid',$v)->update(['content'=>$request['content'][$k]]);
+            foreach($request['conid'] as $k=>$v){
+            $add = Conf::where('conid',$v)->update(['content'=>$request['content'][$k]]);
+
        }
-       // $this->putFile();
-       return redirect('admin/config');
+        if($add){
+           return back()->with('success','修改成功');
+        }else{
+            return back()->with('error','修改失败');
+        }
+             // return redirect('admin/config');   
+              // 
+
     }
 
     /**

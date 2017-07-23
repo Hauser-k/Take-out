@@ -31,7 +31,7 @@
     <body class="pg-unitive-signup theme--waimai">
         <header class="header--mini">
             <div class="wrapper cf">
-                <a class="site-logo" href="#">
+                <a class="site-logo" href="{{url('/home/index')}}">
                     美团
                 </a>
             </div>

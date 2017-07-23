@@ -18,7 +18,7 @@
         <link rel="canonical" href="#">
         <meta name="keywords" content="美团,登录,注册,美团登录,美团注册">
         <title>
-            注册 | 美团外卖
+            注册 | 顺丰外卖
         </title>
         <!--[if lt IE 9]>
             <script src="//s0.meituan.net/bs/jsm/?f&#x3D;fe-sso-fs:build/page/vendor/html5shiv.min.js">
@@ -31,7 +31,7 @@
     <body class="pg-unitive-signup theme--waimai">
         <header class="header--mini">
             <div class="wrapper cf">
-                <a class="site-logo" href="#">
+                <a class="site-logo" href="{{url('/home/index')}}">
                     美团
                 </a>
             </div>
