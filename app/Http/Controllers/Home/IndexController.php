@@ -30,16 +30,18 @@ class IndexController extends Controller
     {
         $res=$request -> all();
 
+//        $request->session()->forget('home_user');
 
         //调用下面的方法给值 变成数组 进行遍历
 //        session(['addr' =>$res]);
-        $hhh=self::actionGetNearShop(session('addr'))->toArray();
-
+        $h1=self::actionGetNearShop($res);
+        $hhh = $h1->toArray();
+//        dd($hhh);
         $arr = [];
+
         foreach($hhh as $key=>$value){
             $arr[]=$value['sid'];
         }
-
 
         $data = SellerClass::get();
         $gooder= DB::table('seller')
@@ -225,7 +227,14 @@ class IndexController extends Controller
     public static function actionGetNearShop($res){
         $scope = 5;//5000米
 
-
+        if(!empty($res['excoorx']) && !empty($res['excoory'])){
+            session(['addr' =>$res]);
+        }
+        if(empty(session('addr'))){
+//            return redirect('home/addr');
+            header('refresh:0;addr');
+            die;
+        }
 
         $lng = trim(session('addr')['excoorx']);//经度
         $lat = trim(session('addr')['excoory']);//纬度
