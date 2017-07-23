@@ -68,10 +68,7 @@
     </div>
     <div class="payment payment-0">
      <div class="payment-type">
-      <ul class="payment-menu">
-       <li class="payment-tab payment-tab-0" data-target="0">支付宝/财付通/微信</li>
-       <li class="payment-tab payment-tab-1" data-target="1">网银支付</li>
-      </ul>
+ 
       <ul class="payment-tips">
        <li><a class="payment-tips-feedback" href="http://www.meituan.com/vote/survey/7" target="_blank">意见反馈</a></li>
        <li><span class="payment-dropdown">支付帮助<span class="payment-tips-arrow"></span>
@@ -100,11 +97,7 @@
          </div></span></li>
       </ul>
       <div class="payment-list payment-list-0">
-       <ul class="clear-fix">
-        <li><input type="radio" name="thirdpart_pay" id="thirdpart_pay_wxqrpay" data-type="wxqrpay" data-code="" data-bankcode="" checked="" /><label class="payment-icon" for="thirdpart_pay_wxqrpay"><img src="https://p1.meituan.net/pay/pc_wxqrpay.png" disabled="" alt="微信" /></label><span class="payment-weak-tip" style="visibility:visible;"></span></li>
-        <li><input type="radio" name="thirdpart_pay" id="thirdpart_pay_tenpay" data-type="tenpay" data-code="" data-bankcode="" /><label class="payment-icon" for="thirdpart_pay_tenpay"><img src="https://p0.meituan.net/pay/tenpay2.png" disabled="" alt="财付通" /></label><span class="payment-weak-tip" style="visibility:hidden;"></span></li>
-        <li><input type="radio" name="thirdpart_pay" id="thirdpart_pay_alipay" data-type="alipay" data-code="" data-bankcode="" /><label class="payment-icon" for="thirdpart_pay_alipay"><img src="https://p0.meituan.net/pay/alipaypcnew.png" disabled="" alt="支付宝" /></label><span class="payment-weak-tip" style="visibility:hidden;"></span></li>
-       </ul>
+      
       </div>
       <div class="payment-list payment-list-1">
        <div class="payment-bank-tip">
@@ -141,7 +134,14 @@
       <div class="qr-img">
        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGoAAABqAQMAAABu71bUAAAABlBMVEUAAAD///+l2Z/dAAAB9klEQVQ4jW3UPQotOwgAYMFWyFYE24BbF2yFbCVgK+Q573KLk9wphvMVczT+BABrg2yx4Rv6+aWmGefJuS3PQ5Y1jYfLmIn/YJSe4qSUfzFVAeZxyZeayGk6efqfuD8ElL8Pw8Nz6hipCK1z7OZ0rY5PBzleamStSCadWnCzxFaMVcNjs90ctKbg5pMo+VCYTmWxF4I9jMVO6Th0bIKbpyuyKIHHPvshrZwrUMbhFS9hIAaEWNp5KEWxJ9MumPLQOfXs6rIvJ7upY3SaZwJpDrhJXjMydMyj9FDJIQahdsPBbm5cpUWjuz7Gw5oHpumymKOTvLi+tHuQuA7ow+oseei0Su0jXCRhjC28NsuX8y87O+oTsB7vL24GUHlCz1n/z8Mxu7BdoGEDepAuCrhr//Q5g15G7W7qwrVkPeyFwyXdUvHcdnPGQWeiLpyeh+KG3tvTqzm+QL/sGTMOdYzZPbmJhgnDU7ovYTeTYIX1KKn2IW/O7LGmrithf3gTlDO8o/Sgf2n8smdAEhyKqBO6Sd8F8n+kMHkJahshqrB7c9MPZi97152lS3exMgYOmNv7BTdPz6BPHUas8BDQhUvA6AjbTc3OpBSjuy4POzhoX8n0jQ287BTYpQuQYC/LSU9f5vSt80XNTRFYfkym3ezK+mHH2Qvy8D/QaHoncnuTDQAAAABJRU5ErkJggg==" alt="二维码" />
       </div></span>
-     <img class="qr-guide" src="./img/mt-qrcode-guide.3IN3Gt.png" srcset="./img/mt-qrcode-guide@2x.31tJzs.png 2x" />
+
+@foreach($data as $k=>$v)
+    <div class="cd">
+     <i class="icon icon-sand"></i>
+     <span class="cd-text">账户余额：<span class="cd-time">{{$v->umoney}}</span></span>
+    </div>
+@endforeach
+
      <div class="payment-submit-area clear-fix payment-submit-area-padding">
       <div class="payment-amount">
        支付：
@@ -151,7 +151,7 @@
        <a  class="btn">去结算</a>
       </div>
       <div class="payment-back">
-       <a href="{{url('home/shop_cart')}}">返回修改订单</a>
+       <a href="{{url('home/jie')}}">返回修改订单</a>
       </div>
      </div>
     </div>
@@ -237,4 +237,6 @@
         <script src="./js/lib/ie9-shim.min.2CKSCH.js"></script>
     <![endif]--> 
  </body>
+
+
 </html>

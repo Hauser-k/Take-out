@@ -61,7 +61,7 @@
                        <td>{{ $v -> umsg }}</td>
                        <td>{{ $v -> uway }}</td>
                        <td>@if ($v -> ostatus == 2) 已收货 @else 未收货 @endif</td>
-                       <td>{{ $v -> ofree }}</td>
+                       <td>{{ $v -> ofee }}</td>
                        <td>{{ $v -> ocoupon }}</td>
                        <td>{{ $v -> endprice }}</td>
                        <td><button id="but" class="btn btn-primary" width="50px"><a href="{{url('/admin/order/'.$v->odid.'/edit')}}">查看</a></button></td>

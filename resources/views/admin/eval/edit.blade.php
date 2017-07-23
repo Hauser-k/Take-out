@@ -20,25 +20,25 @@
                           <div class="mws-form-row">
                             <label class="mws-form-label">订单号</label>
                             <div class="mws-form-item">
-                              <input type="text" class="small" value="{{$data->order}}">
+                              <input type="text" class="small" value="{{$data->order}}" readonly>
                             </div>
                           </div>
                           
                           <div class="mws-form-row">
                             <label class="mws-form-label">评价内容</label>
                             <div class="mws-form-item">
-                              <textarea rows="" cols="" class="large">{{$data->econtent}}</textarea>
+                              <textarea readonly rows="" cols="" class="large">{{$data->econtent}}</textarea>
                             </div>
                          
                             </div>
                             <div class="mws-form-row">
                             <label class="mws-form-label">回复内容</label>
                             <div class="mws-form-item">
-                              <textarea rows="" cols="" class="large">{{$data->ereply}}</textarea>
+                              <textarea readonly rows="" cols="" class="large">{{$data->ereply}}</textarea>
                             </div>
                          
                             </div>
-                            <div><button class="btn btn-primary"><a href="http://www.tianfan.com/admin/eval">返回</a></button></div>
+                            <div><button class="btn btn-primary"><a href="{{url('admin/eval')}}">返回</a></button></div>
                           </div>
                       </form>
                     </div>      

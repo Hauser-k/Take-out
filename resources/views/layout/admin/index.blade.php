@@ -218,12 +218,7 @@
         </div>
 
         <!-- Searchbox -->
-        <div id="mws-searchbox" class="mws-inset">
-            <form action="">
-                <input type="text" class="mws-search-input" placeholder="Search...">
-                <button type="submit" class="mws-search-submit"><i class="icon-search"></i></button>
-            </form>
-        </div>
+       
 
         <!-- Main Navigation -->
      <div id="mws-navigation">
@@ -375,7 +370,7 @@
 
         <!-- Footer -->
         <div id="mws-footer">
-            Copyright Your Website 2012. All Rights Reserved.
+            Copyright Your Website 2017. All Rights Reserved.
         </div>
 
     </div>
