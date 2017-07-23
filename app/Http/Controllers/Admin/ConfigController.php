@@ -35,7 +35,7 @@ class ConfigController extends Controller
          foreach($data as $k=>$v){
             switch($v->contype){
                 case 'input':
-                    $data[$k]->content = ' <input type="text" class="lg" name="content[]" value="'.$v->content.'">';
+                    $data[$k]->content = '<input type="text" class="lg" name="content[]" value="'.$v->content.'">';
                     break;
                 case 'textarea':
                     $data[$k]->content = '<textarea class="lg" name="content[]" >'.$v->content.'</textarea>';
@@ -155,6 +155,7 @@ class ConfigController extends Controller
     {       
         
          $input = $request->except(['_token',"_method"]);
+         // dd($input);
         $re = Conf::where('conid',$id)->update($input);
         if($re){
             return redirect('admin/config');

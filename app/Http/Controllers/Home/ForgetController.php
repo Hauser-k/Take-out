@@ -1,23 +1,30 @@
 <?php
 
-namespace App\Http\Controllers\Seller;
-
+namespace App\Http\Controllers\Home;
+use App\Http\Model\User;
 use Illuminate\Http\Request;
-use App\Http\Model\Seller;
+use App\Http\Controllers\HttpController;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use App\Http\Controllers\HttpController;
+use Mail;
+use Input;
+use Validator;
 use Crypt;
-class RegisterController extends Controller
+
+class ForgetController extends Controller
 {   
+
+
+
 
      public function phone(Request $request)
      {  
 
          $data = $request->all();
+        // dd($data); 
 
-        $user = Seller::where('stel',$data['phone'])->first();    
-        if($user){
+        $user = User::where('utel',$data['phone'])->first();    
+        if(!$user){
             $res = ['code'=>'no'];
             $res = json_encode($res);
             echo $res;
@@ -40,35 +47,6 @@ class RegisterController extends Controller
         session(['phone_code'=>$phone_code]);
         return $res;
      }
-
-     public function stel(Request $request){
-
-        $data = $request->all();
-        // dd($data);
-         $user = Seller::where('sname',$data['sname'])->first();  
-         if($user){
-            $res = ['code'=>'no'];
-            $res = json_encode($res);
-            echo $res;
-            die;
-         }
-        
-       
-        
-     }
-
-      public function email(Request $request){
-        $data = $request->all();
-        $user = Seller::where('semail',$data['semail'])->first();  
-
-        if($user){
-            $res = ['code'=>'no'];
-            $res = json_encode($res);
-            echo $res;
-            die;
-         }
-     }
-
     /**
      * Display a listing of the resource.
      *
@@ -76,7 +54,8 @@ class RegisterController extends Controller
      */
     public function index()
     {
-        return view('seller/zhuce/zhuce');
+          return view('home/update');
+
     }
 
     /**
@@ -84,10 +63,50 @@ class RegisterController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function ureset(Request $request)
     {
-        //
+        
+        $user = $request['utel'];
+       return view('home/reset',compact('user'));
     }
+
+     public function doureset(Request $request)
+     {
+       $input = $request->except(['_token']);
+        // dd($input);
+
+          $role = [
+            'upwd'=>'required|between:6,18',
+            'apassword'=>'same:upwd',
+        ];
+
+        $mess = [
+            'upwd.required'=>'必须输入新密码',
+            'upwd.between'=>'新密码必须在6-18位之间',
+            'apassword.same'=>'确认密码必须跟新密码一致',
+        ];
+
+        $validator = Validator::make($input,$role,$mess);
+
+        if ($validator->fails()) {
+
+            return back()->withErrors($validator);
+        }else{
+
+            $utel = $request->input('utel');
+            // dd($sid);
+            $upwd = Crypt::encrypt($input['upwd']);
+
+            $re =  User::where('utel',$utel)->update(['upwd'=>$upwd]);
+
+
+            if($re){
+                return redirect('/home/login');
+            }else{
+                echo "修改失败";
+            }
+        }
+     }
 
     /**
      * Store a newly created resource in storage.
@@ -97,37 +116,8 @@ class RegisterController extends Controller
      */
     public function store(Request $request)
     {
-       // $a = $request->all();
-       // dd($a);
-        $phone = session('phone_code');
-        // dd($phone); 
-         $phone2 = $request -> input('phone');
-         $request -> flash();
-        if($phone != $phone2){
-         return back() -> with('error','动态码错误');
-        }
-
-         $data = $request -> except('_token','password','phone');
-         $data['spwd'] = Crypt::encrypt($data['spwd']);
-         $data['stoken'] = str_random(50);
-         $data['status'] = 5;
-         // dd($data);
-
-          $res = Seller::where('stel',$data['stel'])->first();
-        // dd($res);
-         if(!$res==$data['stel']){
-                  $re = Seller::create($data);
-                  return redirect('/seller/login/');
-              
-        }else{
-            return back()->with('error2','手机号已存在');
-           
-
-        }
-
+        //
     }
-
-
 
     /**
      * Display the specified resource.
@@ -148,7 +138,7 @@ class RegisterController extends Controller
      */
     public function edit($id)
     {
-        //
+
     }
 
     /**

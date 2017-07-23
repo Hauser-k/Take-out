@@ -193,7 +193,7 @@
                 </div>
                 <ul>
                     <li><a href="{{url('admin/login/')}}/{{ session('admin_user')['aid']}}"><input type="hidden" name="_method" value="put">退出</a></li>
-                    <li><a href="#">修改密码</li>
+                    <li><a href="{{url('admin/update/')}}/{{ session('admin_user')['aid']}}/edit">修改密码</li>
                 </ul>
             </div>
         </div>

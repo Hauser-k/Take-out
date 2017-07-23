@@ -42,7 +42,7 @@
       <div class="mws-form-row"> 
            <label class="mws-form-label">类型值</label> 
            <div class="mws-form-item"> 
-            <input type="text"  name="contype"  value="{{$data->convale}}" style="width:250px"/> 
+            <input type="text"  name="convalue"  value="{{$data->convalue}}" style="width:250px"/> 
               <span><i class ="fa fa-exclamation-circle yellow ">类型值只有在radio的情况下才需要配置,格式1|开启,0|关闭</i></span>
            </div> 
       </div> 
@@ -77,6 +77,8 @@
     showTr();
     function showTr()
     {
+      // var l = $('.inp').val();
+      // alert(l);
         if($('input[name=contype]:checked').val() == 'radio'){
               $('.field_value').show();
         }else{

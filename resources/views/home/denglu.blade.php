@@ -108,7 +108,7 @@
 
         <div class="J-info form-field form-field--icon">
             <i class="icon icon-phone"></i>
-            <input type="text" id="login-mobile" class="f-text" name="uname" value="" placeholder="账号" />
+            <input type="text" id="login-mobile" class="f-text" name="utel" value="" placeholder="手机号" />
         </div>
        
         <div class="form-field form-field--icon">
@@ -124,7 +124,7 @@
         </div>
 
         <div class="form-field form-field--auto-login cf">
-                        <a tabindex="-1" href="#" target="_top" class="forget-password">忘记密码？</a>
+                        <a tabindex="-1" href="{{url('/home/forget')}}" target="_top" class="forget-password">忘记密码？</a>
                 <input type="checkbox" value="1"  name="auto_login" id="mobile-autologin" class="f-check " />
                 <label class="normal" for="mobile-autologin">7天内自动登录</label>
         </div>

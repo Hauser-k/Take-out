@@ -43,7 +43,7 @@ class LoginController extends Controller
     {
         $data = ($request->except('_token'));
         // dd($data);
-        $res = User::where('uname',$data['uname'])->first();
+        $res = User::where('utel',$data['utel'])->first();
         // dd($res);
         // dd(Crypt::encrypt('666'));
         if(!$res){
@@ -57,9 +57,8 @@ class LoginController extends Controller
                 //添加session
                 session(['home_user'=>$res]);
 
-                 // return redirect('admin/user');
-                echo '跳转到首页....';
-
+                 return redirect('home/index');
+               
 
              }else{
                 return back() -> with('error','用户名或密码错误');

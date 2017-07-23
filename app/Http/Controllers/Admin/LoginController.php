@@ -53,7 +53,7 @@ class LoginController extends Controller
     	//2.查询
     	$res = Admin::where('aname',$data['username'])->first();
 
-        // var_dump($res);
+        // dd($res);
 
     	// dd(Crypt::encrypt('666'));
 

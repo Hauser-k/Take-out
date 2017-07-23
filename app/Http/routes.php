@@ -32,14 +32,23 @@ Route::get('/code','CodeController@code');
  */
 //登录
 Route::resource('/home/login','Home\LoginController');
-
+//忘记密码
+Route::any('/home/forget','Home\ForgetController@index');
+// 获取手机号
+Route::any('/home/tel','Home\ForgetController@phone');
+ //给用户发送短信
+Route::any('/home/telto','Home\ForgetController@phoneto');
+//重置密码界面
+Route::any('/home/reset','Home\ForgetController@ureset');
+//密码重置逻辑路由
+Route::any('/home/doreset','Home\ForgetController@doureset');
 
 Route::group(['prefix'=>'home','namespace'=>'Home'], function(){
     //注册
     Route::resource('register','RegisterController');
     //注册获取手机号
     Route::any('phone','RegisterController@phone');
-
+    //发送验证
     Route::any('phoneto','RegisterController@phoneto');
 	//首页
     Route::resource('index','IndexController');
@@ -57,12 +66,14 @@ Route::resource('/admin/link','Admin\LinkController');
 Route::resource('/admin/config','Admin\ConfigController');
 //修改网站配置排序
 Route::any('admin/config/changeorder','Admin\ConfigController@changeOrder');
-//    网站配置内容修改路由
- Route::any('admin/config/changecontent','Admin\ConfigController@changeContent');
+//网站配置内容修改路由
+Route::any('admin/config/changecontent','Admin\ConfigController@changeContent');
 
 Route::group(['prefix'=>'admin','namespace'=>'Admin','middleware'=>'admin.login'], function(){
     //普通用户管理
     Route::resource('user','UserController');
+    //修改密码
+    Route::resource('update','UpdateController');
     //商家分类
     Route::resource('sellerclass','SellerClassController');
     //商家信息
@@ -101,6 +112,14 @@ Route::any('/seller/dosreset','Seller\ForgetController@dosreset');
 Route::group(['prefix'=>'seller','namespace'=>'Seller','middleware'=>'seller.login'], function(){
     //注册
     Route::resource('register','RegisterController');
+    // 获取手机号
+    Route::any('phone','RegisterController@phone');
+    //给用户发送短信
+    Route::any('phoneto','RegisterController@phoneto');
+    //判断昵称是否重复
+    Route::any('stel','RegisterController@stel');
+    //判断邮箱是否重复
+    Route::any('email','RegisterController@email');
     //退出登录
     Route::any('quit','LoginController@quit');
     //商家账号设置
