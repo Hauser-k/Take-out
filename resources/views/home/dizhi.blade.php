@@ -23,9 +23,7 @@
 
 <div id="anti_token" data-token="+ZwGS3D+RLuA0T4Q5MV9HENDhRERzRFAbVVZ68xewGDCuZLMD70Nxr4kOYa4UYap"></div>
 
-<div class="breadcrumb">
-  <a class="ca-brown" href="/restaurant/144903354471052315">嘉和一品粥(昌平西关店)</a><i>&gt;</i><span>确认购买</span>
-</div>
+
 
 <div class="clearfix order-confirm" id="j-order-confirm">
 
@@ -42,34 +40,35 @@
           </tr>
         </thead>
         <tbody>
-
+@foreach($n as $a=>$b)
               <tr class="">
                 <td class="left">
-                  <div class="td-inner align-left" title="  231">
-                    <div>   123123
+                  <div class="td-inner align-left" title="{{$b['gname']}}">
+                    <div>   {{$b['gname']}}
     
 </div>
                     <div class="dish-sku">
-    常规
+    {{$b['gstandard']}}
     
                     </div>
                   </div>
                 </td>
                 <td class="right" colspan="2">
                     <div class="td-inner align-right">
-                      ¥123123
+                      ¥{{$b['gprice']}}x{{$b['onum']}}
                     </div>
                 </td>
+                @endforeach
             <tr class="delivery-cost bot-border">
               <td class="left"><div class="td-inner align-left">配送费</div></td>
-              <td class="right" colspan="2"><div class="td-inner align-right">¥6</div></td>
+              <td class="right" colspan="2"><div class="td-inner align-right">¥{{$ofee}}</div></td>
             </tr>
-            <tr class="total" data-total="28">
+            <tr class="total" data-total="{{$cou}}">
               <td colspan="3" class="clearfix middle">
                 <div class="td-inner clearfix">
                   <span class="t-total fl">合计</span>
                 
-                  <span class="t-number fr">¥8</span>
+                  <span class="t-number fr">¥{{$cou}}</span>
                 </div>
               </td>
             </tr>
@@ -113,14 +112,12 @@
                       
                       <p class="address-line blo">
                         <span class="span">
-                           {{$v->dname}}
-                            ：
-                         {{$v->dtel}}
+                           {{$v->dname}}:{{$v->dtel}}
                         </span>
 
                       </p>
           
-                      <p class="address-line blo" ><span class="span">{{$v->daddr}}&nbsp;&nbsp;</span></p>
+                      <p class="address-line blo" ><span class="span">{{$v->daddr}}</span></p>
                     
                       </div>
                       
@@ -194,7 +191,7 @@
  
           <a class="s-btn yellow-btn fr" id="confirmOrder" href="{{url('/home/fukuan')}}"><span class="s-btn">去付款</span></a>
         <div class="tips ct-black">
-            您需支付&nbsp;<span class="price cc-lightred-new">¥<span id="totalPrice">28</span>
+            您需支付&nbsp;<span class="price cc-lightred-new">¥<span id="totalPrice">{{$cou}}</span>
 
 
             </span>
@@ -227,9 +224,8 @@
        $('.yellow-btn').click(function(){
          var mes = $('.show-tags').val();
          var addr = $('.address-box').eq(l).text();
-        //  alert(addr);
         $.get('/home/suan',{mes,addr},function(data){
-
+          
         })
        })
      })
