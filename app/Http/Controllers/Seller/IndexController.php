@@ -7,6 +7,7 @@ use App\Http\Model\SellerDetail;
 use Illuminate\Http\Request;
 use Validator;
 
+
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Input;
@@ -20,7 +21,25 @@ class IndexController extends Controller
      */
     public function index()
     {
-
+        if(!session()->has('seller_user') && !session()->has('seller_detail')){
+            return view('seller.login');
+        };
+        
+        $sid = session('seller_user')->sid;
+        $user = Seller::where('sid',$sid)->first();
+       
+        //得到 商家的slogo
+        $pic = SellerDetail::find($sid)->slogo;
+        //判断商家状态 是否通过
+        if($user->status == 1){
+            return view('seller.kaidian.success');
+        }else if($user->status == 3){
+            $sid = $user->sid;
+            return view('seller.kaidian.false',compact('sid'));
+        }else if($user->status == 5){
+            return redirect('/seller/kaidian');
+        }
+        return view('seller.index',compact('pic'));
     }
 
     /**

@@ -34,7 +34,7 @@ Route::get('/code','CodeController@code');
  
 //登录
 Route::resource('/home/login','Home\LoginController');
-<<<<<<< HEAD
+
 //地址选择页
 Route::resource('/home/addr','Home\AddrController');
 //页面搜索
@@ -45,7 +45,7 @@ Route::resource('/home/seller/ruzhu','Home\RuzhuController');
 
 
 
-=======
+
 //忘记密码
 Route::any('/home/forget','Home\ForgetController@index');
 // 获取手机号
@@ -56,7 +56,7 @@ Route::any('/home/telto','Home\ForgetController@phoneto');
 Route::any('/home/reset','Home\ForgetController@ureset');
 //密码重置逻辑路由
 Route::any('/home/doreset','Home\ForgetController@doureset');
->>>>>>> origin/zhaobin
+
 
 Route::group(['prefix'=>'home','namespace'=>'Home'], function(){
     //注册
@@ -81,14 +81,14 @@ Route::group(['prefix'=>'home','namespace'=>'Home'], function(){
     // 前台商家路由
     Route::controller('shangjia','ShangjiaController');
 	// 购物车路由
-	Route::get('/home/shop','Home\shop_cartController@addcart');
-	Route::get('/home/shop_cart','Home\shop_cartController@index');
-	Route::get('/home/create','Home\shop_cartController@create');
+	Route::get('shop','shop_cartController@addcart');
+	Route::get('shop_cart','shop_cartController@index');
+	Route::get('create','shop_cartController@create');
 	
 	// 前台订单路由
-	Route::any('/home/jie','Home\jiezhController@index');
-	Route::any('/home/fukuan','Home\jiezhController@Show');
-	Route::any('/home/suan','Home\jiezhController@jiesu');
+	Route::any('jie','jiezhController@index');
+	Route::any('fukuan','jiezhController@Show');
+	Route::any('suan','jiezhController@jiesu');
 });
 
 /**
@@ -132,7 +132,7 @@ Route::group(['prefix'=>'admin','namespace'=>'Admin','middleware'=>'admin.login'
 /**
  * 商家后台
  */
-
+ 
 //登录
 Route::resource('/seller/login','Seller\LoginController');
 //忘记密码
@@ -157,10 +157,13 @@ Route::group(['prefix'=>'seller','namespace'=>'Seller','middleware'=>'seller.log
     Route::any('stel','RegisterController@stel');
     //判断邮箱是否重复
     Route::any('email','RegisterController@email');
+
+    
+
     //退出登录
     Route::any('quit','LoginController@quit');
     //商家账号设置
-    Route::resource('setup','SetupController');
+    Route::resource('setup','SetupController'); 
     //商家个人中心
     Route::resource('personal','PersonalController');
     //商家个人中心修改
@@ -185,7 +188,7 @@ Route::group(['prefix'=>'seller','namespace'=>'Seller','middleware'=>'seller.log
     Route::any('eximageajax','SetupController@eximageajax');
     //商户设置验证表单-商户logo
     Route::any('setupajax','SetupController@setupajax');
-    //商家用户个人中心
+    //商家用户个人中心 首页
     Route::resource('index','IndexController');
     //菜品分类管理
     Route::resource('goodsclass','GoodsClassController');

@@ -88,7 +88,7 @@
 </script>
                             <!-- 弹出列表 -->
                             <ul class="am-dropdown-content tpl-dropdown-content">
-                                <li class="tpl-dropdown-menu-notifications">
+                            <!--     <li class="tpl-dropdown-menu-notifications">
                                     <a href="javascript:;" class="tpl-dropdown-menu-notifications-item am-cf">
                                         <div class="tpl-dropdown-menu-notifications-title">
                                             <i id="dd" class="am-icon-line-chart"></i>
@@ -100,10 +100,10 @@
                                             分钟前
                                         </div>
                                     </a>
-                                </li>
+                                </li> -->
                                 
                                 <li class="tpl-dropdown-menu-notifications">
-                                    <a href="javascript:;" class="tpl-dropdown-menu-notifications-item am-cf">
+                                    <a href="{{url('/seller/order')}}" class="tpl-dropdown-menu-notifications-item am-cf">
                                         <i class="am-icon-bell"></i> 进入列表…
                                     </a>
                                 </li>

@@ -70,7 +70,7 @@
 	<body>
 	  <div class="triffle" id="triffle">
         <div class="icon-list">
-        <a href="" class="merchant">
+        <a href="{{url('/seller/index')}}" class="merchant">
           <i class="text">商家入驻</i>
 
         </a>

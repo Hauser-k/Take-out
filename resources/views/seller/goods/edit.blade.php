@@ -152,7 +152,7 @@ $('#sub').click(function(){
                 success:function(data){
                     if(data.status==0){
                         
-                        layer.msg(data.msg,{icon:2});
+                        alert('该菜名已存在');
                         caidan = false;
                         return caidan;
                         // return;
