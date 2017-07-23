@@ -27,7 +27,7 @@
         <label for="user-email" class="am-u-sm-3 am-form-label">菜品所属类</label>
         <div class="am-u-sm-9">
             <select name="gcid" id="sel">
-                <option value="" selected disabled="">请选择</option>
+                <option value="sel" selected>请选择</option>
                 @foreach($data as $k=>$v)
                     <option value="{{$v->gcid}}" >{{$v->cname}}</option>
                 @endforeach
@@ -133,56 +133,63 @@
 </div>
 <script>
     var caidan = false;
-    var danjian = false;
-    // var guige = false;
-    // var kouwei = false;
+    var danjia = false;
     var fenlei = false;
-    var tupian = false;
-    $('#gname').blur(function(){
-
+ $('#sub').click(function(){
         var gname = $('#gname').val();
         if(gname==''){
-            layer.msg('内容不能为空',{icon:6});
-            return false;
+            layer.msg('菜名不能为空',{icon:5});
+            return caidan = false;
         }else{
-            $.get('/seller/gnameajax',{gname:gname},function(data){
-        //     // alert(data);
-                if(data.status==0){
-                    layer.msg(data.msg,{icon:2});
-                    return caidan = false;
-                }
-                if(data.status==1){
-                    // layer.msg(data.msg,{icon:1});
-                    return caidan = true;
-                }
-            })
+            // $.get('/seller/gnameajax',{gname:gname},function(data){
+            //    // alert(data);
+            //     if(data.status==0){
+            //         layer.msg(data.msg,{icon:2});
+            //         return false;
+            //     }
+            //     if(data.status == 1){
+            //         return true;
+            //     }
+            // })
+            $.ajax({
+                url:'/seller/gnameajax',
+                type:'get', //默认get方式
+                data:{gname:gname},
+                async:false, //默认true
+                success:function(data){
+                    if(data.status==0){
+                        alert('该菜名已存在');
+                       caidan = false;
+                       return ;
+                    }else{
+                       caidan = true;
+                       return ;
+                    }
+                },
+                dataType:'json',
+                
+            });
+            return caidan;
         };
-       
-    });
-    $('#gprice').blur(function(){
+
+        if($('select[name="gcid"]').val() == 'sel') {
+                layer.msg('分类必填',{icon:5});
+                return fenlei = false;
+        }
+
         var gprice = $('#gprice').val();
         if(gprice==''){
-            layer.msg('内容不能为空或格式不正确',{icon:2});
-            return danjian = false;
+            layer.msg('单价不能为空或格式不正确',{icon:2});
+            return danjia = false;
         }else{
             return danjia = true;
         }
-    });
-     //验证下拉框
-    $("#sel").change(function(){  
-        return fenlei = true;             
-    });
-   
-    $('#sub').click(function(){
-        if(caidan == true && danjia == true && fenlei == true ){
+        if(caidan == true && danjia == true && fenlei==true){
             return true;
-        } else{
-            if(fenlei == false){
-                layer.msg('未选择分类',{icon:5});
-                return false;
-            }
-            return false;
         }
+
+        return false;
+
     });
 </script>
 @endsection

@@ -21,7 +21,6 @@ class WarnController extends Controller
         $sid = session('seller_user')->sid;
        $data = [];
         $data[] = Order::join('order_dist','order.oid','=','order_dist.oid')->where('sid',$sid)->where('ostatus',2)->count();
-        $data[] = Order::join('order_dist','order.oid','=','order_dist.oid')->where('sid',$sid)->orderBy('otime','desc')->first()->otime;
         return $data;
     }
 

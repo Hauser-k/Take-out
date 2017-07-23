@@ -148,7 +148,7 @@ class SetupController extends Controller
         $exname = $request['exname'];
         $value = Input::session()->get('seller_user');
         // return $data = $value->sid;
-        $re =  SellerDetail::where('exname',$exname)->count();
+        $re =  SellerDetail::where('exname',$exname)->where('sid','not like',$value->sid)->count();
         //0表示成功 其他表示失败
         
         if($re == 1){

@@ -127,7 +127,7 @@ Route::group(['prefix'=>'admin','namespace'=>'Admin','middleware'=>'admin.login'
 /**
  * 商家后台
  */
-
+ 
 //登录
 Route::resource('/seller/login','Seller\LoginController');
 //忘记密码
@@ -152,11 +152,10 @@ Route::any('email','RegisterController@email');
 
 Route::group(['prefix'=>'seller','namespace'=>'Seller','middleware'=>'seller.login'], function(){
 
-
     //退出登录
     Route::any('quit','LoginController@quit');
     //商家账号设置
-    Route::resource('setup','SetupController');
+    Route::resource('setup','SetupController'); 
     //商家个人中心
     Route::resource('personal','PersonalController');
     //商家个人中心修改
@@ -181,7 +180,7 @@ Route::group(['prefix'=>'seller','namespace'=>'Seller','middleware'=>'seller.log
     Route::any('eximageajax','SetupController@eximageajax');
     //商户设置验证表单-商户logo
     Route::any('setupajax','SetupController@setupajax');
-    //商家用户个人中心
+    //商家用户个人中心 首页
     Route::resource('index','IndexController');
     //菜品分类管理
     Route::resource('goodsclass','GoodsClassController');

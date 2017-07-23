@@ -85,18 +85,8 @@ class LoginController extends Controller
                 Cookie::queue('xinxi', $user, 600);
             }
             // dd(Cookie::get('xinxi'));
-            //得到 商家的slogo
-            $pic = SellerDetail::find($user->sid)->slogo;
-            //判断商家状态 是否通过
-            if($user->status == 1){
-                return view('seller.kaidian.success');
-            }else if($user->status == 3){
-                $sid = $user->sid;
-                return view('seller.kaidian.false',compact('sid'));
-            }else if($user->status == 5){
-                return redirect('/seller/kaidian');
-            }
-            return view('seller.index',compact('pic'));
+            return redirect('/seller/index');
+            
         }
         
     }
