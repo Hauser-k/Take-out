@@ -49,10 +49,10 @@ class IndexController extends Controller
         $hhh=self::actionGetNearShop(session('addr'))->toArray();
 
         $arr = [];
+
         foreach($hhh as $key=>$value){
             $arr[]=$value['sid'];
         }
-
 
         $data = SellerClass::get();
         $gooder= DB::table('seller')

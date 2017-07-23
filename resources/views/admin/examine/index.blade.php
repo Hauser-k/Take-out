@@ -41,7 +41,9 @@
                             <td>{{ $v->sname }}</td>
                             <td>{{ config('waimai.status')[$v->status] }}</td>
                             <td>
-                                <a href="{{url('admin/examine/'.$v->sid.'/edit')}}" style="color:#000;font-size:20px;margin-right:40px;"   ><input type="hidden" name="_method" value="put">审查商家</a>
+
+                                <a href="@if($v->status!=5){{url('admin/examine/'.$v->sid.'/edit')}}" @else {{url("#")}} @endif "   ><input type="hidden" name="_method" value="put">审查商家</a>
+
                                 <a href="javascript:;" title="删除" onclick="DelUser({{$v->sid}})" style="color:#000;font-size:20px;margin-right:10px;"><i class="icon-trash"></i></a>
 
                             </td>
