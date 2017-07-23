@@ -84,7 +84,6 @@ Route::group(['prefix'=>'home','namespace'=>'Home'], function(){
     Route::any('wan','jiezhController@Wan');
 	//评价
     Route::get('pingjia','shangjiaController@Pingjia');
-
 });
 
 /**

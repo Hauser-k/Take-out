@@ -95,17 +95,29 @@
                 <!-- <script type="text/javascript">
                   MT.isLogin = true;
                 </script> -->
+    @if(empty(session('home_user')))
     <div id="is-login" class="top-loginbar fl">
       <div class="top-loginbar-inner">
-        <span class="fl top-loginbar-username">用户名</span>
-        <i class="icon i-top-yarrow"></i>
+        <a class="fl top-loginbar-username" href="{{url('home/login')}}">请登录</a>
       </div>
-      <ul class="login-menu">
-        <li><a class="wrap" href="{{url('home/myorder')}}">我的订单</a></li>
-        <li><a class="wrap" href="">我的收藏</a></li>
-        <li><a class="wrap" href="" id="logout">退出</a></li>
-      </ul>
     </div>
+    @else
+      <div id="is-login" class="top-loginbar fl">
+        <div class="top-loginbar-inner">
+           <a class="fl top-loginbar-username" title="个人中心" href="{{url('home/myorder')}}">{!! session('home_user')['uname'] !!}</a>
+            </div>
+            </div>
+
+
+
+                    <div id="is-login" class="top-loginbar fl">
+                        <div class="top-loginbar-inner">
+                           <a class="fl top-loginbar-username" title="退出登录" href="{{url('home/login/'.+session('home_user')['uid'])}}"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;退出登录</a>
+                        </div>
+                    </div>
+
+                @endif
+
 
               <a href="javascript:;" class="wap fl" rel="nofollow"><i class="icon i-top-mobile"></i><span>手机版</span></a>
               <a target="_blank" href="javascript:;" class="site-name fl" ><i class="icon i-top-tuan"></i><span>美团网</span></a>
@@ -122,7 +134,7 @@
                 <span id="curr-location" class="current-address fl">回龙观</span>
                 <span class="addr-dvd">|</span>
                 <div class="change fl clearfix" id="changePosition">
-                  <a href="./addr.php" class="change-link">
+                  <a href="{{url('home/addr')}}" class="change-link">
                     <span class="fl">切换地址</span>
                       <i class="icon i-top-yarrow"></i>
                   </a>

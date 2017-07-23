@@ -29,14 +29,6 @@ class IndexController extends Controller
     public function index(Request $request)
     {
         $res=$request -> all();
-//        dd($res);
-
-        //如果没有坐标就返回到地址选择页
-        if(Input::has('excoorx')&&Input::has('excoory')){
-            session(['addr'=>Input::all()]);
-        }else{
-            return Redirect::to("home/addr");
-        }
 
 
         //调用下面的方法给值 变成数组 进行遍历
@@ -232,6 +224,7 @@ class IndexController extends Controller
 
     public static function actionGetNearShop($res){
         $scope = 5;//5000米
+
 
 
         $lng = trim(session('addr')['excoorx']);//经度

@@ -44,6 +44,7 @@ class MyCollecController extends Controller
             ->select()
             ->get();
 
+
         return view('home/mycollec',compact('gooder'));
 
     }
