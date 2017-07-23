@@ -74,7 +74,7 @@
 							<li class="li_1">弱</li>
 							<li class="li_1">中</li>
 							<li class="li_1">强</li>
-							
+
 						</ul>
                     </div>
                 </div>

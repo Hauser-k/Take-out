@@ -68,9 +68,9 @@
                   -->
                 </div>
               <div class="price">
-                <span class="start-price">起送:￥{{$vv['sfee']}}元</span>
+                <span class="start-price">起送:￥{{$vv['ofee']}}元</span>
                 <span class="send-price">
-                  配送费:￥{{$vv['sdelfee']}}元
+                  配送费:￥{{$vv['odelfee']}}元
                 </span>
 
               </div>
@@ -82,7 +82,7 @@
 
 
         </a>
-          <a href="javascript:;"  onclick="DelUser(1)" style="display:block" class="un-favorite j-save-up"  title="收藏商家">
+          <a href="javascript:;"  onclick="DelUser({{$vv['sid']}})" style="display:block" class="un-favorite j-save-up"  title="收藏商家">
             <i class="icon i-poi-fav1" ></i>
           </a>
       </div>
@@ -94,17 +94,19 @@
               function DelUser(id){
                   //询问框
 
-                  layer.confirm('确认收藏下次快速找到？', {
+                  layer.confirm('确认收藏', {
                       btn: ['确定','取消'] //按钮
                   }, function(){
 
                       $.get("{{url('home/index')}}/"+id,function(data){
-                          alert(data);
+
                           if(data.status == 0){
-                            //  location.href = location.href;
+                             location.href = location.href;
                               layer.msg(data.msg, {icon: 6});
+                          }else if(data.status == 403){
+                              location.href = location.href;
+                              layer.msg(data.msg, {icon: 5});
                           }else{
-                              //location.href = location.href;
                               layer.msg(data.msg, {icon: 5});
                           }
                       });

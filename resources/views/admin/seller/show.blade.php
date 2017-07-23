@@ -23,55 +23,55 @@
                     <div class="mws-form-row">
                         <label class="mws-form-label">商家名:</label>
                         <div class="mws-form-item">
-                            <p class="small" name="exname" >{{ $data->exname}}</p>
+                            <p class="small" name="exname" >{{ $data['exname']}}</p>
                         </div>
                     </div>
                     <div class="mws-form-row">
                         <label class="mws-form-label">联系人:</label>
                         <div class="mws-form-item">
-                            <p class="small" name="contacts" >{{$data->contacts}}</p>
+                            <p class="small" name="contacts" >{{$data['contacts']}}</p>
                         </div>
                     </div>
                     <div class="mws-form-row">
                         <label class="mws-form-label">外卖电话:</label>
                         <div class="mws-form-item">
-                            <p class="small" name="extel" >{{$data->extel}}</p>
+                            <p class="small" name="extel" >{{$data['extel']}}</p>
                         </div>
                     </div>
                     <div class="mws-form-row">
                         <label class="mws-form-label">商家类别:</label>
                         <div class="mws-form-item">
-                            <p class="small" name="csid" >{{$data->csid}}</p>
+                            <p class="small" name="csid" >{{$data['csname']}}</p>
                         </div>
                     </div>
                     <div class="mws-form-row">
                         <label class="mws-form-label">门店地址:</label>
-                        <div class="mws-form-item">
-                            <p class="small" name="exaddr" >{{$data->exaddr}}</p>
+                        <div class="mws-form-item"  >
+                            <p class="small" name="exaddr" >{{$data['exaddr']}}</p>
                         </div>
                     </div>
                     <div class="mws-form-row">
                         <label class="mws-form-label">门店图片:</label>
-                        <div class="mws-form-item">
-                            <img src="" alt="">
+                        <div class="mws-form-item" style="border: 5px solid #ddd; width:400px; height:200px">
+                            <img src="{{url('/uploads/')}}/{{ $data['licence2']}}"  style=" width:100%; height:100%" alt="">
                         </div>
                     </div>
                     <div class="mws-form-row">
                         <label class="mws-form-label">营业执照:</label>
-                        <div class="mws-form-item">
-                            <img src="" alt="">
+                        <div class="mws-form-item"  style="border: 5px solid #ddd;  width:400px; height:200px;">
+                            <img src="{{url('/uploads/')}}/{{ $data['licence1']}}" style=" width:100%; height:100%" alt="">
                         </div>
                     </div>
-                    <div class="mws-form-row">
+                    <div class="mws-form-row" >
                         <label class="mws-form-label">餐饮许可:</label>
-                        <div class="mws-form-item">
-                            <img src="" alt="">
+                        <div class="mws-form-item" style="border: 5px solid #ddd; width:400px; height:200px" >
+                            <img src="{{url('/uploads/')}}/{{ $data['eximage']}}" style=" width:100%; height:100%" alt="">
                         </div>
                     </div>
                     <div class="mws-form-row">
                         <label class="mws-form-label">门店区域:</label>
                         <div class="mws-form-item">
-                            <p class="small" name="exarea" >{{$data->exarea}}</p>
+                            <p class="small" name="exarea" >{{$data['exarea']}}</p>
                         </div>
                     </div>
                 </div>

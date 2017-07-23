@@ -59,6 +59,13 @@ Route::group(['prefix'=>'home','namespace'=>'Home'], function(){
     Route::resource('myorder','MyOrderController');
 	//我的账号
     Route::resource('mynumber','MyNumberController');
+    //用户个人中心修改 修改密码
+    Route::any('pwd','MyNumberController@pwd');
+    //用户修改 头像
+    Route::any('face','MyNumberController@updateface');
+    //修改用户信息
+    Route::any('updateper','MyNumberController@updateper');
+    Route::any('mycollec','MyCollecController@mycollec');
 	//首页
     Route::resource('index','IndexController');
 });

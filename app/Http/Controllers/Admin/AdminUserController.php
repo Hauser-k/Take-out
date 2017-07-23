@@ -19,17 +19,16 @@ class AdminUserController extends Controller
     public function index(Request $request)
     {
         //获取 的每页多少条
-
-
         $count = $request -> input('count',10);
 
         $search = $request -> input('search','');
 
         $all = $request -> all();
 
+
         // 把所有的数据获取到 并且分页分配到主页面
         $data = Admin::where('aname','like','%'.$search.'%')-> paginate($count);
-
+//dd($data);
         return view('admin.adminuser.index',['data'=>$data,'request'=>$all]);
     }
 

@@ -20,6 +20,7 @@
                                 <option value="30" @if(!empty($request['count']) && $request['count'] == 30)  selected @endif>30</option>
                             </select> 条</label>
                 </div>
+
                 <div class="dataTables_filter" id="DataTables_Table_1_filter">
                     <label>关键字: <input type="text" name="search" value="{{ $request['search'] or ''}}" /></label>
                     <button>搜索</button>
