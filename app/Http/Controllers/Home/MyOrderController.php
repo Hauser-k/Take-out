@@ -18,6 +18,8 @@ class MyOrderController extends Controller
      */
     public function index()
     {
+
+
         //找出商家信息
         $data= DB::table('user')
             ->join('order', 'order.uid', '=', 'user.uid')
@@ -25,7 +27,7 @@ class MyOrderController extends Controller
             ->join('order_dist', 'order.oid', '=', 'order_dist.oid')
             ->join('seller', 'order.sid', '=', 'seller.sid')
             ->join('seller_detail', 'order.sid', '=', 'seller_detail.sid')
-            ->where('user.u id',session('home_user')['uid'])
+            ->where('user.uid',session('home_user')['uid'])
             ->select('order.oid','seller_detail.extel','order.gtime','user.uname','seller.sname','order.order','order_goods.onum','order_dist.endprice','order_dist.ostatus','seller_detail.slogo','seller_detail.extel')
             ->get();
 

@@ -40,7 +40,7 @@
       <div data-title="北京麦当劳育知东路餐厅" data-bulletin="" data-poiid="144838878410737716" class="restaurant" data-all="1"
             data-invoice="1"
         data-minpricelevel="1">
-        <a class="rest-atag" href="javascript:;" target="_blank">
+        <a class="rest-atag" href="{{url('home/shangjia/index/'.+$vv['sid'])}}" target="_blank">
           <div class="top-content">
             <div class="preview">
               <img data-rid="144838878410737716" data-index="0" class="scroll-loading" src="{{url('/uploads/')}}/{{ $vv['slogo']}}" data-max-width="208" data-max-height="156"  />

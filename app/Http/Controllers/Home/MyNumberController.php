@@ -19,8 +19,8 @@ class MyNumberController extends Controller
      */
     public function index()
     {
-        $uid = session('home_user')['uid'];
-        $data = User::where('uid',1)->get();
+
+        $data = User::where('uid',session('home_user')['uid'])->get();
         $data = $data->toArray();
 
         // 获得图片

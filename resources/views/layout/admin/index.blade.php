@@ -54,7 +54,7 @@
 
         <!-- Logo Wrapper, images put within this wrapper will always be vertically centered -->
         <div id="mws-logo-wrap">
-            <img src="/admin/images/mws-logo.png" alt="mws admin">
+            <img src="/admin/uploads/mws-logo.png" alt="mws admin">
         </div>
     </div>
 
@@ -306,6 +306,8 @@
                     </ul>
                 </li>
         </div>
+
+        @if(session('admin_user')['auth']==2)
         <div id="mws-navigation">
             <ul>
 
@@ -318,7 +320,13 @@
                     </ul>
                 </li> 
                 </ul>
-            </div>  
+            </div>
+
+        @endif
+
+
+
+
 
          <div id="mws-navigation">
             <ul>
