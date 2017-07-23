@@ -26,7 +26,7 @@ class PersonalController extends Controller
         $data = $data->toArray();
         // dd($data);
         // 获得图片
-        $pic = SellerDetail::find($sid)->slogo;
+        $pic = SellerDetail::where('sid',$sid)->first()->slogo;
         return view('seller.personal.index',compact('data','pic'));
     }
 

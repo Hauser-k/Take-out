@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Model\SellerClass;
 use Input;
 use App\Http\Model\SellerDetail;
+use App\Http\Model\Seller;
 
 
 class KaidianController extends Controller
@@ -56,7 +57,10 @@ class KaidianController extends Controller
         $request->flash();
         //插入数据库
         $re = SellerDetail::create($input);
-        if($re){
+        //修改商家的状态
+        $sid = Input::only('sid');
+        $re1 = Seller::where('sid',$sid)->update(['status'=>1]);
+        if($re && $re1){
             return view('seller.kaidian.success');
         }else{
             return back()->with('error','提交失败');
