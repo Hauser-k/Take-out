@@ -544,24 +544,8 @@
     });
 //结束上传图片
 //验证表单
-   
+var dianming = false;
 $('#sub').click(function(){
-   
-        var exname = $('#exname').val();
-        if(exname==''){
-            // layer.msg('店铺名必填',{icon:2});
-            alert('店铺名必填');
-            return false;
-        }else{
-            $.get('/seller/exnameajax',{exname:exname},function(data){
-                if(data.status==0){
-                    // layer.msg(data.msg,{icon:2});
-                    alert('该店铺已存在,请换一个');
-                    return false;
-                }
-                
-            })
-        };
     //验证联系人
         var contact = $('#contacts').val();
         if(contact==''){
@@ -569,9 +553,7 @@ $('#sub').click(function(){
             alert('联系人必填');
             return false; 
         }
-   
     //验证联系电话
-
        var res = /^1(3|4|5|7|8)\d{9}$/;
        var phone = $('#extel').val();
        if(phone==''){
@@ -631,6 +613,30 @@ $('#sub').click(function(){
         if(m.length!=4){
             // layer.msg('您有未上传的图片',{icon:5});
             alert('您有未上传的图片');
+            return false;
+        }
+    //验证店铺名
+        var exname = $('#exname').val();
+        if(exname==''){
+            // layer.msg('店铺名必填',{icon:2});
+            alert('店铺名必填');
+            return false;
+        }else{
+            $.get('/seller/exnameajax',{exname:exname},function(data){
+                if(data.status==0){
+                    // layer.msg(data.msg,{icon:2});
+                    alert('该店铺已存在,请换一个');
+                    dianming = false;
+                    return;
+                }else{
+                    dianming = true;
+                    return;
+                }
+                
+            })
+            return dianming;
+        };
+        if(dianming == false){
             return false;
         }
     });

@@ -27,9 +27,6 @@ class IndexController extends Controller
         
         $sid = session('seller_user')->sid;
         $user = Seller::where('sid',$sid)->first();
-       
-        //得到 商家的slogo
-        $pic = SellerDetail::find($sid)->slogo;
         //判断商家状态 是否通过
         if($user->status == 1){
             return view('seller.kaidian.success');
@@ -39,6 +36,13 @@ class IndexController extends Controller
         }else if($user->status == 5){
             return redirect('/seller/kaidian');
         }
+       
+        //商家详细信息
+        $seller_detail = SellerDetail::where('sid',$sid)->first();
+         //得到 商家的slogo
+        $pic = $seller_detail->slogo;
+        // 将商家详情表存到session中
+        session(['seller_detail'=>$seller_detail]);
         return view('seller.index',compact('pic'));
     }
 

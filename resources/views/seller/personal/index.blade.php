@@ -159,12 +159,11 @@ $(function(){
 		$.get('/seller/updateper',{msg:msg,type:type},function(data){
        		// console.log(data);
        		if(data.status == 500) return ;
-       		layer.alert(data.msg);
-       		if(!data.status){
-       			var l = $('.ia').index(this);
-       			var txt = $('.spa').eq(l).val(); 
+       		
+       		if(data.status == 1){
     			$('.spa').eq(l).val(txt);
        		}
+       		layer.alert(data.msg);
        }, 'json')	
 	}
 

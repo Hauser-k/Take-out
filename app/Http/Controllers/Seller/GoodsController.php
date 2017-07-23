@@ -46,15 +46,16 @@ class GoodsController extends Controller
         $join->on('goods.gcid', '=', 'goods_class.gcid')
                  ->where('goods.sid','=',Input::session()->get('seller_user')->sid);
              });
+
         //如果有查询 则进入这区间 拼$data
         if($request->has('fenleiming') || $request->has('gstatus')){
             
             $fenleiming = $request->input('fenleiming');
             
             if($fenleiming != null){
-                $data = $data->where('gname','like',$fenleiming);
+                $data = $data->where('gname','like','%'.$fenleiming.'%');
             }
-        
+            
             //如果传过来的是在售或售罄 
             if($request->input('gstatus') == 1){
                 $data =  $data->where('gstatus','1');
@@ -65,8 +66,8 @@ class GoodsController extends Controller
         }     
            
 
-            $data = $data->paginate(5);
-         
+            $data = $data->paginate(2);
+         // dd($data);
             return view('seller.goods.index',['data'=>$data,'request'=>$all]);
 
         
@@ -237,7 +238,7 @@ class GoodsController extends Controller
 
         $value = Input::session()->get('seller_user');
         
-        $re = Goods::where('gname', $gname)->where('gid','not like',$gid)->count();
+        $re = Goods::where('gname', $gname)->where('sid',$value->sid)->where('gid','not like',$gid)->count();
         // $re =  Goods::where('gname',$gname)->where('sid',$value->sid)->first();
     //0表示成功 其他表示失败
         // return $data = $re;
