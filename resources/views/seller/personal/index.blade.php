@@ -91,7 +91,7 @@
 				 <div class="am-form-group">
                     <div class="am-u-sm-9">
                    		<label for="user-name" class="am-u-sm-3 am-form-label">手机号:</label>
-                   		<input type="" class="spa" name="" minlength="11" maxlength="11" value="{{$data[0]['stel']}}" disabled="disabled" style='border: none;'> 
+                   		<input type="" class="spa" name="" minlength="11" maxlength="11" value="{{$data[0]['stel']}}" disabled="disabled" style='border: none;'>
                         <i class="ia" style="cursor:pointer">点击修改</i>
                     </div>
                 </div><br><br>

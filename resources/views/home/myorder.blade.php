@@ -14,7 +14,7 @@
   <span href="javascript:;" class="tab">
     <ul>
       <li><a href="{{url('home/mynumber')}}" class="borderradius-1 my-account "><i></i>我的账号</a></li>
-      <li><a href="#" class="borderradius-1 my-favorite "><i></i>我的收藏</a></li>
+      <li><a href="{{url('home/mycollec')}}" class="borderradius-1 my-favorite "><i></i>我的收藏</a></li>
     </ul>
   </span>
 </div>

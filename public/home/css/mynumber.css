@@ -1,0 +1,18 @@
+
+body {
+    margin: 0;
+    text-align: center;
+}
+#clipArea {
+    margin: 20px;
+    height: 300px;
+}
+#file,
+#clipBtn {
+    margin: 20px;
+}
+#view {
+    margin: 0 auto;
+    width: 200px;
+    height: 200px;
+}

@@ -67,7 +67,11 @@ class SellerController extends Controller
     public function show($id)
     {
         //
-        $data=SellerDetail::where('sid',$id)->first();
+
+        $data = DB::table('seller_detail')
+            ->join('seller_class', 'seller_class.csid', '=', 'seller_detail.csid')
+             ->where('sid',$id)->first();
+
 
         return view('/admin/seller/show',compact('data'));
 
