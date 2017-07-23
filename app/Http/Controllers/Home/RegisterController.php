@@ -22,7 +22,20 @@ class RegisterController extends Controller
     
      public function phone(Request $request)
      {  
-        return $data = $request->all();
+
+         $data = $request->all();
+        // dd($data); 
+
+        $user = User::where('utel',$data['phone'])->first();    
+        if($user){
+            $res = ['code'=>'no'];
+            $res = json_encode($res);
+            echo $res;
+            die;
+        }
+
+
+        // return $data = $request->all();
         $phone = $request -> input('phone');
         $res = self::phoneto($phone);
         echo $res;
@@ -32,9 +45,9 @@ class RegisterController extends Controller
      public static function phoneto($phone){
         // $phone = '18518175354';
         $phone_code = rand(1000,9999);
-        session(['phone_code'=>$phone_code]);
-        $str = 'http://106.ihuyi.com/webservice/sms.php?method=Submit&account=C87861468&password=b629e69a86f7fd4fffecd014b68d0d80&format=json&mobile='.$phone.'&content=您的验证码是：'.$phone_code.'。请不要把验证码泄露给其他人。';
+        $str = 'http://106.ihuyi.com/webservice/sms.php?method=Submit&account=C69625028&password=0eaca3de9e7976c307aefc68c0fde217&format=json&mobile='.$phone.'&content=您的验证码是：'.$phone_code.'。请不要把验证码泄露给其他人。';
         $res = HttpController::get($str);
+        session(['phone_code'=>$phone_code]);
         return $res;
      }
     public function index()
@@ -62,7 +75,7 @@ class RegisterController extends Controller
     public function store(Request $request)
     {
         
-
+       
         $phone = session('phone_code');
         // dd($phone);
          $phone2 = $request -> input('phone');
@@ -76,19 +89,20 @@ class RegisterController extends Controller
         // if($data['upwd'] !=$data['password']){
         //     return back() -> with('error3','密码不一致');
         // }
+
         $data['upwd'] = Crypt::encrypt($data['upwd']);
         $data['utime'] = time();
         $data['utoken'] = str_random(50);
-        
-        //  // dd($res);
+        $data['uname'] = str_random('10');
+         // dd($data);
          
        
         $res = User::where('utel',$data['utel'])->first();
         // dd($res);
          if(!$res==$data['utel']){
                   $re = User::create($data);
-                  // return redirect('/admin/link/') -> with('success','添加成功');
-                  echo '11';
+                  return redirect('/home/login/');
+                 
 
         }else{
             return back()->with('error2','用户已存在');

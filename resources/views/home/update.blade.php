@@ -39,7 +39,7 @@
         <div class="content">
             <div class="J-unitive-signup-form">
                 <div class="sheet" style="display:block">
-                    <form action="{{url('/home/register')}}" method="post">
+                    <form action="{{url('home/reset')}}" method="post">
 
                     
                         <div class="form-field form-field--mobile">
@@ -77,23 +77,11 @@
                                  @endif
                             </span>
                         </div>
-                        <div class="form-field form-field--pwd">
-                            <label>
-                                创建密码
-                            </label>
-                            <input type="password" name="upwd" id="apassword" class="f-text J-pwd" />
-                        </div>
-                        <div class="form-field form-field--pwd2">
-                            <label>
-                                确认密码
-                            </label>
-                            <input type="password" name="password" id="arepassword" class="f-text J-pwd2" />
-
-                        </div>
+                        
 
                         <div class="form-field">
                             <input data-mtevent="signup.submit" type="submit" id="submit_to" class="btn"
-                            value="同意以下协议并注册" />
+                            value="验证" />
                             
                             <a href="" target="_blank">
                             </a>
@@ -133,61 +121,29 @@
                                 if(!res.test(phone)){
                                     layer.msg('请输入正确的手机号码',{icon:5});
                                     return false;
+                                    t2 = false;
                                 }else{
                                     // 发送ajax 注册手机号
-                                    $.get('{{url('home/phone')}}',{phone:phone},function(msg){
+                                    $.get('{{url('/home/tel')}}',{phone:phone},function(msg){
 
                                         console.log(msg);
 
                                         phone_code = msg.code;
                                         if(msg.code == 'no'){
-                                            layer.msg('用户已存在',{icon:2});
+                                            layer.msg('用户不存在',{icon:2});
                                         }else{
                                             layer.msg('已发送验证码',{icon:5});
                                         }
+                                        t2 = true;
                                     },'json');
-                                    codeTime=setInterval(function() {
-                                        $('#id').html(i);
-                                        i--;
-                                        if(i<0){
-                                            clearInterval(codeTime);
-                                            codeTime=null;
-                                            i=60;
-                                            $('#dyMobileButton').html('获取');
-                                        }
-                                    },1000);
+                                 
                                 }
                                 return false;
                             });
-                            // $('#phonecode').blur(function(){
-                            //     // alert({{ session('phone_code') }});
-                            //     if($('#phonecode').val() != {{ session('phone_code') }}){
-                            //         layer.msg('验证码错误',{icon:2});
-                            //         t1 = false;
-                            //     }else{
-                            //         t1 = true;
-                            //     }
-                            // });
-                            $('#apassword').blur(function(){
-                                var res = /^[A-Za-z0-9]{6,20}$/;
-                                var password = $('#apassword').val();
-                                if(!res.test(password)){
-                                    layer.msg('请输入6-18位,小写字母,大写字母,数字三种组合的密码',{icon:7});
-                                    t2 = false;
-                                }else{
-                                    t2 = true;
-                                }
-                            });
-                            $('#arepassword').blur(function(){
-                                if($('#arepassword').val() != $('#apassword').val()){
-                                    layer.msg('重复密码不一致',{icon:5});
-                                    t3 = false;
-                                }else{
-                                    t3 = true;
-                                }
-                            });
+                            
+                           
                             $('#submit_to').click(function(){
-                                if(  t2 == true && t3 == true){
+                                if(  t2 == true ){
                                     return true;
                                 } else{
                                     return false;

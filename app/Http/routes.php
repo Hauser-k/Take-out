@@ -34,6 +34,7 @@ Route::get('/code','CodeController@code');
  
 //登录
 Route::resource('/home/login','Home\LoginController');
+<<<<<<< HEAD
 //地址选择页
 Route::resource('/home/addr','Home\AddrController');
 //页面搜索
@@ -44,13 +45,25 @@ Route::resource('/home/seller/ruzhu','Home\RuzhuController');
 
 
 
+=======
+//忘记密码
+Route::any('/home/forget','Home\ForgetController@index');
+// 获取手机号
+Route::any('/home/tel','Home\ForgetController@phone');
+ //给用户发送短信
+Route::any('/home/telto','Home\ForgetController@phoneto');
+//重置密码界面
+Route::any('/home/reset','Home\ForgetController@ureset');
+//密码重置逻辑路由
+Route::any('/home/doreset','Home\ForgetController@doureset');
+>>>>>>> origin/zhaobin
 
 Route::group(['prefix'=>'home','namespace'=>'Home'], function(){
     //注册
     Route::resource('register','RegisterController');
     //注册获取手机号
     Route::any('phone','RegisterController@phone');
-	//给手机发短信
+    //发送验证
     Route::any('phoneto','RegisterController@phoneto');
 	//我的订单
     Route::resource('myorder','MyOrderController');
@@ -88,6 +101,8 @@ Route::resource('/admin/login','Admin\LoginController');
 Route::group(['prefix'=>'admin','namespace'=>'Admin','middleware'=>'admin.login'], function(){
     //普通用户管理
     Route::resource('user','UserController');
+    //修改密码
+    Route::resource('update','UpdateController');
     //商家分类
     Route::resource('sellerclass','SellerClassController');
     //商家信息
@@ -134,6 +149,14 @@ Route::any('/seller/dosreset','Seller\ForgetController@dosreset');
 Route::group(['prefix'=>'seller','namespace'=>'Seller','middleware'=>'seller.login'], function(){
     //注册
     Route::resource('register','RegisterController');
+    // 获取手机号
+    Route::any('phone','RegisterController@phone');
+    //给用户发送短信
+    Route::any('phoneto','RegisterController@phoneto');
+    //判断昵称是否重复
+    Route::any('stel','RegisterController@stel');
+    //判断邮箱是否重复
+    Route::any('email','RegisterController@email');
     //退出登录
     Route::any('quit','LoginController@quit');
     //商家账号设置

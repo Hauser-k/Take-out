@@ -24,7 +24,7 @@
             <script src="//s0.meituan.net/bs/jsm/?f&#x3D;fe-sso-fs:build/page/vendor/html5shiv.min.js">
             </script>
         <![endif]-->
-        <link rel="stylesheet" type="text/css" href="./css/zhuce.css">
+        <link rel="stylesheet" type="text/css" href="/home/css/zhuce.css">
         
     </head>
     
@@ -39,14 +39,23 @@
         <div class="content">
             <div class="J-unitive-signup-form">
                 <div class="sheet" style="display:block">
-                    <form action="{{url('/home/register')}}" method="post">
-
+                    <form action="{{url('/seller/register')}}" method="post">
                     
+                       <div class="form-field form-field--sms">
+                            <label>
+                               昵称
+                            </label>
+                            <input type="text" name="sname" id="sname" value="" class="f-text J-sms" />
+                            <span  class="J-unitive-tip unitive-tip">
+                            </span>
+                        </div>
+
+                        
                         <div class="form-field form-field--mobile">
                             <label>
                                 手机号
                             </label>
-                            <input type="text" name="utel" class="f-text J-mobile" id="phone" value="{{old('utel')}}" />
+                            <input type="text" name="stel" class="f-text J-mobile" id="phone" value="{{old('utel')}}" />
                             <span class="J-unitive-tip unitive-tip">
                                   @if(session('error2'))
                                 <h1>{{ session('error2')}}</h1>
@@ -77,11 +86,20 @@
                                  @endif
                             </span>
                         </div>
+                        <div class="form-field form-field--sms">
+                            <label>
+                               邮箱
+                            </label>
+                            <input type="text" name="semail" id="semail" value="" class="f-text J-sms" />
+                            <span  class="J-unitive-tip unitive-tip">
+                            </span>
+                        </div>
+
                         <div class="form-field form-field--pwd">
                             <label>
                                 创建密码
                             </label>
-                            <input type="password" name="upwd" id="apassword" class="f-text J-pwd" />
+                            <input type="password" name="spwd" id="apassword" class="f-text J-pwd" />
                         </div>
                         <div class="form-field form-field--pwd2">
                             <label>
@@ -108,6 +126,26 @@
                             var t1 = false;
                             var t2 = false;
                             var t3 = false;
+
+                            
+                            var name = '';
+                            $('#sname').blur(function(){
+                                var sname = $('#sname').val();
+                                $.get('{{url('seller/stel')}}',{sname:sname},function(msg){
+
+                                        name = msg.code;
+                                        if(msg.code == 'no'){
+                                            layer.msg('用户已存在',{icon:2});
+                                        }else{
+                                            layer.msg('用户可以使用',{icon:5});
+                                        }
+                                    },'json');
+
+                            });
+
+
+
+
                             $('#phone').blur(function(){
                                var res = /^1(3|4|5|7|8)\d{9}$/;
                                var phone = $('#phone').val();
@@ -135,9 +173,9 @@
                                     return false;
                                 }else{
                                     // 发送ajax 注册手机号
-                                    $.get('{{url('home/phone')}}',{phone:phone},function(msg){
+                                    $.get('{{url('seller/phone')}}',{phone:phone},function(msg){
 
-                                        console.log(msg);
+                                        // console.log(msg);
 
                                         phone_code = msg.code;
                                         if(msg.code == 'no'){
@@ -168,6 +206,36 @@
                             //         t1 = true;
                             //     }
                             // });
+                            
+
+                             var email = '';
+                            $('#semail').blur(function(){
+                                var semail = $('#semail').val();
+                                $.get('{{url('seller/email')}}',{semail:semail},function(msg){
+
+                                        email = msg.code;
+                                        if(msg.code == 'no'){
+                                            layer.msg('邮箱存在',{icon:2});
+                                        }else{
+                                            layer.msg('邮箱可以使用',{icon:5});
+                                        }
+                                    },'json');
+
+                            });
+                            
+
+    
+
+                            $('#semail').blur(function(){
+                                var res = /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(.[a-zA-Z0-9_-])+/;
+                                var email = $('#semail').val();
+                                if(!res.test(email)){
+                                    layer.msg('请输入正确的邮箱格式',{icon:5});
+                                    return false;                
+                                }
+                            });
+        
+
                             $('#apassword').blur(function(){
                                 var res = /^[A-Za-z0-9]{6,20}$/;
                                 var password = $('#apassword').val();
