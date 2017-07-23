@@ -8,7 +8,6 @@
 
 @section('content')
 
-
       </div>
       <div class="page-wrap">
         <div class="inner-wrap">
@@ -21,7 +20,7 @@
       <div class="fl average-speed">
           <div class="desc">平均送餐时间</div>
           <div class="nu">
-                  <strong>{{$ptime}}</strong>分钟
+                  <strong>0</strong>分钟
           </div>
       </div>
 
@@ -48,7 +47,7 @@
       </div>
       <div class="list">
         <div class="na">
-          <a href="/restaurant/144924000377172669">
+          <a href="">
             <span>{{$re['exname']}}</span><i class="icon i-triangle-dn"></i>
           </a>
         </div>
@@ -90,9 +89,9 @@
 <div class="comments fl" id="comments" data-pid="144924000377172669">
   <div class="tab-link">
     <div class="tab-link-inner clearfix">
-      <a href="/restaurant/144924000377172669" class="tab-item ">菜单</a>
+      <a href="" class="tab-item ">菜单</a>
       <a href="#" class="tab-item  active">评价</a>
-        <a href="/qualification/144924000377172669" class="tab-item ">食品安全档案</a>
+        <a href="" class="tab-item ">食品安全档案</a>
     </div>
   </div>
   <div class="title clearfix">
@@ -103,7 +102,20 @@
   </div>
   <div class="list">
     <div class="loading" style="display: none;"></div>
-    <div class="comment-list-wrapper"><ul>  <li class="reply-field">    <div class="reply-user-avatar"><img class="user-avatar-img" src="https://img.meituan.net/avatar/8af1d5983c9b26d6f8a64bdcd170d40729472.jpg"> </div>    <div class="info clearfix">    <span class="fr time">2017-07-10</span>      <span class="name">H***3</span>             <span class="star-ranking">         <span class="star-score" style="width: 75px"></span>       </span>      <span class="feel">好评</span>    </div>    <div class="user-reply">#上品肥牛饭套餐#套餐里面的汤不怎么样，肥牛饭特好吃，可以单点！饼一般吧#香酥饼#</div>  </li>   
+    <div class="comment-list-wrapper">
+        <ul>
+            <li class="reply-field">
+                <div class="reply-user-avatar">
+                    <img class="user-avatar-img" src=""> </div>
+                <div class="info clearfix">
+                    <span class="fr time">2017-07-10</span>
+                    <span class="name">H***3</span>
+                    <span class="star-ranking">
+                        <span class="star-score" style="width: 75px"></span>
+                    </span>
+                    <span class="feel">好评</span>
+                </div>
+                <div class="user-reply">#上品肥牛饭套餐#套餐里面的汤不怎么样，肥牛饭特好吃，可以单点！饼一般吧#香酥饼#</div>  </li>
     </ul></div>
  
 </div>

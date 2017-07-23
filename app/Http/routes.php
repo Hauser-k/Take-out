@@ -15,13 +15,10 @@
  DB::listen(function($sql, $bindings, $time) {
                 // dump($sql);
             });
-// 前台商家路由
-Route::resource('/home/shangjia','Home\shangjiaController');
 
-// 前台订单路由
-Route::any('/home/jie','Home\jiezhController@index');
-Route::any('/home/fukuan','Home\jiezhController@Show');
-Route::any('/home/suan','Home\jiezhController@jiesu');
+
+
+
 
 Route::get('/', function () {
 //    return view('welcome');
@@ -48,6 +45,8 @@ Route::any('/home/search/caidan','Home\SearchController@caidan');
 Route::resource('/home/seller/ruzhu','Home\RuzhuController');
 
 
+
+
 Route::group(['prefix'=>'home','namespace'=>'Home'], function(){
     //注册
     Route::resource('register','RegisterController');
@@ -68,6 +67,17 @@ Route::group(['prefix'=>'home','namespace'=>'Home'], function(){
     Route::any('mycollec','MyCollecController@mycollec');
 	//首页
     Route::resource('index','IndexController');
+    // 前台商家路由
+    Route::controller('shangjia','ShangjiaController');
+	// 购物车路由
+	Route::get('/home/shop','Home\shop_cartController@addcart');
+	Route::get('/home/shop_cart','Home\shop_cartController@index');
+	Route::get('/home/create','Home\shop_cartController@create');
+	
+	// 前台订单路由
+	Route::any('/home/jie','Home\jiezhController@index');
+	Route::any('/home/fukuan','Home\jiezhController@Show');
+	Route::any('/home/suan','Home\jiezhController@jiesu');
 });
 
 /**

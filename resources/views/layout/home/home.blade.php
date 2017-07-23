@@ -9,6 +9,7 @@
     <!-- <link rel="dns-prefetch" href="//xs01.meituan.net">
     <link rel="dns-prefetch" href="//p0.meituan.net">
     <link rel="dns-prefetch" href="//p1.meituan.net"> -->
+      <meta name="_token" content="{!! csrf_token() !!}"/>
 
     <meta name="baidu-site-verification" content="Qu9OzfSVVJ" />
     <meta name="keywords" content="外卖">
@@ -39,14 +40,10 @@
     <link rel="stylesheet" href="{{asset('home/css/result.css')}}" />
      <link rel="stylesheet" href="{{asset('home/css/restaurant_f2ca72fb.css')}}" />
       <link rel="stylesheet" href="{{asset('home/css/body.css')}}" />
-    <script src="{{asset('/home/js/jquery.js')}}"></script>
+    <script type="text/javascript" src="{{asset('/home/js/jquery.js')}}"></script>
     <!-- <link rel="stylesheet" href="{{asset('home/css/result.css')}}" /> -->
-    <script src="{{asset('assets/js/jquery.min.js')}}"></script>
-      <script src="http://www.jq22.com/jquery/2.1.1/jquery.min.js"></script>
-      <script src="js/iscroll-zoom.js"></script>
-      <script src="js/hammer.js"></script>
-      <script src="js/lrz.all.bundle.js"></script>
-      <script src="js/jquery.photoClip.js"></script>
+    <script type="text/javascript" src="{{asset('assets/js/jquery.min.js')}}"></script>
+
 
 
 
@@ -165,7 +162,6 @@
             <div class="desire fl">
               <a href="{{url('home/index')}}" class="ca-lightgrey"><span>首页</span></a>
               <a href="{{url('home/myorder')}}" class="ca-lightgrey" rel="nofollow"><span>我的订单</span></a>
-              <a href="{{url('home/shop_cart')}}" class="ca-lightgrey" rel="nofollow"><span>我的购物车</span></a>
                <a href="{{url('/seller/login')}}" class="ca-lightgrey"><span>入驻加盟</span></a>
             </div>
             <div class="search-box fr">
