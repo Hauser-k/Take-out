@@ -31,7 +31,7 @@
     <body class="pg-unitive-signup theme--waimai">
         <header class="header--mini">
             <div class="wrapper cf">
-                <a class="site-logo" href="#">
+                <a class="site-logo" href="{{url('/home/index')}}">
                     美团
                 </a>
             </div>
@@ -130,9 +130,9 @@
 
                                         phone_code = msg.code;
                                         if(msg.code == 'no'){
-                                            layer.msg('用户不存在',{icon:2});
+                                            layer.msg('用户不存在',{icon:5});
                                         }else{
-                                            layer.msg('已发送验证码',{icon:5});
+                                            layer.msg('已发送验证码',{icon:6});
                                         }
                                         t2 = true;
                                     },'json');

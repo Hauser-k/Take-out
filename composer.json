@@ -11,7 +11,7 @@
         "barryvdh/laravel-debugbar": "^2.4",
         "gloudemans/shoppingcart": "^2.3",
         "predis/predis": "~1.0"
-        // "fenos/notifynder": "^4.2"
+        
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
