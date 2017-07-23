@@ -107,14 +107,10 @@
             </div>
         </div>
         <div id="base-page" class="stepPage">
-            @if (count($errors) > 0)
-                <div class="alert alert-danger">
-                    <ul>
-                        @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
-                </div>
+            @if(session('error'))
+                <center><p style="color:red"> {{session('error')}}</p></center>
+            @else(seeeion('success'))
+                <p style="background:green">  {{session('success')}}</p>
             @endif
             <form class="no-margin form-horizontal" method="post" id="art_form" action="{{url('/seller/kaidian/'.$data->sid)}}">
                 <input type="hidden" name="_method" value="put">

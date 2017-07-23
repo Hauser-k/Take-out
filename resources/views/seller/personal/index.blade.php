@@ -111,8 +111,8 @@
 $(function(){
 
 	$('.ia').click(function(){
-		var l = $('.ia').index(this);
-		var txt = $('.spa').eq(l).val(); 
+		l = $('.ia').index(this);
+		txt = $('.spa').eq(l).val(); 
 		
 		//获取焦点 去掉只读 加上边框
 		$('.spa').eq(l).removeAttr("disabled"); 
@@ -120,12 +120,13 @@ $(function(){
 		$('.spa').eq(l).trigger("focus");
 		
 		$(this).css('display','none');
-
+	})
 		//文本框失去焦点后提交内容，重新变为文本 
-		$('.spa').eq(l).blur(function() {
+		$('.spa').blur(function() {
+			
 			$(this).attr("disabled","disabled"); 
 			$(this).css("border",'none')
-			$('.ia').eq(l).css('display','inline'); 
+			$('.ia').css('display','inline'); 
 			var newtxt = $(this).val();
 
 			//手机号正则
@@ -153,7 +154,7 @@ $(function(){
 
 		});
 
-	})
+	
 	function aa(msg,type){
 		$.get('/seller/updateper',{msg:msg,type:type},function(data){
        		// console.log(data);

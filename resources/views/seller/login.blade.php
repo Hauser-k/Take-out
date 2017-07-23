@@ -59,13 +59,13 @@
                 <form class="am-form tpl-form-line-form" method="post" action="{{url('/seller/login')}}">
                 {{csrf_field()}}
                     <div class="am-form-group">
-                        <input type="text" class="tpl-form-input" id="user-name" name="sname" placeholder="请输入6-12位账号"><span class="zhanghao"></span>
+                        <input type="text" class="tpl-form-input" id="user-name" minlength="6" maxlength="12" name="sname" placeholder="请输入6-12位账号或手机号"><span class="zhanghao"></span>
 
                     </div>
 
                     <div class="am-form-group">
 
-                        <input type="password" class="tpl-form-input" name="spwd" id="user-name" placeholder="请输入密码"><span class="mima"></span>
+                        <input type="password" class="tpl-form-input" minlength="6" maxlength="18" name="spwd" id="user-name" placeholder="请输入6-18位密码"><span class="mima"></span>
 
                     </div>
                     <div>

@@ -13,10 +13,8 @@
 
 
  DB::listen(function($sql, $bindings, $time) {
-                // dump($sql);
-            });
-
-
+     // dump($sql);
+});
 
 
 
@@ -140,14 +138,16 @@ Route::group(['prefix'=>'seller','namespace'=>'Seller','middleware'=>'seller.log
     Route::any('quit','LoginController@quit');
     //商家账号设置
     Route::resource('setup','SetupController');
-     //商家个人中心
+    //商家个人中心
     Route::resource('personal','PersonalController');
     //商家个人中心修改
     Route::any('updateper','PersonalController@updateper');
     //商家个人中心修改 修改个人头像
     Route::any('face','PersonalController@updateface');
-     //商家个人中心修改 修改密码
+    //商家个人中心修改 修改密码
     Route::any('pwd','PersonalController@pwd');
+    //商家个人提醒 来新订单提醒
+    Route::any('warn','WarnController@warn');
     
     //商家我要开店
     Route::resource('kaidian','KaidianController');

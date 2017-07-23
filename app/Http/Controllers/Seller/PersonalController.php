@@ -47,10 +47,10 @@ class PersonalController extends Controller
             // return $tel;
             if($tel != 0) 
                 return ['status' => 1,'msg' => '手机号码已存在...'];
-            if(session('seller_user')->stel == $msg)
-                return [
-                    'status'=>500
-                ];
+            // if(session('seller_user')->stel == $msg)
+            //     return [
+            //         'status'=>500
+            //     ];
 
             $re = Seller::find($sid)->update(['stel'=>$msg]);
 
@@ -64,11 +64,11 @@ class PersonalController extends Controller
             if($email){
                 return ['status' => 1,'msg' => '该邮箱已存在'];
             }
-            if(session('seller_user')->semail == $msg){
-                return [
-                    'status'=>500
-                ];
-            }
+            // if(session('seller_user')->semail == $msg){
+            //     return [
+            //         'status'=>500
+            //     ];
+            // } 
             $re = Seller::find($sid)->update(['semail'=>$msg]);
             if($re){
                 return ['status'=>0,'msg'=>'修改成功'];

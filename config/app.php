@@ -199,7 +199,7 @@ return [
 
         'Debugbar' => Barryvdh\Debugbar\Facade::class,
         'Cart' => Gloudemans\Shoppingcart\Facades\Cart::class,
-
+        
     ],
 
 ];

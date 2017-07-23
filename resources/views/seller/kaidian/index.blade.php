@@ -107,7 +107,11 @@
             </div>
         </div>
         <div id="base-page" class="stepPage">
-            
+            @if(session('error'))
+                <center><p style="color:red"> {{session('error')}}</p></center>
+            @else(seeeion('success'))
+                <p style="background:green">  {{session('success')}}</p>
+            @endif
             <form class="no-margin form-horizontal" method="post" id="art_form" action="">
                 {{csrf_field()}}
                 <input type="hidden" name="sid" value="{{$seller_user->sid}}">

@@ -43,14 +43,14 @@ class LoginController extends Controller
        
        $roles = [
             'sname' => 'required|between:6,12',
-            'spwd' => 'required|between:1,12',
+            'spwd' => 'required|between:6,18',
             'code' => 'required'
        ];
        $msg = [
             'sname.required' => '用户名必填',
             'sname.between' => '用户名长度为6-12位',
             'spwd.required' => '密码名必填',
-            'spwd.between' => '用户名长度为6-12位',
+            'spwd.between' => '密码长度为6-18位',
             'code.required' => '验证码必填'
        ];
         $validator = Validator::make($input,$roles,$msg);
@@ -63,7 +63,11 @@ class LoginController extends Controller
                 return back()->with('errors','验证码错误')->withInput();
             }
             //验证是否有用户
-            $user = Seller::where('sname',$input['sname']) -> first();
+            if(preg_match("/^1[34578]{1}\d{9}$/",$input['sname'])){  
+               $user = Seller::where('stel',$input['sname']) ->first();
+            }else{  
+                $user = Seller::where('sname',$input['sname']) -> first();
+            }
             
             if(!$user || ($input['spwd']  != Crypt::decrypt($user->spwd)) ){
             // if(!$user || ($input['spwd']  != ($user->spwd)) ){
@@ -89,6 +93,8 @@ class LoginController extends Controller
             }else if($user->status == 3){
                 $sid = $user->sid;
                 return view('seller.kaidian.false',compact('sid'));
+            }else if($user->status == 5){
+                return redirect('/seller/kaidian');
             }
             return view('seller.index',compact('pic'));
         }

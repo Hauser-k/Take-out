@@ -59,7 +59,7 @@ class KaidianController extends Controller
         if($re){
             return view('seller.kaidian.success');
         }else{
-            return back();
+            return back()->with('error','提交失败');
         }
        
     }
