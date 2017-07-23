@@ -22,12 +22,10 @@ class shangjiaController extends Controller
      */
 
     //商家详情页
-    public function getIndex($sid)
+    public function getIndex($sid,Request $request)
     {
 //        dd($id);
-        $user = ['uid'=>2];
-        session(['home_user'=>$user]);
-//        session(['uid'=>3]);
+//        $request->session()->flush();
         $re = SellerDetail::find($sid);
 
         $data = GoodsClass::where('sid',$sid)->get();

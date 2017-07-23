@@ -68,7 +68,7 @@
     </span>
     @elseif(!empty(session('home_user')))
     <span id="dis-login" class="top-disloginbar fl">
-        <a class="j-login login-btn fl" href="{{ url('/home/mynumber') }}" rel="nofollow">{{ session('home_user')['uid'] }}</a>
+        <a class="j-login login-btn fl" href="{{ url('/home/mynumber') }}" rel="nofollow">{{ session('home_user')['uname'] }}</a>
         <i class="icon i-top-yarrow"></i>
     </span>
     @endif

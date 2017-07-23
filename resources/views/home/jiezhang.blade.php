@@ -242,9 +242,10 @@
 <script>
     $('.wyt').click(function(){
         $.get('/home/wan',{},function(data){
-            alert('结算成功');
-           location.href="{{url('home/index')}}";
-       
+            if(data == 1) {
+                alert('结算成功');
+                window.location.href = "{{ url('/home/index') }}";
+            }
     })
     })
 </script>

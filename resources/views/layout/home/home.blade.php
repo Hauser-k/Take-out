@@ -101,10 +101,11 @@
         <a class="fl top-loginbar-username" href="{{url('home/login')}}">请登录</a>
       </div>
     </div>
-    @else
+    @elseif(!empty(session('home_user')))
       <div id="is-login" class="top-loginbar fl">
         <div class="top-loginbar-inner">
-           <a class="fl top-loginbar-username" title="个人中心" href="{{url('home/myorder')}}">{!! session('home_user')['uname'] !!}</a>
+           <a class="fl top-loginbar-username" title="个人中心" href="{{url('home/myorder')}}">
+               {{ session('home_user')['uname'] }}</a>
             </div>
             </div>
 
@@ -116,7 +117,7 @@
                         </div>
                     </div>
 
-                @endif
+    @endif
 
 
               <a href="javascript:;" class="wap fl" rel="nofollow"><i class="icon i-top-mobile"></i><span>手机版</span></a>

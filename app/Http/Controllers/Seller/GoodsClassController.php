@@ -19,16 +19,18 @@ class GoodsClassController extends Controller
     public function index(Request $request)
     {
 //        dd(time());
+//        dd(session('seller_user')['sid']);
+//        dd($request);
 //        如果请求携带keywords参数说明是通过查询进入index方法的，否则是通过用户列表导航进入的
         if($request->has('keywords')){
             $key = trim($request->input('keywords')) ;
-            $user = GoodsClass::where('cname','like',"%".$key."%")->paginate(5);
+            $user = GoodsClass::where('cname','like',"%".$key."%")->where('sid',session('seller_user')['sid'])->paginate(5);
 //            dd($user);
             return view('seller/goodsclass/goodsclass',['cate'=>$user,'key'=>$key]);
         }else{
 //            return 22222;
             //查询出user表的所有数据
-            $user =  GoodsClass::orderBy('gcid','asc')->paginate(5);
+            $user =  GoodsClass::where('sid',session('seller_user')['sid'])->orderBy('gcid','asc')->paginate(5);
             //      向前台模板传变量的第一种方法
             return view('seller/goodsclass/goodsclass',['cate'=>$user]);
         }
@@ -56,7 +58,7 @@ class GoodsClassController extends Controller
     {
 //        dd($request->all());
         $input = Input::except('_token');
-        $input['sid'] = 1;
+        $input['sid'] = session('seller_user')['sid'];
 //        dd($input);
 //        添加的第二种方式
 

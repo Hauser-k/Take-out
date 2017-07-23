@@ -28,11 +28,24 @@ class IndexController extends Controller
      */
     public function index(Request $request)
     {
-        $res=$request -> all();
-
-
+        $res = $request -> all();
+//        $request->session()->forget('addr');
+//        $request->session()->flush();
+////
+//dd(session('home_user'));
         //调用下面的方法给值 变成数组 进行遍历
 //        session(['addr' =>$res]);
+
+        if(!empty($res['excoorx']) && !empty($res['excoory']) ){
+            session(['addr'=>$res]);
+//            dd($res);
+//            dd(session('addr'));
+        }elseif(!$request->session()->has('addr')){
+            header('refresh:0;addr');
+//            dd($res);
+            die;
+        }
+//        dd($res);
         $hhh=self::actionGetNearShop(session('addr'))->toArray();
 
         $arr = [];
@@ -223,9 +236,8 @@ class IndexController extends Controller
 }
 
     public static function actionGetNearShop($res){
+
         $scope = 5;//5000米
-
-
 
         $lng = trim(session('addr')['excoorx']);//经度
         $lat = trim(session('addr')['excoory']);//纬度
