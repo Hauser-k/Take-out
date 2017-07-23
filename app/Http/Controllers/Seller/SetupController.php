@@ -114,7 +114,7 @@ class SetupController extends Controller
             $newName = date('YmdHis') . mt_rand(1000, 9999) . '.' . $entension;
 
 //            将图片上传到本地服务器
-            $path = $file->move(public_path() . '/seller/uploads', $newName);
+            $path = $file->move(public_path() . '/uploads/', $newName);
 
 //            将图片上传到七牛云
 //            \Storage::disk('qiniu')->writeStream('uploads/'.$newName, fopen($file->getRealPath(), 'r'));
@@ -133,7 +133,7 @@ class SetupController extends Controller
             $newName = date('YmdHis') . mt_rand(1000, 9999) . '.' . $entension;
 
 //            将图片上传到本地服务器
-            $path = $file->move(public_path() . '/seller/uploads', $newName);
+            $path = $file->move(public_path() . '/uploads/', $newName);
 
 //            将图片上传到七牛云
 //            \Storage::disk('qiniu')->writeStream('uploads/'.$newName, fopen($file->getRealPath(), 'r'));

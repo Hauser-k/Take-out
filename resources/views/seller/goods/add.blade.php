@@ -181,7 +181,6 @@
                 layer.msg('未选择分类',{icon:5});
                 return false;
             }
-            layer.msg('信息未填完整',{icon:5});
             return false;
         }
     });

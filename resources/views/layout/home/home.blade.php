@@ -162,7 +162,7 @@
             <div class="desire fl">
               <a href="{{url('home/index')}}" class="ca-lightgrey"><span>首页</span></a>
               <a href="{{url('home/myorder')}}" class="ca-lightgrey" rel="nofollow"><span>我的订单</span></a>
-               <a href="{{url('/seller/login')}}" class="ca-lightgrey"><span>入驻加盟</span></a>
+               <a href="{{url('/seller/index')}}" class="ca-lightgrey"><span>入驻加盟</span></a>
             </div>
             <div class="search-box fr">
             <form action="{{ url('/home/search/dian') }}" id="myform" method="get">
@@ -218,7 +218,7 @@
                 <div class="column fl ques">
                     <ul>
                         <li><a href="javascript:;" target="_blank" rel="nofollow">常见问题</a></li>
-                        <li><a href="./feedback.php" target="_blank" rel="nofollow">用户反馈</a></li>
+                        <li><a href="javascript:;" target="_blank" rel="nofollow">用户反馈</a></li>
                         <li><a href="javascript:;" target="_blank" rel="nofollow">诚信举报</a></li>
                         <li><a href="javascript:;" target="_blank" rel="nofollow">加入我们</a></li>
                     </ul>

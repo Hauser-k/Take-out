@@ -60,11 +60,18 @@
     <div class="top-banner">
         <div class="logo fl"><img src="picture/logo-n.png"></div>
         <div class="userbar fr">
+    @if(empty(session('home_user')))
     <span id="dis-login" class="top-disloginbar fl">
-        <a class="j-register register-btn fl" href="./zhuce.html" rel="nofollow">注册</a>
+        <a class="j-register register-btn fl" href="{{ url('/home/register') }}" rel="nofollow">注册</a>
         <span class="lg-divide fl">|</span>
-        <a class="j-login login-btn fl" href="./denglu.html" rel="nofollow">登录</a>
+        <a class="j-login login-btn fl" href="{{ url('/home/login') }}" rel="nofollow">登录</a>
     </span>
+    @elseif(!empty(session('home_user')))
+    <span id="dis-login" class="top-disloginbar fl">
+        <a class="j-login login-btn fl" href="{{ url('/home/mynumber') }}" rel="nofollow">{{ session('home_user')['uid'] }}</a>
+        <i class="icon i-top-yarrow"></i>
+    </span>
+    @endif
         <!-- <a class="j-download download-btn fl" href="http://waimai.meituan.com/mobile/download/default" target="_blank"><img src="picture/phone.svg">下载手机版</a> -->
         </div>
     </div>
@@ -114,7 +121,7 @@
 
             </div>
         </div>
-        <div class="container" id="container" style="top:30%">
+        <div class="container" id="container" style="display:none;top:30%">
             <div class="button-group">
                 <input type="button" class="button" value="显示当前城市" onclick="showCityInfo()"/>
             </div>
@@ -131,13 +138,13 @@
         <h3>商家入驻</h3>
         <p>平台优势，成单量更有保障</p>
     </div>
-    <a class="join-btn" href="./ruzhujiameng.php">立即入驻 &gt;</a>
+    <a class="join-btn" href="{{ url('/home/seller/ruzhu') }}">立即入驻 &gt;</a>
 </div>
 
 <div id="map-footer" class="map-footer">
     <div class="map-footer-inner">
         <div class="map-footer-entry">
-            <a class="map-footer-link kaidian_address" href="./ruzhujiameng.php">我要开店</a>
+            <a class="map-footer-link kaidian_address" href="{{ url('/home/seller/ruzhu') }}">我要开店</a>
             <i class="map-footer-separator">|</i>
             <a class="map-footer-link" href="javascript:;" >配送加盟</a>
         </div>
@@ -194,6 +201,7 @@
             document.getElementById("searchKeywords").value = address1;
             document.getElementById("excoorx").value = lnglatXY[0];
             document.getElementById("excoory").value = lnglatXY[1];
+            document.getElementById("container").style = 'display:block;top:30%';
         }
     });
 
@@ -211,11 +219,13 @@
 //                  document.getElementById('tip').innerHTML = '您当前所在城市：'+cityinfo;
                     document.getElementById('citylist').children[0].innerHTML = cityinfo;
                     document.getElementById('autoaddr').innerHTML = cityinfo;
+                    document.getElementById("container").style = 'display:block;top:30%';
                     //地图显示当前城市
                     map.setBounds(citybounds);
                 }
             } else {
                 document.getElementById('tip').innerHTML = result.info;
+                document.getElementById("container").style = 'display:block;top:30%';
             }
         });
     }
@@ -260,6 +270,7 @@
         document.getElementById("excoorx").value = excoorx;
         document.getElementById("excoory").value = excoory;
         document.getElementById("searchKeywords").value = exaddr;
+        document.getElementById("container").style = 'display:block;top:30%';
     }
 
     function addrSearch(){
@@ -277,6 +288,7 @@
             }
 
     }
+
     function setCity(cityName){
 //        var cityName = document.getElementById('cityName').value;
         if (!cityName) {
@@ -312,6 +324,11 @@
                 $(".dialog-citylist").slideToggle();
 //                alert(value);
                 setCity(value);
+            });
+            $(document).keydown(function(event){
+                if(event.keyCode==13){
+                    alert('不能点回车键哦');
+                }
             });
         });
 </script>

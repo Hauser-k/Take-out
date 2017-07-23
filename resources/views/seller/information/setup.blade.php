@@ -51,18 +51,19 @@
                     <label for="user-weibo" class="am-u-sm-3 am-form-label">商家logo</label>
                     <div class="am-u-sm-9">
                         <div class="am-form-group">
-                            <img name="" src="{{url('/seller/uploads')}}/{{ $data->slogo }}" id="pic" style="width:150px;">
+                            <img name="" src="{{url('/uploads')}}/{{ $data->slogo }}" id="pic" style="width:150px;">
                             <input type="file" name="file_upload" id="file_upload" value="">
                             <input  type="hidden" name="slogo" id="slogo" value="{{ $data->slogo }}">
                             <script type="text/javascript">
                                 $(function () {
                                     $("#file_upload").change(function () {
-                                        uploadImage();
+                                        uploadImage1();
                                     });
                                 });
-                                function uploadImage() {
+                                function uploadImage1() {
 //                            判断是否有选择上传文件
                                     var imgPath = $("#file_upload").val();
+
                                     if (imgPath == "") {
                                         alert("请选择上传图片！");
                                         return;
@@ -86,7 +87,7 @@
                                         success: function(data) {
 //                                    console.log(data);
                                             // alert("上传成功");
-                                            $('#pic').attr('src','/seller/uploads/'+data);
+                                            $('#pic').attr('src','/uploads/'+data);
                                             $('#slogo').val(data);
                                         },
                                         error: function(XMLHttpRequest, textStatus, errorThrown) {
@@ -103,7 +104,7 @@
                     <label for="user-weibo" class="am-u-sm-3 am-form-label">门店图片</label>
                     <div class="am-u-sm-9">
                         <div class="am-form-group">
-                            <img name="" src="/seller/uploads/{{ $data->eximage }}" id="pic1" style="width:150px;">
+                            <img name="" src="/uploads/{{ $data->eximage }}" id="pic1" style="width:150px;">
                             <input type="file" name="file_upload1" id="file_upload1" value="">
                             <input  type="hidden" name="eximage" id="eximage" value="{{ $data->eximage }}">
                             <script type="text/javascript">
@@ -138,7 +139,7 @@
                                         success: function(data) {
 //                                    console.log(data);
                                             // alert("上传成功");
-                                            $('#pic1').attr('src','/seller/uploads/'+data);
+                                            $('#pic1').attr('src','/uploads/'+data);
                                             $('#eximage').val(data);
                                         },
                                         error: function(XMLHttpRequest, textStatus, errorThrown) {
@@ -155,7 +156,7 @@
                     <label for="user-weibo" class="am-u-sm-3 am-form-label">营业执照</label>
                     <div class="am-u-sm-9">
                         <div class="am-form-group">
-                            <img name="" src="/seller/uploads/{{ $data->licence1 }}" id="pic" style="width:150px;">
+                            <img name="" src="/uploads/{{ $data->licence1 }}" id="pic" style="width:150px;">
                         </div>
                     </div>
                 </div>
@@ -163,7 +164,7 @@
                     <label for="user-weibo" class="am-u-sm-3 am-form-label">餐饮服务许可</label>
                     <div class="am-u-sm-9">
                         <div class="am-form-group">
-                            <img name="" src="/seller/uploads/{{ $data->licence2 }}" id="pic" style="width:150px;">
+                            <img name="" src="/uploads/{{ $data->licence2 }}" id="pic" style="width:150px;">
                         </div>
                     </div>
                 </div>

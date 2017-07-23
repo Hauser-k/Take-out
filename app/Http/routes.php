@@ -16,25 +16,25 @@
      // dump($sql);
 });
 
-
-
-Route::get('/', function () {
-//    return view('welcome');
-    return view('home/index');
-});
+Route::resource('/','Home\IndexController');
 // 验证码的路由
 Route::get('/code','CodeController@code');
-//验证码 
-
+//验证码
 
 /* Route::get('seller/code','Seller\LoginController@code'); */
 /**
  * 前台
  */
- 
+//首页
+Route::resource('/home/index','Home\IndexController');
 //登录
 Route::resource('/home/login','Home\LoginController');
-<<<<<<< HEAD
+//注册
+Route::resource('/home/register','Home\RegisterController');
+//注册获取手机号
+Route::any('/home/phone','Home\RegisterController@phone');
+//发送验证
+Route::any('/home/phoneto','Home\RegisterController@phoneto');
 //地址选择页
 Route::resource('/home/addr','Home\AddrController');
 //页面搜索
@@ -43,9 +43,6 @@ Route::any('/home/search/caidan','Home\SearchController@caidan');
 //商家入驻
 Route::resource('/home/seller/ruzhu','Home\RuzhuController');
 
-
-
-=======
 //忘记密码
 Route::any('/home/forget','Home\ForgetController@index');
 // 获取手机号
@@ -56,15 +53,9 @@ Route::any('/home/telto','Home\ForgetController@phoneto');
 Route::any('/home/reset','Home\ForgetController@ureset');
 //密码重置逻辑路由
 Route::any('/home/doreset','Home\ForgetController@doureset');
->>>>>>> origin/zhaobin
 
 Route::group(['prefix'=>'home','namespace'=>'Home'], function(){
-    //注册
-    Route::resource('register','RegisterController');
-    //注册获取手机号
-    Route::any('phone','RegisterController@phone');
-    //发送验证
-    Route::any('phoneto','RegisterController@phoneto');
+
 	//我的订单
     Route::resource('myorder','MyOrderController');
 	//我的账号
@@ -76,19 +67,18 @@ Route::group(['prefix'=>'home','namespace'=>'Home'], function(){
     //修改用户信息
     Route::any('updateper','MyNumberController@updateper');
     Route::any('mycollec','MyCollecController@mycollec');
-	//首页
-    Route::resource('index','IndexController');
+
     // 前台商家路由
     Route::controller('shangjia','ShangjiaController');
 	// 购物车路由
-	Route::get('/home/shop','Home\shop_cartController@addcart');
-	Route::get('/home/shop_cart','Home\shop_cartController@index');
-	Route::get('/home/create','Home\shop_cartController@create');
+	Route::get('shop','shop_cartController@addcart');
+	Route::get('shop_cart','shop_cartController@index');
+	Route::get('create','shop_cartController@create');
 	
 	// 前台订单路由
-	Route::any('/home/jie','Home\jiezhController@index');
-	Route::any('/home/fukuan','Home\jiezhController@Show');
-	Route::any('/home/suan','Home\jiezhController@jiesu');
+	Route::any('jie','jiezhController@index');
+	Route::any('fukuan','jiezhController@Show');
+	Route::any('suan','jiezhController@jiesu');
 });
 
 /**
@@ -144,19 +134,20 @@ Route::any('/seller/email','Seller\ForgetController@email');
 Route::any('/seller/reset','Seller\ForgetController@sreset');
 //密码重置逻辑路由
 Route::any('/seller/dosreset','Seller\ForgetController@dosreset');
-
+//注册
+Route::resource('seller/register','Seller\RegisterController');
+// 获取手机号
+Route::any('seller/phone','Seller\RegisterController@phone');
+//给用户发送短信
+Route::any('seller/phoneto','Seller\RegisterController@phoneto');
+//判断昵称是否重复
+Route::any('seller/stel','Seller\RegisterController@stel');
+//判断邮箱是否重复
+Route::any('email','RegisterController@email');
 
 Route::group(['prefix'=>'seller','namespace'=>'Seller','middleware'=>'seller.login'], function(){
-    //注册
-    Route::resource('register','RegisterController');
-    // 获取手机号
-    Route::any('phone','RegisterController@phone');
-    //给用户发送短信
-    Route::any('phoneto','RegisterController@phoneto');
-    //判断昵称是否重复
-    Route::any('stel','RegisterController@stel');
-    //判断邮箱是否重复
-    Route::any('email','RegisterController@email');
+
+
     //退出登录
     Route::any('quit','LoginController@quit');
     //商家账号设置

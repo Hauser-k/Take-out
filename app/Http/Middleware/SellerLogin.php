@@ -15,6 +15,9 @@ class SellerLogin
      */
     public function handle($request, Closure $next)
     {
+        if (empty(session('seller_user'))) {
+            return redirect('seller/login');
+        }
         return $next($request);
     }
 }
