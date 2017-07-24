@@ -41,7 +41,7 @@
                     <div class="mws-form-row">
                         <label class="mws-form-label">商家类别:</label>
                         <div class="mws-form-item">
-                            <p class="small" name="csid" >{{$data['csname']}}</p>
+                            <p class="small" name="csname" >{{$data['csname']}}</p>
                         </div>
                     </div>
                     <div class="mws-form-row">

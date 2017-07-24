@@ -34,7 +34,7 @@ class SellerClassController extends Controller
     public function create()
     {
         return view('admin/sellerclass/add');
-        // echo '111';
+
     }
 
     /**

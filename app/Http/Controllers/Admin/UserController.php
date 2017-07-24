@@ -126,7 +126,7 @@ class UserController extends Controller
         //  如果添加成功跳转到分类列表页
             return redirect('admin/user');
         }else{
-            return back()->with('error','添加失败');
+            return back()->with('error','修改失败');
         }
     }
 
