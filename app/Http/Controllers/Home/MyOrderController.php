@@ -8,6 +8,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
 
 class MyOrderController extends Controller
 {
@@ -23,13 +24,34 @@ class MyOrderController extends Controller
         //找出商家信息
         $data= DB::table('user')
             ->join('order', 'order.uid', '=', 'user.uid')
-            ->join('order_goods', 'order.oid', '=', 'order.oid')
+//            ->join('order_goods', 'order.oid', '=', 'order.oid')
             ->join('order_dist', 'order.oid', '=', 'order_dist.oid')
             ->join('seller', 'order.sid', '=', 'seller.sid')
             ->join('seller_detail', 'order.sid', '=', 'seller_detail.sid')
             ->where('user.uid',session('home_user')['uid'])
-            ->select('order.oid','seller_detail.extel','order.gtime','user.uname','seller.sname','order.order','order_goods.onum','order_dist.endprice','order_dist.ostatus','seller_detail.slogo','seller_detail.extel')
+            ->select('order.oid','seller_detail.extel','order.gtime','user.uname','seller.sname','order.order','order_dist.endprice','order_dist.ostatus','seller_detail.slogo','seller_detail.extel')
             ->get();
+
+//        $data= DB::table('user')
+//            ->join('order', 'order.uid', '=', 'user.uid')
+//            ->join('order_goods', 'order.oid', '=', 'order.oid')
+//            ->join('order_dist', 'order.oid', '=', 'order_dist.oid')
+//            ->join('seller', 'order.sid', '=', 'seller.sid')
+//            ->join('seller_detail', 'order.sid', '=', 'seller_detail.sid')
+//            ->where('user.uid',session('home_user')['uid'])
+//            ->select('order.*','order_goods.*','seller.sname','')
+//            ->get();
+
+
+
+
+        $tmp = [];
+        foreach($data as $k=>$v){
+            $tmp[$v['oid']] = $v;
+
+        }
+
+        $data = $tmp;
 
 
 
@@ -65,6 +87,8 @@ class MyOrderController extends Controller
      */
     public function show($id)
     {
+
+
         //获取整张订单的信息
         $data= DB::table('order')
             ->join('user', 'order.uid', '=', 'user.uid')
@@ -74,11 +98,15 @@ class MyOrderController extends Controller
             ->join('seller_detail', 'order.sid', '=', 'seller_detail.sid')
             ->join('addr', 'addr.uid', '=', 'user.uid')
             ->where('order.oid',$id)
+            ->where('user.uid',session('home_user')['uid'])
             ->select('order_dist.ofee','order_goods.gid','addr.daddr','user.uname','user.utel','seller_detail.extel','order.gtime','user.uname','seller.sname','order.order','order_goods.onum','order_dist.endprice','order_dist.ostatus','seller_detail.slogo','seller_detail.extel')
             ->first();
+
+
     //   获取订单下面的商家信息
 
         $res=DB::table('order')
+
             ->join('seller', 'seller.sid', '=', 'order.sid')
             ->join('goods', 'seller.sid', '=', 'goods.sid')
             ->join('order_goods', 'order.oid', '=', 'order_goods.oid')
@@ -87,7 +115,7 @@ class MyOrderController extends Controller
             ->get();
 
         //显示到页面中
-        return view('home/orderdateil',compact('data','res'));
+             return view('home/orderdateil',compact('data','res'));
     }
 
     /**
