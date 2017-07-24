@@ -21,8 +21,8 @@
                                     </div>
                                 </div>
                                 <div class="info-content clearfix">
-                                    <span class="rank fl"> <span class="star-ranking fl"> <span class="star-score" style="width: 65px"></span> </span> <span class="rank-grades ct-lightgrey fl">4.4</span> </span>
-                                    <span class="total cc-syellow fl"> 月售214单 </span>
+                                    <!-- <span class="rank fl"> <span class="star-ranking fl"> <span class="star-score" style="width: 65px"></span> </span> <span class="rank-grades ct-lightgrey fl">4.4</span> </span> -->
+                                    <!-- <span class="total cc-syellow fl"> 月售214单 </span> -->
                                     <span class="fl ct-b5gray">|</span>
                                     <span class="price fl ct-lightgrey"> <span class="start-price">{{$v->odelfee}}元起送</span> <span class="send-price"> {{$v->ofee}}元配送费 </span> </span>
                                 </div>

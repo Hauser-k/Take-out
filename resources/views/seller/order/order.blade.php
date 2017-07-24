@@ -37,10 +37,10 @@
                                     <div class="am-input-group am-input-group-sm tpl-form-border-form cl-p" style="float:left;width: 200px;padding-left: 3px;">
                                     
                                         <select name="ostatus"  id="">
-                                            <option  value ="">全部</option>
+                                            <option  selected value ="">全部</option>
                                            @foreach($arr as $k=>$v)
                                                 @if($data[0]['ostatus'] == $k)
-                                                    <option selected value ="{{$k}}">{{$v}}</option>
+                                                    <option value ="{{$k}}">{{$v}}</option>
                                                 @else
                                                     <option value ="{{$k}}">{{$v}}</option>
                                                 @endif
