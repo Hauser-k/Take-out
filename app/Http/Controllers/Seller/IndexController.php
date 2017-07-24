@@ -104,11 +104,14 @@ class IndexController extends Controller
      */
     public function update(Request $request, $id)
     {
+//        $s = $request->except(['_method']);
+//        dd($s);
         $input =  $request->except(['_token','_method','status']);
         $input1 = $request->only(['status']);
 
 //        $input['sid'] = 1;
 //       dd($input);
+//       dd($input1);
         //验证规则
         if($input['etime']<=$input['stime']){
             return back()->with('error','结束时间不可以小于或等于开始时间');
@@ -135,10 +138,19 @@ class IndexController extends Controller
 //       表单验证
         $validator =  Validator::make($input,$role,$mess);
         if($validator->passes()){
+//
 
-            if(session('seller_user')->status != $input1['status']){
+//
+//dd(session('seller_user'));
+            if(session('seller_user')['status'] != $input1['status']){
                 $res = Seller::where('sid',$id)->update($input1);
+//                dd($res);
                 if($res){
+                    //清空session，然后给session重新赋值
+                    $request->session()->forget('seller_user');
+                    $user = Seller::where('sid',$id) -> first();
+                    session(['seller_user'=>$user]);
+                    //返回到我的店铺
                     return redirect('seller/index/'.$id.'/edit')->with('success','修改成功');
                 }else{
                     return back()->with('error','修改失败');
@@ -146,9 +158,10 @@ class IndexController extends Controller
             }
             $re = SellerDetail::where('sid',$id)->update($input);
             if($re){
+                session(['seller_detail'=>$re]);
                 return redirect('seller/index/'.$id.'/edit')->with('success','修改成功');
             }else{
-                return back()->with('error','修改失败');
+                return back()->with('error','没有修改');
             }
         }else{
 //          如果没有通过表单验证
