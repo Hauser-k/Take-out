@@ -73,7 +73,7 @@ class LoginController extends Controller
             // if(!$user || ($input['spwd']  != ($user->spwd)) ){
               return back()->with('errors','用户名或密码错误')->withInput();
             }
-            
+
             //将用户信息添加到session中
             session(['seller_user'=>$user]);
             
