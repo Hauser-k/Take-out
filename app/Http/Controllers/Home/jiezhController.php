@@ -123,7 +123,7 @@ class jiezhController extends Controller
         foreach($na as $a=>$b){
            $sname = $b['sname'];
         }
-        $da = date('Ymd').rand(10,2);
+        $da = date('Ymd').rand(1000,4);
         session(['da'=>$da]);
         // dd($na);
         $uid = $request -> session() -> get('user_home');

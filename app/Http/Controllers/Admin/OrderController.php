@@ -115,4 +115,6 @@ class OrderController extends Controller
         return view('admin.order.edit',['data'=>$data,'re'=>$re]);
     }
    
+
+
 }
