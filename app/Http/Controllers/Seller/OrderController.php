@@ -36,7 +36,7 @@ class OrderController extends Controller
         }
         $data = Order::join('order_dist','order.oid','=','order_dist.oid')->where('sid',$sid)->where($wh)->orderBy('otime','desc')->paginate($count);
          // dd($data);
-        $arr = ['1'=>'下单未付款','2'=>'付款未接单','3'=>'商家已接单','4'=>'已配送','5'=>'已收货未评价','6'=>'收货已评价','7'=>'取消订单'];
+        $arr = ['2'=>'付款未接单','3'=>'商家已接单','4'=>'已配送','5'=>'已收货未评价','6'=>'收货已评价','7'=>'取消订单'];
         return view('seller.order.order',compact('data','count','arr'));
     }
      /**
@@ -61,10 +61,10 @@ class OrderController extends Controller
      */
     public function edit($id)
     {   
-        $id = 1;
+        // $id = 1;
         // 下边这条是对的
-        // $data = OrderDist::join('addr','order_dist.did','=','addr.did')->where('oid',$id)->first();
-        $data = OrderDist::join('addr','order_dist.did','=','addr.did')->where('addr.did',1)->first();
+        $data = OrderDist::join('addr','order_dist.did','=','addr.did')->where('oid',$id)->first();
+        // $data = OrderDist::join('addr','order_dist.did','=','addr.did')->where('addr.did',1)->first();
         return view('seller.order.order-user',compact('data'));
        
     }
@@ -85,8 +85,9 @@ class OrderController extends Controller
         $did = Input::get('did');
         $addr = $request->only('dname','dtel','daddr');
         //修改数据库
-        // dd($addr);
+        
         $re = OrderDist::where('oid',$id)->update($order_dist);
+        // dd($id);
         $re1 = Addr::where('did',$did)->update($addr);
         //判断接单时间是否为0 是默认值0 则修改数据库 否则不修改
         $gtime = Order::where('oid',$id)->get();
