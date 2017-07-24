@@ -98,7 +98,8 @@
     @if(empty(session('home_user')))
     <div id="is-login" class="top-loginbar fl">
       <div class="top-loginbar-inner">
-        <a class="fl top-loginbar-username" href="{{url('home/login')}}">请登录</a>
+        <a class="fl top-loginbar-username" href="{{url('home/login')}}">请登录&nbsp;&nbsp;&nbsp;</a>
+          <a class="fl top-loginbar-username" href="{{ url('/home/register') }}">&nbsp;&nbsp;&nbsp;请注册</a>
       </div>
     </div>
     @elseif(!empty(session('home_user')))

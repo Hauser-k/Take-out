@@ -44,7 +44,7 @@
                                         <thead>
                                             <tr>
                                                 <th>序号</th>
-                                                <th>订单号</th>
+                                                <th>订单ID</th>
                                                 <th>商品</th>
                                                 <th>数量</th>
                                                 <th>口味</th>

@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB;
 
 class ExamineController extends Controller
 {
@@ -75,8 +76,13 @@ class ExamineController extends Controller
     public function edit($id)
     {
         //
-        $data=SellerDetail::where('sid',$id)->first();
+
         $all = Seller::where('sid',$id)->first();
+
+
+        $data = DB::table('seller_detail')
+            ->join('seller_class', 'seller_class.csid', '=', 'seller_detail.csid')
+            ->where('sid',$id)->first();
 
         return view('/admin/examine/show',compact('data','all'));
     }

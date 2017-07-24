@@ -153,7 +153,7 @@ class jiezhController extends Controller
 
         $uid = $re['home_user']['uid'];
         // 获取当前实间
-        $da = date('Ymd');
+        $da = time();
         $order = $re['da'];
         $ofee = $re['ofee'];
         $price = $re['cou'];
