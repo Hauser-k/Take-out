@@ -157,18 +157,17 @@ class jiezhController extends Controller
         $order = $re['da'];
         $ofee = $re['ofee'];
         $price = $re['cou'];
+        $oid = Order::insertGetId(['order'=>$order,'uid'=>$uid,'sid'=>$sid,'otime'=>$da]);
         foreach($re['n'] as $k=>$v){
             $sid = $v['sid'];
             $gid = $v['gid'];
             $onum = $v['onum'];
             $tatse = $v['gtaste'];
-
+            OrderGoods::insert(['gid'=>$gid,'onum'=>$onum,'oprice'=>$price,'otaste'=>$tatse,'ofee'=>$ofee,'sid'=>$sid,'oid'=>$oid]);
 
         }
-//         dd($did);
-        $oid = Order::insertGetId(['order'=>$order,'uid'=>$uid,'sid'=>$sid,'otime'=>$da]);
+//         dd($did);      
 //        dd($oid);
-        OrderGoods::insert(['gid'=>$gid,'onum'=>$onum,'oprice'=>$price,'otaste'=>$tatse,'ofee'=>$ofee,'sid'=>$sid,'oid'=>$oid]);
         OrderDist::insert(['oid'=>$oid,'did'=>$e,'umsg'=>'标准','uway'=>'余额支付','ostatus'=>2,'endprice'=>$price,'ofee'=>$ofee]);
 echo '<script>alert("添加成功")</script>';
         return redirect('home/index');
