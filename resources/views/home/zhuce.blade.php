@@ -143,7 +143,7 @@
                                         if(msg.code == 'no'){
                                             layer.msg('用户已存在',{icon:2});
                                         }else{
-                                            layer.msg('已发送验证码',{icon:5});
+                                            layer.msg('已发送验证码',{icon:6});
                                         }
                                     },'json');
                                     codeTime=setInterval(function() {

@@ -6,6 +6,7 @@
 <head>
     <meta charset="utf-8">
     <!-- Viewport Metatag -->
+    <title>管理后台</title>
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
 
     <!-- Plugin Stylesheets first to ease overrides -->
@@ -193,7 +194,7 @@
                 </div>
                 <ul>
                     <li><a href="{{url('admin/login/')}}/{{ session('admin_user')['aid']}}"><input type="hidden" name="_method" value="put">退出</a></li>
-                    <li><a href="{{url('admin/update/')}}/{{ session('admin_user')['aid']}}/edit">修改密码</li>
+                    <li><a href="{{url('admin/update/')}}/{{ session('admin_user')['aid']}}/edit">修改密码</a></li>
                 </ul>
             </div>
         </div>
@@ -252,6 +253,7 @@
                         <li><a href="{{url('admin/seller')}}">查看商家</a></li>
                     </ul>
                 </li>
+            </ul>
         </div>
         <div id="mws-navigation">
             <ul>
@@ -259,11 +261,12 @@
                 <li>
                     <a href="#"><i class="icon-file"></i> 订单信息</a>
                     <ul class="opend">
-                        <li><a href="{{url('/admin/order')}}">订单查看</a></li> 
+                        {{--<li><a href="{{url('/admin/order')}}">订单查看</a></li> --}}
                         <li><a href="{{url('/admin/order/{id}')}}">订单商品</a></li> 
                         <li><a href="{{url('/admin/order/create')}}">订单配送</a></li> 
                     </ul>
                 </li>
+            </ul>
         </div>
          <div id="mws-navigation">
             <ul>
@@ -275,6 +278,7 @@
 
                     </ul>
                 </li>
+            </ul>
         </div>
          <div id="mws-navigation">
             <ul>
@@ -285,6 +289,7 @@
                         <li><a href="{{url('/admin/collection')}}">收藏查看</a></li> 
                     </ul>
                 </li>
+            </ul>
         </div>
          <div id="mws-navigation">
             <ul>
@@ -295,6 +300,7 @@
                         <li><a href="{{url('/admin/examine')}}">商家审核</a></li>
                     </ul>
                 </li>
+            </ul>
         </div>
         <div id="mws-navigation">
             <ul>
@@ -305,6 +311,7 @@
                         <li><a href="#">信息查看</a></li>
                     </ul>
                 </li>
+            </ul>
         </div>
 
         @if(session('admin_user')['auth']==2)
@@ -337,6 +344,7 @@
                         <li><a href="{{url('admin/link/')}}">链接列表</a></li>
                     </ul>
                 </li>
+            </ul>
         </div>
 
         <div id="mws-navigation">
@@ -348,6 +356,7 @@
                         <li><a href="{{url('admin/config/')}}">网站配置</a></li>
                     </ul>
                 </li>
+            </ul>
         </div>
     </div>
 
