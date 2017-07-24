@@ -233,7 +233,7 @@
                         <li><a href="javascript:;" target="_blank" rel="nofollow">常见问题</a></li>
                         <li><a href="javascript:;" target="_blank" rel="nofollow">用户反馈</a></li>
                         <li><a href="javascript:;" target="_blank" rel="nofollow">诚信举报</a></li>
-                        <li><a href="javascript:;" target="_blank" rel="nofollow">加入我们</a></li>
+                        <li><a href="{{ url('admin/user') }}" target="_blank" rel="nofollow">后台管理</a></li>
                     </ul>
                 </div>
                 <div class="column fl service">

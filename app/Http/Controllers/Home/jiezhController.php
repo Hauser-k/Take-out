@@ -163,8 +163,8 @@ class jiezhController extends Controller
 //        dd($oid);
         OrderGoods::insert(['gid'=>$gid,'onum'=>$onum,'oprice'=>$price,'otaste'=>$tatse,'ofee'=>$ofee,'sid'=>$sid,'oid'=>$oid]);
         OrderDist::insert(['oid'=>$oid,'did'=>$e,'umsg'=>'标准','uway'=>'余额支付','ostatus'=>2,'endprice'=>$price,'ofee'=>$ofee]);
-
-        return 1;
+echo '<script>alert("添加成功")</script>';
+        return redirect('home/index');
     }
 
 

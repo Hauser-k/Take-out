@@ -243,7 +243,6 @@
     $('.wyt').click(function(){
         $.get('/home/wan',{},function(data){
             if(data == 1) {
-                alert('结算成功');
                 window.location.href = "{{ url('/home/index') }}";
             }
     })
