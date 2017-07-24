@@ -46,7 +46,8 @@ class OrderController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id)
-    {
+    {   
+        // dd($id);
         $data = Goods::join('order_goods','order_goods.gid','=','goods.gid')->where('oid',$id)->paginate(2);
         // dd($data);
         return view('seller.order.order-goods',compact('data'));
@@ -60,9 +61,10 @@ class OrderController extends Controller
      */
     public function edit($id)
     {   
-        // dd($id);
-        $data = OrderDist::join('addr','order_dist.did','=','addr.did')->where('oid',$id)->first();
-        // dd($data);
+        $id = 1;
+        // 下边这条是对的
+        // $data = OrderDist::join('addr','order_dist.did','=','addr.did')->where('oid',$id)->first();
+        $data = OrderDist::join('addr','order_dist.did','=','addr.did')->where('addr.did',1)->first();
         return view('seller.order.order-user',compact('data'));
        
     }
@@ -94,7 +96,7 @@ class OrderController extends Controller
             Order::where('oid',$id)->update(['gtime'=> time()]);
         }
         // if($re && $re1){
-        //     return view('seller.order.order');
+            return redirect('/seller/order');
         // }else{  
         //     return back()->with('error','提交失败');
         // }

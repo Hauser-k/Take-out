@@ -13,7 +13,8 @@
             <h2>搜索"<span class="keyWords cc-lightred-new">{{$inp}}</span>"的餐厅结果</h2>
                 <ul class="clearfix">
                     @foreach($data as $k=>$v)
-                        <li class="rest-list fl row-last">  <a href="javascript:;" target="_blank">
+                        <li class="rest-list fl row-last">  
+                        <a href="{{url('/home/shangjia/index/'.$v->sid)}}" target="_blank">
                             <div class="content">
                                 <p class="name"> {{$v->exname}} </p>
                                 <p class="price ct-lightgrey">
@@ -40,6 +41,7 @@
                                 <p class="status-pre-order cc-lightred-new">营业中</p>
                             </div>
                                  @endif
+                         </a>
                         </li>
                     @endforeach
                 </ul>
