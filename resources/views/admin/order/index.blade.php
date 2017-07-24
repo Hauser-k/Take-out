@@ -40,9 +40,7 @@
                 </th>
                 <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending" style="width: 111px;">下单时间
                 </th>
-                <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending" style="width: 111px;">接单时间
-                </th>
-                <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending" style="width: 111px;">送达时间
+                <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending" style="width: 111px;">详情信息
                 </th>
             </tr>
          </thead>
@@ -51,12 +49,9 @@
                        <td>{{ $v -> oid }}</td>
                        <td>{{ $v -> order }}</td>
                        <td>{{ $v -> uname }}</td>
-                  
                        <td>{{ $v -> sname }}</td>
-                  
-                       <td>{{date('Y-m-d H:i:s',$v->otime)}}</td>
-                       <td>{{date('Y-m-d H:i:s',$v->gime)}}</td>
-                       <td>{{date('Y-m-d H:i:s',$v->ftime)}}</td>
+                       <td>{{$v->otime}}</td>
+                       <td><button id="but" class="btn btn-primary" width="50px"><a href="{{url('/admin/order/desc')}}">查看</a></button></td>
                    </tr>       
                @endforeach
         </table>
