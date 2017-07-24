@@ -13,7 +13,7 @@
                         <div class="result-list">
                             <div class="poi-info clearfix">
                                 <div class="name clearfix">
-                                    <h3 class="fl"><a href="#" target="_blank">{{$v->exname}}</a></h3>
+                                    <h3 class="fl"><a href="{{url('/home/shangjia/index/'.$v->sid)}}" target="_blank">{{$v->exname}}</a></h3>
                                     <div class="discount fl">
                                         <i class="icon i-pay fl"></i>
                                         <!-- 是否支持代金券 -->
@@ -42,7 +42,7 @@
                             -->
                                 @if($v->sid == array_keys($n)[0] )
                                 <li class="clearfix" data-poiname="星期八烧烤" data-poiid="144840123951394028" data-foodid="143407286">
-                                    <a href="" class="food fl">
+                                    <a href="{{url('/home/shangjia/index/'.$v->sid)}}" class="food fl">
                                         <p class="details fl "> <span class="food-name ">{!! array_values($n)[0]->gname !!}</span> </p>
 										<span class="food-price fl" style="width:120px">单价￥{!! array_values($n)[0]->gprice !!}元</span>
 										<span class="food-total fl  ct-middlegrey"> 月售{!! array_values($n)[0]->gcount !!}单 </span>

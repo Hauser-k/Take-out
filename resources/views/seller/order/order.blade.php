@@ -89,7 +89,7 @@
                                               
                                                 <td>
                                                     <div class="tpl-table-black-operation">
-                                                        <a href="{{url('/seller/order/'.$v->order)}}">
+                                                        <a href="{{url('/seller/order/'.$v->oid)}}">
                                                             <i class="am-icon-pencil"></i>订单详情
                                                         </a>
                                                         <a href="{{url('/seller/order/'.$v->oid.'/edit')}}">
