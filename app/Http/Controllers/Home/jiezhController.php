@@ -30,28 +30,33 @@ class jiezhController extends Controller
     {
         $uid = session('home_user')['uid'];
         // dd($uid);
-      
+    //   dd($request -> except('_token'));
         // 接收传过来的gid
-        $gid = $request -> except('_token');
+        $sid = $request -> except('_token')['shop_cart'];
+        // dd($sid);
         // 通过gid获取sid
-        $id = Goods::where('gid',$gid['shop_cart'])->get();
-        foreach($id as $k=>$v){
-            $sid = $v['sid'];
-        }
-        // 获取配送费
+        // $id = Goods::where('gid',$gid['shop_cart'])->get();
+        // foreach($id as $k=>$v){
+        //     $sid = $v['sid'];
+        // }
+        // // 获取配送费
         $f = SellerDetail::where('sid',$sid)->get();
-        foreach($f as $f=>$e){
+        // dd($f['ofee']);
+        // dd($f);
+        foreach($f as $s=>$e){
             $ofee = $e['ofee'];
         }
         // dd($ofee);
         // 将sid与gid拼接成键名
         $keylist = 'LIST:'.$uid.':'.$sid;
-         $keyhash = 'HASH:'.$uid.':'.$sid.':';
+        $keyhash = 'HASH:'.$uid.':'.$sid.':';
         // dd($keylist);
-        $res = Redis::lrange($keylist,0,-1);
+        // dd($keyhash);
+        $res = \Redis::lrange($keylist,0,-1);
+        // dd($keylist);
         $n = [];
          foreach($res as $k=>$v){
-                $n[$v]=Redis::hGetAll($keyhash.$v);//获取当前用户在当前商家的所有购物车商品
+                $n[$v]=\Redis::hGetAll($keyhash.$v);//获取当前用户在当前商家的所有购物车商品
             }
             // dd($n);
         // 获取session中的uid
@@ -119,6 +124,7 @@ class jiezhController extends Controller
         foreach($all['n'] as $k=>$v){
             $sid = $v['sid'];
         }
+
         $na = Seller::where('sid',$sid)->get();
         foreach($na as $a=>$b){
            $sname = $b['sname'];
@@ -139,8 +145,9 @@ class jiezhController extends Controller
     public function Wan(Request $request)
     {
         $re = $request -> session() ->all();
-//         dd($re);
+        // dd($re);
         //获取所选地址的id
+
         $e = $re['seller_detail']['sdid'];
 //        dd($e);
 
@@ -168,40 +175,5 @@ echo '<script>alert("添加成功")</script>';
     }
 
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-
-
-
-
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
+ 
 }

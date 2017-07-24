@@ -27,7 +27,7 @@ class shangjiaController extends Controller
 //        dd($id);
 //        $request->session()->flush();
         $re = SellerDetail::find($sid);
-
+        session(['seller_detail'=>$re]);
         $data = GoodsClass::where('sid',$sid)->get();
         // 获取所有的gcid
         foreach($data as $k => $v){
@@ -39,12 +39,13 @@ class shangjiaController extends Controller
         // 获取在gcid内的商品值
         $good = Goods::whereIn('gcid',$shuzu)->get();
 
-//        \Redis::flushall();
+    //    \Redis::flushall();
+    // dd(session('home_user')['uid']);
 
 //        $res = \Redis::keys('*');//获取键名
 //        dd($good);
         $cart = $this->cart_list($sid);
-//        dd($cart);
+    //    dd($cart);
 //        dd($cart[1]);
 //        dd($re['sid']);
         return view('home.shangjia',['data'=>$data,'re'=>$re,'good'=>$good,'cart'=>$cart[2],'other'=>$cart[1]]);
@@ -86,6 +87,7 @@ class shangjiaController extends Controller
 //        用户id
         $uid = session('home_user')['uid'];
 //        当前商品
+// dd($uid);
         $goods = Goods::where('gid',$gid)->get()->toArray()[0];
         $goods['onum'] = 1;
 //        商家id
@@ -114,6 +116,8 @@ class shangjiaController extends Controller
             if (!$res) {
 //               2.1 将每条数据的id存入list
                 $add_return1 = \Redis::rpush($keylist,$gid);
+        //          $res = \Redis::lrange($keylist,0,-1);
+        // dd($res);
 //               2.2 将每条记录的id作为hash的键，记录值作为hash的值
                 $add_return = \Redis::hmset($keyhash,$goods);
 
@@ -251,7 +255,7 @@ class shangjiaController extends Controller
 
         $listval = \Redis::lrange($keylist,0,-1);//获取链表中所有的值
 
-//dd($listval);
+// dd($listval);
         if(!empty($uid) && !empty($sid) && !empty($listval) ) {
             foreach($listval as $k=>$v){
                 $goods_list[$v]=\Redis::hGetAll($keyhash.$v);//获取当前用户在当前商家的所有购物车商品
