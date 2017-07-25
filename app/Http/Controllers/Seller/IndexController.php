@@ -139,8 +139,6 @@ class IndexController extends Controller
         $validator =  Validator::make($input,$role,$mess);
         if($validator->passes()){
 //
-
-//
 //dd(session('seller_user'));
             if(session('seller_user')['status'] != $input1['status']){
                 $res = Seller::where('sid',$id)->update($input1);
@@ -157,8 +155,10 @@ class IndexController extends Controller
                 }
             }
             $re = SellerDetail::where('sid',$id)->update($input);
+//            dd($re);
             if($re){
                 session(['seller_detail'=>$re]);
+//                dd($re);
                 return redirect('seller/index/'.$id.'/edit')->with('success','修改成功');
             }else{
                 return back()->with('error','没有修改');

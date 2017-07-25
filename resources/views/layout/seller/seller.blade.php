@@ -141,7 +141,7 @@
             <div class="tpl-sidebar-user-panel">
                 <div class="tpl-user-panel-slide-toggleable">
                     <div class="tpl-user-panel-profile-picture">
-                        <img src="{{asset('/uploads/')}}/{{ session('seller_detail')->slogo }}" alt="">
+                        <img src="{{asset('/uploads/')}}/{{ session('seller_detail')['slogo'] }}" alt="">
                     </div>
                     <span class="user-panel-logged-in-text">
           </span>
