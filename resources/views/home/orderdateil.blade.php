@@ -28,7 +28,7 @@
 
 
 
-    @foreach([$data] as $v)
+    @foreach($data as $k => $v)
     <div data-sid="3" class="order-v" data-orderphone="13711111111" data-viewid="5272911528310622" data-status="1" data-shipping="" data-qid="">
     <div class="brief-intro j-toggle-content ">
 

@@ -92,28 +92,34 @@ class MyOrderController extends Controller
         //获取整张订单的信息
         $data= DB::table('order')
             ->join('user', 'order.uid', '=', 'user.uid')
-            ->join('order_goods', 'order.oid', '=', 'order.oid')
+//            ->join('order_goods', 'order.oid', '=', 'order_goods.oid')
             ->join('order_dist', 'order.oid', '=', 'order_dist.oid')
             ->join('seller', 'order.sid', '=', 'seller.sid')
             ->join('seller_detail', 'order.sid', '=', 'seller_detail.sid')
             ->join('addr', 'addr.uid', '=', 'user.uid')
             ->where('order.oid',$id)
             ->where('user.uid',session('home_user')['uid'])
-            ->select('order_dist.ofee','order_goods.gid','addr.daddr','user.uname','user.utel','seller_detail.extel','order.gtime','user.uname','seller.sname','order.order','order_goods.onum','order_dist.endprice','order_dist.ostatus','seller_detail.slogo','seller_detail.extel')
-            ->first();
-
-
+            ->select()
+            ->get();
+//dd($data);
+//        $gid = [];
+//        foreach($data as $k => $v){
+////            $gid['gid'.$k]=$v['gid'];
+//            $gid[]=$v['gid'];
+//        }
+//        dd($gid);
     //   获取订单下面的商家信息
 
         $res=DB::table('order')
-
-            ->join('seller', 'seller.sid', '=', 'order.sid')
-            ->join('goods', 'seller.sid', '=', 'goods.sid')
             ->join('order_goods', 'order.oid', '=', 'order_goods.oid')
-            ->where('order_goods.gid',$data['gid'])
-            ->select('goods.gname','order_goods.onum','goods.gprice')
+            ->join('order_dist','order.oid','=','order_dist.oid')
+//            ->join('order', 'order.oid', '=', 'order_goods.oid')
+            ->join('goods', 'goods.gid', '=', 'order_goods.gid')
+//            ->whereIn('order_goods.gid',$gid)
+            ->where('order.oid',$id)
+            ->select()
             ->get();
-
+//dd($res);
         //显示到页面中
              return view('home/orderdateil',compact('data','res'));
     }
