@@ -146,6 +146,8 @@ class jiezhController extends Controller
     {
         $re = $request -> session() ->all();
         // dd($re);
+        $sid = $re['seller_detail']['sid'];
+
         //获取所选地址的id
 
         $e = $re['seller_detail']['sdid'];
@@ -154,22 +156,32 @@ class jiezhController extends Controller
         $uid = $re['home_user']['uid'];
         // 获取当前实间
         $da = time();
+        // 订单号
         $order = $re['da'];
-        $ofee = $re['ofee'];
-        $price = $re['cou'];
+        // dd($order);
+        $ofee = $re['ofee']; 
+        // 获取总价
+        $pri = $re['cou'];
+        // $or = Order::get();
+        // 向order表中插入数据
+       Order::create(['order'=>$order,'uid'=>$uid,'sid'=>$sid,'otime'=>$da]);
+       // 获取刚刚插入的oid
+       $oid = Order::where('order',$order)->get();
+       // 获取oid
+        $id = $oid[0]->oid;
         foreach($re['n'] as $k=>$v){
             $sid = $v['sid'];
             $gid = $v['gid'];
             $onum = $v['onum'];
             $tatse = $v['gtaste'];
-
+            // dd($re['gprice']);
+            $price = $v['gprice'];
+            OrderGoods::insert(['gid'=>$gid,'onum'=>$onum,'oprice'=>$price,'otaste'=>$tatse,'ofee'=>$ofee,'sid'=>$sid,'oid'=>$id]);
 
         }
-//         dd($did);
-        $oid = Order::insertGetId(['order'=>$order,'uid'=>$uid,'sid'=>$sid,'otime'=>$da]);
+//         dd($did);      
 //        dd($oid);
-        OrderGoods::insert(['gid'=>$gid,'onum'=>$onum,'oprice'=>$price,'otaste'=>$tatse,'ofee'=>$ofee,'sid'=>$sid,'oid'=>$oid]);
-        OrderDist::insert(['oid'=>$oid,'did'=>$e,'umsg'=>'标准','uway'=>'余额支付','ostatus'=>2,'endprice'=>$price,'ofee'=>$ofee]);
+        OrderDist::insert(['oid'=>$id,'did'=>$e,'umsg'=>'标准','uway'=>'余额支付','ostatus'=>2,'endprice'=>$pri,'ofee'=>$ofee]);
 echo '<script>alert("添加成功")</script>';
         return redirect('home/index');
     }

@@ -330,9 +330,9 @@ $(function(){
           }
       },'json');
   });
-  function goods_plus(i){
-      console.log(i);
-  }
+//   function goods_plus(i){
+//       console.log(i);
+//   }
 //减少数量
     $(".minus").click(function (){
         var gid_minus = $(this).attr('gid_minus');

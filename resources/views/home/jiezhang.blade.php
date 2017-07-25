@@ -239,14 +239,6 @@
         <script src="./js/lib/ie9-shim.min.2CKSCH.js"></script>
     <![endif]--> 
  </body>
-<script>
-    $('.wyt').click(function(){
-        $.get('/home/wan',{},function(data){
-            if(data == 1) {
-                window.location.href = "{{ url('/home/index') }}";
-            }
-    })
-    })
-</script>
+
 
 </html>
