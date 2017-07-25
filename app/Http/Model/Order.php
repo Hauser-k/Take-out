@@ -12,4 +12,5 @@ class Order extends Model
     protected $primaryKey = 'oid';
     //指定是否模型应该被戳记时间。
     public $timestamps = false;
+    protected $guarded = [];
 }
