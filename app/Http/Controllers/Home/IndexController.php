@@ -41,7 +41,7 @@ class IndexController extends Controller
 //            dd($res);
 //            dd(session('addr'));
         }elseif(!$request->session()->has('addr')){
-            header('refresh:0;addr');
+            header('refresh:0;/home/addr');
 //            dd($res);
             die;
         }
@@ -65,7 +65,7 @@ class IndexController extends Controller
                 ->get();;
                 if(empty($gooder)){
                 echo '分类下面没有商家';
-                header('refresh:1;index');
+                header('refresh:1;/home/index');
                 die;
               }
         }else{
@@ -74,7 +74,7 @@ class IndexController extends Controller
                     ->get();
                 if(empty($gooder)){
                     echo '附近没有商家...';
-                    header('refresh:2;addr');
+                    header('refresh:2;/home/addr');
                     die;
             }
         }

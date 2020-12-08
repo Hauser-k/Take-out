@@ -23,9 +23,9 @@
     MT.STATIC_ROOT = "/static";
     MT.ENV = "product";
     </script> -->
-
+      <link rel="shortcut icon" href="data:image/x-icon;," type="image/x-icon">
     <link rel="shortcut icon" type="{{asset('home/image/vnd.microsoft.icon')}}" href="{{asset('home/static/img/favicon_1.ico')}}">
-    <link rel="icon" href="{{asset('home/static/img/favicon_1.ico')}}" size="16x16 32x32">
+    <link rel="icon" href="{{asset('home/static/img/favicon.ico')}}" size="16x16 32x32">
       <script src="/admin/js/jquery-1.8.3.min.js"></script>
       <script type="text/javascript" src="{{asset('layer/layer.js')}}"></script>
     <link rel="stylesheet" href="{{asset('home/css/feedback.css')}}" />

@@ -157,13 +157,13 @@ Route::group(['prefix'=>'seller','namespace'=>'Seller','middleware'=>'seller.log
     //商家账号设置
     Route::resource('setup','SetupController'); 
     //商家个人中心
-    Route::resource('personal','PersonalController');
+    Route::resource('personal','PersonalController.class');
     //商家个人中心修改
-    Route::any('updateper','PersonalController@updateper');
+    Route::any('updateper','PersonalController.class@updateper');
     //商家个人中心修改 修改个人头像
-    Route::any('face','PersonalController@updateface');
+    Route::any('face','PersonalController.class@updateface');
     //商家个人中心修改 修改密码
-    Route::any('pwd','PersonalController@pwd');
+    Route::any('pwd','PersonalController.class@pwd');
     //商家个人提醒 来新订单提醒
     Route::any('warn','WarnController@warn');
     

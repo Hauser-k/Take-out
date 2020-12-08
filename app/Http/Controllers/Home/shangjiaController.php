@@ -13,7 +13,7 @@ use App\Http\Model\Evals;
 use Illuminate\Support\Facades\Redis;
 use Illuminate\Support\Facades\Session;
 
-class shangjiaController extends Controller
+class ShangjiaController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -24,7 +24,7 @@ class shangjiaController extends Controller
     //商家详情页
     public function getIndex($sid,Request $request)
     {
-//        dd($id);
+//        dd($sid);
 //        $request->session()->flush();
         $re = SellerDetail::find($sid);
         session(['seller_detail'=>$re]);
@@ -35,20 +35,24 @@ class shangjiaController extends Controller
         }
 
         $shuzu = array_unique($shuzu);
-        // dd($shuzu);
+//         dd($shuzu);
         // 获取在gcid内的商品值
         $good = Goods::whereIn('gcid',$shuzu)->get();
 
     //    \Redis::flushall();
-    // dd(session('home_user')['uid']);
+//     dd(session('home_user')['uid']);
 
 //        $res = \Redis::keys('*');//获取键名
 //        dd($good);
         $cart = $this->cart_list($sid);
-    //    dd($cart);
+//        dd($cart);
 //        dd($cart[1]);
 //        dd($re['sid']);
-        return view('home.shangjia',['data'=>$data,'re'=>$re,'good'=>$good,'cart'=>$cart[2],'other'=>$cart[1]]);
+        $sum = 0;
+        if(!empty($cart[2])){
+            $sum = count($cart[2]);
+        }
+        return view('home.shangjia',['data'=>$data,'re'=>$re,'good'=>$good,'sum'=>$sum,'cart'=>$cart[2],'other'=>$cart[1]]);
     }
     /**
      * Show the form for creating a new resource.
@@ -262,10 +266,14 @@ class shangjiaController extends Controller
             }
 //            dd($goods_list);
             $num = count($goods_list);
-            $sum = '';
+            $sum = 0;
 //            dd($sum);
             foreach($listval as $k=>$v){
-                $sum += ($goods_list[$v]['gprice'] * $goods_list[$v]['onum']);
+                $m = $goods_list[$v]['gprice'];
+                $n = $goods_list[$v]['onum'];
+                $s = $m * $n;
+//                dd($s);
+                $sum = $sum +$s;
 //                $sum += 3;
             }
 //            for($i = 0;$i<$num;$i++){

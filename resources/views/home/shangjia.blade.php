@@ -244,7 +244,7 @@
                 <div class="privilege hidden"></div>
 
 
-                <div class="total">共<span class="totalnumber" id="totalnumber">{{ count($cart) }}</span>份，总计<span class="bill" id="bill">¥{{ $other['sum'] }}</span></div>
+                <div class="total">共<span class="totalnumber" id="totalnumber">{{ $sum }}</span>份，总计<span class="bill" id="bill">¥{{ $other['sum'] }}</span></div>
                 {{--<div class="total">共<span class="totalnumber" id="totalnumber">{{ count($cart) }}</span>份，总计<span class="bill" id="bill">¥{{ $other['sum']+$re['ofee'] }}</span></div>--}}
             </div>
 
